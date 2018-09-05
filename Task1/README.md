@@ -1,10 +1,16 @@
 # Task 1
 
+## Informations
+
+|Deadline|Mark|Done Time|Test Time|Our Deadline|
+|--------|----|---------|---------|------------|
+
 
 
 ## Tasks
+
 |№|          State         |                            Text                                           |   Assignees  |  Deadline  |
-|-|------------------------|---------------------------------------------------------------------------|--------------|------------|
+|-|:----------------------:|---------------------------------------------------------------------------|:------------:|:----------:|
 |                                                        1                                                                         |
 | |<ul><li>- [ ] </li></ul>|Interface IShape: Methods:Shape Square, Shape Perimeter                    |              |            |
 | |<ul><li>- [ ] </li></ul>|Interface IFileManager : Methods Read From File, Write To File             |              |            |
@@ -24,5 +30,7 @@
 |                                                        5                                                                         |
 | |<ul><li>- [ ] </li></ul>|Unit-tests                                                                 |       —      |      —     |
 
+## UML diagram
 
+## Folders diagram
 
