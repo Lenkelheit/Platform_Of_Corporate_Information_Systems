@@ -8,6 +8,7 @@
   - [Evaluation](#evaluation)
 * [Convention](#convention)
   - [Coding Convention](#coding-convention)
+    - [General](#general)
     - [Naming](#naming)
 
 ## Description
@@ -65,7 +66,52 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 
 ### Coding Convention
 
+### General
+
+- Methods
+  - method's body shoud be in 25-50 lines range
+  - private methods for inner complex instructions
+  - event methods should start with On- preffix
+- Fields
+  - do not use public fields
+- Properties
+  - use read-only properties
+  - do no use write-one properties, better use method
+  - if properties return field, it should has the same name
+- Variable 
+  - do not use *magic numbers*(*magic strings*), better use constants
+- Events
+  - **Two arguments**:
+    - sender, object — object that has generated event
+    - e — instance of EventArgs, contain event data
+- Files
+  - Each class in seperate file
+  - File's name same as class' name
+- Comments
+  - every *public* block of code should has XML-documentation
+  - every *private* block of code should has comments
+  - avoid block of comments 
+  - full sentence for comments
+  - comments should be up in date
+  - comments should be clear and understandable
+  - single-line comments preffered over end-line ones
+  - use comments in complex block of codes
+
 #### Naming
+
+- "What?" not "How?"
+- Make a sense
+- Avoid redundency
+```diff
+- List.ListItem
++ List.Item
+```
+- Variable 
+  - ‘i’, ‘j’, ’k’, ’l’, ’m’, ’n’  - cycles 
+  - ‘x’, ‘y’, ‘z‘ -  coordinate
+  - ‘r’, ‘g’, ‘b’  - colors
+  - ‘e’  - events
+  - ‘ex’  - exceptions
 
 |  Object Name     |     Type     |  Notation  | Length | Plural | Prefix  | Suffix | Abbreviation | Char Mask   | Underscores |
 |:-----------------|-------------:|-----------:|:-------|:-------|:--------|:-------|:-------------|:------------|:------------|
@@ -86,6 +132,8 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 | Boolean Fields   |Noun or Nouns | camelCase  |    50  | Yes    | Yes     | No     | Yes    | {is,can,has,does+}[A-z][0-9]|Yes|
 | Properties       |Same as field | PascalCase |    50  | Yes    | No      | No     | Yes          | [A-z][0-9]  | No          |
 | Delegate         |Nouns         | PascalCase |    128 | No     | No      | Yes    | Yes          | [A-z]{EventHandler}| No   |
-| Events           |ObjName+EventName| PascalCase | 128 | No     | No      | Yes    | Yes          | [A-z]{Changed}| No        |
+| Events           |Nouns         | PascalCase | 128 | No     | No      | Yes    | Yes          | [A-z]{Changed}| No        |
 | Enum type        |Noun(regular) or Nouns(bit fields)|PascalCase|128|Yes|No|No     | No           | [A-z]         | No        |
+| GUI              |Noun or Nouns |HungarianNotation|50 | Yes    | Yes     | Yes    | Yes          | [A-z]         | No        |
+| GUI events       |ObjName+_+EventName |PascalCase |128| No     | No      | Yes    | Yes          | [A-z]{Changed}| Yes        |
 
