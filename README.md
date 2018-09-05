@@ -113,6 +113,13 @@ Each task's folder should have a folder **"Project"** and **README** file with
 - uml diagram
 - folders diagram
 
+Uml diagram has special colors for objects and relations between them:
+
+<p align="center">
+  <img src="/Images/umlExamples.png">
+  <img src="/Images/explanation.png">
+</p>
+
 #### File Hierarchy
 
 Unit-test and main project in one solution but in different projects.
