@@ -78,6 +78,8 @@ C# version:
 #### Rules
 
 * all decisions are made through voting
+* if somebody missed voting it is his own false
+* after voting has passed whining is not allowed
 
 ### Coding Convention
 
