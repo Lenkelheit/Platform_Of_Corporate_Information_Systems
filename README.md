@@ -181,7 +181,7 @@ C# version:
   - padding should be done with tabulation
   - do use empty lines to divide logic
   - constanst and enums should be align on their types, names, operators etc
-  ```diff
+  ```C#
   public const int DBVERSION        = 4;
   public const int TINYINT_OWERFLOW = 8115;
   public const int TRIGGER_EXCEPT   = 50000;
