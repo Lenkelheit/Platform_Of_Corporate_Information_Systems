@@ -8,6 +8,8 @@
   - [Evaluation](#evaluation)
 * [Convention](#convention)
   - Repository Convention
+    - Project Configuration
+    - Rules
   - [Coding Convention](#coding-convention)
     - [General](#general)
     - [Naming](#naming)
@@ -68,8 +70,14 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 
 ### Repository Convention
 
+#### Project Configuration
+
 C# version:
 .Net version:
+
+#### Rules
+
+* all decisions are made through voting
 
 ### Coding Convention
 
