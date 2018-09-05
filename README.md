@@ -7,6 +7,7 @@
   - [Deadlines](#deadlines)
   - [Evaluation](#evaluation)
 * [Convention](#convention)
+  - Repository Convention
   - [Coding Convention](#coding-convention)
     - [General](#general)
     - [Naming](#naming)
@@ -28,7 +29,7 @@
 
 ### Task Requirements
 
-* use StyleCop's recommended coding styles
+* do use StyleCop's recommended coding styles
 * code covered with Unit-tests
 * all public code-blocks have XML-documentation
 
@@ -65,19 +66,30 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 
 ## Convention
 
+### Repository Convention
+
+C# version:
+.Net version:
+
 ### Coding Convention
 
 ### General
 
 - Cycles
-  - use ++i not i++
+  - do use ++i not i++
+- String
+  - use StringBuilder for string manipulation
+  - use all kind of string formatiing (String.Format(), @, $, {}, 0#.##, etc)
 - Variable 
   - do not use *magic numbers*(*magic strings*), better use constants
 - Fields
   - do not use public fields
+  - distinguish constant and readonly
+  - do not initialize fields in declaration, do use constructors
 - Properties
-  - use read-only properties
-  - do no use write-one properties, better use method
+  - do use read-only properties
+  - do not use write-one properties, better use method
+  - do use annonymous properties only in standalone, not important classes
   - if properties return field, it should has the same name
 - Methods
   - one method = one action
@@ -94,9 +106,16 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
   - do hide errors from user, if can not handle exception show user a message
   - log exception in files with all details (type, time, method's name, class' name etc)
   - do not catch all exception, only specific ones
+- Classes
+  - do use partial classes for long classes files (over 10.000 lines)
+    - fields, constructors in one part
+    - methods, properties, indexers, events in another part
+  - do not initialize class' properties after initialized instance, do use initialization by name
+- Collections
+  - do use only generic collection over object-based ones
 - Files
-  - Each class in seperate file
-  - File's name same as class' name
+  - each class in seperate file
+  - file's name same as class' name
 - Comments
   - every *public* block of code should has XML-documentation
   - every *private* block of code should has comments
@@ -105,7 +124,7 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
   - comments should be up in date
   - comments should be clear and understandable
   - single-line comments preffered over end-line ones
-  - use comments in complex block of codes
+  - do use comments in complex block of codes
 
 #### Naming
 
@@ -152,7 +171,7 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 * Padding
   - every block of code should has padding depending on outer block
   - padding should be done with tabulation
-  - use empty lines to divide logic
+  - do use empty lines to divide logic
   - constanst and enums should be align on their types, names, operators etc
   ```diff
   public const int DBVERSION        = 4;
@@ -174,16 +193,20 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
   +isDisposing = false;
   ```
   - long boolean statements should be divided by &&, || operators or incapsulated in variable or method
-* code line length should be less than 80 symbols
-* every block of code (cycles, condition statements etc) should has curve brackets
-  - exceps shor one (80 symbols)
-* vertical brackets allignment
-```diff
-- if (...){
--}
-+ if (...)
-+{
-+}
-```
+* curve brackets
+  - every block of code (cycles, condition statements etc) should has curve brackets (exception underneath)
+  - vertical brackets allignment
+  ```diff
+  - if (...){
+  -}
+  
+  + if (...)
+  +{
+  +}
+  ```
+* code length
+  - code line length should be less than 80 symbols
+  - use shortage notation for short block of code
+  - avoid curve brackets in short block of code
 * one line = one command 
 
