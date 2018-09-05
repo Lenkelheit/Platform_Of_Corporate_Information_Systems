@@ -81,6 +81,15 @@ C# version:
 * if somebody missed voting it is his own false
 * after voting has passed whining is not allowed
 
+#### Project convention
+
+* everybody create a new brunch for his work
+
+#### Task convention
+
+* one-unit test = one testing block
+* if block testing depend on other objects, it should not be tasted while that object passed all his tests
+
 ### Coding Convention
 
 ### General
