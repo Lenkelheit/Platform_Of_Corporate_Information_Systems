@@ -115,7 +115,7 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 
 |  Object Name     |     Type     |  Notation  | Length | Plural | Prefix  | Suffix | Abbreviation | Char Mask   | Underscores |
 |:-----------------|-------------:|-----------:|:-------|:-------|:--------|:-------|:-------------|:------------|:------------|
-| Assemblies       |Noun(<Company>.<Component>)| PascalCase | 50 | Y/N | No| No     | No           | [A-z]       | No          |
+| Assemblies       |Nouns(Company.Component)| PascalCase | 50 | Y/N | No| No     | No           | [A-z]       | No          |
 | Namespace        |Noun          | PascalCase |    50  | Y/N    | No      | No     | No           | [A-z]       | No          |
 | Interface        |Noun or Nouns | PascalCase |    128 | No     | Yes     | No     | No           | {**I**}[A-z]| No          |
 | Struct           |Noun or Nouns | PascalCase |    128 | No     | No      | Yes    | No           | [A-z][0-9]  | No          |
