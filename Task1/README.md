@@ -14,9 +14,9 @@
 |                                                        1                                                                         |
 | |<ul><li>- [ ] </li></ul>|Interface IShape: Methods:Shape Square, Shape Perimeter                    |              |            |
 | |<ul><li>- [ ] </li></ul>|Interface IFileManager : Methods Read From File, Write To File             |              |            |
-| |<ul><li>- [ ] </li></ul>|Class Circle : center coordinates and radius                               |              |            |
-| |<ul><li>- [ ] </li></ul>|Class Square : coordinates of the upper left corner and lower right corner |              |            |
-| |<ul><li>- [ ] </li></ul>|Class Triangle                                                             |              |            |
+| |<ul><li>- [ ] </li></ul>|Class Circle : IShape, IFileManager : center coordinates and radius        |              |            |
+| |<ul><li>- [ ] </li></ul>|Class Square : IShape, IFileManager : coordinates of the upper left corner and lower right corner| |   |
+| |<ul><li>- [ ] </li></ul>|Class Triangle : IShape, IFileManager                                      |              |            |
 | |<ul><li>- [ ] </li></ul>|The text file with data about geometric shapes                             |              |            |
 |                                                        2                                                                         |
 | |<ul><li>- [ ] </li></ul>|Read the data in the List collection.                                      |              |            |
