@@ -2,9 +2,9 @@
 
 ## Informations
 
-|Deadline|Mark|Done Time|Test Time|Our Deadline|
-|--------|----|---------|---------|------------|
-
+| Deadline |Mark|Done Time|Test Time|Our Deadline|
+|----------|----|---------|---------|------------|
+|20.09.2018| 10 |         |         |            |
 
 
 ## Tasks
@@ -32,5 +32,12 @@
 
 ## UML diagram
 
+<p align="center">
+  <img width="" height="" src="">
+</p>
+
 ## Folders diagram
 
+<p align="center">
+  <img width="" height="" src="">
+</p>
