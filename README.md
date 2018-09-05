@@ -60,3 +60,25 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
   - Test3 — 5
 
 ## Convention
+
+### Coding Convention
+
+#### Naming
+
+|  Object Name     |     Type     |  Notation  | Length | Plural | Prefix  | Suffix | Abbreviation | Char Mask   | Underscores |
+|:-----------------|-------------:|-----------:|:-------|:-------|:--------|:-------|:-------------|:------------|:------------|
+| Namespace        |Noun          | PascalCase |    50  | Y/N    | No      | No     | No           | [A-z]       | No          |
+| Interface        |Noun or Nouns | PascalCase |    128 | No     | Yes     | No     | No           | I[A-z]      | No          |
+| Class            |Noun or Nouns | PascalCase |    128 | No     | No      | Yes    | No           | [A-z][0-9]  | No          |
+| Constructor      |Same as class | PascalCase |    128 | No     | No      | Yes    | No           | [A-z][0-9]  | No          |
+| Method           |Verbs         | PascalCase |    128 | Yes    | No      | No     | No           | [A-z][0-9]  | No          |
+| Method arguments |Depend on type| camelCase  |    128 | Yes    | No      | No     | Yes          | [A-z][0-9]  | No          |
+| Local variables  |Noun or Nouns | camelCase  |    50  | Yes    | No      | No     | Yes          | [A-z][0-9]  | No          |
+| Constants name   |Noun or Nouns | UpperCase  |    50  | No     | No      | No     | No           | [A-z][0-9]  | No          |
+| Field            |Noun or Nouns | camelCase  |    50  | Yes    | No      | No     | Yes          | [A-z][0-9]  | Yes         |
+| Boolean Fields   |Noun or Nouns | camelCase  |    50  | Yes    | Yes     | No     | Yes    | {is,can,has,does+}[A-z][0-9]|Yes|
+| Properties       |Same as field | PascalCase |    50  | Yes    | No      | No     | Yes          | [A-z][0-9]  | No          |
+| Delegate         |Nouns         | PascalCase |    128 | No     | No      | Yes    | Yes          | [A-z](EventHandler)| No   |
+| Events           |ObjName+EventName| PascalCase | 128 | No     | No      | Yes    | Yes          | [A-z](Changed)| No        |
+| Enum type        |Noun(regular) or Nouns(bit fields)|PascalCase|128|Yes|No|No     | No           | [A-z]         | No        |
+
