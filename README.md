@@ -120,6 +120,14 @@ Uml diagram has special colors for objects and relations between them:
   <img src="/Images/explanation.png">
 </p>
 
+Uml diagram and the code may differ.
+
+File hierarchy files looks like:
+
+<p align="center">
+  <img src="/Images/filesExamples.png">
+</p>
+
 #### File Hierarchy
 
 Unit-test and main project in one solution but in different projects.
