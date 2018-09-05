@@ -2,14 +2,18 @@
 
 # Contents
 * [Description](#description)
-* [Task rules](#task-rules)
+* [Task Rules](#task-rules)
   - [Task Requirements](#task-requirements)
   - [Deadlines](#deadlines)
   - [Evaluation](#evaluation)
 * [Convention](#convention)
   - Repository Convention
     - Project Configuration
-    - [Politics] (#politics)
+    - [Politics](#politics)
+    - Project Convention
+    - Task Convention
+    - File Hierarchy
+    - Team Work
   - [Coding Convention](#coding-convention)
     - [General](#general)
     - [Naming](#naming)
@@ -27,7 +31,7 @@
 | :---: | :---: | :---: | :---: |
 | [<img src="https://avatars2.githubusercontent.com/u/36925520?s=400&v=4" width="100px;"/>](https://github.com/SvyatoslavFedynyak) | [<img src="https://avatars3.githubusercontent.com/u/38116562?s=400&v=4" width="100px;"/>](https://github.com/Lenkelheit) | [<img src="https://avatars3.githubusercontent.com/u/22750664?s=400&v=4" width="100px;"/>](https://github.com/vasil98)| [<img src="https://avatars3.githubusercontent.com/u/24938726?s=400&v=4" width="100px;"/>](https://github.com/iamprovidence) |
 
-## Task rules
+## Task Rules
 
 ### Task Requirements
 
@@ -80,17 +84,68 @@ C# version: 6.0
 * if somebody missed voting it is his own false
 * after voting has passed whining is not allowed
 
-#### Project convention
+#### Project Convention
 
 * everybody create a new brunch for his work
 * one respons for one brunch
 * if somebody want to do changes in someone's bruch he should create separate brunch
 * all issues should have labels and assignees
 
-#### Task convention
+#### Task Convention
 
 * one-unit test = one testing block
 * if block testing depend on other objects, it should not be tasted while that object passed all his tests
+
+Each task's folder should have a folder **"Project"** and **README** file with
+
+- info table
+  - deadline
+  - mark
+  - our periods
+  - done time
+  - test time
+  - deadline
+- task table
+  - checkboxes that determine task state (opened/in progress/closed)
+  - the text of the task
+  - assignees
+  - assignees deadline
+- uml diagram
+- folders diagram
+
+#### File Hierarchy
+
+Unit-test and main project in one solution but in different projects.
+
+Each project has the **"Resources"** , **"Models"** folder with inners folders
+- Classes
+- Interfaces
+- EventArgClasses
+- ExtensionClasses
+- etc
+
+And **"Components"** folder:
+- Forms
+- UserControls
+- etc
+
+Additional folders depend on projects.
+
+#### Team Work
+
+After a new task become available we should divide it on several tasks.
+
+Then with a voting process everybody get his own tasks, pointing out a deadline for his work. 
+
+The team group up to discuss the architecture of the program (classes, file hierarchy, etc).
+
+The one should do unit test and documentation to his part of work.
+
+If one do not has complete work for his own deadline time, the task pass to a free teammate.
+
+The one can set his deadline 10 days before task deadline.
+
+All unit-tests should be reworked in 2 days after project complete.
 
 ### Coding Convention
 
