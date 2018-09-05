@@ -8,12 +8,12 @@
   - [Evaluation](#evaluation)
 * [Convention](#convention)
   - Repository Convention
-    - Project Configuration
+    - [Project Configuration](#project-configuration)
     - [Politics](#politics)
-    - Project Convention
-    - Task Convention
-    - File Hierarchy
-    - Team Work
+    - [Project Convention](#project-convention)
+    - [Task Convention](#task-convention)
+    - [File Hierarchy](#file-hierarchy)
+    - [Team Work](#team-work)
   - [Coding Convention](#coding-convention)
     - [General](#general)
     - [Naming](#naming)
@@ -122,7 +122,7 @@ Uml diagram has special colors for objects and relations between them:
 
 Uml diagram and the code may differ.
 
-File hierarchy files looks like:
+File hierarchy images looks like:
 
 <p align="center">
   <img src="/Images/filesExamples.png">
