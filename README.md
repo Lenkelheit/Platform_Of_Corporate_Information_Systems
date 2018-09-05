@@ -84,6 +84,8 @@ C# version:
 #### Project convention
 
 * everybody create a new brunch for his work
+* one respons for one brunch
+* if somebody want to do changes in someone's bruch he should create separate brunch
 
 #### Task convention
 
