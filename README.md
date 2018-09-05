@@ -9,7 +9,7 @@
 * [Convention](#convention)
   - Repository Convention
     - Project Configuration
-    - Rules
+    - [Politics] (#politics)
   - [Coding Convention](#coding-convention)
     - [General](#general)
     - [Naming](#naming)
@@ -54,7 +54,6 @@
   -	Task4. ADO .Net – 10
   -	Task5. Entity + WPF  - 20
  
-
 There should be commits and projects. Task should be done before deadline — 40 % of mark.
 
 All requirements are satisfied — 50% of mark.
@@ -72,10 +71,10 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 
 #### Project Configuration
 
-C# version:
-.Net version:
+C# version: 6.0
+.NET version: 4.5.2
 
-#### Rules
+#### Politics
 
 * all decisions are made through voting
 * if somebody missed voting it is his own false
@@ -118,6 +117,7 @@ C# version:
   - method's body shoud be in 25-50 lines range
   - private methods for inner complex instructions
   - event methods should start with On- preffix
+  - if variable names, that you pass, are not clear enough, use named parameters
 - Events
   - **Two arguments**:
     - sender, object — object that has generated event
@@ -139,6 +139,7 @@ C# version:
   - each class in seperate file
   - file's name same as class' name
 - Comments
+  - do separate different code section with uppercase comments in important classes: FIELDS, METHODS, CONSTRUCTORS(constructor, destructor, methods that create object) ...
   - every *public* block of code should has XML-documentation
   - every *private* block of code should has comments
   - avoid block of comments 
@@ -163,6 +164,15 @@ C# version:
   - ‘r’, ‘g’, ‘b’  - colors
   - ‘e’  - events
   - ‘ex’  - exceptions
+- GUI
+  - use short suffix
+    - Button —> btn
+    - TextBox,RichTextBox —> tb
+    - ComboBox, CheckBox —> cb
+    - DataGridView —> dgv
+  - if you don't use control, do not give him name, for inctance Splitter, Label
+  - do use simple names for dynamic controls 
+  
 
 |  Object Name     |     Type     |  Notation  | Length | Plural | Prefix  | Suffix | Abbreviation | Char Mask   | Underscores |
 |:-----------------|-------------:|-----------:|:-------|:-------|:--------|:-------|:-------------|:------------|:------------|
