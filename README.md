@@ -7,7 +7,7 @@
   - [Deadlines](#deadlines)
   - [Evaluation](#evaluation)
 * [Convention](#convention)
-  - Repository Convention
+  - [Repository Convention](#repository-convention)
     - [Project Configuration](#project-configuration)
     - [Politics](#politics)
     - [Project Convention](#project-convention)
