@@ -2,6 +2,10 @@
 
 # Contents
 * [Description](#description)
+* [Task rules](#task-rules)
+  - [Task Requirements](#task-requirements)
+  - [Deadlines](#deadlines)
+  - [Evaluation](#evaluation)
 * [Convention](#convention)
 
 ## Description
