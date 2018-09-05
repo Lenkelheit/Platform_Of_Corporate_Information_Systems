@@ -10,6 +10,7 @@
   - [Coding Convention](#coding-convention)
     - [General](#general)
     - [Naming](#naming)
+    - [Formating](#formating)
 
 ## Description
 
@@ -68,22 +69,31 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 
 ### General
 
-- Methods
-  - method's body shoud be in 25-50 lines range
-  - private methods for inner complex instructions
-  - event methods should start with On- preffix
+- Cycles
+  - use ++i not i++
+- Variable 
+  - do not use *magic numbers*(*magic strings*), better use constants
 - Fields
   - do not use public fields
 - Properties
   - use read-only properties
   - do no use write-one properties, better use method
   - if properties return field, it should has the same name
-- Variable 
-  - do not use *magic numbers*(*magic strings*), better use constants
+- Methods
+  - one method = one action
+  - method's body shoud be in 25-50 lines range
+  - private methods for inner complex instructions
+  - event methods should start with On- preffix
 - Events
   - **Two arguments**:
     - sender, object — object that has generated event
     - e — instance of EventArgs, contain event data
+- Exception Handling
+  - do not ignore cathed exception
+    - some special exception can be ignored : ThreadAbortException
+  - do hide errors from user, if can not handle exception show user a message
+  - log exception in files with all details (type, time, method's name, class' name etc)
+  - do not catch all exception, only specific ones
 - Files
   - Each class in seperate file
   - File's name same as class' name
@@ -115,7 +125,7 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 
 |  Object Name     |     Type     |  Notation  | Length | Plural | Prefix  | Suffix | Abbreviation | Char Mask   | Underscores |
 |:-----------------|-------------:|-----------:|:-------|:-------|:--------|:-------|:-------------|:------------|:------------|
-| Assemblies       |Nouns(Company.Component)| PascalCase | 50 | Y/N | No| No     | No           | [A-z]       | No          |
+| Assemblies       |Nouns(Company.Component)   | PascalCase | 50 | Y/N | No| No     | No           | [A-z]       | No          |
 | Namespace        |Noun          | PascalCase |    50  | Y/N    | No      | No     | No           | [A-z]       | No          |
 | Interface        |Noun or Nouns | PascalCase |    128 | No     | Yes     | No     | No           | {**I**}[A-z]| No          |
 | Struct           |Noun or Nouns | PascalCase |    128 | No     | No      | Yes    | No           | [A-z][0-9]  | No          |
@@ -132,8 +142,48 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 | Boolean Fields   |Noun or Nouns | camelCase  |    50  | Yes    | Yes     | No     | Yes    | {is,can,has,does+}[A-z][0-9]|Yes|
 | Properties       |Same as field | PascalCase |    50  | Yes    | No      | No     | Yes          | [A-z][0-9]  | No          |
 | Delegate         |Nouns         | PascalCase |    128 | No     | No      | Yes    | Yes          | [A-z]{EventHandler}| No   |
-| Events           |Nouns         | PascalCase | 128 | No     | No      | Yes    | Yes          | [A-z]{Changed}| No        |
+| Events           |Nouns         | PascalCase | 128    | No     | No      | Yes    | Yes          | [A-z]{Changed}| No        |
 | Enum type        |Noun(regular) or Nouns(bit fields)|PascalCase|128|Yes|No|No     | No           | [A-z]         | No        |
 | GUI              |Noun or Nouns |HungarianNotation|50 | Yes    | Yes     | Yes    | Yes          | [A-z]         | No        |
-| GUI events       |ObjName+_+EventName |PascalCase |128| No     | No      | Yes    | Yes          | [A-z]{Changed}| Yes        |
+| GUI events       |ObjName + _ + EventName |PascalCase |128| No | No      | Yes    | Yes          | [A-z]{Changed}| Yes       |
+
+#### Formating
+
+* Padding
+  - every block of code should has padding depending on outer block
+  - padding should be done with tabulation
+  - use empty lines to divide logic
+  - constanst and enums should be align on their types, names, operators etc
+  ```diff
+  	  public const int DBVERSION        = 4;
+  		public const int TINYINT_OWERFLOW = 8115;
+  		public const int TRIGGER_EXCEPT   = 50000;
+
+  		public enum StatusMode
+  		{
+  	    		Planned  = 1,
+  	    		Active   = 2,
+  	    		InActive = 4,
+  	    		All      = 7
+  		};
+
+  ```
+  - whitespaces after and before operators
+  ```diff
+  -isDisposing=false;
+  +isDisposing = false;
+  ```
+  - long boolean statements should be divided by &&, || operators or incapsulated in variable or method
+* code line length should be less than 80 symbols
+* every block of code (cycles, condition statements etc) should has curve brackets
+  - exceps shor one (80 symbols)
+* vertical brackets allignment
+```diff
+- if (...){
+-}
++ if (...)
++{
++}
+```
+* one line = one command 
 
