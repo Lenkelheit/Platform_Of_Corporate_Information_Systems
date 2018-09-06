@@ -173,7 +173,7 @@ All unit-tests should be reworked in 2 days after project complete.
 #### General
 
 - Cycles
-  - do use ++i not i++
+  - do use ++i not i++, iterator objects have different speed cost
 - String
   - use StringBuilder for string manipulation
   - use all kind of string formating (String.Format(), @, $, {}, 0#.##, etc)
@@ -204,6 +204,8 @@ All unit-tests should be reworked in 2 days after project complete.
   - do hide errors from user, if can not handle exception show user a message
   - log exception in files with all details (type, time, method's name, class' name etc)
   - do not catch all exception, only specific ones
+- Namespaces
+  - Prefer full names to using command if you use namespace's objects infrequently
 - Classes
   - do use partial classes for long classes files (over 10.000 lines)
     - fields, constructors in one part
