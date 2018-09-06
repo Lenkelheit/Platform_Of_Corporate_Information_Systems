@@ -1,11 +1,12 @@
-﻿using Shapes.Models.Enums;
+using Shapes.Models.Enums;
+using Shapes.Models.Interfaces;
 
 namespace Shapes.Models.Classes
 {
     /// <summary>
     /// Represents basic algorithms for the shape objects.
     /// </summary>
-    public abstract class ShapeBase : Interfaces.IShape
+    public abstract class ShapeBase : IShape, IFileManager
     {
         // PROPERTIIES
         /// <summary>
@@ -41,5 +42,19 @@ namespace Shapes.Models.Classes
         /// The middle point of the shape.
         /// </returns>
         protected abstract Point GetMiddlePoint();
+        /// <summary>
+        /// Read information from file.
+        /// </summary>
+        /// <param name="fileStream">
+        /// The file stream.
+        /// </param>
+        public abstract void ReadFromFile(System.IO.Stream fileStream);
+        /// <summary>
+        /// Write information to file.
+        /// </summary>
+        /// <param name="fileStream">
+        /// The file stream.
+        /// </param>
+        public abstract void WtiteToFile(System.IO.Stream fileStream);
     }
 }
