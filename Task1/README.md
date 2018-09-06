@@ -12,7 +12,7 @@
 |№|          State         |                            Text                                           |   Assignees  |  Deadline  |
 |-|:----------------------:|---------------------------------------------------------------------------|:------------:|:----------:|
 |                                                        1                                                                         |
-| |<ul><li>- [ ] </li></ul>|Interface IShape: Methods:Shape Square, Shape Perimeter                    |              |            |
+| |<ul><li>- [x] </li></ul>|Interface IShape: Methods:Shape Square, Shape Perimeter                    |iamprovidence |06.09.2018  |
 | |<ul><li>- [ ] </li></ul>|Interface IFileManager : Methods Read From File, Write To File             |              |            |
 | |<ul><li>- [ ] </li></ul>|Class Circle : IShape, IFileManager : center coordinates and radius        |              |            |
 | |<ul><li>- [ ] </li></ul>|Class Square : IShape, IFileManager : coordinates of the upper left corner and lower right corner| |   |
