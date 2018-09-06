@@ -172,7 +172,7 @@ All unit-tests should be reworked in 2 days after project complete.
   - do use ++i not i++
 - String
   - use StringBuilder for string manipulation
-  - use all kind of string formatiing (String.Format(), @, $, {}, 0#.##, etc)
+  - use all kind of string formating (String.Format(), @, $, {}, 0#.##, etc)
 - Variable 
   - do not use *magic numbers*(*magic strings*), better use constants
 - Fields
