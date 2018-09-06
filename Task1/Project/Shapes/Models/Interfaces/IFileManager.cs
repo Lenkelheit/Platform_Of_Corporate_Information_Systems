@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Shapes.Models.Interfaces
 {
     public interface IFileManager
     {
-        void ReadFromFile();
-        void WtiteToFile();
+        void ReadFromFile(System.IO.Stream fileStream);
+        void WtiteToFile(System.IO.Stream fileStream);
     }
 }
