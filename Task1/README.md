@@ -19,10 +19,10 @@
 | |<ul><li>- [ ] </li></ul>|Class Triangle : IShape, IFileManager                                      |              |            |
 | |<ul><li>- [ ] </li></ul>|The text file with data about geometric shapes                             |              |            |
 |                                                        2                                                                         |
-| |<ul><li>- [ ] </li></ul>|Read the data in the List collection.                                      |              |            |
-| |<ul><li>- [ ] </li></ul>|Sort the collection ascending by the square and write the result into file1|              |            |
-| |<ul><li>- [ ] </li></ul>|Find shapes that lie in the third quarter of the coordinate plane and write them in a separate collection|              |            |
-| |<ul><li>- [ ] </li></ul>|Sort that collection decending by the perimeters and write the result into file2|         |            |
+| |<ul><li>- [ ] </li></ul>|Read the data in the List collection.                                      |   vasil98    | 10.09.2018 |
+| |<ul><li>- [ ] </li></ul>|Sort the collection ascending by the square and write the result into file1|   vasil98    | 10.09.2018 |
+| |<ul><li>- [ ] </li></ul>|Find shapes that lie in the third quarter of the coordinate plane and write them in a separate collection|      vasil98 | 10.09.2018 |
+| |<ul><li>- [ ] </li></ul>|Sort that collection decending by the perimeters and write the result into file2| vasil98 | 10.09.2018 |
 |                                                        3                                                                         |
 | |<ul><li>- [ ] </li></ul>|Processing of the exceptions                                               |       —      |      —     |
 |                                                        4                                                                         |
