@@ -30,6 +30,7 @@
 | <sub><b>SvyatoslavFedynyak</b></sub>| <sub><b>Lenkelheit</b></sub>|<sub><b>vasil98</b></sub> | <sub><b>iamprovidence</b></sub>|
 | :---: | :---: | :---: | :---: |
 | [<img src="https://avatars2.githubusercontent.com/u/36925520?s=400&v=4" width="100px;"/>](https://github.com/SvyatoslavFedynyak) | [<img src="https://avatars3.githubusercontent.com/u/38116562?s=400&v=4" width="100px;"/>](https://github.com/Lenkelheit) | [<img src="https://avatars3.githubusercontent.com/u/22750664?s=400&v=4" width="100px;"/>](https://github.com/vasil98)| [<img src="https://avatars3.githubusercontent.com/u/24938726?s=400&v=4" width="100px;"/>](https://github.com/iamprovidence) |
+|Svyatoslav Fedynyak|Nazariy Tymtsiv|Vasyl Tanchinets|Taras Kizlo|
 
 ## Task Rules
 
