@@ -5,6 +5,7 @@
     /// </summary>
     interface IFileManager
     {
+        // METHOD
         /// <summary>
         /// Writes some information to file.
         /// </summary>
@@ -12,6 +13,7 @@
         /// The value if writing to file was successfull.
         /// </returns>
         bool WriteToFile();
+        // METHOD
         /// <summary>
         /// Reads some information from file.
         /// </summary>
