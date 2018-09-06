@@ -1,4 +1,5 @@
 using System.Text;
+using System.IO;
 
 namespace Shapes.Models.Interfaces
 {
@@ -21,7 +22,7 @@ namespace Shapes.Models.Interfaces
         /// <returns>
         /// The value if writing to file was successfull.
         /// </returns>
-        bool WtiteToFile(System.IO.Stream fileStream);
+        bool WtiteToFile(Stream fileStream);
         /// <summary>
         /// Reads some information from file.
         /// </summary>
@@ -31,6 +32,6 @@ namespace Shapes.Models.Interfaces
         /// <returns>
         /// The value if reading from file was successfull.
         /// </returns>
-        bool ReadFromFile(System.IO.Stream fileStream);
+        bool ReadFromFile(Stream fileStream);
     }
 }
