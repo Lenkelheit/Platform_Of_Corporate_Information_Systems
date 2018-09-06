@@ -30,14 +30,14 @@
 |                                                        5                                                                         |
 | |<ul><li>- [ ] </li></ul>|Unit-tests                                                                 |       —      |      —     |
 
-## UML diagram
-
-<p align="center">
-  <img width="" height="" src="">
-</p>
-
 ## Folders diagram
 
 <p align="center">
-  <img width="" height="" src="">
+  <img src="/Images/Task1/files.png">
+</p>
+
+## UML diagram
+
+<p align="center">
+  <img src="/Images/Task1/uml.png">
 </p>
