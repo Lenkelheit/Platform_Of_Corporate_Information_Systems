@@ -2,9 +2,9 @@
 
 ## Informations
 
-| Deadline |Mark|Done Time|Test Time|Our Deadline|
-|----------|----|---------|---------|------------|
-|20.09.2018| 10 |         |         |            |
+| Deadline |Mark|Done Time |Test Time |Our Deadline|
+|----------|----|----------|----------|------------|
+|20.09.2018| 10 |11.09.2018|13.09.2018|15.09.2018 |
 
 
 ## Tasks
