@@ -5,6 +5,12 @@
     /// </summary>
     interface IFileManager
     {
+        // PROPERTY
+        /// <summary>
+        /// Represents name of file.
+        /// </summary>
+        StringBuilder NameOfFile { get; }
+
         // METHOD
         /// <summary>
         /// Writes some information to file.
