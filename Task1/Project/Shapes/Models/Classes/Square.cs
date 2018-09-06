@@ -1,59 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Math;
 
 namespace Shapes.Models.Classes
 {
-    public class Square : ShapeBase
+    /// <summary>
+    /// Represents class for square
+    /// </summary>
+    class Square : ShapeBase
     {
-        public Point TopLeftPoint
+        //FIELDS    
+        /// <summary>
+        /// Top-left corner point
+        /// </summary>
+        Point topLeft;
+        /// <summary>
+        /// Bottom-right corner point
+        /// </summary>
+        Point bottomRight;
+        //Constructors
+        /// <summary>
+        /// Basic constructor
+        /// </summary>
+        Square() { }
+        /// <summary>
+        /// Constructor with params
+        /// </summary>
+        /// <param name="topleft"></param>
+        /// <param name="bottomright"></param>
+        Square(Point topleft, Point bottomright)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            topLeft = topleft;
+            bottomRight = bottomright;
         }
-
-        public Point BottomRightPoint
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        //PROPERTIES
+        /// <summary>
+        /// Returns the perimeter of the square
+        /// </summary>
         public override double GetPerimeter
         {
             get
             {
-                throw new NotImplementedException();
+                return (Abs(topLeft.X - bottomRight.X) * 2 + Abs(topLeft.Y - bottomRight.Y) * 2);
             }
         }
-
+        /// <summary>
+        /// Returns the square of the square
+        /// </summary>
         public override double GetSquare
         {
             get
             {
-                throw new NotImplementedException();
+                return (Abs(topLeft.X - bottomRight.X) * Abs(topLeft.Y - bottomRight.Y));
             }
         }
-
-        public override void ReadFromFile(Stream fileStream)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void WtiteToFile(Stream fileStream)
-        {
-            throw new NotImplementedException();
-        }
-
+        //METHODS
+        /// <summary>
+        /// Returns the position of the square whithin coordinate querter
+        /// </summary>
+        /// <returns></returns>
         protected override Point GetMiddlePoint()
         {
-            throw new NotImplementedException();
+            return new Point(bottomRight.X - Abs(topLeft.X - bottomRight.X) / 2,
+                topLeft.Y - Abs(topLeft.Y - bottomRight.Y));
         }
     }
 }
+

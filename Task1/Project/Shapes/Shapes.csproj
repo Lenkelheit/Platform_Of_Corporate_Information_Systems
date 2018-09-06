@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Classes\Circle.cs" />
+    <Compile Include="Models\Classes\Point.cs" />
     <Compile Include="Models\Classes\ShapeBase.cs" />
+    <Compile Include="Models\Classes\Square.cs" />
+    <Compile Include="Models\Classes\Triangle.cs" />
     <Compile Include="Models\Enums\CoordinateQuarters.cs" />
     <Compile Include="Models\Interfaces\IShape.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,32 +1,45 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Math;
 
 namespace Shapes.Models.Classes
 {
-    public struct Point
+    /// <summary>
+    /// Models simple point on two-dimensional space
+    /// </summary>
+    struct Point
     {
-
-        public double X
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-        public double Y
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        /// <summary>
+        /// Point position on abscis
+        /// </summary>
+        public double X;
+        /// <summary>
+        /// Point position on ordinate
+        /// </summary>
+        public double Y;
+        /// <summary>
+        /// Basic constructor that takes 2 parameters
+        /// </summary>
+        /// <param name="x">Abscis position</param>
+        /// <param name="y">Ordinate position</param>
         public Point(double x, double y)
         {
-            throw new NotImplementedException();
+            X = x;
+            Y = y;
         }
-        static double Distance(Point A, Point B)
+        /// <summary>
+        /// Method that returns distance between two points
+        /// </summary>
+        /// <param name="A">First Point</param>
+        /// <param name="B">Second point</param>
+        /// <returns>Distance betweeen points</returns>
+        public static double Distance(Point A, Point B)
         {
-            throw new NotImplementedException();
+            return (Sqrt(Pow(A.X - B.X, 2) + Pow(A.Y - B.Y, 2)));
         }
     }
 }
+
