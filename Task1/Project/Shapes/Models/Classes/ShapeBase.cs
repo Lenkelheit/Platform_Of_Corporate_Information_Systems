@@ -8,7 +8,7 @@ namespace Shapes.Models.Classes
     /// </summary>
     public abstract class ShapeBase : IShape, IFileManager
     {
-        // PROPERTIIES
+        // PROPERTIES
         /// <summary>
         /// Returns the perimeter of the shape.
         /// </summary>
