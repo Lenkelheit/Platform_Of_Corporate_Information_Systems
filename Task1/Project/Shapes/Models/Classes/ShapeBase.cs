@@ -10,11 +10,11 @@ namespace Shapes.Models.Classes
     {
         // PROPERTIES
         /// <summary>
-        /// Returns the perimeter of the shape.
+        /// When overridden in a derived class, returns the perimeter of the shape.
         /// </summary>
         public abstract double GetPerimeter { get; }
         /// <summary>
-        /// Returns the square of the shape.
+        /// When overridden in a derived class, returns the square of the shape.
         /// </summary>
         public abstract double GetSquare { get; }
         /// <summary>
@@ -36,21 +36,21 @@ namespace Shapes.Models.Classes
 
         // METHODS
         /// <summary>
-        /// Return the middle point of the shape.
+        /// When overridden in a derived class, return the middle point of the shape.
         /// </summary>
         /// <returns>
         /// The middle point of the shape.
         /// </returns>
         protected abstract Point GetMiddlePoint();
         /// <summary>
-        /// Read information from file.
+        /// When overridden in a derived class, read information from file.
         /// </summary>
         /// <param name="fileStream">
         /// The file stream.
         /// </param>
         public abstract void ReadFromFile(System.IO.Stream fileStream);
         /// <summary>
-        /// Write information to file.
+        /// When overridden in a derived class, write information to file.
         /// </summary>
         /// <param name="fileStream">
         /// The file stream.
