@@ -34,7 +34,10 @@ namespace Shapes.Models.Classes
         /// <returns>Shape perimeter</returns>
         public override double GetPerimeter
         {
-            get { return 2 * Pi * radius; }
+            get
+            {
+                return 2 * Pi * radius;
+            }
         }
         /// <summary>
         /// Returns the square of the circle
@@ -42,7 +45,10 @@ namespace Shapes.Models.Classes
         /// <returns>Shape square</returns>
         public override double GetSquare
         {
-            get { return Pi * radius * radius; }
+            get
+            {
+                return Pi * radius * radius;
+            }
         }
         //METHODS
 

@@ -38,7 +38,10 @@ namespace Shapes.Models.Classes
         /// <returns>Shape perimeter</returns>
         public override double GetPerimeter
         {
-            get { return Abs(topLeft.X - bottomRight.X) * 2 + Abs(topLeft.Y - bottomRight.Y) * 2; }
+            get
+            {
+                return Abs(topLeft.X - bottomRight.X) * 2 + Abs(topLeft.Y - bottomRight.Y) * 2;
+            }
         }
         /// <summary>
         /// Returns the square of the square
@@ -46,7 +49,10 @@ namespace Shapes.Models.Classes
         /// <returns>Shape square</returns>
         public override double GetSquare
         {
-            get { return Abs(topLeft.X - bottomRight.X) * Abs(topLeft.Y - bottomRight.Y); }
+            get
+            {
+                return Abs(topLeft.X - bottomRight.X) * Abs(topLeft.Y - bottomRight.Y);
+            }
         }
         //METHODS
         /// <summary>

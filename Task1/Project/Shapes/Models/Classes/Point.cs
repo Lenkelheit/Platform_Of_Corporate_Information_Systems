@@ -32,16 +32,28 @@ namespace Shapes.Models.Classes
         /// </summary>
         public double X
         {
-            get { return x; }
-            set { X = value; }
+            get
+            {
+                return x;
+            }
+            set
+            {
+                X = value;
+            }
         }
         /// <summary>
         /// Property that return ordinate coordinate
         /// </summary>
         public double Y
         {
-            get { return y; }
-            set { y = value; }
+            get
+            {
+                return y;
+            }
+            set
+            {
+                y = value;
+            }
         }
         //METHODS
         /// <summary>
