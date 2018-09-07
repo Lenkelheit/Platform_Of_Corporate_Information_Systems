@@ -211,6 +211,8 @@ All unit-tests should be reworked in 2 days after project complete.
     - fields, constructors in one part
     - methods, properties, indexers, events in another part
   - do not initialize class' properties after initialized instance, do use initialization by name
+- Constructors
+  - do initialize all fields explicitly
 - Collections
   - do use only generic collection over object-based ones
 - Files
