@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -41,8 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Classes\Circle.cs" />
+    <Compile Include="Models\Classes\Point.cs" />
     <Compile Include="Models\Classes\ShapeBase.cs" />
+    <Compile Include="Models\Classes\Square.cs" />
+    <Compile Include="Models\Classes\Triangle.cs" />
     <Compile Include="Models\Enums\CoordinateQuarters.cs" />
+    <Compile Include="Models\Interfaces\IFileManager.cs" />
     <Compile Include="Models\Interfaces\IShape.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
