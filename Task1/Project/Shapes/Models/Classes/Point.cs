@@ -10,26 +10,40 @@ namespace Shapes.Models.Classes
     /// <summary>
     /// Models simple point on two-dimensional space
     /// </summary>
-    struct Point
+    public struct Point
     {
-        /// <summary>
-        /// Point position on abscis
-        /// </summary>
-        public double X;
-        /// <summary>
-        /// Point position on ordinate
-        /// </summary>
-        public double Y;
+        //FIELDS
+        double x;
+        double y;
+        //CONSTRUCTORS
         /// <summary>
         /// Basic constructor that takes 2 parameters
         /// </summary>
-        /// <param name="x">Abscis position</param>
-        /// <param name="y">Ordinate position</param>
-        public Point(double x, double y)
+        /// <param name="xCoord">Abscis position</param>
+        /// <param name="yCoord">Ordinate position</param> 
+        public Point(double xCoord, double yCoord)
         {
-            X = x;
-            Y = y;
+            x = xCoord;
+            y = yCoord;
         }
+        //PROPERTIES
+        /// <summary>
+        /// Property that return absciss coordinate
+        /// </summary>
+        public double X
+        {
+            get { return x; }
+            set { X = value; }
+        }
+        /// <summary>
+        /// Property that return ordinate coordinate
+        /// </summary>
+        public double Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
+        //METHODS
         /// <summary>
         /// Method that returns distance between two points
         /// </summary>
@@ -38,7 +52,7 @@ namespace Shapes.Models.Classes
         /// <returns>Distance betweeen points</returns>
         public static double Distance(Point A, Point B)
         {
-            return (Sqrt(Pow(A.X - B.X, 2) + Pow(A.Y - B.Y, 2)));
+            return Sqrt(Pow(A.X - B.X, 2) + Pow(A.Y - B.Y, 2));
         }
     }
 }

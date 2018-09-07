@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,27 +13,21 @@ namespace Shapes.Models.Classes
     /// </summary>
     class Square : ShapeBase
     {
-        //FIELDS    
-        /// <summary>
-        /// Top-left corner point
-        /// </summary>
+        //FIELDS
         Point topLeft;
-        /// <summary>
-        /// Bottom-right corner point
-        /// </summary>
         Point bottomRight;
         //Constructors
         /// <summary>
-        /// Basic constructor
-        /// </summary>
-        Square() { }
-        /// <summary>
         /// Constructor with params
         /// </summary>
-        /// <param name="topleft"></param>
-        /// <param name="bottomright"></param>
-        Square(Point topleft, Point bottomright)
+        /// <param name="topleft">Point in Top, Left corner</param>
+        /// <param name="bottomright">Point in Bottom, Right corner</param>
+        public Square(Point topleft, Point bottomright)
         {
+            if (topleft.X == bottomright.X || topleft.Y == bottomright.Y)
+            {
+                throw new Exception("This points can't make square");
+            }
             topLeft = topleft;
             bottomRight = bottomright;
         }
@@ -40,32 +35,38 @@ namespace Shapes.Models.Classes
         /// <summary>
         /// Returns the perimeter of the square
         /// </summary>
+        /// <returns>Shape perimeter</returns>
         public override double GetPerimeter
         {
-            get
-            {
-                return (Abs(topLeft.X - bottomRight.X) * 2 + Abs(topLeft.Y - bottomRight.Y) * 2);
-            }
+            get { return Abs(topLeft.X - bottomRight.X) * 2 + Abs(topLeft.Y - bottomRight.Y) * 2; }
         }
         /// <summary>
         /// Returns the square of the square
         /// </summary>
+        /// <returns>Shape square</returns>
         public override double GetSquare
         {
-            get
-            {
-                return (Abs(topLeft.X - bottomRight.X) * Abs(topLeft.Y - bottomRight.Y));
-            }
+            get { return Abs(topLeft.X - bottomRight.X) * Abs(topLeft.Y - bottomRight.Y); }
         }
         //METHODS
         /// <summary>
-        /// Returns the position of the square whithin coordinate querter
+        /// Returns the central point of shape
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Central point</returns>
         protected override Point GetMiddlePoint()
         {
             return new Point(bottomRight.X - Abs(topLeft.X - bottomRight.X) / 2,
                 topLeft.Y - Abs(topLeft.Y - bottomRight.Y));
+        }
+
+        public override void ReadFromFile(Stream fileStream)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void WtiteToFile(Stream fileStream)
+        {
+            throw new NotImplementedException();
         }
     }
 }
