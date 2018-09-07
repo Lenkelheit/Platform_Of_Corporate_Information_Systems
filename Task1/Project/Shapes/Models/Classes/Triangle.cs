@@ -62,7 +62,7 @@ namespace Shapes.Models.Classes
         /// <summary>
         /// Returns the position of the triangle whithin coordinate querter
         /// </summary>
-        /// <returns>Cetral point of shape</returns>
+        /// <returns>Central point of shape</returns>
         protected override Point GetMiddlePoint()
         {
             return new Point((first.X + second.X + third.X)/3, (first.Y + second.Y + third.Y)/3);
