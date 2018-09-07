@@ -1,58 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Shapes.Models.Classes
 {
-    public class Circle : ShapeBase
+    /// <summary>
+    /// Represents class for circle
+    /// </summary>
+    class Circle : ShapeBase
     {
-        public override Point Center
+        //FIELDS
+        /// <summary>
+        /// Center point
+        /// </summary>
+        Point center;
+        /// <summary>
+        /// Circle radius
+        /// </summary>
+        double radius;
+        //CONSTRUCTORS
+        /// <summary>
+        /// Basic constructor
+        /// </summary>
+        public Circle() { }
+        /// <summary>
+        /// Constructor with params
+        /// </summary>
+        /// <param name="cent"></param>
+        /// <param name="rad"></param>
+        public Circle(Point cent, double rad)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            center = cent;
+            radius = rad;
         }
-        public override double Radius
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        //PROPERTIE
+        /// <summary>
+        /// Returns the perimeter of the circle
+        /// </summary>
         public override double GetPerimeter
         {
             get
             {
-                throw new NotImplementedException();
+                return 2 * 3.14 * radius;
             }
         }
-
+        /// <summary>
+        /// Returns the square of the circle
+        /// </summary>
         public override double GetSquare
         {
             get
             {
-                throw new NotImplementedException();
+                return 3.14 * radius * radius;
             }
         }
-
-        public override void ReadFromFile(Stream fileStream)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void WtiteToFile(Stream fileStream)
-        {
-            throw new NotImplementedException();
-        }
-
+        //METHODS
+        /// <summary>
+        /// Returns the position of the shape whithin coordinate querter
+        /// </summary>
         protected override Point GetMiddlePoint()
         {
-            throw new NotImplementedException();
+            return new Point(center.X, center.Y);
         }
     }
 }
