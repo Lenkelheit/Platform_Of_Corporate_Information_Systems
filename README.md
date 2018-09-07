@@ -91,7 +91,8 @@ C# version: 6.0
 * everybody create a new brunch for his work
 * one respons for one brunch
 * if somebody want to do changes in someone's bruch he should create separate brunch
-* all issues should have labels and assignees
+* all issues should have labels, assignees and should be bond to project
+* all pull requests should have labels, assigness and should be bond to project
 
 #### Task Convention
 
