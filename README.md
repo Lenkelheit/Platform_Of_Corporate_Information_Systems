@@ -39,7 +39,7 @@
 
 * do use StyleCop's recommended coding styles
 * code covered with Unit-tests
-* all public code-blocks have XML-documentation
+* all *public and protected* code-blocks have XML-documentation
 
 ### Deadlines
 
@@ -220,7 +220,7 @@ All unit-tests should be reworked in 2 days after project complete.
   - file's name same as class' name
 - Comments
   - do separate different code section with uppercase comments in important classes: FIELDS, METHODS, CONSTRUCTORS(constructor, destructor, methods that create object) ...
-  - every *public* block of code should has XML-documentation
+  - every *public* and *protected* blocks of code should have XML-documentation
   - every *private* block of code should has comments
   - avoid block of comments 
   - full sentence for comments
