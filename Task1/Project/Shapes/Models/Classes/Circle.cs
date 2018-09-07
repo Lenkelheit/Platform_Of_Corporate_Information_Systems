@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,14 +9,14 @@ namespace Shapes.Models.Classes
 {
     public class Circle : ShapeBase
     {
-        public override Point Center
+        public Point Center
         {
             get
             {
                 throw new NotImplementedException();
             }
         }
-        public override double Radius
+        public double Radius
         {
             get
             {
