@@ -45,16 +45,16 @@ namespace Shapes.Models.Classes
         /// <summary>
         /// When overridden in a derived class, read information from file.
         /// </summary>
-        /// <param name="fileStream">
+        /// <param name="readStream">
         /// The file stream.
         /// </param>
-        public abstract void ReadFromFile(System.IO.Stream fileStream);
+        public abstract void ReadFromFile(System.IO.StreamReader readStream);
         /// <summary>
         /// When overridden in a derived class, write information to file.
         /// </summary>
-        /// <param name="fileStream">
+        /// <param name="writeStream">
         /// The file stream.
         /// </param>
-        public abstract void WtiteToFile(System.IO.Stream fileStream);
+        public abstract void WtiteToFile(System.IO.StreamWriter writeStream);
     }
 }
