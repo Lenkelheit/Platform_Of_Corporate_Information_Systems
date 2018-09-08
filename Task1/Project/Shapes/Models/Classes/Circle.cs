@@ -74,11 +74,22 @@ namespace Shapes.Models.Classes
             }
         }
         // METHODS
+        /// <summary>
+        /// Reads some information about circle from file.
+        /// </summary>
+        /// <param name="readStream">
+        /// Stream for easy consistent access to file.
+        /// </param>        
         public override void ReadFromFile(StreamReader readStream)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Writes some information about circle to file.
+        /// </summary>
+        /// <param name="writeStream">
+        /// Stream for easy consistent access to file.
+        /// </param>
         public override void WtiteToFile(StreamWriter writeStream)
         {
             throw new NotImplementedException();
