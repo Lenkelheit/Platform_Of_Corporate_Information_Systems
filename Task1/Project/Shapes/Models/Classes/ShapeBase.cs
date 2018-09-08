@@ -43,18 +43,18 @@ namespace Shapes.Models.Classes
         /// </returns>
         protected abstract Point GetMiddlePoint();
         /// <summary>
-        /// When overridden in a derived class, read information from file.
+        /// When overridden in a derived class, reads information from file.
         /// </summary>
         /// <param name="readStream">
         /// The file stream.
         /// </param>
         public abstract void ReadFromFile(System.IO.StreamReader readStream);
         /// <summary>
-        /// When overridden in a derived class, write information to file.
+        /// When overridden in a derived class, writes information to file.
         /// </summary>
         /// <param name="writeStream">
         /// The file stream.
         /// </param>
-        public abstract void WtiteToFile(System.IO.StreamWriter writeStream);
+        public abstract void WriteToFile(System.IO.StreamWriter writeStream);
     }
 }
