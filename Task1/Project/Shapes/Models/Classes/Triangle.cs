@@ -26,7 +26,7 @@ namespace Shapes.Models.Classes
             this.second = second;
             this.third = third;
         }
-        // PROPETRIES
+        // PROPERTIES
         /// <summary>
         /// Returns the perimeter of the triangle
         /// </summary>
