@@ -73,18 +73,15 @@ namespace Shapes.Models.Classes
             }
         }
         // METHODS
-
-
-        public override void ReadFromFile(Stream fileStream)
+        public override void ReadFromFile(StreamReader readStream)
         {
             throw new NotImplementedException();
         }
 
-        public override void WtiteToFile(Stream fileStream)
+        public override void WtiteToFile(StreamWriter writeStream)
         {
             throw new NotImplementedException();
         }
-
 
         /// <summary>
         /// Returns the central point of shape
