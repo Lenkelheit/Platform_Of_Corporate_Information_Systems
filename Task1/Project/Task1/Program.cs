@@ -13,10 +13,15 @@ namespace Task1
     class Program
     {
         static void Main(string[] args)
-        {
+        {           
             List<ShapeBase> shapes = new List<ShapeBase>();
 
-            using (StreamWriter sw = new StreamWriter("треба файл!"))
+            //Read the data in the List collection
+
+
+
+            //Sort the collection ascending by the square and write the result into file1
+            using (StreamWriter sw = new StreamWriter("file1"))
             {
                 IEnumerable<IShape> newShapes = from i in shapes
                                                 orderby i.GetSquare
@@ -27,10 +32,12 @@ namespace Task1
                 }
             }
 
-            using (StreamWriter sw = new StreamWriter("треба файл!"))
+            //Find shapes that lie in the third quarter of the coordinate plane and write them in a separate collection
+            //Sort that collection decending by the perimeters and write the result into file2
+            using (StreamWriter sw = new StreamWriter("file2"))
             {
                 IEnumerable<IShape> newColections = from i in shapes
-                                                    where i.GetQuarter == CoordinateQuarters.Third
+                                                    where i.GetQuarter == CoordinateQuarters.Third                                                   
                                                     orderby i.GetPerimeter descending
                                                     select i;
                 foreach (List<IShape> j in newColections)
