@@ -48,17 +48,16 @@ namespace Shapes.Models.Classes
             }
         }
 
-        public override void ReadFromFile(Stream fileStream)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void WtiteToFile(Stream fileStream)
-        {
-            throw new NotImplementedException();
-        }
-
         // METHODS
+        public override void ReadFromFile(StreamReader readStream)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void WtiteToFile(StreamWriter writeStream)
+        {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// Returns the position of the triangle whithin coordinate querter
         /// </summary>
