@@ -72,7 +72,7 @@ namespace Shapes.Models.Classes
         /// Reads some information about circle from file.
         /// </summary>
         /// <param name="readStream">
-        /// Stream for easy consistent access to file and is only for reading from it.
+        /// Stream only for reading from file.
         /// </param>        
         public override void ReadFromFile(System.IO.StreamReader readStream)
         {
@@ -85,12 +85,12 @@ namespace Shapes.Models.Classes
         /// Writes some information about circle to file.
         /// </summary>
         /// <param name="writeStream">
-        /// Stream for easy consistent access to file and is only for writing to it.
+        /// Stream only for writing to file.
         /// </param>
         public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
-            //c - means it is data for circle.
-            writeStream.WriteLine($"c {center.X} {center.Y} {radius}");
+            //Circle - means it is data for circle.
+            writeStream.WriteLine($"Circle {center.X} {center.Y} {radius}");
         }
         /// <summary>
         /// Returns the central point of shape
