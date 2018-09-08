@@ -12,10 +12,10 @@ namespace Shapes.Models.Classes
     /// </summary>
     public struct Point
     {
-        //FIELDS
+        // FIELDS
         double x;
         double y;
-        //CONSTRUCTORS
+        // CONSTRUCTORS
         /// <summary>
         /// Basic constructor that takes 2 parameters
         /// </summary>
@@ -26,7 +26,7 @@ namespace Shapes.Models.Classes
             x = xCoord;
             y = yCoord;
         }
-        //PROPERTIES
+        // PROPERTIES
         /// <summary>
         /// Property that return absciss coordinate
         /// </summary>
@@ -55,7 +55,7 @@ namespace Shapes.Models.Classes
                 y = value;
             }
         }
-        //METHODS
+        // METHODS
         /// <summary>
         /// Method that returns distance between two points
         /// </summary>

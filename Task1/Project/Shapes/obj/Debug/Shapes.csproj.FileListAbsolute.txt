@@ -1,1 +1,6 @@
 F:\Visual Studio Projects\Local Repositories\Platform_Of_Corporate_Information_Systems\Task1\Project\Shapes\obj\Debug\Shapes.csprojResolveAssemblyReference.cache
+F:\Visual Studio Projects\Local Repositories\Platform_Of_Corporate_Information_Systems\Task1\Project\Shapes\bin\Debug\Shapes.XML
+F:\Visual Studio Projects\Local Repositories\Platform_Of_Corporate_Information_Systems\Task1\Project\Shapes\bin\Debug\Shapes.dll
+F:\Visual Studio Projects\Local Repositories\Platform_Of_Corporate_Information_Systems\Task1\Project\Shapes\bin\Debug\Shapes.pdb
+F:\Visual Studio Projects\Local Repositories\Platform_Of_Corporate_Information_Systems\Task1\Project\Shapes\obj\Debug\Shapes.dll
+F:\Visual Studio Projects\Local Repositories\Platform_Of_Corporate_Information_Systems\Task1\Project\Shapes\obj\Debug\Shapes.pdb

@@ -11,27 +11,52 @@ namespace Shapes.Models.Classes
     /// <summary>
     /// Represents class for square
     /// </summary>
-    class Square : ShapeBase
+    public class Square : ShapeBase
     {
-        //FIELDS
+        // FIELDS
         Point topLeft;
         Point bottomRight;
-        //Constructors
+        // CONSTRUCTORS
         /// <summary>
         /// Constructor with params
         /// </summary>
-        /// <param name="topleft">Point in Top, Left corner</param>
-        /// <param name="bottomright">Point in Bottom, Right corner</param>
-        public Square(Point topleft, Point bottomright)
+        /// <param name="topLeft">Point in Top, Left corner</param>
+        /// <param name="bottomRight">Point in Bottom, Right corner</param>
+        public Square(Point topLeft, Point bottomRight)
         {
-            if (topleft.X == bottomright.X || topleft.Y == bottomright.Y)
+            if (Abs(topLeft.X - bottomRight.X) == Abs(topLeft.Y - bottomRight.Y))
             {
-                throw new Exception("This points can't make square");
+                this.topLeft = topLeft;
+                this.bottomRight = bottomRight;
             }
-            topLeft = topleft;
-            bottomRight = bottomright;
+            else
+            {
+                throw new ArgumentException("This points can't make square");
+            }
         }
-        //PROPERTIES
+        // PROPERTIES
+        /// <summary>
+        /// Propetry that returns top left point
+        /// </summary>
+        /// <returns>Top left point</returns>
+        public Point TopLeftPoint
+        {
+            get
+            {
+                return topLeft;
+            }
+        }
+        /// <summary>
+        /// Propetry that returns bottom right point
+        /// </summary>
+        /// <returns>Bottom right point</returns>
+        public Point BottomRightPoint
+        {
+            get
+            {
+                return bottomRight;
+            }
+        }
         /// <summary>
         /// Returns the perimeter of the square
         /// </summary>
@@ -54,7 +79,7 @@ namespace Shapes.Models.Classes
                 return Abs(topLeft.X - bottomRight.X) * Abs(topLeft.Y - bottomRight.Y);
             }
         }
-        //METHODS
+        // METHODS
         /// <summary>
         /// Returns the central point of shape
         /// </summary>

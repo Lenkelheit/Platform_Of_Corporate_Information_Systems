@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Shapes</name>
+    </assembly>
+    <members>
+        <member name="T:Shapes.Models.Classes.Circle">
+            <summary>
+            Represents class for circle
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Circle.#ctor(Shapes.Models.Classes.Point,System.Double)">
+            <summary>
+            Constructor with params
+            </summary>
+            <param name="сenter">Center point</param>
+            <param name="radius">Radius</param>
+        </member>
+        <member name="P:Shapes.Models.Classes.Circle.GetPerimeter">
+            <summary>
+            Returns the perimeter of the circle
+            </summary>
+            <returns>Shape perimeter</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Circle.GetSquare">
+            <summary>
+            Returns the square of the circle
+            </summary>
+            <returns>Shape square</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Circle.Radius">
+            <summary>
+            Propetry that returns circle radius
+            </summary>
+            <returns>Circle radius</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Circle.Center">
+            <summary>
+            Propetry that returns circle center point
+            </summary>
+            <returns>Circle center point</returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.Circle.GetMiddlePoint">
+            <summary>
+            Returns the central point of shape
+            </summary>
+            <returns>Central point of shape</returns>
+        </member>
+        <member name="T:Shapes.Models.Classes.Point">
+            <summary>
+            Models simple point on two-dimensional space
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Point.#ctor(System.Double,System.Double)">
+            <summary>
+            Basic constructor that takes 2 parameters
+            </summary>
+            <param name="xCoord">Abscis position</param>
+            <param name="yCoord">Ordinate position</param> 
+        </member>
+        <member name="P:Shapes.Models.Classes.Point.X">
+            <summary>
+            Property that return absciss coordinate
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.Point.Y">
+            <summary>
+            Property that return ordinate coordinate
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Point.Distance(Shapes.Models.Classes.Point,Shapes.Models.Classes.Point)">
+            <summary>
+            Method that returns distance between two points
+            </summary>
+            <param name="A">First Point</param>
+            <param name="B">Second point</param>
+            <returns>Distance betweeen points</returns>
+        </member>
+        <member name="T:Shapes.Models.Classes.ShapeBase">
+            <summary>
+            Represents basic algorithms for the shape objects.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.ShapeBase.GetPerimeter">
+            <summary>
+            Returns the perimeter of the shape.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.ShapeBase.GetSquare">
+            <summary>
+            Returns the square of the shape.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.ShapeBase.GetQuarter">
+            <summary>
+            Returns the position of the shape whithin coordinate querter.
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.ShapeBase.GetMiddlePoint">
+            <summary>
+            Return the middle point of the shape.
+            </summary>
+            <returns>
+            The middle point of the shape.
+            </returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.ShapeBase.ReadFromFile(System.IO.Stream)">
+            <summary>
+            Read information from file.
+            </summary>
+            <param name="fileStream">
+            The file stream.
+            </param>
+        </member>
+        <member name="M:Shapes.Models.Classes.ShapeBase.WtiteToFile(System.IO.Stream)">
+            <summary>
+            Write information to file.
+            </summary>
+            <param name="fileStream">
+            The file stream.
+            </param>
+        </member>
+        <member name="T:Shapes.Models.Classes.Square">
+            <summary>
+            Represents class for square
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Square.#ctor(Shapes.Models.Classes.Point,Shapes.Models.Classes.Point)">
+            <summary>
+            Constructor with params
+            </summary>
+            <param name="topLeft">Point in Top, Left corner</param>
+            <param name="bottomRight">Point in Bottom, Right corner</param>
+        </member>
+        <member name="P:Shapes.Models.Classes.Square.TopLeftPoint">
+            <summary>
+            Propetry that returns top left point
+            </summary>
+            <returns>Top left point</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Square.BottomRightPoint">
+            <summary>
+            Propetry that returns bottom right point
+            </summary>
+            <returns>Bottom right point</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Square.GetPerimeter">
+            <summary>
+            Returns the perimeter of the square
+            </summary>
+            <returns>Shape perimeter</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Square.GetSquare">
+            <summary>
+            Returns the square of the square
+            </summary>
+            <returns>Shape square</returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.Square.GetMiddlePoint">
+            <summary>
+            Returns the central point of shape
+            </summary>
+            <returns>Central point</returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.Triangle.#ctor(Shapes.Models.Classes.Point,Shapes.Models.Classes.Point,Shapes.Models.Classes.Point)">
+            <summary>
+            Basic constructor with params
+            </summary>
+            <param name="first">First point</param>
+            <param name="second">Second point</param>
+            <param name="third">Third point</param>
+        </member>
+        <member name="P:Shapes.Models.Classes.Triangle.GetPerimeter">
+            <summary>
+            Returns the perimeter of the triangle
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.Triangle.GetSquare">
+            <summary>
+            Returns the square of the triangle
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Triangle.GetMiddlePoint">
+            <summary>
+            Returns the position of the triangle whithin coordinate querter
+            </summary>
+            <returns>Central point of shape</returns>
+        </member>
+        <member name="T:Shapes.Models.Enums.CoordinateQuarters">
+            <summary>
+            Specifies the position of the shape within coordinate quarters.
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Enums.CoordinateQuarters.First">
+            <summary>
+            Specifies  the position of the shape in first coordinate quarter.
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Enums.CoordinateQuarters.Second">
+            <summary>
+            Specifies  the position of the shape in second coordinate quarter.
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Enums.CoordinateQuarters.Third">
+            <summary>
+            Specifies  the position of the shape in third coordinate quarter.
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Enums.CoordinateQuarters.Fourth">
+            <summary>
+            Specifies  the position of the shape in fourth coordinate quarter.
+            </summary>
+        </member>
+        <member name="T:Shapes.Models.Interfaces.IShape">
+            <summary>
+            Defines the basic rules for creating type Shape objects.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Interfaces.IShape.GetSquare">
+            <summary>
+            Returns the square of the shape.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Interfaces.IShape.GetPerimeter">
+            <summary>
+            Returns the perimeter of the shape.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Interfaces.IShape.GetQuarter">
+            <summary>
+            Returns the position of the shape whithin coordinate querter.
+            </summary>
+        </member>
+    </members>
+</doc>

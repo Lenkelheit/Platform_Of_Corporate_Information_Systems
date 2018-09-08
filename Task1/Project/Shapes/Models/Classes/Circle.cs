@@ -13,21 +13,21 @@ namespace Shapes.Models.Classes
     /// </summary>
     public class Circle : ShapeBase
     {
-        //FIELDS
+        // FIELDS
         Point center;
         double radius;
-        //CONSTRUCTORS
+        // CONSTRUCTORS
         /// <summary>
         /// Constructor with params
         /// </summary>
-        /// <param name="Center">Center point</param>
-        /// <param name="Radius">Radius</param>
-        public Circle(Point Center, double Radius)
+        /// <param name="сenter">Center point</param>
+        /// <param name="radius">Radius</param>
+        public Circle(Point сenter, double radius)
         {
-            center = Center;
-            radius = Radius;
+            this.center = сenter;
+            this.radius = radius;
         }
-        //PROPERTIES
+        // PROPERTIES
         /// <summary>
         /// Returns the perimeter of the circle
         /// </summary>
@@ -50,7 +50,29 @@ namespace Shapes.Models.Classes
                 return PI * radius * radius;
             }
         }
-        //METHODS
+        /// <summary>
+        /// Propetry that returns circle radius
+        /// </summary>
+        /// <returns>Circle radius</returns>
+        public double Radius
+        {
+            get
+            {
+                return radius;
+            }
+        }
+        /// <summary>
+        /// Propetry that returns circle center point
+        /// </summary>
+        /// <returns>Circle center point</returns>
+        public Point Center
+        {
+            get
+            {
+                return center;
+            }
+        }
+        // METHODS
 
 
         public override void ReadFromFile(Stream fileStream)

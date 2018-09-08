@@ -7,26 +7,26 @@ using System.Threading.Tasks;
 
 namespace Shapes.Models.Classes
 {
-    class Triangle : ShapeBase
+    public class Triangle : ShapeBase
     {
-        //FIELDS
+        // FIELDS
         Point first;
         Point second;
         Point third;
-        //Contructors
+        // CONSTRUCTORS
         /// <summary>
         /// Basic constructor with params
         /// </summary>
-        /// <param name="First">First point</param>
-        /// <param name="Second">Second point</param>
-        /// <param name="Third">Third point</param>
-        public Triangle(Point First, Point Second, Point Third)
+        /// <param name="first">First point</param>
+        /// <param name="second">Second point</param>
+        /// <param name="third">Third point</param>
+        public Triangle(Point first, Point second, Point third)
         {
-            first = First;
-            second = Second;
-            third = Third;
+            this.first = first;
+            this.second = second;
+            this.third = third;
         }
-        //Properties
+        // PROPETRIES
         /// <summary>
         /// Returns the perimeter of the triangle
         /// </summary>
@@ -58,7 +58,7 @@ namespace Shapes.Models.Classes
             throw new NotImplementedException();
         }
 
-        //METHODS
+        // METHODS
         /// <summary>
         /// Returns the position of the triangle whithin coordinate querter
         /// </summary>
