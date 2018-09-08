@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -44,6 +44,7 @@ namespace Shapes.Models.Classes
         /// </summary>
         /// <returns>Shape square</returns>
         public override double GetSquare
+
         {
             get
             {

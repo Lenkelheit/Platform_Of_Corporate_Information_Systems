@@ -31,7 +31,7 @@
 | :---: | :---: | :---: | :---: |
 | [<img src="https://avatars2.githubusercontent.com/u/36925520?s=400&v=4" width="100px;"/>](https://github.com/SvyatoslavFedynyak) | [<img src="https://avatars3.githubusercontent.com/u/38116562?s=400&v=4" width="100px;"/>](https://github.com/Lenkelheit) | [<img src="https://avatars3.githubusercontent.com/u/22750664?s=400&v=4" width="100px;"/>](https://github.com/vasil98)| [<img src="https://avatars3.githubusercontent.com/u/24938726?s=400&v=4" width="100px;"/>](https://github.com/iamprovidence) |
 |Svyatoslav Fedynyak|Nazariy Tymtsiv|Vasyl Tanchinets|Taras Kizlo|
-|💻 Main Coder<br>📢 Speaker|🐛 Bug Finder<br>💻 Coder<br>🤔 Thinker<br>⚠️ Tester<br>🌍 Editor|🐛 Bug Finder<br>💻 Coder<br>⚠️ Tester|👀 Administrator<br>📝 Bloger <br>📖 Documentator <br>💬 QA Manager <br>🎨 Designer<br>🚇 Architector|
+|💻 Main Coder<br>⚠️ Tester<br>📢 Speaker|🐛 Bug Finder<br>💻 Coder<br>🤔 Thinker<br>⚠️ Tester<br>🌍 Editor|🐛 Bug Finder<br>💻 Coder<br>⚠️ Tester|👀 Administrator<br>📝 Bloger <br>📖 Documentator <br>💬 QA Manager <br>🎨 Designer<br>🚇 Architector|
 
 ## Task Rules
 
@@ -39,7 +39,7 @@
 
 * do use StyleCop's recommended coding styles
 * code covered with Unit-tests
-* all public code-blocks have XML-documentation
+* all *public and protected* code-blocks have XML-documentation
 
 ### Deadlines
 
@@ -78,6 +78,7 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 #### Project Configuration
 
 C# version: 6.0
+
 .NET version: 4.5.2
 
 #### Politics
@@ -91,7 +92,8 @@ C# version: 6.0
 * everybody create a new brunch for his work
 * one respons for one brunch
 * if somebody want to do changes in someone's bruch he should create separate brunch
-* all issues should have labels and assignees
+* all issues should have labels, assignees and should be bond to project
+* all pull requests should have labels, assigness and should be bond to project
 
 #### Task Convention
 
@@ -211,6 +213,8 @@ All unit-tests should be reworked in 2 days after project complete.
     - fields, constructors in one part
     - methods, properties, indexers, events in another part
   - do not initialize class' properties after initialized instance, do use initialization by name
+- Constructors
+  - do initialize all fields explicitly
 - Collections
   - do use only generic collection over object-based ones
 - Files
@@ -218,7 +222,7 @@ All unit-tests should be reworked in 2 days after project complete.
   - file's name same as class' name
 - Comments
   - do separate different code section with uppercase comments in important classes: FIELDS, METHODS, CONSTRUCTORS(constructor, destructor, methods that create object) ...
-  - every *public* block of code should has XML-documentation
+  - every *public* and *protected* blocks of code should have XML-documentation
   - every *private* block of code should has comments
   - avoid block of comments 
   - full sentence for comments
@@ -253,7 +257,7 @@ All unit-tests should be reworked in 2 days after project complete.
   
 
 |  Object Name     |     Type     |  Notation  | Length | Plural | Prefix  | Suffix | Abbreviation | Char Mask   | Underscores |
-|:-----------------|-------------:|-----------:|:-------|:-------|:--------|:-------|:-------------|:------------|:------------|
+|:-----------------|:------------:|:----------:|:------:|:------:|:-------:|:-------|:------------:|:------------|:-----------:|
 | Assemblies       |Nouns(Company.Component)   | PascalCase | 50 | Y/N | No| No     | No           | [A-z]       | No          |
 | Namespace        |Noun          | PascalCase |    50  | Y/N    | No      | No     | No           | [A-z]       | No          |
 | Interface        |Noun or Nouns | PascalCase |    128 | No     | Yes     | No     | No           | {**I**}[A-z]| No          |

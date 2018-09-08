@@ -2,9 +2,9 @@
 
 ## Informations
 
-| Deadline |Mark|Done Time |Test Time |Our Deadline|
-|----------|----|----------|----------|------------|
-|20.09.2018| 10 |11.09.2018|13.09.2018|15.09.2018 |
+| Deadline |Mark|Done Time |Test Time |Our Deadline|Paydate|
+|----------|----|----------|----------|------------|-------|
+|20.09.2018| 10 |11.09.2018|13.09.2018|15.09.2018  |       |
 
 
 ## Tasks
@@ -13,7 +13,7 @@
 |-|:----------------------:|---------------------------------------------------------------------------|:------------:|:----------:|
 |                                                        1                                                                         |
 | |<ul><li>- [x] </li></ul>|Interface IShape: Methods:Shape Square, Shape Perimeter                    |iamprovidence |06.09.2018  |
-| |<ul><li>- [ ] </li></ul>|Interface IFileManager : Methods Read From File, Write To File             |Lenkelheit    |07.09.2018  |
+| |<ul><li>- [x] </li></ul>|Interface IFileManager : Methods Read From File, Write To File             |iamprovidence |07.09.2018  |
 | |<ul><li>- [ ] </li></ul>|Class Circle : center coordinates and radius               |SvyatoslavFedynyak<br>Lenkelheit|10.09.2018|
 | |<ul><li>- [ ] </li></ul>|Class Square : coordinates of the upper left corner and lower right corner|SvyatoslavFedynyak<br>Lenkelheit|10.09.2018|
 | |<ul><li>- [ ] </li></ul>|Class Triangle                                           |SvyatoslavFedynyak<br>Lenkelheit|10.09.2018  |
