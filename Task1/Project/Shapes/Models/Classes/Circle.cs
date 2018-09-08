@@ -92,7 +92,7 @@ namespace Shapes.Models.Classes
         /// </param>
         public override void WtiteToFile(StreamWriter writeStream)
         {
-            throw new NotImplementedException();
+            writeStream.WriteLine($"Circle {Center.X} {Center.Y} {Radius}");
         }
 
         /// <summary>
