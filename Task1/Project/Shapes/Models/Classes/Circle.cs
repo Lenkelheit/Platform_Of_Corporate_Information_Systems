@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Math;
 
 namespace Shapes.Models.Classes
 {
@@ -13,7 +14,6 @@ namespace Shapes.Models.Classes
     public class Circle : ShapeBase
     {
         //FIELDS
-        const double Pi = 3.14;
         Point center;
         double radius;
         //CONSTRUCTORS
@@ -36,7 +36,7 @@ namespace Shapes.Models.Classes
         {
             get
             {
-                return 2 * Pi * radius;
+                return 2 * PI * radius;
             }
         }
         /// <summary>
@@ -47,7 +47,7 @@ namespace Shapes.Models.Classes
         {
             get
             {
-                return Pi * radius * radius;
+                return PI * radius * radius;
             }
         }
         //METHODS

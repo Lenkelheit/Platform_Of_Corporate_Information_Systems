@@ -1,2 +1,7 @@
 c:\users\тарас\documents\visual studio 2015\Projects\Task1\Task1\bin\Debug\Task1.exe.config
 F:\Visual Studio Projects\Local Repositories\Platform_Of_Corporate_Information_Systems\Task1\Project\Task1\bin\Debug\Task1.exe.config
+F:\Visual Studio Projects\Local Repositories\Platform_Of_Corporate_Information_Systems\Task1\Project\Task1\bin\Debug\Task1.exe
+F:\Visual Studio Projects\Local Repositories\Platform_Of_Corporate_Information_Systems\Task1\Project\Task1\bin\Debug\Task1.pdb
+F:\Visual Studio Projects\Local Repositories\Platform_Of_Corporate_Information_Systems\Task1\Project\Task1\obj\Debug\Task1.csprojResolveAssemblyReference.cache
+F:\Visual Studio Projects\Local Repositories\Platform_Of_Corporate_Information_Systems\Task1\Project\Task1\obj\Debug\Task1.exe
+F:\Visual Studio Projects\Local Repositories\Platform_Of_Corporate_Information_Systems\Task1\Project\Task1\obj\Debug\Task1.pdb

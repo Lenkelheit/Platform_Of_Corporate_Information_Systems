@@ -38,7 +38,7 @@ namespace Shapes.Models.Classes
             }
             set
             {
-                X = value;
+                x = value;
             }
         }
         /// <summary>
