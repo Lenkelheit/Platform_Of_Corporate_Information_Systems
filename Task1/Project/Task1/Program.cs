@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Shapes;
-using Shapes.Models.Interfaces;
+using Shapes.Models.Classes;
 using Shapes.Models.Enums;
+using Shapes.Models.Interfaces;
 using System.IO;
 
 namespace Task1
@@ -14,7 +14,7 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            List<IShape> shapes = new List<IShape>();
+            List<ShapeBase> shapes = new List<ShapeBase>();
 
             using (StreamWriter sw = new StreamWriter("треба файл!"))
             {
@@ -41,4 +41,3 @@ namespace Task1
         }
     }
 }
-
