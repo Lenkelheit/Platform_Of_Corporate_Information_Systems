@@ -92,7 +92,7 @@ namespace Shapes.Models.Classes
         /// </param>
         public override void WtiteToFile(StreamWriter writeStream)
         {
-            writeStream.WriteLine($"Circle {Center.X} {Center.Y} {Radius}");
+            writeStream.WriteLine($"c {Center.X} {Center.Y} {Radius}");
         }
 
         /// <summary>
