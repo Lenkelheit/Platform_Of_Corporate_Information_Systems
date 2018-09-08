@@ -13,7 +13,7 @@
 |-|:----------------------:|---------------------------------------------------------------------------|:------------:|:----------:|
 |                                                        1                                                                         |
 | |<ul><li>- [x] </li></ul>|Interface IShape: Methods:Shape Square, Shape Perimeter                    |iamprovidence |06.09.2018  |
-| |<ul><li>- [ ] </li></ul>|Interface IFileManager : Methods Read From File, Write To File             |Lenkelheit    |07.09.2018  |
+| |<ul><li>- [x] </li></ul>|Interface IFileManager : Methods Read From File, Write To File             |iamprovidence |07.09.2018  |
 | |<ul><li>- [ ] </li></ul>|Class Circle : center coordinates and radius               |SvyatoslavFedynyak<br>Lenkelheit|10.09.2018|
 | |<ul><li>- [ ] </li></ul>|Class Square : coordinates of the upper left corner and lower right corner|SvyatoslavFedynyak<br>Lenkelheit|10.09.2018|
 | |<ul><li>- [ ] </li></ul>|Class Triangle                                           |SvyatoslavFedynyak<br>Lenkelheit|10.09.2018  |
