@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Math;
 
 namespace Shapes.Models.Classes
@@ -80,7 +74,7 @@ namespace Shapes.Models.Classes
         /// <param name="readStream">
         /// Stream for easy consistent access to file and is only for reading from it.
         /// </param>        
-        public override void ReadFromFile(StreamReader readStream)
+        public override void ReadFromFile(System.IO.StreamReader readStream)
         {
             string[] data = readStream.ReadLine().Split(' ');
             center.X = double.Parse(data[0]);
@@ -93,7 +87,7 @@ namespace Shapes.Models.Classes
         /// <param name="writeStream">
         /// Stream for easy consistent access to file and is only for writing to it.
         /// </param>
-        public override void WriteToFile(StreamWriter writeStream)
+        public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
             //c - means it is data for circle.
             writeStream.WriteLine($"c {center.X} {center.Y} {radius}");
