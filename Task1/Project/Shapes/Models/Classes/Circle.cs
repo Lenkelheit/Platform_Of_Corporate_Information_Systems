@@ -4,42 +4,76 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Math;
 
 namespace Shapes.Models.Classes
 {
+    /// <summary>
+    /// Represents class for circle
+    /// </summary>
     public class Circle : ShapeBase
     {
-        public Point Center
+        // FIELDS
+        Point center;
+        double radius;
+        // CONSTRUCTORS
+        /// <summary>
+        /// Constructor with params
+        /// </summary>
+        /// <param name="сenter">Center point</param>
+        /// <param name="radius">Radius</param>
+        public Circle(Point сenter, double radius)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            this.center = сenter;
+            this.radius = radius;
         }
-        public double Radius
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        // PROPERTIES
+        /// <summary>
+        /// Returns the perimeter of the circle
+        /// </summary>
+        /// <returns>Shape perimeter</returns>
         public override double GetPerimeter
         {
             get
             {
-                throw new NotImplementedException();
+                return 2 * PI * radius;
             }
         }
-
+        /// <summary>
+        /// Returns the square of the circle
+        /// </summary>
+        /// <returns>Shape square</returns>
         public override double GetSquare
+
         {
             get
             {
-                throw new NotImplementedException();
+                return PI * radius * radius;
             }
         }
-
+        /// <summary>
+        /// Propetry that returns circle radius
+        /// </summary>
+        /// <returns>Circle radius</returns>
+        public double Radius
+        {
+            get
+            {
+                return radius;
+            }
+        }
+        /// <summary>
+        /// Propetry that returns circle center point
+        /// </summary>
+        /// <returns>Circle center point</returns>
+        public Point Center
+        {
+            get
+            {
+                return center;
+            }
+        }
+        // METHODS
         public override void ReadFromFile(StreamReader readStream)
         {
             throw new NotImplementedException();
@@ -50,9 +84,13 @@ namespace Shapes.Models.Classes
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Returns the central point of shape
+        /// </summary>
+        /// <returns>Central point of shape</returns>
         protected override Point GetMiddlePoint()
         {
-            throw new NotImplementedException();
+            return center;
         }
     }
 }

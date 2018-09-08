@@ -58,6 +58,12 @@
     <Compile Include="CircleTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shapes\Shapes.csproj">
+      <Project>{f950bc17-0b7f-4b85-b063-7a9aac41e016}</Project>
+      <Name>Shapes</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
