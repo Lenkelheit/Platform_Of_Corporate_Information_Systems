@@ -74,7 +74,7 @@ namespace Shapes.Models.Classes
             {
                 name.Append(letter);
             }
-            if (name.ToString() == GetType().Name)
+            if (name.ToString() == ID)
             {
                 Interpret(readStream.ReadLine());
             }
