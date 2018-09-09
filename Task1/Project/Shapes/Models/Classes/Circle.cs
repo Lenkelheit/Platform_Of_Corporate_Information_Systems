@@ -67,19 +67,39 @@ namespace Shapes.Models.Classes
                 return center;
             }
         }
-        // METHODS
         /// <summary>
-        /// Reads some information about circle from file.
+        /// Interprets string as numeric data for circle.
         /// </summary>
-        /// <param name="readStream">
-        /// Stream only for reading from file.
-        /// </param>        
-        public override void ReadFromFile(System.IO.StreamReader readStream)
+        /// <param name="line">
+        /// The string data.
+        /// </param>
+        /// <exception cref="System.Exception">
+        /// Thrown when quantity of elements for creating circle is unacceptable.
+        /// </exception> 
+        /// <exception cref="System.FormatException">
+        /// Thrown when format of string data is unacceptable.
+        /// </exception>
+        protected override void Interpret(string line)
         {
-            string[] data = readStream.ReadLine().Split(' ');
-            center.X = double.Parse(data[0]);
-            center.Y = double.Parse(data[1]);
-            radius = double.Parse(data[2]);        
+            const int numberElementsForCircle = 3;
+            string[] data = line.Split(' ');
+            if (data.Length != numberElementsForCircle) 
+            {
+                throw new System.Exception("The data about quantity of elements for creating circle is unacceptable.");
+            }
+            else 
+            {
+                try
+                {
+                    Center.X = double.Parse(data[0]);
+                    Center.Y = double.Parse(data[1]);
+                    Radius = double.Parse(data[2]);
+                }
+                catch(System.FormatException ex)
+                {
+                    throw ex;
+                }
+            }
         }
         /// <summary>
         /// Writes some information about circle to file.
