@@ -7,6 +7,7 @@ namespace Shapes.Models.Classes
     /// </summary>
     public class Circle : ShapeBase
     {
+        const uint ARGUMENT_AMOUNT = 3;    
         // FIELDS
         Point center;
         double radius;
@@ -22,6 +23,14 @@ namespace Shapes.Models.Classes
             this.radius = radius;
         }
         // PROPERTIES
+        /// <summary>
+        /// Identifier of the shape.
+        /// </summary>
+        public override string ID => nameof(Circle);
+        /// <summary>
+        /// Number of elements of the shape.
+        /// </summary>
+        public override uint ArgumentAmount => ARGUMENT_AMOUNT;        
         /// <summary>
         /// Returns the perimeter of the circle
         /// </summary>
@@ -80,9 +89,8 @@ namespace Shapes.Models.Classes
         /// </exception>
         protected override void Interpret(string line)
         {
-            numberElementsForShape = 3;
             string[] data = line.Split(' ');
-            if (data.Length != numberElementsForShape) 
+            if (data.Length != ArgumentAmount) 
             {
                 throw new System.ArgumentException("Wrong argument amount.");
             }
@@ -102,7 +110,7 @@ namespace Shapes.Models.Classes
         public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
             //Circle - means it is data for circle.
-            writeStream.WriteLine($"Circle {center.X} {center.Y} {radius}");
+            writeStream.WriteLine($"{ID} {center.X} {center.Y} {radius}");
         }
         /// <summary>
         /// Returns the central point of shape
