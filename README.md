@@ -38,6 +38,7 @@
 ### Task Requirements
 
 * do use StyleCop's recommended coding styles
+* do check your code on SonarQube 
 * code covered with Unit-tests
 * all *public and protected* code-blocks have XML-documentation
 
