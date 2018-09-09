@@ -2,6 +2,9 @@ using static System.Math;
 
 namespace Shapes.Models.Classes
 {
+    /// <summary>
+    /// Represents class for triangle
+    /// </summary>
     public class Triangle : ShapeBase
     {
         // FIELDS
