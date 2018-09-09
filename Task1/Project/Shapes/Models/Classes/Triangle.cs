@@ -7,6 +7,7 @@ namespace Shapes.Models.Classes
     /// </summary>
     public class Triangle : ShapeBase
     {
+        const uint ARGUMENT_AMOUNT = 6;
         // FIELDS
         Point first;
         Point second;
@@ -25,6 +26,14 @@ namespace Shapes.Models.Classes
             this.third = third;
         }
         // PROPERTIES
+        /// <summary>
+        /// Identifier of the triangle.
+        /// </summary>
+        public override string ID => nameof(Triangle);
+        /// <summary>
+        /// Number of elements of the triangle.
+        /// </summary>
+        public override uint ArgumentAmount => ARGUMENT_AMOUNT;      
         /// <summary>
         /// Returns the perimeter of the triangle
         /// </summary>
@@ -60,9 +69,8 @@ namespace Shapes.Models.Classes
         /// </exception>
         protected override void Interpret(string line)
         {
-            numberElementsForShape = 6;
             string[] data = line.Split(' ');
-            if (data.Length != numberElementsForShape) 
+            if (data.Length != ArgumentAmount) 
             {
                 throw new System.ArgumentException("Wrong argument amount.");
             }
@@ -85,7 +93,7 @@ namespace Shapes.Models.Classes
         public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
             //Triangle - means it is data for triangle.
-            writeStream.WriteLine($"Triangle {first.X} {first.Y} {second.X} {second.Y} {third.X} {third.Y}");
+            writeStream.WriteLine($"{ID} {first.X} {first.Y} {second.X} {second.Y} {third.X} {third.Y}");
         }
         /// <summary>
         /// Returns the position of the triangle whithin coordinate querter
