@@ -81,7 +81,7 @@ namespace Shapes.Models.Classes
         /// </exception>
         protected override void Interpret(string line)
         {
-            const int numberElementsForCircle = 3;
+            numberElementsForShape = 3;
             string[] data = line.Split(' ');
             if (data.Length != numberElementsForCircle) 
             {
