@@ -83,7 +83,7 @@ namespace Shapes.Models.Classes
         {
             numberElementsForShape = 3;
             string[] data = line.Split(' ');
-            if (data.Length != numberElementsForCircle) 
+            if (data.Length != numberElementsForShape) 
             {
                 throw new System.Exception("The data about quantity of elements for creating circle is unacceptable.");
             }
