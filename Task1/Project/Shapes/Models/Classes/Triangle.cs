@@ -1,10 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Shapes.Models.Classes
 {
     public class Triangle : ShapeBase
@@ -49,14 +42,52 @@ namespace Shapes.Models.Classes
         }
 
         // METHODS
-        public override void ReadFromFile(StreamReader readStream)
+        /// <summary>
+        /// Interprets string as numeric data for triangle.
+        /// </summary>
+        /// <param name="line">
+        /// The string data.
+        /// </param>
+        /// <exception cref="System.Exception">
+        /// Thrown when quantity of elements for creating triangle is unacceptable.
+        /// </exception> 
+        /// <exception cref="System.FormatException">
+        /// Thrown when format of string data is unacceptable.
+        /// </exception>
+        protected override void Interpret(string line)
         {
-            throw new NotImplementedException();
+            const int numberElementsForTriangle = 6;
+            string[] data = line.Split(' ');
+            if (data.Length != numberElementsForTriangle) 
+            {
+                throw new System.Exception("The data about quantity of elements for creating triangle is unacceptable.");
+            }
+            else 
+            {
+                try
+                {
+                    first.X = double.Parse(data[0]);
+                    first.Y = double.Parse(data[1]);
+                    second.X = double.Parse(data[2]);
+                    second.Y = double.Parse(data[3]);
+                    third.X = double.Parse(data[4]);
+                    third.Y = double.Parse(data[5]);
+                }
+                catch (System.FormatException ex)
+                {
+                    throw new System.FormatException("The format of string data for creating triangle is unacceptable.");
+                }
+            }
         }
-
-        public override void WtiteToFile(StreamWriter writeStream)
+        /// <summary>
+        /// Writes some information about triangle to file.
+        /// </summary>
+        /// <param name="writeStream">
+        /// Stream only for writing to file.
+        /// </param>
+        public void WtiteToFile(System.IO.StreamWriter writeStream)
         {
-            throw new NotImplementedException();
+            writeStream.WriteLine($"Triangle {first.X} {first.Y} {second.X} {second.Y} {third.X} {third.Y}");
         }
         /// <summary>
         /// Returns the position of the triangle whithin coordinate querter
