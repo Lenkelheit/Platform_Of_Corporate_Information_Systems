@@ -67,8 +67,8 @@ namespace Shapes.Models.Classes
         /// </exception>
         public void ReadFromFile(System.IO.StreamReader readStream)
         {
-            //In "name" will be stored information that class "Circle" will be read.
-            StringBuilder name = new StringBuilder("");
+            //In "name" will be stored information about what class can be created.
+            System.Text.StringBuilder name = new System.Text.StringBuilder("");
             char letter = ' ';
             while ((letter = (char)readStream.Read()) != ' ')
             {
@@ -105,7 +105,7 @@ namespace Shapes.Models.Classes
         public static ShapeBase CreateInstance(System.IO.StreamReader readStream)
         {
             //In "name" will be stored information about what class must be created.
-            StringBuilder name = new StringBuilder("");
+            System.Text.StringBuilder name = new System.Text.StringBuilder("");
             char letter = ' ';
             while ((letter = (char)readStream.Read()) != ' ') 
             {
