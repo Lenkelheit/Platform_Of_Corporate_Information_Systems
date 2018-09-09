@@ -5,6 +5,14 @@ namespace Shapes.Models.Interfaces
     /// </summary>
     public interface IFileManager
     {
+         /// <summary>
+        /// Identifier for shape.
+        /// </summary>
+        string ID { get; }
+        /// <summary>
+        /// Number of elements for shape.
+        /// </summary>
+        uint ArgumentAmount { get; }       
         /// <summary>
         /// Reads some information from file.
         /// </summary>
