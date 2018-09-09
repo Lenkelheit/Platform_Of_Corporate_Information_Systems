@@ -97,7 +97,7 @@ namespace Shapes.Models.Classes
         /// </exception>
         protected override void Interpret(string line)
         {
-            const int numberElementsForSquare = 4;
+            numberElementsForShape = 4;
             string[] data = line.Split(' ');
             if (data.Length != numberElementsForSquare) 
             {
