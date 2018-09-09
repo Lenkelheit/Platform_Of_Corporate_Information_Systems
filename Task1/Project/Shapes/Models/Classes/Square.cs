@@ -126,6 +126,7 @@ namespace Shapes.Models.Classes
         /// </param>
         public void WtiteToFile(System.IO.StreamWriter writeStream)
         {
+            //Square - means it is data for square.
             writeStream.WriteLine($"Square {topLeft.X} {topLeft.Y} {bottomRight.X} {bottomRight.Y}");
         }
     }
