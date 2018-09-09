@@ -57,7 +57,7 @@ namespace Shapes.Models.Classes
         {
             numberElementsForShape = 6;
             string[] data = line.Split(' ');
-            if (data.Length != numberElementsForTriangle) 
+            if (data.Length != numberElementsForShape) 
             {
                 throw new System.Exception("The data about quantity of elements for creating triangle is unacceptable.");
             }
