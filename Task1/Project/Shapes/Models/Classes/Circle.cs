@@ -97,7 +97,7 @@ namespace Shapes.Models.Classes
                 }
                 catch(System.FormatException ex)
                 {
-                    throw ex;
+                    throw new System.FormatException("The format of string data for creating circle is unacceptable.");
                 }
             }
         }
