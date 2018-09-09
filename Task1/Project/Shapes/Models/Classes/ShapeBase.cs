@@ -8,6 +8,10 @@ namespace Shapes.Models.Classes
     /// </summary>
     public abstract class ShapeBase : IShape
     {
+        /// <summary>
+        /// Stores number of elements for shape.
+        /// </summary>
+        protected int numberElementsForShape;
         // PROPERTIES
         /// <summary>
         /// When overridden in a derived class, returns the perimeter of the shape.
