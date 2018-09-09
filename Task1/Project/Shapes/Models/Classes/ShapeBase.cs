@@ -6,7 +6,7 @@ namespace Shapes.Models.Classes
     /// <summary>
     /// Represents basic algorithms for the shape objects.
     /// </summary>
-    public abstract class ShapeBase : IShape
+    public abstract class ShapeBase : IShape, IFileManager
     {
         /// <summary>
         /// Stores number of elements for shape.
