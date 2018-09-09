@@ -174,6 +174,8 @@ All unit-tests should be reworked in 2 days after project complete.
 
 #### General
 
+- Configurable Data
+  - do keep configurable data (using, const, static etc) at high levels
 - Cycles
   - do use ++i not i++, iterator objects have different speed cost
 - String
@@ -235,6 +237,11 @@ All unit-tests should be reworked in 2 days after project complete.
 
 - "What?" not "How?"
 - Make a sense
+- Avoid negative conditional
+```diff
+- HasNotValue
++ HasValue
+```
 - Avoid redundency
 ```diff
 - List.ListItem
