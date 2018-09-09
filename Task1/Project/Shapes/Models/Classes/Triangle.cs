@@ -1,3 +1,5 @@
+using static System.Math;
+
 namespace Shapes.Models.Classes
 {
     public class Triangle : ShapeBase
