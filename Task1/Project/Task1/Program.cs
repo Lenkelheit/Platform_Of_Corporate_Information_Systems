@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Shapes.Models.Classes;
 using Shapes.Models.Enums;
 using Shapes.Models.Interfaces;
+using Shapes;
 using System.IO;
 
 namespace Task1
@@ -16,35 +17,41 @@ namespace Task1
         {           
             List<ShapeBase> shapes = new List<ShapeBase>();
 
-            //Read the data in the List collection
+            // Read the data in the List collection
 
 
 
-            //Sort the collection ascending by the square and write the result into file1
+            // Sort the collection ascending by the square and write the result into file1
             using (StreamWriter sw = new StreamWriter("file1"))
             {
-                IEnumerable<IShape> newShapes = from i in shapes
-                                                orderby i.GetSquare
-                                                select i;
-                foreach (List<IShape> shape in newShapes)
-                {
-                    sw.WriteLine(shape);
-                }
+                IEnumerable<ShapeBase> newShapes = from i in shapes
+                                                   orderby i.GetSquare
+                                                   select i;
+                WriteToFile<ShapeBase>(newShapes, "file1");
             }
 
-            //Find shapes that lie in the third quarter of the coordinate plane and write them in a separate collection
-            //Sort that collection decending by the perimeters and write the result into file2
+            // Find shapes that lie in the third quarter of the coordinate plane and write them in a separate collection
+            // Sort that collection decending by the perimeters and write the result into file2
             using (StreamWriter sw = new StreamWriter("file2"))
             {
-                IEnumerable<IShape> newColections = from i in shapes
+                IEnumerable<ShapeBase> newColections = from i in shapes
                                                     where i.GetQuarter == CoordinateQuarters.Third                                                   
                                                     orderby i.GetPerimeter descending
                                                     select i;
-                foreach (List<IShape> j in newColections)
+                WriteToFile<ShapeBase>(newColections, "file2");
+            }
+        }
+
+        public static void WriteToFile<T>(IEnumerable<T> collection, string fileName)
+        {
+            using (StreamWriter streamWriter = new StreamWriter(fileName))
+            {
+                foreach (T item in collection)
                 {
-                    sw.WriteLine(j);
+                    streamWriter.WriteLine(item);
                 }
             }
         }
     }
 }
+
