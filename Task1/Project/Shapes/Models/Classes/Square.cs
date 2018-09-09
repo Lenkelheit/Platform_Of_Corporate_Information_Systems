@@ -99,7 +99,7 @@ namespace Shapes.Models.Classes
         {
             numberElementsForShape = 4;
             string[] data = line.Split(' ');
-            if (data.Length != numberElementsForSquare) 
+            if (data.Length != numberElementsForShape) 
             {
                 throw new System.Exception("The data about quantity of elements for creating square is unacceptable.");
             }
