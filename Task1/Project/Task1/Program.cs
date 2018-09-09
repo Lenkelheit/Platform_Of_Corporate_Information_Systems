@@ -23,7 +23,7 @@ namespace Task1
             IEnumerable<ShapeBase> newShapes = from i in shapes
                                                orderby i.GetSquare
                                                select i;
-            WriteToFile<IFileManager>(newShapes, "file1");
+            WriteToFile(newShapes, "file1");
 
             // Find shapes that lie in the third quarter of the coordinate plane and write them in a separate collection
             // Sort that collection decending by the perimeters and write the result into file2
@@ -31,14 +31,14 @@ namespace Task1
                                                    where i.GetQuarter == CoordinateQuarters.Third
                                                    orderby i.GetPerimeter descending
                                                    select i;
-            WriteToFile<IFileManager>(newColections, "file2");
+            WriteToFile(newColections, "file2");
         }
 
-        public static void WriteToFile<IFileManager>(IEnumerable<IFileManager> collection, string fileName)
+        public static void WriteToFile<T>(IEnumerable<T> collection, string fileName) where T : IFileManager
         {
             using (StreamWriter streamWriter = new StreamWriter(fileName))
             {
-                foreach (IFileManager item in collection)
+                foreach (T item in collection)
                 {
                     streamWriter.WriteLine(item);
                 }
