@@ -82,7 +82,7 @@ namespace Shapes.Models.Classes
         /// <param name="writeStream">
         /// Stream only for writing to file.
         /// </param>
-        public void WtiteToFile(System.IO.StreamWriter writeStream)
+        public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
             //Triangle - means it is data for triangle.
             writeStream.WriteLine($"Triangle {first.X} {first.Y} {second.X} {second.Y} {third.X} {third.Y}");
