@@ -105,17 +105,10 @@ namespace Shapes.Models.Classes
             }
             else 
             {
-                try
-                {
-                    topLeft.X = double.Parse(data[0]);
-                    topLeft.Y = double.Parse(data[1]);
-                    bottomRight.X = double.Parse(data[2]);
-                    bottomRight.Y = double.Parse(data[3]);
-                }
-                catch(System.FormatException ex)
-                {
-                    throw new System.FormatException("The format of string data for creating square is unacceptable.");
-                }
+                topLeft.X = double.Parse(data[0]);
+                topLeft.Y = double.Parse(data[1]);
+                bottomRight.X = double.Parse(data[2]);
+                bottomRight.Y = double.Parse(data[3]);
             }
         }
         /// <summary>
