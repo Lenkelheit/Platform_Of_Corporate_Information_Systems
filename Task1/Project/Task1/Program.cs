@@ -20,18 +20,14 @@ namespace Task1
             // Read the data in the List collection
 
             // Sort the collection ascending by the square and write the result into file1
-            IEnumerable<ShapeBase> newShapes = from i in shapes
-                                               orderby i.GetSquare
-                                               select i;
-            WriteToFile(newShapes, "file1");
+            WriteToFile(shapes.OrderBy(shape => shape.GetSquare), "file1");
 
-            // Find shapes that lie in the third quarter of the coordinate plane and write them in a separate collection
+            // Find shapes that lie in the third quarter of the coordinate plane and write them in a separate collection           
+            LinkedList<ShapeBase> shapeBases = 
+            new LinkedList<ShapeBase>(shapes.Where(shape => shape.GetQuarter == CoordinateQuarters.Third));
+            
             // Sort that collection decending by the perimeters and write the result into file2
-            IEnumerable<ShapeBase> newColections = from i in shapes
-                                                   where i.GetQuarter == CoordinateQuarters.Third
-                                                   orderby i.GetPerimeter descending
-                                                   select i;
-            WriteToFile(newColections, "file2");
+            WriteToFile(shapeBases.OrderByDescending(shape=>shape.GetPerimeter), "file2");
         }
 
         public static void WriteToFile<T>(IEnumerable<T> collection, string fileName) where T : IFileManager
@@ -40,7 +36,7 @@ namespace Task1
             {
                 foreach (T item in collection)
                 {
-                    streamWriter.WriteLine(item);
+                    item.WtiteToFile(streamWriter);
                 }
             }
         }
