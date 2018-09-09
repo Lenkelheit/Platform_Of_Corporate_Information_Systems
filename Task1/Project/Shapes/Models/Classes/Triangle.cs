@@ -63,19 +63,12 @@ namespace Shapes.Models.Classes
             }
             else 
             {
-                try
-                {
-                    first.X = double.Parse(data[0]);
-                    first.Y = double.Parse(data[1]);
-                    second.X = double.Parse(data[2]);
-                    second.Y = double.Parse(data[3]);
-                    third.X = double.Parse(data[4]);
-                    third.Y = double.Parse(data[5]);
-                }
-                catch (System.FormatException ex)
-                {
-                    throw new System.FormatException("The format of string data for creating triangle is unacceptable.");
-                }
+                first.X = double.Parse(data[0]);
+                first.Y = double.Parse(data[1]);
+                second.X = double.Parse(data[2]);
+                second.Y = double.Parse(data[3]);
+                third.X = double.Parse(data[4]);
+                third.Y = double.Parse(data[5]);
             }
         }
         /// <summary>
