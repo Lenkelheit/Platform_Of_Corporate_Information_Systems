@@ -7,6 +7,7 @@ namespace Shapes.Models.Classes
     /// </summary>
     public class Square : ShapeBase
     {
+        const uint ARGUMENT_AMOUNT = 4;    
         // FIELDS
         Point topLeft;
         Point bottomRight;
@@ -29,6 +30,14 @@ namespace Shapes.Models.Classes
             }
         }
         // PROPERTIES
+        /// <summary>
+        /// Identifier of the square.
+        /// </summary>
+        public override string ID => nameof(Square);
+        /// <summary>
+        /// Number of elements of the square.
+        /// </summary>
+        public override uint ArgumentAmount => ARGUMENT_AMOUNT;    
         /// <summary>
         /// Propetry that returns top left point
         /// </summary>
@@ -97,9 +106,8 @@ namespace Shapes.Models.Classes
         /// </exception>
         protected override void Interpret(string line)
         {
-            numberElementsForShape = 4;
             string[] data = line.Split(' ');
-            if (data.Length != numberElementsForShape) 
+            if (data.Length != ArgumentAmount) 
             {
                 throw new System.ArgumentException("Wrong argument amount.");
             }
@@ -120,7 +128,7 @@ namespace Shapes.Models.Classes
         public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
             //Square - means it is data for square.
-            writeStream.WriteLine($"Square {topLeft.X} {topLeft.Y} {bottomRight.X} {bottomRight.Y}");
+            writeStream.WriteLine($"{ID} {topLeft.X} {topLeft.Y} {bottomRight.X} {bottomRight.Y}");
         }
     }
 }
