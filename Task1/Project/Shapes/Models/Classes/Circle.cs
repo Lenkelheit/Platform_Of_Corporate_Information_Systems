@@ -18,6 +18,14 @@ namespace Shapes.Models.Classes
         double radius;
         // CONSTRUCTORS
         /// <summary>
+        /// Basic constructor without parameters
+        /// </summary>
+        public Circle()
+        {
+            center = new Point();
+            radius = 0;
+        }
+        /// <summary>
         /// Constructor with params
         /// </summary>
         /// <param name="сenter">Center point</param>
