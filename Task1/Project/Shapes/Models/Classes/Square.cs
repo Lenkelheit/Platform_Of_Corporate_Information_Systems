@@ -89,7 +89,7 @@ namespace Shapes.Models.Classes
         /// <param name="line">
         /// The string data.
         /// </param>
-        /// <exception cref="System.Exception">
+        /// <exception cref="System.ArgumentException">
         /// Thrown when quantity of elements for creating square is unacceptable.
         /// </exception> 
         /// <exception cref="System.FormatException">
@@ -101,7 +101,7 @@ namespace Shapes.Models.Classes
             string[] data = line.Split(' ');
             if (data.Length != numberElementsForShape) 
             {
-                throw new System.Exception("The data about quantity of elements for creating square is unacceptable.");
+                throw new System.ArgumentException("The data about quantity of elements for creating square is unacceptable.");
             }
             else 
             {
