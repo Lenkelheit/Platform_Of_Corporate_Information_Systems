@@ -56,7 +56,7 @@ namespace Shapes.Models.Classes
         {
             get
             {
-                double halfPerim = this.GetPerimeter/2;
+                double halfPerim = this.GetPerimeter / 2;
                 // √p(p - a)(p - b)(p - c)
                 return Sqrt(halfPerim 
                 * (halfPerim - Point.Distance(first, second))
