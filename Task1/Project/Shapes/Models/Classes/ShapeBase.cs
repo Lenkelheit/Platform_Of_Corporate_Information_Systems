@@ -7,12 +7,16 @@ namespace Shapes.Models.Classes
     /// Represents basic algorithms for the shape objects.
     /// </summary>
     public abstract class ShapeBase : IShape, IFileManager
-    {
-        /// <summary>
-        /// Stores number of elements for shape.
-        /// </summary>
-        protected int numberElementsForShape;
+    {       
         // PROPERTIES
+         /// <summary>
+        /// When overridden in a derived class, returns the identifier of the shape.
+        /// </summary>
+        public abstract string ID { get; }
+        /// <summary>
+        /// When overridden in a derived class, returns the number of elements of the shape.
+        /// </summary>
+        public abstract uint ArgumentAmount { get; }       
         /// <summary>
         /// When overridden in a derived class, returns the perimeter of the shape.
         /// </summary>
