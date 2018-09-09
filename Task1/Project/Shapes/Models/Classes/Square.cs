@@ -1,9 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Math;
 
 namespace Shapes.Models.Classes
@@ -89,15 +83,44 @@ namespace Shapes.Models.Classes
             return new Point(bottomRight.X - Abs(topLeft.X - bottomRight.X) / 2,
                 topLeft.Y - Abs(topLeft.Y - bottomRight.Y));
         }
-
-        public override void ReadFromFile(StreamReader readStream)
+        /// <summary>
+        /// Interprets string as numeric data for square.
+        /// </summary>
+        /// <param name="line">
+        /// The string data.
+        /// </param>
+        /// <exception cref="System.ArgumentException">
+        /// Thrown when quantity of elements for creating square is unacceptable.
+        /// </exception> 
+        /// <exception cref="System.FormatException">
+        /// Thrown when format of string data is unacceptable.
+        /// </exception>
+        protected override void Interpret(string line)
         {
-            throw new NotImplementedException();
+            numberElementsForShape = 4;
+            string[] data = line.Split(' ');
+            if (data.Length != numberElementsForShape) 
+            {
+                throw new System.ArgumentException("Wrong argument amount.");
+            }
+            else 
+            {
+                topLeft.X = double.Parse(data[0]);
+                topLeft.Y = double.Parse(data[1]);
+                bottomRight.X = double.Parse(data[2]);
+                bottomRight.Y = double.Parse(data[3]);
+            }
         }
-
-        public override void WtiteToFile(StreamWriter writeStream)
+        /// <summary>
+        /// Writes some information about square to file.
+        /// </summary>
+        /// <param name="writeStream">
+        /// Stream only for writing to file.
+        /// </param>
+        public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
-            throw new NotImplementedException();
+            //Square - means it is data for square.
+            writeStream.WriteLine($"Square {topLeft.X} {topLeft.Y} {bottomRight.X} {bottomRight.Y}");
         }
     }
 }
