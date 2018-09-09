@@ -40,7 +40,6 @@ namespace Shapes.Models.Classes
                 throw new NotImplementedException();
             }
         }
-
         // METHODS
         /// <summary>
         /// Interprets string as numeric data for triangle.
@@ -87,6 +86,7 @@ namespace Shapes.Models.Classes
         /// </param>
         public void WtiteToFile(System.IO.StreamWriter writeStream)
         {
+            //Triangle - means it is data for triangle.
             writeStream.WriteLine($"Triangle {first.X} {first.Y} {second.X} {second.Y} {third.X} {third.Y}");
         }
         /// <summary>
