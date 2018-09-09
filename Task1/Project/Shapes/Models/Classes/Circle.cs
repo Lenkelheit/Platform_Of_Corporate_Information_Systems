@@ -89,16 +89,9 @@ namespace Shapes.Models.Classes
             }
             else 
             {
-                try
-                {
-                    Center.X = double.Parse(data[0]);
-                    Center.Y = double.Parse(data[1]);
-                    Radius = double.Parse(data[2]);
-                }
-                catch(System.FormatException ex)
-                {
-                    throw new System.FormatException("The format of string data for creating circle is unacceptable.");
-                }
+                Center.X = double.Parse(data[0]);
+                Center.Y = double.Parse(data[1]);
+                Radius = double.Parse(data[2]);
             }
         }
         /// <summary>
