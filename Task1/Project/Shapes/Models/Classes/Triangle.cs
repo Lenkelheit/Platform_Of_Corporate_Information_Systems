@@ -55,7 +55,7 @@ namespace Shapes.Models.Classes
         /// </exception>
         protected override void Interpret(string line)
         {
-            const int numberElementsForTriangle = 6;
+            numberElementsForShape = 6;
             string[] data = line.Split(' ');
             if (data.Length != numberElementsForTriangle) 
             {
