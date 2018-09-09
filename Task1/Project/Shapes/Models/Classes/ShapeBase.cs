@@ -37,7 +37,6 @@ namespace Shapes.Models.Classes
                 else return middlePoint.Y > 0 ? CoordinateQuarters.Second : CoordinateQuarters.Third;
             }
         }
-
         // METHODS
         /// <summary>
         /// When overridden in a derived class, return the middle point of the shape.
@@ -59,7 +58,7 @@ namespace Shapes.Models.Classes
         /// <param name="readStream">
         /// Stream only for reading from file.
         /// </param>
-        /// <exception cref="System.Exception">
+        /// <exception cref="System.ArgumentException ">
         /// Thrown when the first word in line from file isn`t recognized.
         /// </exception>
         public void ReadFromFile(System.IO.StreamReader readStream)
@@ -71,13 +70,13 @@ namespace Shapes.Models.Classes
             {
                 name.Append(letter);
             }
-            if (name.ToString() == "Circle")
+            if (name.ToString() == GetType().Name)
             {
                 Interpret(readStream.ReadLine());
             }
             else
             {
-                throw new System.Exception("The data isn`t recognized.");
+                throw new System.ArgumentException("The data isn`t recognized.");
             }
         }
         /// <summary>
@@ -96,7 +95,7 @@ namespace Shapes.Models.Classes
         /// <returns>
         /// Instance of the corresponding class.
         /// </returns>
-        /// <exception cref="System.Exception">
+        /// <exception cref="System.ArgumentException">
         /// Thrown when the first word in line from file isn`t recognized.
         /// </exception>
         public static ShapeBase CreateInstance(System.IO.StreamReader readStream)
@@ -128,7 +127,7 @@ namespace Shapes.Models.Classes
             }
             else
             {
-                throw new System.Exception("The data isn`t recognized.");
+                throw new System.ArgumentException("The data isn`t recognized.");
             }
         }        
     }
