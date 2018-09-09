@@ -44,7 +44,6 @@ namespace Shapes.Models.Classes
         /// </summary>
         /// <returns>Shape square</returns>
         public override double GetSquare
-
         {
             get
             {
