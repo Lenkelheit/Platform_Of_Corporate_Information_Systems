@@ -101,7 +101,7 @@ namespace Shapes.Models.Classes
             string[] data = line.Split(' ');
             if (data.Length != numberElementsForShape) 
             {
-                throw new System.ArgumentException("The data about quantity of elements for creating square is unacceptable.");
+                throw new System.ArgumentException("Wrong argument amount.");
             }
             else 
             {
