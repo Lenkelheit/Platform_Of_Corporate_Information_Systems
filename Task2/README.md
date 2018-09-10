@@ -9,7 +9,7 @@
 
 ## Tasks
 
-Our shape is **pentagon**.
+We are working with **pentagon**.
 
 |№|          State         |                            Text                                           |   Assignees  |  Deadline  |
 |-|:----------------------:|:--------------------------------------------------------------------------|:------------:|:----------:|
