@@ -20,15 +20,15 @@
 | |<ul><li>- [ ] </li></ul>|The text file with data about geometric shapes                                 |Lenkelheit|10.09.2018  |
 |                                                        2                                                                         |
 | |<ul><li>- [ ] </li></ul>|Read the data in the List collection.                                      |   vasil98    | 11.09.2018 |
-| |<ul><li>- [ ] </li></ul>|Sort the collection ascending by the square and write the result into file1|   vasil98    | 11.09.2018 |
-| |<ul><li>- [ ] </li></ul>|Find shapes that lie in the third quarter of the coordinate plane and write them in a separate collection|      vasil98 | 11.09.2018 |
-| |<ul><li>- [ ] </li></ul>|Sort that collection decending by the perimeters and write the result into file2| vasil98 | 11.09.2018 |
+| |<ul><li>- [x] </li></ul>|Sort the collection ascending by the square and write the result into file1|   vasil98    | 11.09.2018 |
+| |<ul><li>- [x] </li></ul>|Find shapes that lie in the third quarter of the coordinate plane and write them in a separate collection|      vasil98 | 11.09.2018 |
+| |<ul><li>- [x] </li></ul>|Sort that collection decending by the perimeters and write the result into file2| vasil98 | 11.09.2018 |
 |                                                        3                                                                         |
 | |<ul><li>- [ ] </li></ul>|Handling exceptions                                                        |       —      |      —     |
 |                                                        4                                                                         |
-| |<ul><li>- [ ] </li></ul>|LINQ using                                                                 |       —      |      —     |
+| |<ul><li>- [x] </li></ul>|LINQ using                                                                 |       —      |      —     |
 |                                                        5                                                                         |
-| |<ul><li>- [ ] </li></ul>|Unit-tests                                                                 |       —      |      —     |
+| |<ul><li>- [x] </li></ul>|Unit-tests                                                                 |       —      |      —     |
 
 ## Folders diagram
 
