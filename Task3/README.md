@@ -29,12 +29,12 @@ Our task is **Taxi order (for taxi driver)**.
 ## Folders diagram
 
 <p align="center">
-  <img src="/Images/Task2/files.png">
+  <img src="/Images/Task3/files.png">
 </p>
 
 ## UML diagram
 
 <p align="center">
-  <img src="/Images/Task2/uml.png">
+  <img src="/Images/Task3/uml.png">
 </p>
  
