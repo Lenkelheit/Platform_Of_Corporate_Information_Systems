@@ -15,13 +15,13 @@ Our task is **Taxi order (for taxi driver)**.
 |-|:----------------------:|:--------------------------------------------------------------------------|:------------:|:----------:|
 | |                        | <p align="center">  Create three layered application             </p>     |              |            |
 | |                        | <p align="center">      1. Data access          </p>                      |              |            |
-| |<ul><li>- [ ] </li></ul>| Data it *.txt files                                                       |              |            |
+| |<ul><li>- [ ] </li></ul>| Data is in .txt files                                                     |              |            |
 | |<ul><li>- [ ] </li></ul>| The class of this layer allow to read/write/change/remove data            |              |            |
 | |                        | <p align="center">      2.  Business Logic      </p>                      |              |            |
 | |<ul><li>- [ ] </li></ul>| All the logic of your progrma                                             |              |            |
 | |                        | <p align="center">      3.  User Interface      </p>                      |              |            |
 | |<ul><li>- [ ] </li></ul>| Do use WPF                                                                |              |            |
-| |                        | <p align="center"> 4. Requirements </p>                                   |              |            |
+| |                        | <p align="center">         4. Requirements </p>                           |              |            |
 | |<ul><li>- [ ] </li></ul>| Unit-test project                                                         |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Xml-documentation                                                         |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Handling exceptions                                                       |      —       |      —     |
