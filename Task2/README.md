@@ -9,7 +9,7 @@
 
 ## Tasks
 
-Our shape is pentagon.
+Our shape is **pentagon**.
 
 |№|          State         |                            Text                                           |   Assignees  |  Deadline  |
 |-|:----------------------:|:--------------------------------------------------------------------------|:------------:|:----------:|
@@ -31,10 +31,11 @@ Our shape is pentagon.
 | |<ul><li>- [ ] </li></ul>| Data access                                                               |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Business Logic                                                            |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| View                                                                      |      —       |      —     |
+| |                        | <p align="center"> 4. Requirements </p>                                   |              |            |
 | |<ul><li>- [ ] </li></ul>| Unit-test project                                                         |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Xml-documentation                                                         |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Handling exceptions                                                       |      —       |      —     |
-| |                        |  <p align="center"> 4. Use such WPF feature as </p>                       |              |            |
+| |                        |  <p align="center"> 5. Use such WPF feature as </p>                       |              |            |
 | |<ul><li>- [ ] </li></ul>| Binding                                                                   |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Command                                                                   |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Style                                                                     |      —       |      —     |
