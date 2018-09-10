@@ -42,12 +42,9 @@ namespace Test
             Circle testCircle = new Circle(new Point(2, 2), 3);
             double expectedRadius = 3;
             Point expectedCenter = new Point(2, 2);
-            if (expectedCenter.X == testCircle.Center.X &&
+            Assert.IsTrue (expectedCenter.X == testCircle.Center.X &&
                 expectedCenter.Y == testCircle.Center.Y &&
-                expectedRadius == testCircle.Radius)
-            {
-                Assert.IsTrue(true);
-            }
+                expectedRadius == testCircle.Radius);
         }
     }
 }
