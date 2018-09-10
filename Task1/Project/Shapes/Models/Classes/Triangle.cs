@@ -57,8 +57,8 @@ namespace Shapes.Models.Classes
             get
             {
                 double halfPerim = (Point.Distance(first, second) + Point.Distance(first, third) + Point.Distance(third, second))/2;
-                return Sqrt(halfPerim * (halfPerim - Point.Distance(first, second) * (halfPerim - Point.Distance(first, third)) *
-                    halfPerim - Point.Distance(third, second)));
+                return Sqrt(halfPerim * (halfPerim - Point.Distance(first, second)) * (halfPerim - Point.Distance(first, third)) *
+                    (halfPerim - Point.Distance(third, second)));
             }
         }
 
