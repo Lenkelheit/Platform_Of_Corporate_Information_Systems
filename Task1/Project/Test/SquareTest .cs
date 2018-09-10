@@ -42,13 +42,10 @@ namespace Test
             Point expectedBottomRightPoint = new Point(4, 2);
             Point expectedTopLeftPoint = new Point(2, 4);
             Point expectedCenter = new Point(2, 2);
-            if (expectedBottomRightPoint.X == testSquare.BottomRightPoint.X &&
+            Assert.IsTrue (expectedBottomRightPoint.X == testSquare.BottomRightPoint.X &&
                 expectedBottomRightPoint.Y == testSquare.BottomRightPoint.Y &&
                 expectedTopLeftPoint.X == testSquare.TopLeftPoint.X &&
-                expectedTopLeftPoint.Y == testSquare.TopLeftPoint.Y)
-            {
-                Assert.IsTrue(true);
-            }
+                expectedTopLeftPoint.Y == testSquare.TopLeftPoint.Y);
         }
     }
 }

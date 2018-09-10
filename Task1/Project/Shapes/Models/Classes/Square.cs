@@ -30,7 +30,7 @@ namespace Shapes.Models.Classes
         /// </summary>
         /// <param name="topLeft">Point in Top, Left corner</param>
         /// <param name="bottomRight">Point in Bottom, Right corner</param>
-        /// <exception cref="System.Exception">This points can't make square</exception>;
+        /// <exception cref="System.ArgumentException">Thrwon when points can't make square</exception>;
         public Square(Point topLeft, Point bottomRight)
         {
             if (Abs(topLeft.X - bottomRight.X) == Abs(topLeft.Y - bottomRight.Y))
@@ -99,12 +99,12 @@ namespace Shapes.Models.Classes
                 topLeft.Y - Abs(topLeft.Y - bottomRight.Y));
         }
 
-        public override void ReadFromFile(Stream fileStream)
+        public override void ReadFromFile(StreamReader readStream)
         {
             throw new NotImplementedException();
         }
 
-        public override void WtiteToFile(Stream fileStream)
+        public override void WtiteToFile(StreamWriter writeStream)
         {
             throw new NotImplementedException();
         }

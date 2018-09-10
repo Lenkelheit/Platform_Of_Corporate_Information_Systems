@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -36,7 +36,7 @@ namespace Shapes.Models.Classes
             this.second = second;
             this.third = third;
         }
-        // PROPETRIES
+        // PROPERTIES
         /// <summary>
         /// Returns the perimeter of the triangle
         /// </summary>
@@ -56,23 +56,25 @@ namespace Shapes.Models.Classes
         {
             get
             {
-                double halfPerim = (Point.Distance(first, second) + Point.Distance(first, third) + Point.Distance(third, second))/2;
-                return Sqrt(halfPerim * (halfPerim - Point.Distance(first, second)) * (halfPerim - Point.Distance(first, third)) *
-                    (halfPerim - Point.Distance(third, second)));
+                double halfPerim = this.GetPerimeter / 2;
+                // √p(p - a)(p - b)(p - c)
+                return Sqrt(halfPerim 
+                    * (halfPerim - Point.Distance(first, second))
+                    * (halfPerim - Point.Distance(first, third)) 
+                    * (halfPerim - Point.Distance(third, second)));
             }
         }
 
-        public override void ReadFromFile(Stream fileStream)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void WtiteToFile(Stream fileStream)
-        {
-            throw new NotImplementedException();
-        }
-
         // METHODS
+        public override void ReadFromFile(StreamReader readStream)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void WtiteToFile(StreamWriter writeStream)
+        {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// Returns the position of the triangle whithin coordinate querter
         /// </summary>
@@ -83,4 +85,3 @@ namespace Shapes.Models.Classes
         }
     }
 }
-
