@@ -35,7 +35,7 @@ namespace Shapes.Models.Classes
         /// </summary>
         public override string ID => nameof(Square);
         /// <summary>
-        /// Number of elements of the square.
+        /// Number of simple elements of the square.
         /// </summary>
         public override uint ArgumentAmount => ARGUMENT_AMOUNT;    
         /// <summary>
