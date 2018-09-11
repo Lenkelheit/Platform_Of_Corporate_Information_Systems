@@ -31,7 +31,7 @@ namespace Shapes.Models.Classes
         /// </summary>
         public override string ID => nameof(Triangle);
         /// <summary>
-        /// Number of elements of the triangle.
+        /// Number of simple elements of the triangle.
         /// </summary>
         public override uint ArgumentAmount => ARGUMENT_AMOUNT;      
         /// <summary>
