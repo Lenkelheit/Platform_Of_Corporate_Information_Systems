@@ -6,11 +6,11 @@ namespace Shapes.Models.Interfaces
     public interface IFileManager
     {
          /// <summary>
-        /// Identifier for shape.
+        /// Identifier for class.
         /// </summary>
         string ID { get; }
         /// <summary>
-        /// Number of elements for shape.
+        /// Number of simple elements for class.
         /// </summary>
         uint ArgumentAmount { get; }       
         /// <summary>
