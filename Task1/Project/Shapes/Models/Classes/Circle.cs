@@ -15,7 +15,7 @@ namespace Shapes.Models.Classes
     {
         // FIELDS
         Point center;
-        double radius;
+        uint radius;
         // CONSTRUCTORS
         /// <summary>
         /// Basic constructor without parameters
@@ -30,7 +30,7 @@ namespace Shapes.Models.Classes
         /// </summary>
         /// <param name="сenter">Center point</param>
         /// <param name="radius">Radius</param>
-        public Circle(Point сenter, double radius)
+        public Circle(Point сenter, uint radius)
         {
             this.center = сenter;
             this.radius = radius;
@@ -62,7 +62,7 @@ namespace Shapes.Models.Classes
         /// Propetry that returns circle radius
         /// </summary>
         /// <returns>Circle radius</returns>
-        public double Radius
+        public uint Radius
         {
             get
             {

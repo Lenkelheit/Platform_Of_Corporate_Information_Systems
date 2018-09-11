@@ -26,7 +26,7 @@ namespace Test
         public void CircleGetRadiusTest()
         {
             Circle testCircle = new Circle(new Point(2, 2), 3);
-            double expectedResult = 3;
+            uint expectedResult = 3;
             Assert.AreEqual(expectedResult, testCircle.Radius);
         }
         [TestMethod]
