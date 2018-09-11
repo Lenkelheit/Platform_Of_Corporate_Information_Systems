@@ -14,7 +14,7 @@ namespace Shapes.Models.Classes
         /// </summary>
         public abstract string ID { get; }
         /// <summary>
-        /// When overridden in a derived class, returns the number of elements of the shape.
+        /// When overridden in a derived class, returns the number of simple elements of the shape.
         /// </summary>
         public abstract uint ArgumentAmount { get; }       
         /// <summary>
