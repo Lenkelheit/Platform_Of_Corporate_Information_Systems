@@ -28,7 +28,7 @@ namespace Shapes.Models.Classes
         /// </summary>
         public override string ID => nameof(Circle);
         /// <summary>
-        /// Number of elements of the circle.
+        /// Number of simple elements of the circle.
         /// </summary>
         public override uint ArgumentAmount => ARGUMENT_AMOUNT;        
         /// <summary>
