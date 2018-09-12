@@ -108,13 +108,16 @@ namespace Shapes.Models.Classes
         /// <param name="line">
         /// The string data.
         /// </param>
+        /// <returns>
+        /// Filled square into <see cref="ShapeBase"/>.
+        /// </returns>        
         /// <exception cref="System.ArgumentException">
         /// Thrown when quantity of elements for creating square is unacceptable.
         /// </exception> 
         /// <exception cref="System.FormatException">
         /// Thrown when format of string data is unacceptable.
         /// </exception>
-        protected override void Interpret(string line)
+        protected override ShapeBase Interpret(string line)
         {
             string[] data = line.Split(' ');
             if (data.Length != ArgumentAmount) 
