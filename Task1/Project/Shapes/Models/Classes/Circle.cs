@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Math;
 
 namespace Shapes.Models.Classes
@@ -13,6 +7,7 @@ namespace Shapes.Models.Classes
     /// </summary>
     public class Circle : ShapeBase
     {
+        const uint ARGUMENT_AMOUNT = 3;    
         // FIELDS
         Point center;
         double radius;
@@ -36,6 +31,14 @@ namespace Shapes.Models.Classes
             this.radius = radius;
         }
         // PROPERTIES
+        /// <summary>
+        /// Identifier of the circle.
+        /// </summary>
+        public override string ID => nameof(Circle);
+        /// <summary>
+        /// Number of simple elements of the circle.
+        /// </summary>
+        public override uint ArgumentAmount => ARGUMENT_AMOUNT;        
         /// <summary>
         /// Returns the perimeter of the circle
         /// </summary>
@@ -80,17 +83,43 @@ namespace Shapes.Models.Classes
                 return center;
             }
         }
-        // METHODS
-        public override void ReadFromFile(StreamReader readStream)
+        /// <summary>
+        /// Interprets string as numeric data for circle.
+        /// </summary>
+        /// <param name="line">
+        /// The string data.
+        /// </param>
+        /// <exception cref="System.ArgumentException">
+        /// Thrown when quantity of elements for creating circle is unacceptable.
+        /// </exception> 
+        /// <exception cref="System.FormatException">
+        /// Thrown when format of string data is unacceptable.
+        /// </exception>
+        protected override void Interpret(string line)
         {
-            throw new NotImplementedException();
+            string[] data = line.Split(' ');
+            if (data.Length != ArgumentAmount) 
+            {
+                throw new System.ArgumentException("Wrong argument amount.");
+            }
+            else 
+            {
+                Center.X = double.Parse(data[0]);
+                Center.Y = double.Parse(data[1]);
+                Radius = double.Parse(data[2]);
+            }
         }
-
-        public override void WtiteToFile(StreamWriter writeStream)
+        /// <summary>
+        /// Writes some information about circle to file.
+        /// </summary>
+        /// <param name="writeStream">
+        /// Stream only for writing to file.
+        /// </param>
+        public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
-            throw new NotImplementedException();
+            //Circle - means it is data for circle.
+            writeStream.WriteLine($"{ID} {center.X} {center.Y} {radius}");
         }
-
         /// <summary>
         /// Returns the central point of shape
         /// </summary>

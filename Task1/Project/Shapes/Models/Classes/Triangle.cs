@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Math;
 
 namespace Shapes.Models.Classes
 {
+    /// <summary>
+    /// Represents class for triangle
+    /// </summary>
     public class Triangle : ShapeBase
     {
+        const uint ARGUMENT_AMOUNT = 6;
         // FIELDS
         Point first;
         Point second;
@@ -38,6 +36,14 @@ namespace Shapes.Models.Classes
         }
         // PROPERTIES
         /// <summary>
+        /// Identifier of the triangle.
+        /// </summary>
+        public override string ID => nameof(Triangle);
+        /// <summary>
+        /// Number of simple elements of the triangle.
+        /// </summary>
+        public override uint ArgumentAmount => ARGUMENT_AMOUNT;      
+        /// <summary>
         /// Returns the perimeter of the triangle
         /// </summary>
         /// <returns>Triangles perimetr</returns>
@@ -64,16 +70,46 @@ namespace Shapes.Models.Classes
                     * (halfPerim - Point.Distance(third, second)));
             }
         }
-
         // METHODS
-        public override void ReadFromFile(StreamReader readStream)
+        /// <summary>
+        /// Interprets string as numeric data for triangle.
+        /// </summary>
+        /// <param name="line">
+        /// The string data.
+        /// </param>
+        /// <exception cref="System.ArgumentException">
+        /// Thrown when quantity of elements for creating triangle is unacceptable.
+        /// </exception> 
+        /// <exception cref="System.FormatException">
+        /// Thrown when format of string data is unacceptable.
+        /// </exception>
+        protected override void Interpret(string line)
         {
-            throw new NotImplementedException();
+            string[] data = line.Split(' ');
+            if (data.Length != ArgumentAmount) 
+            {
+                throw new System.ArgumentException("Wrong argument amount.");
+            }
+            else 
+            {
+                first.X = double.Parse(data[0]);
+                first.Y = double.Parse(data[1]);
+                second.X = double.Parse(data[2]);
+                second.Y = double.Parse(data[3]);
+                third.X = double.Parse(data[4]);
+                third.Y = double.Parse(data[5]);
+            }
         }
-
-        public override void WtiteToFile(StreamWriter writeStream)
+        /// <summary>
+        /// Writes some information about triangle to file.
+        /// </summary>
+        /// <param name="writeStream">
+        /// Stream only for writing to file.
+        /// </param>
+        public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
-            throw new NotImplementedException();
+            //Triangle - means it is data for triangle.
+            writeStream.WriteLine($"{ID} {first.X} {first.Y} {second.X} {second.Y} {third.X} {third.Y}");
         }
         /// <summary>
         /// Returns the position of the triangle whithin coordinate querter
