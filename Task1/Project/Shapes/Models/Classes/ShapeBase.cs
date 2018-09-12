@@ -91,7 +91,7 @@ namespace Shapes.Models.Classes
         /// </param>
         public abstract void WriteToFile(System.IO.StreamWriter writeStream);
         /// <summary>
-        /// Creates classes that inherit from <see cref="ShapeBase"/>".
+        /// Creates classes that inherit from <see cref="ShapeBase"/>.
         /// </summary>
         /// <param name="readStream">
         /// Stream only for reading from file.
