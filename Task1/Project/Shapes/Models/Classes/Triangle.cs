@@ -109,7 +109,6 @@ namespace Shapes.Models.Classes
         /// </param>
         public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
-            //Triangle - means it is data for triangle.
             writeStream.WriteLine($"{ID} {first.X} {first.Y} {second.X} {second.Y} {third.X} {third.Y}");
         }
         /// <summary>
