@@ -104,9 +104,9 @@ namespace Shapes.Models.Classes
             }
             else 
             {
-                Center.X = double.Parse(data[0]);
-                Center.Y = double.Parse(data[1]);
-                Radius = double.Parse(data[2]);
+                center.X = double.Parse(data[0]);
+                center.Y = double.Parse(data[1]);
+                radius = double.Parse(data[2]);
             }
         }
         /// <summary>
