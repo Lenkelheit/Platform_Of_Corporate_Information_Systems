@@ -35,7 +35,7 @@ namespace Shapes.Models.Classes
             }
             else
             {
-                throw new ArgumentException("This points can't make square");
+                throw new System.ArgumentException("This points can't make square");
             }
         }
         // PROPERTIES
