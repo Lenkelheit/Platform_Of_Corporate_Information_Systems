@@ -39,7 +39,7 @@ namespace Shapes.Models.Classes
         /// <summary>
         /// Identifier of the circle.
         /// </summary>
-        public override string ID => nameof(Circle);
+        public override string ID => ShapeBase.IdCreator(this.GetType());
         /// <summary>
         /// Number of simple elements of the circle.
         /// </summary>
