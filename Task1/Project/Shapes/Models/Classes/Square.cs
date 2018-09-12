@@ -43,7 +43,7 @@ namespace Shapes.Models.Classes
         /// <summary>
         /// Identifier of the square.
         /// </summary>
-        public override string ID => nameof(Square);
+        public override string ID => ShapeBase.IdCreator(this.GetType());
         /// <summary>
         /// Number of simple elements of the square.
         /// </summary>
