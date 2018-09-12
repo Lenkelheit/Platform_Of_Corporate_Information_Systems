@@ -122,7 +122,6 @@ namespace Shapes.Models.Classes
         /// </param>
         public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
-            //Circle - means it is data for circle.
             writeStream.WriteLine($"{ID} {center.X} {center.Y} {radius}");
         }
         /// <summary>
