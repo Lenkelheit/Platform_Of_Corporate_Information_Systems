@@ -127,8 +127,22 @@ namespace Shapes.Models.Classes
                 topLeft.Y = double.Parse(data[1]);
                 bottomRight.X = double.Parse(data[2]);
                 bottomRight.Y = double.Parse(data[3]);
+                return this;                
             }
         }
+        /// <summary>
+        /// Creates <see cref="Square"/> and fills its fields.
+        /// </summary>
+        /// <param name="line">
+        /// The string data.
+        /// </param>
+        /// <returns>
+        /// Created square into <see cref="ShapeBase"/>.
+        /// </returns>
+        public static ShapeBase CreateInstance(string line)
+        {
+            return new Square().Interpret(line);
+        }        
         /// <summary>
         /// Writes some information about square to file.
         /// </summary>
