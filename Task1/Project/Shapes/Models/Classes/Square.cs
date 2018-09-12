@@ -7,6 +7,7 @@ namespace Shapes.Models.Classes
     /// </summary>
     public class Square : ShapeBase
     {
+        //CONST    
         const uint ARGUMENT_AMOUNT = 4;    
         // FIELDS
         Point topLeft;
