@@ -7,6 +7,7 @@ namespace Shapes.Models.Classes
     /// </summary>
     public class Triangle : ShapeBase
     {
+        //CONST    
         const uint ARGUMENT_AMOUNT = 6;
         // FIELDS
         Point first;
