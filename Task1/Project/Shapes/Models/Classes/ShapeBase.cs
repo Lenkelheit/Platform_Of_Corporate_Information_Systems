@@ -9,7 +9,7 @@ namespace Shapes.Models.Classes
     public abstract class ShapeBase : IShape, IFileManager
     {       
         // PROPERTIES
-         /// <summary>
+        /// <summary>
         /// When overridden in a derived class, returns the identifier of the shape.
         /// </summary>
         public abstract string ID { get; }
