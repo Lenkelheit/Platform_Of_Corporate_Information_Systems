@@ -136,8 +136,7 @@ namespace Shapes.Models.Classes
         /// Stream only for writing to file.
         /// </param>
         public override void WriteToFile(System.IO.StreamWriter writeStream)
-        {
-            //Square - means it is data for square.
+        {        
             writeStream.WriteLine($"{ID} {topLeft.X} {topLeft.Y} {bottomRight.X} {bottomRight.Y}");
         }
     }
