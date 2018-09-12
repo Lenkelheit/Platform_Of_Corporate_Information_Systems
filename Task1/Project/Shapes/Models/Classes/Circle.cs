@@ -112,8 +112,22 @@ namespace Shapes.Models.Classes
                 center.X = double.Parse(data[0]);
                 center.Y = double.Parse(data[1]);
                 radius = double.Parse(data[2]);
+                return this;                
             }
         }
+        /// <summary>
+        /// Creates <see cref="Circle"/> and fills its fields.
+        /// </summary>
+        /// <param name="line">
+        /// The string data.
+        /// </param>
+        /// <returns>
+        /// Created circle into <see cref="ShapeBase"/>.
+        /// </returns>
+        public static ShapeBase CreateInstance(string line)
+        {
+            return new Circle().Interpret(line);
+        }        
         /// <summary>
         /// Writes some information about circle to file.
         /// </summary>
