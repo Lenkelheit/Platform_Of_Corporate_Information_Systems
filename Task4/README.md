@@ -12,13 +12,13 @@
 
 |№|          State         |                            Text                                           |   Assignees  |  Deadline  |
 |-|:----------------------:|:--------------------------------------------------------------------------|:------------:|:----------:|
-| |                        | <p align="center">      1. Tools to use </p>                              |              |            |
+|                                                             1                                                                    |
 | |<ul><li>- [ ] </li></ul>| Do use Northwind database (download from the Internet)                    |              |            |
 | |<ul><li>- [ ] </li></ul>| Do use SQL Server                                                         |              |            |
-| |                        | <p align="center">      2      </p>                                       |              |            |
+|                                                             2                                                                    |
 | |<ul><li>- [ ] </li></ul>| Create a console application                                              |              |            |
 | |<ul><li>- [ ] </li></ul>| The result should be in the form of DataReader and output to the console  |              |            |
-| |                        | <p align="center">      3.  Tasks    </p>                                 |              |            |
+|                                                              3                                                                   |
 | |<ul><li>- [ ] </li></ul>| Show all info about the employee with ID 8                                |              |            |
 | |<ul><li>- [ ] </li></ul>| Show the list of first and last names of the employees from London        |              |            |
 | |<ul><li>- [ ] </li></ul>| Show the list of first and last names of the employees whose first name begins with letter A|    |    |
