@@ -27,6 +27,10 @@ namespace Shapes.Models.Classes
         /// <param name="radius">Radius</param>
         public Circle(Point сenter, double radius)
         {
+            if (radius < 0)
+            {
+                throw new System.ArgumentException("The radius can not be less than zero");
+            }
             this.center = сenter;
             this.radius = radius;
         }
