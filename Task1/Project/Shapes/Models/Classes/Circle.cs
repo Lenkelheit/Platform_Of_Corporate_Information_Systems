@@ -7,7 +7,7 @@ namespace Shapes.Models.Classes
     /// </summary>
     public class Circle : ShapeBase
     {
-        //CONST
+        // CONST
         const uint ARGUMENT_AMOUNT = 3;    
         // FIELDS
         Point center;
