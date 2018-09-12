@@ -13,10 +13,19 @@ namespace Shapes.Models.Classes
         Point bottomRight;
         // CONSTRUCTORS
         /// <summary>
+        /// Basic constructor without parameters
+        /// </summary>
+        public Square()
+        {
+            topLeft = new Point();
+            bottomRight = new Point();
+        }
+        /// <summary>
         /// Constructor with params
         /// </summary>
         /// <param name="topLeft">Point in Top, Left corner</param>
         /// <param name="bottomRight">Point in Bottom, Right corner</param>
+        /// <exception cref="System.ArgumentException">Thrwon when points can't make square</exception>;
         public Square(Point topLeft, Point bottomRight)
         {
             if (Abs(topLeft.X - bottomRight.X) == Abs(topLeft.Y - bottomRight.Y))

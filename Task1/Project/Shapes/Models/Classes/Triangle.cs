@@ -14,6 +14,15 @@ namespace Shapes.Models.Classes
         Point third;
         // CONSTRUCTORS
         /// <summary>
+        /// Basic constructor without parametrs
+        /// </summary>
+        public Triangle()
+        {
+            first = new Point();
+            second = new Point();
+            third = new Point();
+        }
+        /// <summary>
         /// Basic constructor with params
         /// </summary>
         /// <param name="first">First point</param>
@@ -37,21 +46,28 @@ namespace Shapes.Models.Classes
         /// <summary>
         /// Returns the perimeter of the triangle
         /// </summary>
+        /// <returns>Triangles perimetr</returns>
         public override double GetPerimeter
         {
             get
             {
-                throw new NotImplementedException();
+                return Point.Distance(first, second) + Point.Distance(first, third) + Point.Distance(third, second);
             }
         }
         /// <summary>
         /// Returns the square of the triangle
         /// </summary>
+        /// <returns>Triangles square</returns>
         public override double GetSquare
         {
             get
             {
-                throw new NotImplementedException();
+                double halfPerim = this.GetPerimeter / 2;
+                // √p(p - a)(p - b)(p - c)
+                return Sqrt(halfPerim 
+                    * (halfPerim - Point.Distance(first, second))
+                    * (halfPerim - Point.Distance(first, third)) 
+                    * (halfPerim - Point.Distance(third, second)));
             }
         }
         // METHODS

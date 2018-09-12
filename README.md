@@ -31,7 +31,7 @@
 | :---: | :---: | :---: | :---: |
 | [<img src="https://avatars2.githubusercontent.com/u/36925520?s=400&v=4" width="100px;"/>](https://github.com/SvyatoslavFedynyak) | [<img src="https://avatars3.githubusercontent.com/u/38116562?s=400&v=4" width="100px;"/>](https://github.com/Lenkelheit) | [<img src="https://avatars3.githubusercontent.com/u/22750664?s=400&v=4" width="100px;"/>](https://github.com/vasil98)| [<img src="https://avatars3.githubusercontent.com/u/24938726?s=400&v=4" width="100px;"/>](https://github.com/iamprovidence) |
 |Svyatoslav Fedynyak|Nazariy Tymtsiv|Vasyl Tanchinets|Taras Kizlo|
-|💻 Main Coder<br>⚠️ Tester<br>📢 Speaker|🐛 Bug Finder<br>💻 Coder<br>🤔 Thinker<br>⚠️ Tester<br>🌍 Editor|🐛 Bug Finder<br>💻 Coder<br>⚠️ Tester|👀 Administrator<br>📝 Bloger <br>📖 Documentator <br>💬 QA Manager <br>🎨 Designer<br>🚇 Architector|
+|💻 Main Coder<br>⚠️ Tester<br>📖 Documentator<br>📢 Speaker|🐛 Bug Finder<br>💻 Coder<br>🤔 Thinker<br>⚠️ Tester<br>📖 Documentator <br>🌍 Editor|🐛 Bug Finder<br>💻 Coder<br>⚠️ Tester|👀 Administrator<br>📝 Bloger <br>📖 Documentator <br>💬 QA Manager <br>🎨 Designer<br>🚇 Architector|
 
 ## Task Rules
 
@@ -278,7 +278,7 @@ All unit-tests should be reworked in 2 days after project complete.
 | Method arguments |Depend on type| camelCase  |    128 | Yes    | No      | No     | Yes          | [A-z][0-9]  | No          |
 | Generic argument |Noun          | PascalCase |    50  | Yes    | No      | No     | Yes  |{**T**}[A-z][0-9]{Key,EventArgs}|No|
 | Local variables  |Noun or Nouns | camelCase  |    50  | Yes    | No      | No     | Yes          | [A-z][0-9]  | No          |
-| Constants name   |Noun or Nouns | UPPERCASE  |    50  | No     | No      | No     | No           | [A-z][0-9]  | No          |
+| Constants name   |Noun or Nouns | UPPERCASE  |    50  | No     | No      | No     | No           | [A-z][0-9]  | Yes         |
 | Field            |Noun or Nouns | camelCase  |    50  | Yes    | No      | No     | Yes          | [A-z][0-9]  | Yes         |
 | Boolean Fields   |Noun or Nouns | camelCase  |    50  | Yes    | Yes     | No     | Yes    | {is,can,has,does+}[A-z][0-9]|Yes|
 | Properties       |Same as field | PascalCase |    50  | Yes    | No      | No     | Yes          | [A-z][0-9]  | No          |
