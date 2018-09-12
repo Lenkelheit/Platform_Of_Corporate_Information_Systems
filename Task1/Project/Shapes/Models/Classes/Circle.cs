@@ -105,7 +105,7 @@ namespace Shapes.Models.Classes
             string[] data = line.Split(' ');
             if (data.Length != ArgumentAmount) 
             {
-                throw new System.ArgumentException("Wrong argument amount.");
+                throw new System.ArgumentException("Wrong argument amount for circle.");
             }
             else 
             {
