@@ -25,7 +25,7 @@ namespace Shapes.Models.Classes
         /// </summary>
         /// <param name="topLeft">Point in Top, Left corner</param>
         /// <param name="bottomRight">Point in Bottom, Right corner</param>
-        /// <exception cref="System.ArgumentException">Thrwon when points can't make square</exception>;
+        /// <exception cref="System.ArgumentException">Thrown when points can't make square</exception>;
         public Square(Point topLeft, Point bottomRight)
         {
             if (Abs(topLeft.X - bottomRight.X) == Abs(topLeft.Y - bottomRight.Y))
