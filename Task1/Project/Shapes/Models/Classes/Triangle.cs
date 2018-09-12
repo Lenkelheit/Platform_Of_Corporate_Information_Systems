@@ -99,8 +99,22 @@ namespace Shapes.Models.Classes
                 second.Y = double.Parse(data[3]);
                 third.X = double.Parse(data[4]);
                 third.Y = double.Parse(data[5]);
+                return this;                
             }
         }
+        /// <summary>
+        /// Creates <see cref="Triangle"/> and fills its fields.
+        /// </summary>
+        /// <param name="line">
+        /// The string data.
+        /// </param>
+        /// <returns>
+        /// Created triangle into <see cref="ShapeBase"/>.
+        /// </returns>
+        public static ShapeBase CreateInstance(string line)
+        {
+            return new Triangle().Interpret(line);
+        }        
         /// <summary>
         /// Writes some information about triangle to file.
         /// </summary>
