@@ -9,6 +9,7 @@
 
 ## Tasks
 Build a WPF program for working with geometric shapes.
+
 We are working with **pentagon**.
 
 |№|          State         |                            Text                                           |   Assignees  |  Deadline  |
