@@ -36,7 +36,7 @@ namespace Task1
             {
                 foreach (T item in collection)
                 {
-                    item.WtiteToFile(streamWriter);
+                    item.WriteToFile(streamWriter);
                 }
             }
         }
