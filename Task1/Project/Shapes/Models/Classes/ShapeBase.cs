@@ -118,13 +118,13 @@ namespace Shapes.Models.Classes
         public static ShapeBase MakeInstance(System.IO.StreamReader readStream)
         {
             string identifier = ReadAWordFromStream(readStream);
-            if (!factory.ContainsKey(identifier.ToString())) 
+            if (!factory.ContainsKey(identifier)) 
             {
                 throw new System.ArgumentException("The data isn`t recognized.");
             }
             else
             {
-                return factory[identifier.ToString()].Invoke(readStream.ReadLine());
+                return factory[identifier].Invoke(readStream.ReadLine());
             }
         }        
         /// <summary>
@@ -149,7 +149,7 @@ namespace Shapes.Models.Classes
         public void ReadFromFile(System.IO.StreamReader readStream)
         {
             string identifier = ReadAWordFromStream(readStream);
-            if (identifier.ToString() == ID)
+            if (identifier == ID) 
             {
                 Interpret(readStream.ReadLine());
             }
