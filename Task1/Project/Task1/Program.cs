@@ -50,7 +50,7 @@ namespace Task1
                 {
                     try
                     {
-                        shapes.Add(ShapeBase.CreateInstance(streamReader));
+                        shapes.Add(ShapeBase.MakeInstance(streamReader));
                     }
                     catch (ArgumentException ex)
                     {
