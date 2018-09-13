@@ -13,7 +13,7 @@ namespace Task1
     {
         static readonly string DIRECTORY_SEPARATOR_STR 	= Path.DirectorySeparatorChar.ToString();
         static readonly string DIRECTORY_PATH 		        = string.Join(DIRECTORY_SEPARATOR_STR, AppDomain.CurrentDomain.BaseDirectory, "Resources");
-        static readonly string FILE_PATH_FORMAT 	        = string.Join(Path.DirectorySeparatorChar.ToString(), DIRECTORY_PATH, "{0}.txt");
+        static readonly string FILE_PATH_FORMAT 	        = string.Join(DIRECTORY_SEPARATOR_STR, DIRECTORY_PATH, "{0}.txt");
 
         static readonly string READ_FILE_NAME 		= "data";
         static readonly string WRITE_FILE_NAME_1 	= "file1";
