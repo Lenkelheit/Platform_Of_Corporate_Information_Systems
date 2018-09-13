@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using Shapes.Models.Enums;
 using Shapes.Models.Interfaces;
+using IdentifierCreator = System.Func<System.Type, string>;
+using Deserialization = System.Func<string, Shapes.Models.Classes.ShapeBase>;
 
 namespace Shapes.Models.Classes
 {
@@ -8,11 +11,29 @@ namespace Shapes.Models.Classes
     /// </summary>
     public abstract class ShapeBase : IShape, IFileManager
     {       
+        // FIELDS
+        static IdentifierCreator idCreatorByType;
+        static Dictionary<string, Deserialization> factory;    
         // PROPERTIES
-         /// <summary>
-        /// When overridden in a derived class, returns the identifier of the shape.
+        /// <summary>
+        /// Creator Id by type.
         /// </summary>
-        public abstract string ID { get; }
+        public static IdentifierCreator IdCreatorByType
+        {
+		
+            get
+            {
+                return idCreatorByType;
+            }
+            set
+            {
+                idCreatorByType = value;
+            }
+        }     
+        /// <summary>
+        /// Identifier of the shape.
+        /// </summary>
+        public string ID => ShapeBase.idCreatorByType(this.GetType());
         /// <summary>
         /// When overridden in a derived class, returns the number of simple elements of the shape.
         /// </summary>
@@ -41,7 +62,27 @@ namespace Shapes.Models.Classes
                 else return middlePoint.Y > 0 ? CoordinateQuarters.Second : CoordinateQuarters.Third;
             }
         }
+        // CONSTRUCTOR
+        static ShapeBase()
+        {
+            factory = new Dictionary<string, Deserialization>();
+            idCreatorByType = (type) => type.Name;
+	    
+            RegisterShape(typeof(Circle), Circle.CreateInstance);
+            RegisterShape(typeof(Square), Square.CreateInstance);
+            RegisterShape(typeof(Triangle), Triangle.CreateInstance);	    
+        }        
         // METHODS
+        static string ReadAWordFromStream(System.IO.StreamReader readStream)
+        {
+            //In "identifier" will be stored a first word in line from file.
+            System.Text.StringBuilder identifier = new System.Text.StringBuilder("");
+            for (char letter = (char)readStream.Read(); letter != ' '; letter = (char)readStream.Read())
+            {
+                identifier.Append(letter);
+            }
+            return identifier.ToString();
+        }	
         /// <summary>
         /// When overridden in a derived class, return the middle point of the shape.
         /// </summary>
@@ -50,12 +91,52 @@ namespace Shapes.Models.Classes
         /// </returns>
         protected abstract Point GetMiddlePoint();
         /// <summary>
+        /// Register shapes in factory.
+        /// </summary>
+        /// <param name="type">
+        /// Type of the shape.
+        /// </param>
+        /// <param name="creator">
+        /// Creator shapes by <see cref="string"/>.
+        /// </param>
+        public static void RegisterShape(System.Type type, Deserialization creator)
+        {
+            factory.Add(idCreatorByType(type), creator);
+        }
+        /// <summary>
+        /// Creates classes that inherit from <see cref="ShapeBase"/>.
+        /// </summary>
+        /// <param name="readStream">
+        /// Stream only for reading from file.
+        /// </param>
+        /// <returns>
+        /// Instance of the corresponding class.
+        /// </returns>
+        /// <exception cref="System.ArgumentException">
+        /// Thrown when the first word in line from file isn`t recognized.
+        /// </exception>
+        public static ShapeBase MakeInstance(System.IO.StreamReader readStream)
+        {
+            string identifier = ReadAWordFromStream(readStream);
+            if (!factory.ContainsKey(identifier)) 
+            {
+                throw new System.ArgumentException("The data isn`t recognized.");
+            }
+            else
+            {
+                return factory[identifier].Invoke(readStream.ReadLine());
+            }
+        }        
+        /// <summary>
         /// When overridden in a derived class, interprets string as numeric data.
         /// </summary>
         /// <param name="line">
         /// The string data.
         /// </param>
-        protected abstract void Interpret(string line);       
+        /// <returns>
+        /// When overridden in a derived class, returns filled shape into <see cref="ShapeBase"/>.
+        /// </returns>
+        protected abstract ShapeBase Interpret(string line);      
         /// <summary>
         /// Reads some information about circle from file.
         /// </summary>
@@ -67,14 +148,8 @@ namespace Shapes.Models.Classes
         /// </exception>
         public void ReadFromFile(System.IO.StreamReader readStream)
         {
-            //In "name" will be stored information about what class can be created.
-            System.Text.StringBuilder name = new System.Text.StringBuilder("");
-            char letter = ' ';
-            while ((letter = (char)readStream.Read()) != ' ')
-            {
-                name.Append(letter);
-            }
-            if (name.ToString() == ID)
+            string identifier = ReadAWordFromStream(readStream);
+            if (identifier == ID) 
             {
                 Interpret(readStream.ReadLine());
             }
@@ -89,50 +164,6 @@ namespace Shapes.Models.Classes
         /// <param name="writeStream">
         /// The file stream.
         /// </param>
-        public abstract void WriteToFile(System.IO.StreamWriter writeStream);
-        /// <summary>
-        /// Creates classes that inherit from "ShapeBase".
-        /// </summary>
-        /// <param name="readStream">
-        /// Stream only for reading from file.
-        /// </param>
-        /// <returns>
-        /// Instance of the corresponding class.
-        /// </returns>
-        /// <exception cref="System.ArgumentException">
-        /// Thrown when the first word in line from file isn`t recognized.
-        /// </exception>
-        public static ShapeBase CreateInstance(System.IO.StreamReader readStream)
-        {
-            //In "name" will be stored information about what class must be created.
-            System.Text.StringBuilder name = new System.Text.StringBuilder("");
-            char letter = ' ';
-            while ((letter = (char)readStream.Read()) != ' ') 
-            {
-                name.Append(letter);
-            }
-            if (name.ToString() == "Circle")
-            {
-                Circle circle = new Circle();
-                circle.Interpret(readStream.ReadLine());
-                return circle;
-            }
-            else if (name.ToString() == "Square")
-            {
-                Square square = new Square();
-                square.Interpret(readStream.ReadLine());
-                return square;
-            }
-            else if (name.ToString() == "Triangle") 
-            {
-                Triangle triangle = new Triangle();
-                triangle.Interpret(readStream.ReadLine());
-                return triangle;
-            }
-            else
-            {
-                throw new System.ArgumentException("The data isn`t recognized.");
-            }
-        }        
+        public abstract void WriteToFile(System.IO.StreamWriter writeStream);      
     }
 }

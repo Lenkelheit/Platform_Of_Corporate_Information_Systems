@@ -5,7 +5,7 @@ namespace Shapes.Models.Interfaces
     /// </summary>
     public interface IFileManager
     {
-         /// <summary>
+        /// <summary>
         /// Identifier for class.
         /// </summary>
         string ID { get; }

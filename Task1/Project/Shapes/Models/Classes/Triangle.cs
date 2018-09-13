@@ -7,6 +7,7 @@ namespace Shapes.Models.Classes
     /// </summary>
     public class Triangle : ShapeBase
     {
+        // CONST    
         const uint ARGUMENT_AMOUNT = 6;
         // FIELDS
         Point first;
@@ -35,10 +36,6 @@ namespace Shapes.Models.Classes
             this.third = third;
         }
         // PROPERTIES
-        /// <summary>
-        /// Identifier of the triangle.
-        /// </summary>
-        public override string ID => nameof(Triangle);
         /// <summary>
         /// Number of simple elements of the triangle.
         /// </summary>
@@ -77,18 +74,21 @@ namespace Shapes.Models.Classes
         /// <param name="line">
         /// The string data.
         /// </param>
+        /// <returns>
+        /// Filled triangle into <see cref="ShapeBase"/>.
+        /// </returns>        
         /// <exception cref="System.ArgumentException">
         /// Thrown when quantity of elements for creating triangle is unacceptable.
         /// </exception> 
         /// <exception cref="System.FormatException">
         /// Thrown when format of string data is unacceptable.
         /// </exception>
-        protected override void Interpret(string line)
+        protected override ShapeBase Interpret(string line)
         {
             string[] data = line.Split(' ');
             if (data.Length != ArgumentAmount) 
             {
-                throw new System.ArgumentException("Wrong argument amount.");
+                throw new System.ArgumentException("Wrong argument amount for triangle.");
             }
             else 
             {
@@ -98,8 +98,22 @@ namespace Shapes.Models.Classes
                 second.Y = double.Parse(data[3]);
                 third.X = double.Parse(data[4]);
                 third.Y = double.Parse(data[5]);
+                return this;                
             }
         }
+        /// <summary>
+        /// Creates <see cref="Triangle"/> and fills its fields.
+        /// </summary>
+        /// <param name="line">
+        /// The string data.
+        /// </param>
+        /// <returns>
+        /// Created triangle into <see cref="ShapeBase"/>.
+        /// </returns>
+        public static ShapeBase CreateInstance(string line)
+        {
+            return new Triangle().Interpret(line);
+        }        
         /// <summary>
         /// Writes some information about triangle to file.
         /// </summary>
@@ -108,7 +122,6 @@ namespace Shapes.Models.Classes
         /// </param>
         public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
-            //Triangle - means it is data for triangle.
             writeStream.WriteLine($"{ID} {first.X} {first.Y} {second.X} {second.Y} {third.X} {third.Y}");
         }
         /// <summary>

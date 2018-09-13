@@ -7,6 +7,7 @@ namespace Shapes.Models.Classes
     /// </summary>
     public class Circle : ShapeBase
     {
+        // CONST
         const uint ARGUMENT_AMOUNT = 3;    
         // FIELDS
         Point center;
@@ -35,10 +36,6 @@ namespace Shapes.Models.Classes
             this.radius = radius;
         }
         // PROPERTIES
-        /// <summary>
-        /// Identifier of the circle.
-        /// </summary>
-        public override string ID => nameof(Circle);
         /// <summary>
         /// Number of simple elements of the circle.
         /// </summary>
@@ -93,26 +90,43 @@ namespace Shapes.Models.Classes
         /// <param name="line">
         /// The string data.
         /// </param>
+        /// <returns>
+        /// Filled circle into <see cref="ShapeBase"/>.
+        /// </returns>        
         /// <exception cref="System.ArgumentException">
         /// Thrown when quantity of elements for creating circle is unacceptable.
         /// </exception> 
         /// <exception cref="System.FormatException">
         /// Thrown when format of string data is unacceptable.
         /// </exception>
-        protected override void Interpret(string line)
+        protected override ShapeBase Interpret(string line)
         {
             string[] data = line.Split(' ');
             if (data.Length != ArgumentAmount) 
             {
-                throw new System.ArgumentException("Wrong argument amount.");
+                throw new System.ArgumentException("Wrong argument amount for circle.");
             }
             else 
             {
                 center.X = double.Parse(data[0]);
                 center.Y = double.Parse(data[1]);
                 radius = double.Parse(data[2]);
+                return this;                
             }
         }
+        /// <summary>
+        /// Creates <see cref="Circle"/> and fills its fields.
+        /// </summary>
+        /// <param name="line">
+        /// The string data.
+        /// </param>
+        /// <returns>
+        /// Created circle into <see cref="ShapeBase"/>.
+        /// </returns>
+        public static ShapeBase CreateInstance(string line)
+        {
+            return new Circle().Interpret(line);
+        }        
         /// <summary>
         /// Writes some information about circle to file.
         /// </summary>
@@ -121,7 +135,6 @@ namespace Shapes.Models.Classes
         /// </param>
         public override void WriteToFile(System.IO.StreamWriter writeStream)
         {
-            //Circle - means it is data for circle.
             writeStream.WriteLine($"{ID} {center.X} {center.Y} {radius}");
         }
         /// <summary>

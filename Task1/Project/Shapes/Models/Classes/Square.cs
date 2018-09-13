@@ -7,6 +7,7 @@ namespace Shapes.Models.Classes
     /// </summary>
     public class Square : ShapeBase
     {
+        // CONST    
         const uint ARGUMENT_AMOUNT = 4;    
         // FIELDS
         Point topLeft;
@@ -39,10 +40,6 @@ namespace Shapes.Models.Classes
             }
         }
         // PROPERTIES
-        /// <summary>
-        /// Identifier of the square.
-        /// </summary>
-        public override string ID => nameof(Square);
         /// <summary>
         /// Number of simple elements of the square.
         /// </summary>
@@ -107,18 +104,21 @@ namespace Shapes.Models.Classes
         /// <param name="line">
         /// The string data.
         /// </param>
+        /// <returns>
+        /// Filled square into <see cref="ShapeBase"/>.
+        /// </returns>        
         /// <exception cref="System.ArgumentException">
         /// Thrown when quantity of elements for creating square is unacceptable.
         /// </exception> 
         /// <exception cref="System.FormatException">
         /// Thrown when format of string data is unacceptable.
         /// </exception>
-        protected override void Interpret(string line)
+        protected override ShapeBase Interpret(string line)
         {
             string[] data = line.Split(' ');
             if (data.Length != ArgumentAmount) 
             {
-                throw new System.ArgumentException("Wrong argument amount.");
+                throw new System.ArgumentException("Wrong argument amount for square.");
             }
             else 
             {
@@ -126,8 +126,22 @@ namespace Shapes.Models.Classes
                 topLeft.Y = double.Parse(data[1]);
                 bottomRight.X = double.Parse(data[2]);
                 bottomRight.Y = double.Parse(data[3]);
+                return this;                
             }
         }
+        /// <summary>
+        /// Creates <see cref="Square"/> and fills its fields.
+        /// </summary>
+        /// <param name="line">
+        /// The string data.
+        /// </param>
+        /// <returns>
+        /// Created square into <see cref="ShapeBase"/>.
+        /// </returns>
+        public static ShapeBase CreateInstance(string line)
+        {
+            return new Square().Interpret(line);
+        }        
         /// <summary>
         /// Writes some information about square to file.
         /// </summary>
@@ -135,8 +149,7 @@ namespace Shapes.Models.Classes
         /// Stream only for writing to file.
         /// </param>
         public override void WriteToFile(System.IO.StreamWriter writeStream)
-        {
-            //Square - means it is data for square.
+        {        
             writeStream.WriteLine($"{ID} {topLeft.X} {topLeft.Y} {bottomRight.X} {bottomRight.Y}");
         }
     }
