@@ -67,6 +67,10 @@ namespace Shapes.Models.Classes
         {
             factory = new Dictionary<string, Deserialization>();
             idCreatorByType = (type) => type.Name;
+	    
+            RegisterShape(typeof(Circle), Circle.CreateInstance);
+            RegisterShape(typeof(Square), Square.CreateInstance);
+            RegisterShape(typeof(Triangle), Triangle.CreateInstance);	    
         }        
         // METHODS
         /// <summary>
