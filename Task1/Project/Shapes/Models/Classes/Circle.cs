@@ -37,10 +37,6 @@ namespace Shapes.Models.Classes
         }
         // PROPERTIES
         /// <summary>
-        /// Identifier of the circle.
-        /// </summary>
-        public override string ID => ShapeBase.IdOfTheShape(this.GetType());
-        /// <summary>
         /// Number of simple elements of the circle.
         /// </summary>
         public override uint ArgumentAmount => ARGUMENT_AMOUNT;        
