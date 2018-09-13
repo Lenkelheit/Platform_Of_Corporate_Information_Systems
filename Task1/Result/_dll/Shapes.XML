@@ -1,0 +1,466 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Shapes</name>
+    </assembly>
+    <members>
+        <member name="T:Shapes.Models.Classes.Circle">
+            <summary>
+            Represents class for circle
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Circle.#ctor">
+            <summary>
+            Basic constructor without parameters
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Circle.#ctor(Shapes.Models.Classes.Point,System.Double)">
+            <summary>
+            Constructor with params
+            </summary>
+            <param name="сenter">Center point</param>
+            <param name="radius">Radius</param>
+        </member>
+        <member name="P:Shapes.Models.Classes.Circle.ArgumentAmount">
+            <summary>
+            Number of simple elements of the circle.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.Circle.GetPerimeter">
+            <summary>
+            Returns the perimeter of the circle
+            </summary>
+            <returns>Shape perimeter</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Circle.GetSquare">
+            <summary>
+            Returns the square of the circle
+            </summary>
+            <returns>Shape square</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Circle.Radius">
+            <summary>
+            Propetry that returns circle radius
+            </summary>
+            <returns>Circle radius</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Circle.Center">
+            <summary>
+            Propetry that returns circle center point
+            </summary>
+            <returns>Circle center point</returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.Circle.Interpret(System.String)">
+            <summary>
+            Interprets string as numeric data for circle.
+            </summary>
+            <param name="line">
+            The string data.
+            </param>
+            <returns>
+            Filled circle into <see cref="T:Shapes.Models.Classes.ShapeBase"/>.
+            </returns>        
+            <exception cref="T:System.ArgumentException">
+            Thrown when quantity of elements for creating circle is unacceptable.
+            </exception> 
+            <exception cref="T:System.FormatException">
+            Thrown when format of string data is unacceptable.
+            </exception>
+        </member>
+        <member name="M:Shapes.Models.Classes.Circle.CreateInstance(System.String)">
+            <summary>
+            Creates <see cref="T:Shapes.Models.Classes.Circle"/> and fills its fields.
+            </summary>
+            <param name="line">
+            The string data.
+            </param>
+            <returns>
+            Created circle into <see cref="T:Shapes.Models.Classes.ShapeBase"/>.
+            </returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.Circle.WriteToFile(System.IO.StreamWriter)">
+            <summary>
+            Writes some information about circle to file.
+            </summary>
+            <param name="writeStream">
+            Stream only for writing to file.
+            </param>
+        </member>
+        <member name="M:Shapes.Models.Classes.Circle.GetMiddlePoint">
+            <summary>
+            Returns the central point of shape
+            </summary>
+            <returns>Central point of shape</returns>
+        </member>
+        <member name="T:Shapes.Models.Classes.Point">
+            <summary>
+            Models simple point on two-dimensional space
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Point.#ctor(System.Double,System.Double)">
+            <summary>
+            Basic constructor that takes 2 parameters
+            </summary>
+            <param name="xCoord">Abscis position</param>
+            <param name="yCoord">Ordinate position</param> 
+        </member>
+        <member name="P:Shapes.Models.Classes.Point.X">
+            <summary>
+            Property that return absciss coordinate
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.Point.Y">
+            <summary>
+            Property that return ordinate coordinate
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Point.Distance(Shapes.Models.Classes.Point,Shapes.Models.Classes.Point)">
+            <summary>
+            Method that returns distance between two points
+            </summary>
+            <param name="A">First Point</param>
+            <param name="B">Second point</param>
+            <returns>Distance betweeen points</returns>
+        </member>
+        <member name="T:Shapes.Models.Classes.ShapeBase">
+            <summary>
+            Represents basic algorithms for the shape objects.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.ShapeBase.IdCreatorByType">
+            <summary>
+            Creator Id by type.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.ShapeBase.ID">
+            <summary>
+            Identifier of the shape.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.ShapeBase.ArgumentAmount">
+            <summary>
+            When overridden in a derived class, returns the number of simple elements of the shape.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.ShapeBase.GetPerimeter">
+            <summary>
+            When overridden in a derived class, returns the perimeter of the shape.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.ShapeBase.GetSquare">
+            <summary>
+            When overridden in a derived class, returns the square of the shape.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.ShapeBase.GetQuarter">
+            <summary>
+            Returns the position of the shape whithin coordinate querter.
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.ShapeBase.GetMiddlePoint">
+            <summary>
+            When overridden in a derived class, return the middle point of the shape.
+            </summary>
+            <returns>
+            The middle point of the shape.
+            </returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.ShapeBase.RegisterShape(System.Type,System.Func{System.String,Shapes.Models.Classes.ShapeBase})">
+            <summary>
+            Register shapes in factory.
+            </summary>
+            <param name="type">
+            Type of the shape.
+            </param>
+            <param name="creator">
+            Creator shapes by <see cref="T:System.String"/>.
+            </param>
+        </member>
+        <member name="M:Shapes.Models.Classes.ShapeBase.MakeInstance(System.IO.StreamReader)">
+            <summary>
+            Creates classes that inherit from <see cref="T:Shapes.Models.Classes.ShapeBase"/>.
+            </summary>
+            <param name="readStream">
+            Stream only for reading from file.
+            </param>
+            <returns>
+            Instance of the corresponding class.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+            Thrown when the first word in line from file isn`t recognized.
+            </exception>
+        </member>
+        <member name="M:Shapes.Models.Classes.ShapeBase.Interpret(System.String)">
+            <summary>
+            When overridden in a derived class, interprets string as numeric data.
+            </summary>
+            <param name="line">
+            The string data.
+            </param>
+            <returns>
+            When overridden in a derived class, returns filled shape into <see cref="T:Shapes.Models.Classes.ShapeBase"/>.
+            </returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.ShapeBase.ReadFromFile(System.IO.StreamReader)">
+            <summary>
+            Reads some information about circle from file.
+            </summary>
+            <param name="readStream">
+            Stream only for reading from file.
+            </param>
+            <exception cref="T:System.ArgumentException">
+            Thrown when the first word in line from file isn`t recognized.
+            </exception>
+        </member>
+        <member name="M:Shapes.Models.Classes.ShapeBase.WriteToFile(System.IO.StreamWriter)">
+            <summary>
+            When overridden in a derived class, writes information to file.
+            </summary>
+            <param name="writeStream">
+            The file stream.
+            </param>
+        </member>
+        <member name="T:Shapes.Models.Classes.Square">
+            <summary>
+            Represents class for square
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Square.#ctor">
+            <summary>
+            Basic constructor without parameters
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Square.#ctor(Shapes.Models.Classes.Point,Shapes.Models.Classes.Point)">
+            <summary>
+            Constructor with params
+            </summary>
+            <param name="topLeft">Point in Top, Left corner</param>
+            <param name="bottomRight">Point in Bottom, Right corner</param>
+            <exception cref="T:System.ArgumentException">Thrown when points can't make square</exception>;
+        </member>
+        <member name="P:Shapes.Models.Classes.Square.ArgumentAmount">
+            <summary>
+            Number of simple elements of the square.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.Square.TopLeftPoint">
+            <summary>
+            Propetry that returns top left point
+            </summary>
+            <returns>Top left point</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Square.BottomRightPoint">
+            <summary>
+            Propetry that returns bottom right point
+            </summary>
+            <returns>Bottom right point</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Square.GetPerimeter">
+            <summary>
+            Returns the perimeter of the square
+            </summary>
+            <returns>Shape perimeter</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Square.GetSquare">
+            <summary>
+            Returns the square of the square
+            </summary>
+            <returns>Shape square</returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.Square.GetMiddlePoint">
+            <summary>
+            Returns the central point of shape
+            </summary>
+            <returns>Central point</returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.Square.Interpret(System.String)">
+            <summary>
+            Interprets string as numeric data for square.
+            </summary>
+            <param name="line">
+            The string data.
+            </param>
+            <returns>
+            Filled square into <see cref="T:Shapes.Models.Classes.ShapeBase"/>.
+            </returns>        
+            <exception cref="T:System.ArgumentException">
+            Thrown when quantity of elements for creating square is unacceptable.
+            </exception> 
+            <exception cref="T:System.FormatException">
+            Thrown when format of string data is unacceptable.
+            </exception>
+        </member>
+        <member name="M:Shapes.Models.Classes.Square.CreateInstance(System.String)">
+            <summary>
+            Creates <see cref="T:Shapes.Models.Classes.Square"/> and fills its fields.
+            </summary>
+            <param name="line">
+            The string data.
+            </param>
+            <returns>
+            Created square into <see cref="T:Shapes.Models.Classes.ShapeBase"/>.
+            </returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.Square.WriteToFile(System.IO.StreamWriter)">
+            <summary>
+            Writes some information about square to file.
+            </summary>
+            <param name="writeStream">
+            Stream only for writing to file.
+            </param>
+        </member>
+        <member name="T:Shapes.Models.Classes.Triangle">
+            <summary>
+            Represents class for triangle
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Triangle.#ctor">
+            <summary>
+            Basic constructor without parametrs
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Classes.Triangle.#ctor(Shapes.Models.Classes.Point,Shapes.Models.Classes.Point,Shapes.Models.Classes.Point)">
+            <summary>
+            Basic constructor with params
+            </summary>
+            <param name="first">First point</param>
+            <param name="second">Second point</param>
+            <param name="third">Third point</param>
+        </member>
+        <member name="P:Shapes.Models.Classes.Triangle.ArgumentAmount">
+            <summary>
+            Number of simple elements of the triangle.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Classes.Triangle.GetPerimeter">
+            <summary>
+            Returns the perimeter of the triangle
+            </summary>
+            <returns>Triangles perimetr</returns>
+        </member>
+        <member name="P:Shapes.Models.Classes.Triangle.GetSquare">
+            <summary>
+            Returns the square of the triangle
+            </summary>
+            <returns>Triangles square</returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.Triangle.Interpret(System.String)">
+            <summary>
+            Interprets string as numeric data for triangle.
+            </summary>
+            <param name="line">
+            The string data.
+            </param>
+            <returns>
+            Filled triangle into <see cref="T:Shapes.Models.Classes.ShapeBase"/>.
+            </returns>        
+            <exception cref="T:System.ArgumentException">
+            Thrown when quantity of elements for creating triangle is unacceptable.
+            </exception> 
+            <exception cref="T:System.FormatException">
+            Thrown when format of string data is unacceptable.
+            </exception>
+        </member>
+        <member name="M:Shapes.Models.Classes.Triangle.CreateInstance(System.String)">
+            <summary>
+            Creates <see cref="T:Shapes.Models.Classes.Triangle"/> and fills its fields.
+            </summary>
+            <param name="line">
+            The string data.
+            </param>
+            <returns>
+            Created triangle into <see cref="T:Shapes.Models.Classes.ShapeBase"/>.
+            </returns>
+        </member>
+        <member name="M:Shapes.Models.Classes.Triangle.WriteToFile(System.IO.StreamWriter)">
+            <summary>
+            Writes some information about triangle to file.
+            </summary>
+            <param name="writeStream">
+            Stream only for writing to file.
+            </param>
+        </member>
+        <member name="M:Shapes.Models.Classes.Triangle.GetMiddlePoint">
+            <summary>
+            Returns the position of the triangle whithin coordinate querter
+            </summary>
+            <returns>Central point of shape</returns>
+        </member>
+        <member name="T:Shapes.Models.Enums.CoordinateQuarters">
+            <summary>
+            Specifies the position of the shape within coordinate quarters.
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Enums.CoordinateQuarters.First">
+            <summary>
+            Specifies  the position of the shape in first coordinate quarter.
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Enums.CoordinateQuarters.Second">
+            <summary>
+            Specifies  the position of the shape in second coordinate quarter.
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Enums.CoordinateQuarters.Third">
+            <summary>
+            Specifies  the position of the shape in third coordinate quarter.
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Enums.CoordinateQuarters.Fourth">
+            <summary>
+            Specifies  the position of the shape in fourth coordinate quarter.
+            </summary>
+        </member>
+        <member name="T:Shapes.Models.Interfaces.IFileManager">
+            <summary>
+            Provides methods for writing to and reading from file.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Interfaces.IFileManager.ID">
+            <summary>
+            Identifier for class.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Interfaces.IFileManager.ArgumentAmount">
+            <summary>
+            Number of simple elements for class.
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Interfaces.IFileManager.ReadFromFile(System.IO.StreamReader)">
+            <summary>
+            Reads some information from file.
+            </summary>
+            <param name="readStream">
+            Stream for access to file and is only for reading from it.
+            </param>
+        </member>
+        <member name="M:Shapes.Models.Interfaces.IFileManager.WriteToFile(System.IO.StreamWriter)">
+            <summary>
+            Writes some information to file.
+            </summary>
+            <param name="writeStream">
+            Stream for access to file and is only for writing to it.
+            </param>
+        </member>
+        <member name="T:Shapes.Models.Interfaces.IShape">
+            <summary>
+            Defines the basic rules for creating type Shape objects.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Interfaces.IShape.GetSquare">
+            <summary>
+            Returns the square of the shape.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Interfaces.IShape.GetPerimeter">
+            <summary>
+            Returns the perimeter of the shape.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Interfaces.IShape.GetQuarter">
+            <summary>
+            Returns the position of the shape whithin coordinate querter.
+            </summary>
+        </member>
+    </members>
+</doc>
