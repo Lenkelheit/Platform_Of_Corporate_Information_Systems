@@ -39,7 +39,7 @@ namespace Shapes.Models.Classes
         /// <summary>
         /// Identifier of the triangle.
         /// </summary>
-        public override string ID => ShapeBase.IdCreator(this.GetType());
+        public override string ID => ShapeBase.IdOfTheShape(this.GetType());
         /// <summary>
         /// Number of simple elements of the triangle.
         /// </summary>
