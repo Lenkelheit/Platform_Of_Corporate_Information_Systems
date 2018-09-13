@@ -73,6 +73,16 @@ namespace Shapes.Models.Classes
             RegisterShape(typeof(Triangle), Triangle.CreateInstance);	    
         }        
         // METHODS
+        static string ReadAWordFromStream(System.IO.StreamReader readStream)
+        {
+            //In "identifier" will be stored a first word in line from file.
+            System.Text.StringBuilder identifier = new System.Text.StringBuilder("");
+            for (char letter = (char)readStream.Read(); letter != ' '; letter = (char)readStream.Read())
+            {
+                identifier.Append(letter);
+            }
+            return identifier.ToString();
+        }	
         /// <summary>
         /// When overridden in a derived class, return the middle point of the shape.
         /// </summary>
@@ -107,12 +117,7 @@ namespace Shapes.Models.Classes
         /// </exception>
         public static ShapeBase MakeInstance(System.IO.StreamReader readStream)
         {
-            //In "identifier" will be stored information about what class can be created if it will pass a control.
-            System.Text.StringBuilder identifier = new System.Text.StringBuilder("");
-            for (char letter = (char)readStream.Read(); letter != ' '; letter = (char)readStream.Read())
-            {
-                identifier.Append(letter);
-            }
+            string identifier = ReadAWordFromStream(readStream);
             if (!factory.ContainsKey(identifier.ToString())) 
             {
                 throw new System.ArgumentException("The data isn`t recognized.");
@@ -143,12 +148,7 @@ namespace Shapes.Models.Classes
         /// </exception>
         public void ReadFromFile(System.IO.StreamReader readStream)
         {
-            //In "identifier" will be stored information about what class can be created if it will pass a control.
-            System.Text.StringBuilder identifier = new System.Text.StringBuilder("");
-            for (char letter = (char)readStream.Read(); letter != ' '; letter = (char)readStream.Read()) 
-            {
-                identifier.Append(letter);
-            }
+            string identifier = ReadAWordFromStream(readStream);
             if (identifier.ToString() == ID)
             {
                 Interpret(readStream.ReadLine());
