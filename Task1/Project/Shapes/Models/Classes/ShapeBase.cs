@@ -30,9 +30,9 @@ namespace Shapes.Models.Classes
             }
         }        
         /// <summary>
-        /// When overridden in a derived class, returns the identifier of the shape.
+        /// Identifier of the shape.
         /// </summary>
-        public abstract string ID { get; }
+        public string ID => ShapeBase.IdOfTheShape(this.GetType());
         /// <summary>
         /// When overridden in a derived class, returns the number of simple elements of the shape.
         /// </summary>
