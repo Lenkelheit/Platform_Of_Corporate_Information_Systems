@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Shapes.Models.Enums;
 using Shapes.Models.Interfaces;
 using IdentifierShape = System.Func<System.Type, string>;
@@ -86,6 +87,35 @@ namespace Shapes.Models.Classes
         public static void RegisterShape(string key, Deserialization transformer)
         {
             dictionaryOfId.Add(key, transformer);
+        }
+        /// <summary>
+        /// Creates classes that inherit from <see cref="ShapeBase"/>.
+        /// </summary>
+        /// <param name="readStream">
+        /// Stream only for reading from file.
+        /// </param>
+        /// <returns>
+        /// Instance of the corresponding class.
+        /// </returns>
+        /// <exception cref="System.ArgumentException">
+        /// Thrown when the first word in line from file isn`t recognized.
+        /// </exception>
+        public static ShapeBase MakeInstance(System.IO.StreamReader readStream)
+        {
+            //In "identifier" will be stored information about what class can be created if it will pass a control.
+            System.Text.StringBuilder identifier = new System.Text.StringBuilder("");
+            for (char letter = (char)readStream.Read(); letter != ' '; letter = (char)readStream.Read())
+            {
+                identifier.Append(letter);
+            }
+            if (!dictionaryOfId.ContainsKey(identifier.ToString())) 
+            {
+                throw new System.ArgumentException("The data isn`t recognized.");
+            }
+            else
+            {
+                return dictionaryOfId[identifier.ToString()].Invoke(readStream.ReadLine());
+            }
         }        
         /// <summary>
         /// When overridden in a derived class, interprets string as numeric data.
