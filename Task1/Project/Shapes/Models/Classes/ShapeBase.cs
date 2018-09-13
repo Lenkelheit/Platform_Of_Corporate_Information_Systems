@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Shapes.Models.Enums;
 using Shapes.Models.Interfaces;
-using IdentifierShape = System.Func<System.Type, string>;
+using IdentifierCreator = System.Func<System.Type, string>;
 using Deserialization = System.Func<string, Shapes.Models.Classes.ShapeBase>;
 
 namespace Shapes.Models.Classes
@@ -12,27 +12,27 @@ namespace Shapes.Models.Classes
     public abstract class ShapeBase : IShape, IFileManager
     {       
         // FIELDS
-        static IdentifierShape idOfTheShape;
+        static IdentifierCreator idCreatorByType;
         static Dictionary<string, Deserialization> dictionaryOfId;    
         // PROPERTIES
         /// <summary>
-        /// The identifier of the shape.
+        /// Creator Id by type.
         /// </summary>
-        public static IdentifierShape IdOfTheShape
+        public static IdentifierCreator IdCreatorByType
         {
             get
             {
-                return idOfTheShape;
+                return idCreatorByType;
             }
             set
             {
-                idOfTheShape = value;
+                idCreatorByType = value;
             }
-        }        
+        }     
         /// <summary>
         /// Identifier of the shape.
         /// </summary>
-        public string ID => ShapeBase.IdOfTheShape(this.GetType());
+        public string ID => ShapeBase.idCreatorByType(this.GetType());
         /// <summary>
         /// When overridden in a derived class, returns the number of simple elements of the shape.
         /// </summary>
@@ -65,7 +65,7 @@ namespace Shapes.Models.Classes
         static ShapeBase()
         {
             dictionaryOfId = new Dictionary<string, Deserialization>();
-            idOfTheShape = (type) => type.Name;
+            idCreatorByType = (type) => type.Name;
         }        
         // METHODS
         /// <summary>
