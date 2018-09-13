@@ -11,7 +11,7 @@ namespace Task1
 {
     class Program
     {
-        static readonly string DIRECTORY_SEPARATOR_STR 	    = Path.DirectorySeparatorChar.ToString();
+        static readonly string DIRECTORY_SEPARATOR_STR 	= Path.DirectorySeparatorChar.ToString();
         static readonly string DIRECTORY_PATH 		        = string.Join(DIRECTORY_SEPARATOR_STR, AppDomain.CurrentDomain.BaseDirectory, "Resources");
         static readonly string FILE_PATH_FORMAT 	        = string.Join(Path.DirectorySeparatorChar.ToString(), DIRECTORY_PATH, "{0}.txt");
 
