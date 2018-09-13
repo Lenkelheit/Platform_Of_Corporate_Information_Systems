@@ -19,7 +19,7 @@ namespace Task1
         static readonly string WRITE_FILE_NAME_1 	= "file1";
         static readonly string WRITE_FILE_NAME_2 	= "file2";
 
-        static readonly string DIRECTORY_NOT_FOUND_MESSAGE 	= "Wrong path to resources folder";
+        static readonly string DIRECTORY_NOT_FOUND_MESSAGE 	= "Wrong path to resources folder.";
         static readonly string FILE_NOT_FOUND_MESSAGE 		= "Data file has not been found.";
         static readonly string FILE_READ_EXCEPTION_MESSAGE 	= "Do you want to END reading or SKIP this line?";
         static readonly string USER_WRONG_READ_ANSWER_MESSAGE 	= "Your answer is incorrect, please try again.";
