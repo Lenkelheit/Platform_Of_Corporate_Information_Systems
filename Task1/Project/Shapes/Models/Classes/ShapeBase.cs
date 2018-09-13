@@ -77,17 +77,17 @@ namespace Shapes.Models.Classes
         /// </returns>
         protected abstract Point GetMiddlePoint();
         /// <summary>
-        /// Register shapes in dictionary of Id.
+        /// Register shapes in factory.
         /// </summary>
-        /// <param name="key">
-        /// Id of the shape.
+        /// <param name="type">
+        /// Type of the shape.
         /// </param>
-        /// <param name="transformer">
-        /// Transformer <see cref="string"/> to <see cref="ShapeBase"/>.
+        /// <param name="creator">
+        /// Creator shapes by <see cref="string"/>.
         /// </param>
-        public static void RegisterShape(string key, Deserialization transformer)
+        public static void RegisterShape(System.Type type, Deserialization creator)
         {
-            factory.Add(key, transformer);
+            factory.Add(idCreatorByType(type), creator);
         }
         /// <summary>
         /// Creates classes that inherit from <see cref="ShapeBase"/>.
