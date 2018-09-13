@@ -167,6 +167,8 @@ The one can set his deadline 10 days before task deadline.
 
 All unit-tests should be reworked in 2 days after project complete.
 
+After work has been done we sum up what was done right and what was not.
+
 <p align="center">
   <img src="/Images/plan.png">
 </p>
