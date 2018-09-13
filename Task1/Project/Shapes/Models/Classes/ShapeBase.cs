@@ -108,14 +108,13 @@ namespace Shapes.Models.Classes
         /// </exception>
         public void ReadFromFile(System.IO.StreamReader readStream)
         {
-            //In "name" will be stored information about what class can be created.
-            System.Text.StringBuilder name = new System.Text.StringBuilder("");
-            char letter = ' ';
-            while ((letter = (char)readStream.Read()) != ' ')
+            //In "identifier" will be stored information about what class can be created if it will pass a control.
+            System.Text.StringBuilder identifier = new System.Text.StringBuilder("");
+            for (char letter = (char)readStream.Read(); letter != ' '; letter = (char)readStream.Read()) 
             {
-                name.Append(letter);
+                identifier.Append(letter);
             }
-            if (name.ToString() == ID)
+            if (identifier.ToString() == ID)
             {
                 Interpret(readStream.ReadLine());
             }
