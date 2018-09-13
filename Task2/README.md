@@ -8,12 +8,11 @@
 
 
 ## Tasks
-
+Build a WPF program for working with geometric shapes.
 We are working with **pentagon**.
 
 |№|          State         |                            Text                                           |   Assignees  |  Deadline  |
 |-|:----------------------:|:--------------------------------------------------------------------------|:------------:|:----------:|
-| |                        |<p align="center">Build a WPF program for working with geometric shapes</p>|              |            |
 | |                        | <p align="center">   1. Main menu has    </p>                             |              |            |
 | |                        | <p align="center"> **File** </p>                                          |              |            |
 | |<ul><li>- [ ] </li></ul>| *New* – create new empty canvas                                           |              |            |
