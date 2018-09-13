@@ -13,13 +13,14 @@ namespace Shapes.Models.Classes
     {       
         // FIELDS
         static IdentifierCreator idCreatorByType;
-        static Dictionary<string, Deserialization> dictionaryOfId;    
+        static Dictionary<string, Deserialization> factoryOfIdForCreatingShape;    
         // PROPERTIES
         /// <summary>
         /// Creator Id by type.
         /// </summary>
         public static IdentifierCreator IdCreatorByType
         {
+		
             get
             {
                 return idCreatorByType;
@@ -64,7 +65,7 @@ namespace Shapes.Models.Classes
         // CONSTRUCTOR
         static ShapeBase()
         {
-            dictionaryOfId = new Dictionary<string, Deserialization>();
+            factoryOfIdForCreatingShape = new Dictionary<string, Deserialization>();
             idCreatorByType = (type) => type.Name;
         }        
         // METHODS
@@ -86,7 +87,7 @@ namespace Shapes.Models.Classes
         /// </param>
         public static void RegisterShape(string key, Deserialization transformer)
         {
-            dictionaryOfId.Add(key, transformer);
+            factoryOfIdForCreatingShape.Add(key, transformer);
         }
         /// <summary>
         /// Creates classes that inherit from <see cref="ShapeBase"/>.
@@ -108,13 +109,13 @@ namespace Shapes.Models.Classes
             {
                 identifier.Append(letter);
             }
-            if (!dictionaryOfId.ContainsKey(identifier.ToString())) 
+            if (!factoryOfIdForCreatingShape.ContainsKey(identifier.ToString())) 
             {
                 throw new System.ArgumentException("The data isn`t recognized.");
             }
             else
             {
-                return dictionaryOfId[identifier.ToString()].Invoke(readStream.ReadLine());
+                return factoryOfIdForCreatingShape[identifier.ToString()].Invoke(readStream.ReadLine());
             }
         }        
         /// <summary>
