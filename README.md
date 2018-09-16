@@ -85,7 +85,7 @@ C# version: 6.0
 #### Politics
 
 * all decisions are made through voting
-* if somebody missed voting it is his own false
+* if somebody missed voting it is his own fault
 * after voting has passed whining is not allowed
 
 #### Project Convention
