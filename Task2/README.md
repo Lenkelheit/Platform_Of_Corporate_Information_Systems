@@ -42,6 +42,12 @@ We are working with **pentagon**.
 | |<ul><li>- [ ] </li></ul>| Template                                                                  |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Vector graphics                                                           |      —       |      —     |
 
+## Icon
+
+<p align="center">
+  <img src="/Images/Task2/ico.png">
+</p>
+
 ## Folders diagram
 
 <p align="center">
