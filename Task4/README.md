@@ -58,6 +58,12 @@
 | |<ul><li>- [ ] </li></ul>| Change the HireDate field in all your records to current date             |              |            |
 | |<ul><li>- [ ] </li></ul>| Delete one of your records                                                |              |            |
 
+## Icon
+
+<p align="center">
+  <img src="/Images/Task4/ico.png">
+</p>
+
 ## Folders diagram
 
 <p align="center">
