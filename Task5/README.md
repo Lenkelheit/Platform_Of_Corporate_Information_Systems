@@ -29,6 +29,12 @@ Rework **Task 3**
 | |<ul><li>- [ ] </li></ul>| Xml-documentation                                                         |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Handling exceptions                                                       |      —       |      —     |
 
+## Icon
+
+<p align="center">
+  <img src="/Images/Task5/ico.png">
+</p>
+
 ## Folders diagram
 
 <p align="center">
