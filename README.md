@@ -99,13 +99,15 @@ C# version: 6.0
 
 #### Github Convention
 
-Brunches name:
+Branches name:
 
-* master — brunch for clients
-* development — brunch for developers
+* Repository's branches
+  - master — branch for clients
+  - development — branch for developers
 
-* feature/FeatureName
-* hot_fix/FixName
+* Your branches
+  - feature/FeatureName
+  - hot_fix/FixName
 
 #### Task Convention
 
