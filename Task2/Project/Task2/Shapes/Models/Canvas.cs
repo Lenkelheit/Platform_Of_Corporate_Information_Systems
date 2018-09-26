@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Shapes.Models
 {
-    public class Canvas : IEnumerable<ShapeBase>
+    public class Canvas : IEnumerable<ShapeBase> /*, INotifyCollectionChanged or (IChangable)*/
     {
         public ShapeBase SelectedShape { get; set; }
         public System.Collections.ObjectModel.ObservableCollection<ShapeBase> shapes { get; set; }
