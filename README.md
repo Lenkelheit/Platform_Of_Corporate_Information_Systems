@@ -79,7 +79,7 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 
 #### Project Configuration
 
-C# version: 6.0
+C# version: 4.0
 
 .NET version: 4.5.2
 
