@@ -11,6 +11,7 @@
     - [Project Configuration](#project-configuration)
     - [Politics](#politics)
     - [Project Convention](#project-convention)
+    - [Github Convention](#github-convention)
     - [Task Convention](#task-convention)
     - [File Hierarchy](#file-hierarchy)
     - [Team Work](#team-work)
@@ -78,7 +79,7 @@ Task protection — 10% of mark. Should be on the next lesson after deadline.
 
 #### Project Configuration
 
-C# version: 6.0
+C# version: 4.0
 
 .NET version: 4.5.2
 
@@ -95,6 +96,18 @@ C# version: 6.0
 * if somebody want to do changes in someone's bruch he should create separate brunch
 * all issues should have labels, assignees and should be bond to project
 * all pull requests should have labels, assigness and should be bond to project
+
+#### Github Convention
+
+Branches name:
+
+* Repository's branches
+  - master — branch for clients
+  - development — branch for developers
+
+* Your branches
+  - feature/FeatureName
+  - hot_fix/FixName
 
 #### Task Convention
 

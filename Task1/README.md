@@ -30,6 +30,12 @@
 |                                                        5                                                                         |
 | |<ul><li>- [x] </li></ul>|Unit-tests                                                                 |       —      |      —     |
 
+## Icon
+
+<p align="center">
+  <img src="/Images/Task1/ico.png">
+</p>
+
 ## Folders diagram
 
 <p align="center">
