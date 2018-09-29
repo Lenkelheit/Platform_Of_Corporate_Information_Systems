@@ -1,24 +1,48 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace Shapes.Models
 {
-    public class Canvas : IEnumerable<ShapeBase>/*, INotifyCollectionChanged, or IChangable*/
+    public class Canvas : IEnumerable<ShapeBase>, ICollection<ShapeBase>,  INotifyCollectionChanged
     {
-        public ShapeBase SelectedShape { get; set; }
-        public System.Collections.ObjectModel.ObservableCollection<ShapeBase> shapes { get; set; }
+        // PROPERTIES
+        public int Count
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+        public bool IsReadOnly
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        // maybe another collection if you want
+        //public System.Collections.ObjectModel.ObservableCollection<ShapeBase> shapes { get; set; }
+
+        // EVENTS
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
 
         // METHODS
-        public void SelectShape(int index)
-        {
-            throw new NotImplementedException();
-        }
         public void Add(ShapeBase shape)
         {
             throw new NotImplementedException();
         }
-        public void Remove(ShapeBase shape)
+        public void Insert(int index, ShapeBase shape)
+        {
+            throw new NotImplementedException();
+        }
+        public bool Remove(ShapeBase shape)
+        {
+            throw new NotImplementedException();
+        }
+        public void Remove(int index)
         {
             throw new NotImplementedException();
         }
@@ -26,14 +50,18 @@ namespace Shapes.Models
         {
             throw new NotImplementedException();
         }
-        public void MoveX(ShapeBase shape, uint position)
+
+        public bool Contains(ShapeBase item)
         {
             throw new NotImplementedException();
         }
-        public void MoveY(ShapeBase shape, uint position)
+
+        public void CopyTo(ShapeBase[] array, int arrayIndex)
         {
             throw new NotImplementedException();
         }
+        // other methods that change collection
+
         public IEnumerator<ShapeBase> GetEnumerator()
         {
             throw new NotImplementedException();
@@ -43,13 +71,9 @@ namespace Shapes.Models
         {
             throw new NotImplementedException();
         }     
-        // EVENTS
-        /*
-        MouseDown();
-        MouseUp();
-        MouseMove();
-        KeyDown();
-        KeyUp();
-        */
+        protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
