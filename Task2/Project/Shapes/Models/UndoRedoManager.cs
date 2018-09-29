@@ -1,12 +1,11 @@
-﻿using Shapes.Interfaces;
+using Shapes.Interfaces;
+using System.ComponentModel;
 using System.Collections.Generic;
 
 namespace Shapes.Models
 {
-    public class UndoRedoManager : IChangebable
+    public class UndoRedoManager : INotifyPropertyChanged
     {
-        // EVENTS
-        public event System.EventHandler StateChanged;
         // PROPERTIES
         public bool CanUndo
         {
@@ -36,6 +35,9 @@ namespace Shapes.Models
                 throw new System.NotImplementedException();
             }
         }
+        // EVENTS
+        public event PropertyChangedEventHandler PropertyChanged;
+
         // METHODS
         public void Execute(ICommand command)
         {
@@ -55,6 +57,11 @@ namespace Shapes.Models
             throw new System.NotImplementedException();
         }
         public void Redo(int count)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected void OnPropertyChanged(PropertyChangedEventArgs e)
         {
             throw new System.NotImplementedException();
         }
