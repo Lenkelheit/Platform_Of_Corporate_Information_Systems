@@ -20,9 +20,20 @@ namespace Shapes.Models
             }
             set
             {
-                location = value;
-                OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("Location"));
+                if (location != value)  
+                {
+                    location = value;
+                    OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs("Location"));
+                }
             }
+        }
+        // CONSTRUCTORS
+        /// <summary>
+        /// Basic constructor without parameters.
+        /// </summary>
+        public Vertex()
+        {
+            location = new System.Windows.Point(0, 0);
         }
     }
 }
