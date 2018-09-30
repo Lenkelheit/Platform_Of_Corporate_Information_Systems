@@ -27,7 +27,7 @@ namespace Shapes.Commands.Vertex
         }
         // METHODS
         /// <summary>
-        /// Changes <see cref="Models.Vertex"/>'s state.
+        /// Changes <see cref="Models.Vertex"/>'s location.
         /// </summary>
         public void Execute()
         {
@@ -35,7 +35,7 @@ namespace Shapes.Commands.Vertex
             vertex.Location = location;
         }
         /// <summary>
-        /// Returns <see cref="Models.Vertex"/> to its previous state.
+        /// Returns <see cref="Models.Vertex"/> to its previous location.
         /// </summary>
         public void UnExecute()
         {
