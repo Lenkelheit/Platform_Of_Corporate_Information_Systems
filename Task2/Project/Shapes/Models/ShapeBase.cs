@@ -10,7 +10,7 @@ namespace Shapes.Models
         /// <summary>
         /// The name of shape.
         /// </summary>
-        public string Name { get; set; }
+        public string Name => this.GetType().Name;
         // EVENTS
         /// <summary>
         /// Notifies that some property is changed.
