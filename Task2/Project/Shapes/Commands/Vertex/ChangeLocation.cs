@@ -13,7 +13,7 @@ namespace Shapes.Commands.Vertex
         /// <summary>
         /// Command name.
         /// </summary>
-        public string Name => "Location changed";
+        public string Name => "Vertex location changed";
         // CONSTRUCTORS
         /// <summary>
         /// Constructor with parameters.
