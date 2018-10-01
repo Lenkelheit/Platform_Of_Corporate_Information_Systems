@@ -42,7 +42,7 @@ namespace Shapes.Models
         {
             throw new NotImplementedException();
         }
-        public void Remove(int index)
+        public void RemoveAt(int index)
         {
             throw new NotImplementedException();
         }
@@ -57,6 +57,10 @@ namespace Shapes.Models
         }
 
         public void CopyTo(ShapeBase[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+        public int IndexOf(ShapeBase item)
         {
             throw new NotImplementedException();
         }
