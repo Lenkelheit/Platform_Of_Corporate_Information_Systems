@@ -7,7 +7,7 @@ namespace Shapes.Commands.Vertex
     {
         // FIELDS
         private Models.Vertex vertex;
-        private System.Windows.Point prevLocation;
+        private Models.Canvas canvas;
         // PROPERTIES
         /// <summary>
         /// Command name.
@@ -17,9 +17,11 @@ namespace Shapes.Commands.Vertex
         /// <summary>
         /// Constructor with parameters.
         /// </summary>
+        /// <param name="canvas">Current canvas.</param>
         /// <param name="vertex">Current vertex.</param>
-        public RemoveVertex(Models.Vertex vertex)
+        public RemoveVertex(Models.Canvas canvas, Models.Vertex vertex)
         {
+            this.canvas = canvas;
             this.vertex = vertex;
         }
         // METHODS
@@ -28,18 +30,14 @@ namespace Shapes.Commands.Vertex
         /// </summary>
         public void Execute()
         {
-            if (vertex.Location.X != 0 || vertex.Location.Y != 0) 
-            {
-                prevLocation = vertex.Location;
-                vertex.Location = new System.Windows.Point(0, 0);
-            }
+            canvas?.Remove(vertex);
         }
         /// <summary>
         /// Restores removed <see cref="Models.Vertex"/>.
         /// </summary>
         public void UnExecute()
         {
-            vertex.Location = prevLocation;
+            canvas.Add(vertex);
         }
     }
 }
