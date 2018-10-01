@@ -20,10 +20,20 @@ namespace Shapes.Commands.Vertex
         /// </summary>
         /// <param name="vertex">Current vertex.</param>
         /// <param name="location">New location.</param>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when vertex is null.
+        /// </exception> 
         public ChangeLocation(Models.Vertex vertex, System.Windows.Point location)
         {
-            this.vertex = vertex;
-            this.location = location;
+            if (vertex != null)
+            {
+                this.vertex = vertex;
+                this.location = location;
+            }
+            else
+            {
+                throw new System.ArgumentNullException("Vertex is null.");
+            }
         }
         // METHODS
         /// <summary>
