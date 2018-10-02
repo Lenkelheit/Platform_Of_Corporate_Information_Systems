@@ -1,0 +1,3 @@
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Task2\bin\Debug\Task2.exe.config
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Task2\obj\Debug\Task2.exe
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Task2\obj\Debug\Task2.pdb

@@ -1,0 +1,7 @@
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\DataControl\bin\Debug\DataControl.XML
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\DataControl\bin\Debug\DataControl.dll
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\DataControl\bin\Debug\DataControl.pdb
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\DataControl\bin\Debug\Shapes.dll
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\DataControl\obj\Debug\DataControl.csprojResolveAssemblyReference.cache
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\DataControl\obj\Debug\DataControl.dll
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\DataControl\obj\Debug\DataControl.pdb
