@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>ico.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\ico\ico.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DataControl">
@@ -77,6 +77,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Theme\Midnight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -106,7 +110,27 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ico.ico" />
+    <Resource Include="Resources\ico\ico.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\arrowDown.png" />
+    <Resource Include="Resources\images\drop.png" />
+    <Resource Include="Resources\images\save.png" />
+    <Resource Include="Resources\images\palette.png" />
+    <Resource Include="Resources\images\exit.png" />
+    <Resource Include="Resources\images\redo.png" />
+    <Resource Include="Resources\images\ruler.png" />
+    <Resource Include="Resources\images\settings.png" />
+    <Resource Include="Resources\images\undo.png" />
+    <Resource Include="Resources\images\delete.png" />
+    <Resource Include="Resources\images\menu.png" />
+    <Resource Include="Resources\images\pentagon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

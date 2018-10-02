@@ -5,8 +5,182 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        
+        Title="PentagonEditor"
+        Height="600" Width="850"
+        MinHeight="600" MinWidth="850"
+        Icon="Resources/ico/ico.ico" 
+        WindowStartupLocation="CenterScreen">
+    <!-- RESOURCES -->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/Midnight.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+    </Window.Resources>
+    
+    <Grid x:Name="tableGrid">
+        <!--SCALING-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+         <!--ELEMENTS-->
+        <Menu x:Name="menuPanel">
+            <!--MENU-->
+            <MenuItem x:Name="menuMi" Header="menu">
+                <MenuItem.Icon>
+                    <Image Source="Resources/images/menu.png" Height="20" Width="25"/>
+                </MenuItem.Icon>
+                <!--MENU SUB ITEMS-->
+                <MenuItem x:Name="newMi" Header="new">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/images/new.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="openMi" Header="open">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/images/add.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem x:Name="saveMi" Header="save" Margin="0, 2, 0, 0">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/images/save.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="saveAsMi" Header="save as">
+                    <MenuItem.Icon>
+                        <Image/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem x:Name="exitMi" Header="exit" Margin="0, 2, 0, 0">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/images/exit.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <!--SHAPES-->
+            <MenuItem x:Name="shapesMi" Header="shapes">
+                <MenuItem.Icon>
+                    <Image Source="Resources/images/pentagon.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="40">
+                <MenuItem.Icon>
+                    <Image Source="Resources/images/delete.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <!--UNDO REDO-->
+            <MenuItem Width="90">
+                <MenuItem.Icon>
+                    <Image Source="Resources/images/undo.png"/>
+                </MenuItem.Icon>
+                <MenuItem.Header>
+                    <Image Source="Resources/images/arrowDown.png"
+                           Height="15" Width="20"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Width="90">
+                <MenuItem.Icon>
+                    <Image Source="Resources/images/redo.png"/>
+                </MenuItem.Icon>
+                <MenuItem.Header>
+                    <Image Source="Resources/images/arrowDown.png" 
+                           Height="15" Width="20"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <!--PROPERTIES-->
+            <MenuItem x:Name="propertiesMi" Header="properties">
+                <MenuItem.Icon>
+                    <Image Source="Resources/images/settings.png"/>
+                </MenuItem.Icon>
+                
+                <MenuItem IsEnabled="False" Header="shape"/>
+                <MenuItem x:Name="colorShapeMi" Header="color">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/images/palette.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="opacityMi">
+                    <!--ICO-->
+                    <MenuItem.Icon>
+                        <Image Source="Resources/images/drop.png"/>
+                    </MenuItem.Icon>
+                    <!--CONTENT-->
+                    <MenuItem.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock>opacity</TextBlock>
+                            
+                            <Slider Style="{StaticResource StyleForSlider}" Grid.Row="1" 
+                                    Width="100"
+                                    Minimum="0" Maximum="1"
+                                    IsSnapToTickEnabled="True"
+                                    TickFrequency="0.1"
+                                    Value="1"/>
+                        </Grid>
+
+                    </MenuItem.Header>
+
+                </MenuItem>
+
+                <MenuItem IsEnabled="False" Margin="0, 5, 0, 0" Header="stroke"/>
+                <MenuItem x:Name="colorStrokeMi" Header="color">
+                    <MenuItem.Icon>
+                        <Image Source="Resources/images/palette.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="widthMi">
+                    <!--ICO-->
+                    <MenuItem.Icon>
+                        <Image Source="Resources/images/ruler.png"/>
+                    </MenuItem.Icon>
+                    <!--CONTENT-->
+                    <MenuItem.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock>width</TextBlock>
+
+                            <Slider Style="{StaticResource StyleForSlider}" Grid.Row="1" 
+                                    Width="100"
+                                    Minimum="1" Maximum="8"
+                                    IsSnapToTickEnabled="True"
+                                    TickFrequency="1"
+                                    Value="2"/>
+                        </Grid>                        
+                    </MenuItem.Header>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <!--CANVAS-->
+        <DockPanel Grid.Row="1" x:Name="CanvasPanel">            
+            <Canvas HorizontalAlignment="Left" VerticalAlignment="Top"
+                Width="{Binding ElementName=CanvasPanel, Path=ActualWidth}" 
+                Height="{Binding ElementName=CanvasPanel, Path=ActualHeight}"/>
+        </DockPanel>
         
     </Grid>
+    
 </Window>
