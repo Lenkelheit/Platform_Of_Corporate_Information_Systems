@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 
 namespace Shapes.Models
 {
+    [Serializable]
     public class Canvas : IList<ShapeBase>, INotifyCollectionChanged
     {
         // PROPERTIES
