@@ -1,17 +1,15 @@
-﻿using System;
-
 namespace DataControl.Services
 {
     public class XmlFileService : Interfaces.IFileService
     {
-        public void Load(out Shapes.Models.ShapeBase item, string fileName)
+        public void Load(out Shapes.Models.Canvas item, string fileName)
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
-        public void Save(Shapes.Models.ShapeBase item, string fileName)
+        public void Save(Shapes.Models.Canvas item, string fileName)
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
     }
 }
