@@ -1,0 +1,10 @@
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Test\bin\Debug\Test.dll
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Test\bin\Debug\Test.pdb
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Test\bin\Debug\Shapes.dll
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Test\bin\Debug\Shapes.pdb
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Test\bin\Debug\Shapes.xml
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Test\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Test\obj\Debug\Test.dll
+F:\Visual Studio Projects\C#\Study\Platform_Of_Corporate_Information_Systems\Task2\Project\Test\obj\Debug\Test.pdb
