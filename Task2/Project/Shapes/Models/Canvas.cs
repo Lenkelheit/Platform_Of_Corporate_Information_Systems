@@ -5,7 +5,7 @@ using System.Collections.Specialized;
 
 namespace Shapes.Models
 {
-    public class Canvas : IEnumerable<ShapeBase>, ICollection<ShapeBase>,  INotifyCollectionChanged
+    public class Canvas : IList<ShapeBase>, INotifyCollectionChanged
     {
         // PROPERTIES
         public int Count
@@ -22,9 +22,27 @@ namespace Shapes.Models
                 throw new NotImplementedException();
             }
         }
+        
+        public IEnumerable<ShapeBase> shapes
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
 
-        // maybe another collection if you want
-        //public System.Collections.ObjectModel.ObservableCollection<ShapeBase> shapes { get; set; }
+        public ShapeBase this[int index]
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         // EVENTS
         public event NotifyCollectionChangedEventHandler CollectionChanged;
@@ -46,6 +64,10 @@ namespace Shapes.Models
         {
             throw new NotImplementedException();
         }
+        public int RemoveAll(Predicate<ShapeBase> match)
+        {
+            throw new NotImplementedException();
+        }
         public void Clear()
         {
             throw new NotImplementedException();
@@ -55,16 +77,17 @@ namespace Shapes.Models
         {
             throw new NotImplementedException();
         }
-
         public void CopyTo(ShapeBase[] array, int arrayIndex)
         {
             throw new NotImplementedException();
         }
+
+
         public int IndexOf(ShapeBase item)
         {
             throw new NotImplementedException();
         }
-        // other methods that change collection
+
 
         public IEnumerator<ShapeBase> GetEnumerator()
         {
@@ -74,7 +97,7 @@ namespace Shapes.Models
         IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
-        }     
+        }
         protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
             throw new NotImplementedException();
