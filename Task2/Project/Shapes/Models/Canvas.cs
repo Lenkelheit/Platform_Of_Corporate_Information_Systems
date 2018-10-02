@@ -30,7 +30,7 @@ namespace Shapes.Models
                 throw new NotImplementedException();
             }
         }
-
+        // INDEXERS
         public ShapeBase this[int index]
         {
             get
