@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Shapes</name>
+    </assembly>
+    <members>
+        <member name="T:Shapes.Interfaces.ICommand">
+            <summary>
+            Defines structure of the command.
+            </summary>
+        </member>
+        <member name="P:Shapes.Interfaces.ICommand.Name">
+            <summary>
+            Returns command name.
+            </summary>
+        </member>
+        <member name="M:Shapes.Interfaces.ICommand.Execute">
+            <summary>
+            Execute command. Change model's state.
+            </summary>
+        </member>
+        <member name="M:Shapes.Interfaces.ICommand.UnExecute">
+            <summary>
+            Unexecute command. Return model to its previous state.
+            </summary>
+        </member>
+        <member name="T:Shapes.Models.Pentagon">
+            <summary>
+            Represents class that models Pentagon
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Pentagon.color">
+            <summary>
+            Field that contains color of Pentagon
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Pentagon.strokeColor">
+            <summary>
+            Field that contains stroke color  of Pentagon
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Pentagon.strokeThickness">
+            <summary>
+            Field that contains stroke thickness of Pentagon
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Pentagon.opacity">
+            <summary>
+            Field that contains opacity of Pentagon
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Pentagon.points">
+            <summary>
+            Field that contains arrat of points which builds Pentagon
+            </summary>
+        </member>
+        <member name="E:Shapes.Models.Pentagon.PropertyChanged">
+            <summary>
+            Event that messages about property change
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Pentagon.Color">
+            <summary>
+            Property that enable to interract with color
+            </summary>
+            /// <retruns>Pentagon color</retruns>
+        </member>
+        <member name="P:Shapes.Models.Pentagon.StrokeColor">
+            <summary>
+            Property that enable to interract with stroke color
+            </summary>
+            /// <retruns>Pentagon stroke color</retruns>
+        </member>
+        <member name="P:Shapes.Models.Pentagon.StrokeThickness">
+            <summary>
+            Property that enable to interract with stroke thickness
+            </summary>
+            /// <retruns>Pentagon stroke thickness</retruns>
+        </member>
+        <member name="P:Shapes.Models.Pentagon.Opacity">
+            <summary>
+            Property that enable to interract with opacity
+            </summary>
+            /// <retruns>Pentagon opacity</retruns>
+        </member>
+        <member name="P:Shapes.Models.Pentagon.Points">
+            <summary>
+            Property that enable to interract with Pentagon edge points
+            </summary>
+            <retruns>Pentagon stroke color</retruns>
+        </member>
+        <member name="M:Shapes.Models.Pentagon.#ctor">
+            <summary>
+            Default constructor without parameters
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Pentagon.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Method that invokes PropertyChanged
+            </summary>
+            <param name="e">Changed propery argument</param>
+        </member>
+        <member name="M:Shapes.Models.Pentagon.HitTest(System.Windows.Point)">
+            <summary>
+            Method that check if point is in the shape
+            </summary>
+            <param name="p">Target point</param>
+            <returns>Availability point in shape</returns>
+        </member>
+    </members>
+</doc>
