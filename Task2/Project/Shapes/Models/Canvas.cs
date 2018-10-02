@@ -24,7 +24,7 @@ namespace Shapes.Models
             }
         }
         
-        public IEnumerable<ShapeBase> shapes
+        public IEnumerable<ShapeBase> Shapes
         {
             get
             {
