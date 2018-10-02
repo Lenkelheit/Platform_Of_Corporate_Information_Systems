@@ -1,8 +1,8 @@
-﻿namespace DataControl.Interfaces
+namespace DataControl.Interfaces
 {
     public interface IFileService
     {
-        void Save(Shapes.Models.ShapeBase item, string fileName);
-        void Load(out Shapes.Models.ShapeBase item, string fileName);
+        void Save(Shapes.Models.Canvas item, string fileName);
+        void Load(out Shapes.Models.Canvas item, string fileName);
     }
 }
