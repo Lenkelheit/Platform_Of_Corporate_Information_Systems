@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Xml.Serialization;
 
 namespace Shapes.Models
 {
@@ -14,6 +15,16 @@ namespace Shapes.Models
         List<ShapeBase> shapes;
         int count;
         bool isReadOnly;
+
+        // CONSTRUCTORS
+        /// <summary>
+        /// Basic constructor without parameters
+        /// </summary>
+        public Canvas()
+        {
+            shapes = new List<ShapeBase>();
+            count = 0;
+        }
 
         // PROPERTIES
         /// <summary>
