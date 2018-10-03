@@ -15,6 +15,7 @@ namespace Test
         public void ColorPropertyUnitTest()
         {
             test.Color = System.Windows.Media.Color.FromRgb(100, 100, 100);
+
             Assert.AreEqual(test.Color, System.Windows.Media.Color.FromRgb(100, 100, 100));
         }
         [TestMethod]
@@ -34,16 +35,34 @@ namespace Test
         {
             test.Opacity = 10;
             Assert.AreEqual(test.Opacity, 10);
-        } 
+        }
+        [TestMethod]
+        public void PointsUnitTest()
+        {
+            test.Points = new System.Windows.Point[5]
+                {new System.Windows.Point(2 ,4),
+                new System.Windows.Point(3 ,5),
+                new System.Windows.Point(4 ,6),
+                new System.Windows.Point(5 ,7),
+                new System.Windows.Point(6 ,8)};
+            if (test.Points[0] == new System.Windows.Point(2, 4) ||
+                test.Points[1] == new System.Windows.Point(3, 5) ||
+                test.Points[2] == new System.Windows.Point(4, 6) ||
+                test.Points[3] == new System.Windows.Point(5, 7) ||
+                test.Points[4] == new System.Windows.Point(6, 8))
+            {
+                Assert.IsTrue(true);
+            }
+        }
         #endregion
 
-         [TestMethod]
-         void SerialiseUnitTest()
+        [TestMethod]
+        void SerialiseUnitTest()
         {
             XmlSerializer xmlFormat = new XmlSerializer(typeof(Pentagon),
                new Type[] { typeof(System.Windows.Media.Color), typeof(System.Windows.Point[]) });
             Pentagon temp = new Pentagon();
-            string fileName = @"..\..\Serialization\PentagonData.xml";
+            string fileName = AppDomain.CurrentDomain.BaseDirectory + @"Test\Serialization\PentagonData.xml";
             temp.Points = test.Points;
             temp.Color = test.Color;
             temp.StrokeColor = test.StrokeColor;
@@ -67,7 +86,7 @@ namespace Test
             {
                 Assert.IsTrue(true);
             }
-            
+
 
         }
     }

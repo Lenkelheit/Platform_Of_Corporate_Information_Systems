@@ -95,8 +95,8 @@ namespace Shapes.Models
         /// <summary>
         /// Property that enable to interract with Pentagon edge points
         /// </summary>
-        /// <retruns>Pentagon stroke color</retruns>
-        System.Windows.Point[] Points
+        /// <retruns>Pentagon edges</retruns>
+        public System.Windows.Point[] Points
         {
             get
             {
