@@ -118,8 +118,8 @@ namespace Shapes.Models
         public bool Remove(ShapeBase shape)
         {
             bool result;
-            result = shapes.Remove(shape);
             shape.PropertyChanged -= Canvas_PropertyChanged;
+            result = shapes.Remove(shape);
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
             return result;
         }
@@ -193,9 +193,9 @@ namespace Shapes.Models
             return shapes.IndexOf(item);
         }
         /// <summary>
-        /// Method that returns collectiob enumerator
+        /// Method that returns collections enumerator
         /// </summary>
-        /// <returns>Collectiob enumerator</returns>
+        /// <returns>Collections enumerator</returns>
         public IEnumerator<ShapeBase> GetEnumerator()
         {
             return shapes.GetEnumerator();

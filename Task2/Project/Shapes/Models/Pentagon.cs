@@ -19,7 +19,7 @@ namespace Shapes.Models
         /// <summary>
         /// Property that enable to interract with color
         /// </summary>
-        /// <retruns>Pentagon color</retruns>
+        /// <returns>Pentagon color</returns>
         public System.Windows.Media.Color Color
         {
             get

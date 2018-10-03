@@ -12,6 +12,25 @@ namespace Shapes.Commands.Pentagon
         Models.Pentagon target;
         int positionInCanvas;
 
+        //CONSTRUCTORS
+        /// <summary>
+        /// Basic constructor without parameters
+        /// </summary>
+        RemovePentagon()
+        {
+
+        }
+        /// <summary>
+        /// Constructor with 2 parameters
+        /// </summary>
+        /// <param name="baseCanvas">Basic canvas from which will be removed pentagon</param>
+        /// <param name="target">Pentagon that will be removed</param>
+        RemovePentagon(Canvas baseCanvas, Models.Pentagon target)
+        {
+            this.target = target;
+            this.baseCanvas = baseCanvas;
+        }
+
         // PROPETRIES
         /// <summary>
         /// Property that allows to get command name

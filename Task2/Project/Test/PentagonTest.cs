@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shapes.Models;
 using System.Xml.Serialization;
 using System.IO;
+using Shapes.Commands;
 
 namespace Test
 {
@@ -89,5 +90,35 @@ namespace Test
 
 
         }
-    }
+
+        #region RemovePentagonCommandTests
+
+        [TestMethod]
+        public void ExecuteTest()
+        {
+            Pentagon first = new Pentagon();
+            Pentagon second = new Pentagon();
+            Pentagon third = new Pentagon();
+            Canvas baseCanvas = new Canvas();
+            Shapes.Commands.Pentagon.RemovePentagon testCommand =
+                new Shapes.Commands.Pentagon.RemovePentagon(baseCanvas, second);
+            testCommand.Execute();
+            Assert.AreEqual(baseCanvas[1], third);
+        }
+        [TestMethod]
+        public void UnExecuteTest()
+        {
+            Pentagon first = new Pentagon();
+            Pentagon second = new Pentagon();
+            Pentagon third = new Pentagon();
+            Canvas baseCanvas = new Canvas();
+            Shapes.Commands.Pentagon.RemovePentagon testCommand =
+                new Shapes.Commands.Pentagon.RemovePentagon(baseCanvas, second);
+            testCommand.Execute();
+            testCommand.UnExecute();
+            Assert.AreEqual(baseCanvas[1], second);
+        }
+
+            #endregion
+        }
 }
