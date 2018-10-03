@@ -30,15 +30,8 @@ namespace Shapes.Commands.Pentagon
         /// </summary>
         public void Execute()
         {
-            for (int i = 0; i < baseCanvas.Count; i++)
-            {
-                if (baseCanvas[i] == target)
-                {
-                    positionInCanvas = i;
-                    break;
-                }
-            }
-            baseCanvas.Remove(target);
+            positionInCanvas = baseCanvas.IndexOf(target);
+            baseCanvas.RemoveAt(positionInCanvas);
         }
         /// <summary>
         /// Method that returns command execution

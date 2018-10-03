@@ -28,7 +28,7 @@ namespace Shapes.Models
         /// <summary>
         /// Property that enable to get count of shapes
         /// </summary>
-        /// /// <returns>Count of shapes</returns>
+        ///<returns>Count of shapes</returns>
         public int Count
         {
             get
@@ -39,7 +39,7 @@ namespace Shapes.Models
         /// <summary>
         /// Property that shows if canvas is only for read
         /// </summary>
-        /// /// <returns>Is canvas only for read</returns>
+        ///<returns>Is canvas only for read</returns>
         public bool IsReadOnly
         {
             get
@@ -50,7 +50,7 @@ namespace Shapes.Models
         /// <summary>
         /// Property that enable to get shapes collection
         /// </summary>
-        /// /// <returns>Shapes collecton</returns>
+        ///<returns>Shapes collecton</returns>
         public IEnumerable<ShapeBase> Shapes
         {
             get
@@ -95,7 +95,7 @@ namespace Shapes.Models
         public void Add(ShapeBase shape)
         {
             shapes.Add(shape);
-            shapes[Count - 1].PropertyChanged += Canvas_PropertyChanged;
+            shape.PropertyChanged += Canvas_PropertyChanged;
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
         }
         /// <summary>
@@ -117,17 +117,11 @@ namespace Shapes.Models
         /// <returns>If shape was deleted</returns>
         public bool Remove(ShapeBase shape)
         {
-            for (int i = 0; i < shapes.Count; i++)
-            {
-                if (shapes[i] == shape)
-                {
-                    shapes[i].PropertyChanged -= Canvas_PropertyChanged;
-                    shapes.Remove(shape);
-                    OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
-                    return true;
-                }
-            }
-            return false;
+            bool result;
+            result = shapes.Remove(shape);
+            shape.PropertyChanged -= Canvas_PropertyChanged;
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
+            return result;
         }
         /// <summary>
         /// Method that remove shape with preset index
@@ -144,7 +138,7 @@ namespace Shapes.Models
         /// Method that removes all shapes with preset predicate
         /// </summary>
         /// <param name="match">Predicate with whitch shapes should be removed</param>
-        /// <returns></returns>
+        /// <returns>Number of deleted items</returns>
         public int RemoveAll(Predicate<ShapeBase> match)
         {
             foreach (ShapeBase item in shapes)

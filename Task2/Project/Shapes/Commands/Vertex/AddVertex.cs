@@ -4,8 +4,8 @@
     {
         /// <summary>
         /// Property that enable to interract with command name
-        /// <returns>Command name</returns>
         /// </summary>
+        /// /// <returns>Command name</returns>
         public string Name
         {
             get
