@@ -10,7 +10,7 @@
         {
             get
             {
-                return "AddVertex";
+                return "Vertex added";
             }
         }
 

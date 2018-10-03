@@ -12,8 +12,8 @@ namespace Shapes.Models
     [Serializable]
     public class Canvas : IList<ShapeBase>, INotifyCollectionChanged
     {
+        // FIELDS
         List<ShapeBase> shapes;
-        bool isReadOnly;
 
         // CONSTRUCTORS
         /// <summary>
@@ -27,8 +27,8 @@ namespace Shapes.Models
         // PROPERTIES
         /// <summary>
         /// Property that enable to get count of shapes
-        /// <returns>Count of shapes</returns>
         /// </summary>
+        /// /// <returns>Count of shapes</returns>
         public int Count
         {
             get
@@ -38,19 +38,19 @@ namespace Shapes.Models
         }
         /// <summary>
         /// Property that shows if canvas is only for read
-        /// <returns>Is canvas only for read</returns>
         /// </summary>
+        /// /// <returns>Is canvas only for read</returns>
         public bool IsReadOnly
         {
             get
             {
-                return isReadOnly;
+                return false;
             }
         }
         /// <summary>
         /// Property that enable to get shapes collection
-        /// <returns>Shapes collecton</returns>
         /// </summary>
+        /// /// <returns>Shapes collecton</returns>
         public IEnumerable<ShapeBase> Shapes
         {
             get
@@ -58,47 +58,27 @@ namespace Shapes.Models
                 return shapes;
             }
         }
+
         // INDEXERS
         /// <summary>
         /// Indexer that enable to interract with collection elements
         /// </summary>
         /// <param name="index">Shape index in collection</param>
         /// <returns>Shape with preset index</returns>
-        /// <exception cref="System.ArgumentException">Wrong index</exception>
+        /// <exception cref="System.IndexOutOfRangeException">Index out of range</exception>
         public ShapeBase this[int index]
         {
             get
             {
-
-                if (index > shapes.Count - 1 || index < 0)
-                {
-                    throw new ArgumentException("Wrong Index");
-                }
-                else
-                {
-                    return shapes[index];
-                }
+                return shapes[index];
             }
-
             set
             {
-                if (index > shapes.Count - 1 || index < 0)
-                {
-                    throw new ArgumentException("Wrong Index");
-                }
-                else
-                {
-                    shapes[index].PropertyChanged -= Canvas_PropertyChanged;
-                    shapes[index] = value;
-                    shapes[index].PropertyChanged += Canvas_PropertyChanged;
-                    OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace));
-                }
+                shapes[index].PropertyChanged -= Canvas_PropertyChanged;
+                shapes[index] = value;
+                shapes[index].PropertyChanged += Canvas_PropertyChanged;
+                OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace));
             }
-        }
-
-        private void Canvas_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, sender));
         }
 
         // EVENTS
@@ -115,7 +95,7 @@ namespace Shapes.Models
         public void Add(ShapeBase shape)
         {
             shapes.Add(shape);
-            this[shapes.Count - 1].PropertyChanged += Canvas_PropertyChanged;
+            shapes[Count - 1].PropertyChanged += Canvas_PropertyChanged;
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
         }
         /// <summary>
@@ -123,18 +103,12 @@ namespace Shapes.Models
         /// </summary>
         /// <param name="index">Index where shape should be inserted</param>
         /// <param name="shape">Shape that should be inserted</param>
+        /// <exception cref="System.IndexOutOfRangeException">Index out of range</exception>
         public void Insert(int index, ShapeBase shape)
         {
-            if (index > shapes.Count - 1 || index < 0)
-            {
-                throw new ArgumentException("Wrong argument");
-            }
-            else
-            {
-                shapes.Insert(index, shape);
-                this[index].PropertyChanged += Canvas_PropertyChanged;
-                OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
-            }
+            shapes.Insert(index, shape);
+            this[index].PropertyChanged += Canvas_PropertyChanged;
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
         }
         /// <summary>
         /// Method that removes preset shape
@@ -159,18 +133,12 @@ namespace Shapes.Models
         /// Method that remove shape with preset index
         /// </summary>
         /// <param name="index">Index with which shape should be removed</param>
+        /// <exception cref="System.IndexOutOfRangeException">Index out of range</exception>
         public void RemoveAt(int index)
         {
-            if (index > shapes.Count - 1 || index < 0)
-            {
-                throw new ArgumentException("Wrong argument");
-            }
-            else
-            {
-                shapes[index].PropertyChanged -= Canvas_PropertyChanged;
-                shapes.RemoveAt(index);
-                OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
-            }
+            shapes[index].PropertyChanged -= Canvas_PropertyChanged;
+            shapes.RemoveAt(index);
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
         }
         /// <summary>
         /// Method that removes all shapes with preset predicate
@@ -216,6 +184,7 @@ namespace Shapes.Models
         /// </summary>
         /// <param name="array">Array where collection should be copied</param>
         /// <param name="arrayIndex">Index from which stated copiing</param>
+        /// <exception cref="System.IndexOutOfRangeException">Index out of range</exception>
         public void CopyTo(ShapeBase[] array, int arrayIndex)
         {
             shapes.CopyTo(array, arrayIndex);
@@ -237,10 +206,18 @@ namespace Shapes.Models
         {
             return shapes.GetEnumerator();
         }
-
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+        /// <summary>
+        /// Method that invokes items in collection property changed
+        /// </summary>
+        /// <param name="sender">Item in collection</param>
+        /// <param name="e">Property change argument</param>
+        private void Canvas_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, sender));
         }
         /// <summary>
         /// Method that invokes CollectionChanged event
