@@ -2,106 +2,232 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Xml.Serialization;
 
 namespace Shapes.Models
 {
+    /// <summary>
+    /// Class that represents collection of shapes
+    /// </summary>
     [Serializable]
     public class Canvas : IList<ShapeBase>, INotifyCollectionChanged
     {
+        List<ShapeBase> shapes;
+        int count;
+        bool isReadOnly;
+
+        // CONSTRUCTORS
+        /// <summary>
+        /// Basic constructor without parameters
+        /// </summary>
+        public Canvas()
+        {
+            shapes = new List<ShapeBase>();
+            count = 0;
+        }
+
         // PROPERTIES
+        /// <summary>
+        /// Property that enable to get count of shapes
+        /// <returns>Count of shapes</returns>
+        /// </summary>
         public int Count
         {
             get
             {
-                throw new NotImplementedException();
+                return shapes.Count;
             }
         }
+        /// <summary>
+        /// Property that shows if canvas is only for read
+        /// <returns>Is canvas only for read</returns>
+        /// </summary>
         public bool IsReadOnly
         {
             get
             {
-                throw new NotImplementedException();
+                return isReadOnly;
             }
         }
-        
+        /// <summary>
+        /// Property that enable to get shapes collection
+        /// <returns>Shapes collecton</returns>
+        /// </summary>
         public IEnumerable<ShapeBase> Shapes
         {
             get
             {
-                throw new NotImplementedException();
+                return shapes;
             }
         }
         // INDEXERS
+        /// <summary>
+        /// Indexer that enable to interract with collection elements
+        /// </summary>
+        /// <param name="index">Shape index in collection</param>
+        /// <returns>Shape with preset index</returns>
+        /// <exception cref="System.ArgumentException">Wrong index</exception>
         public ShapeBase this[int index]
         {
             get
             {
-                throw new NotImplementedException();
+
+                if (index > shapes.Count - 1 || index < 0)
+                {
+                    throw new ArgumentException("Wrong Index");
+                }
+                else
+                {
+                    return shapes[index];
+                }
             }
 
             set
             {
-                throw new NotImplementedException();
+                if (index > shapes.Count - 1 || index < 0)
+                {
+                    throw new ArgumentException("Wrong Index");
+                }
+                else
+                {
+                    shapes[index] = value;
+                }
             }
         }
 
         // EVENTS
+        /// <summary>
+        /// Event that message about canvas property change
+        /// </summary>
         public event NotifyCollectionChangedEventHandler CollectionChanged;
 
         // METHODS
+        /// <summary>
+        /// Method that allow to add new shape to collection
+        /// </summary>
+        /// <param name="shape">Shape that should be added</param>
         public void Add(ShapeBase shape)
         {
-            throw new NotImplementedException();
+            shapes.Add(shape);
+            count++;
         }
+        /// <summary>
+        /// Method that allow to insert shape in collection
+        /// </summary>
+        /// <param name="index">Index where shape should be inserted</param>
+        /// <param name="shape">Shape that should be inserted</param>
         public void Insert(int index, ShapeBase shape)
         {
-            throw new NotImplementedException();
+            if (index > count - 1 || index < 0)
+            {
+                throw new ArgumentException("Wrong argument");
+            }
+            else
+            {
+                shapes.Insert(index, shape);
+                count++;
+            }
         }
+        /// <summary>
+        /// Method that removes preset shape
+        /// </summary>
+        /// <param name="shape">Preset shape</param>
+        /// <returns>If shape was deleted</returns>
         public bool Remove(ShapeBase shape)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < count; i++)
+            {
+                if (shapes[i] == shape)
+                {
+                    shapes.Remove(shape);
+                    count--;
+                    return true;
+                }
+            }
+            return false;
         }
+        /// <summary>
+        /// Method that remove shape with preset index
+        /// </summary>
+        /// <param name="index">Index with which shape should be removed</param>
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            if (index > count - 1 || index < 0)
+            {
+                throw new ArgumentException("Wrong argument");
+            }
+            else
+            {
+                shapes.RemoveAt(index);
+                count--;
+            }
         }
+        /// <summary>
+        /// Method that removes all shapes with preset predicate
+        /// </summary>
+        /// <param name="match">Predicate with whitch shapes should be removed</param>
+        /// <returns></returns>
         public int RemoveAll(Predicate<ShapeBase> match)
         {
-            throw new NotImplementedException();
+            int result = shapes.RemoveAll(match);
+            count = shapes.Count;
+            return result;
         }
+        /// <summary>
+        /// Method that deletes all shapes in collection
+        /// </summary>
         public void Clear()
         {
-            throw new NotImplementedException();
+            shapes.Clear();
+            count = 0;
         }
-
+        /// <summary>
+        /// Method that check if collection contains preset item
+        /// </summary>
+        /// <param name="item">Shape should bechecked</param>
+        /// <returns>If collection contains item</returns>
         public bool Contains(ShapeBase item)
         {
-            throw new NotImplementedException();
+            return shapes.Contains(item);
         }
+        /// <summary>
+        /// Method that copy collection to preset array started from preset index
+        /// </summary>
+        /// <param name="array">Array where collection should be copied</param>
+        /// <param name="arrayIndex">Index from which stated copiing</param>
         public void CopyTo(ShapeBase[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            shapes.CopyTo(array, arrayIndex);
         }
-
-
+        /// <summary>
+        /// Method that returns index of preset item in collection
+        /// </summary>
+        /// <param name="item">Item should be founded</param>
+        /// <returns>Index of item in collection</returns>
         public int IndexOf(ShapeBase item)
         {
-            throw new NotImplementedException();
+            return shapes.IndexOf(item);
         }
-
-
+        /// <summary>
+        /// Method that returns collectiob enumerator
+        /// </summary>
+        /// <returns>Collectiob enumerator</returns>
         public IEnumerator<ShapeBase> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return shapes.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
         }
+        /// <summary>
+        /// Method that invokes CollectionChanged event
+        /// </summary>
+        /// <param name="e">Event argument</param>
         protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            CollectionChanged?.Invoke(this, e);
         }
     }
 }
