@@ -1,23 +1,45 @@
-﻿namespace Shapes.Commands.Pentagon
+namespace Shapes.Commands.Pentagon
 {
+    /// <summary>
+    /// Represents the command <see cref = "Models.Pentagon" /> which changes its stroke width.
+    /// </summary>
     public class ChangeStrokeWidth : Interfaces.ICommand
     {
-        public string Name
+        // FIELDS
+        private Models.Pentagon Pentagon;
+        private double StrokeThickness;
+        private double PrevStrokeThickness;
+        // CONSTRUCTORS
+        /// <summary>
+        /// Constructor with parameters.
+        /// </summary>
+        /// <param name="pentagon"></param>
+        /// <param name="StrokeThickness"></param>
+        public ChangeStrokeWidth(Models.Pentagon pentagon, double StrokeThickness)
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
+            this.Pentagon = pentagon;
+            this.StrokeThickness = StrokeThickness;
         }
-
+        // PROPERTIES
+        /// <summary>
+        /// Command name.
+        /// </summary>
+        public string Name => "StrokeWidth changed";
+        // METHODS
+        /// <summary>
+        /// Changes <see cref="Models.Pentagon"/> stroke width.
+        /// </summary>
         public void Execute()
         {
-            throw new System.NotImplementedException();
+            PrevStrokeThickness = Pentagon.StrokeThickness;
+            Pentagon.StrokeThickness = StrokeThickness;
         }
-
+        /// <summary>
+        /// Returns <see cref="Models.Pentagon"/> to its previous stroke width.
+        /// </summary>
         public void UnExecute()
         {
-            throw new System.NotImplementedException();
+            Pentagon.StrokeThickness = StrokeThickness;
         }
     }
 }
