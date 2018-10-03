@@ -2,11 +2,15 @@
 {
     public class AddVertex : Interfaces.ICommand
     {
+        /// <summary>
+        /// Property that enable to interract with command name
+        /// <returns>Command name</returns>
+        /// </summary>
         public string Name
         {
             get
             {
-                throw new System.NotImplementedException();
+                return "Vertex added";
             }
         }
 

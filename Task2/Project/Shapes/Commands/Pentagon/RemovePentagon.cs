@@ -2,6 +2,8 @@
 {
     public class RemovePentagon : Interfaces.ICommand
     {
+        // FIELDS
+
         public string Name
         {
             get
