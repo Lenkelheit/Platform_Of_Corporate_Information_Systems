@@ -112,7 +112,9 @@ namespace Shapes.Models
 
             ICommand command;
             for (int i = 0; i < count; ++i)
-            {
+            {            
+                if (!CanUndo) break;
+            
                 command = undoStack.Pop();
                 command.UnExecute();
                 redoStack.Push(command);
@@ -133,6 +135,8 @@ namespace Shapes.Models
             ICommand command;
             for (int i = 0; i < count; ++i)
             {
+                if (!CanRedo) break;
+                
                 command = redoStack.Pop();
                 command.Execute();
                 undoStack.Push(command);
