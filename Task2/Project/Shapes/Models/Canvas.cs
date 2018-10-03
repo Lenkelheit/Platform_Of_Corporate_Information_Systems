@@ -13,7 +13,6 @@ namespace Shapes.Models
     public class Canvas : IList<ShapeBase>, INotifyCollectionChanged
     {
         List<ShapeBase> shapes;
-        int count;
         bool isReadOnly;
 
         // CONSTRUCTORS
@@ -23,7 +22,6 @@ namespace Shapes.Models
         public Canvas()
         {
             shapes = new List<ShapeBase>();
-            count = 0;
         }
 
         // PROPERTIES
@@ -90,9 +88,17 @@ namespace Shapes.Models
                 }
                 else
                 {
+                    shapes[index].PropertyChanged -= Canvas_PropertyChanged;
                     shapes[index] = value;
+                    shapes[index].PropertyChanged += Canvas_PropertyChanged;
+                    OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace));
                 }
             }
+        }
+
+        private void Canvas_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, sender));
         }
 
         // EVENTS
@@ -109,7 +115,8 @@ namespace Shapes.Models
         public void Add(ShapeBase shape)
         {
             shapes.Add(shape);
-            count++;
+            this[shapes.Count - 1].PropertyChanged += Canvas_PropertyChanged;
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
         }
         /// <summary>
         /// Method that allow to insert shape in collection
@@ -118,14 +125,15 @@ namespace Shapes.Models
         /// <param name="shape">Shape that should be inserted</param>
         public void Insert(int index, ShapeBase shape)
         {
-            if (index > count - 1 || index < 0)
+            if (index > shapes.Count - 1 || index < 0)
             {
                 throw new ArgumentException("Wrong argument");
             }
             else
             {
                 shapes.Insert(index, shape);
-                count++;
+                this[index].PropertyChanged += Canvas_PropertyChanged;
+                OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
             }
         }
         /// <summary>
@@ -135,12 +143,13 @@ namespace Shapes.Models
         /// <returns>If shape was deleted</returns>
         public bool Remove(ShapeBase shape)
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < shapes.Count; i++)
             {
                 if (shapes[i] == shape)
                 {
+                    shapes[i].PropertyChanged -= Canvas_PropertyChanged;
                     shapes.Remove(shape);
-                    count--;
+                    OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
                     return true;
                 }
             }
@@ -152,14 +161,15 @@ namespace Shapes.Models
         /// <param name="index">Index with which shape should be removed</param>
         public void RemoveAt(int index)
         {
-            if (index > count - 1 || index < 0)
+            if (index > shapes.Count - 1 || index < 0)
             {
                 throw new ArgumentException("Wrong argument");
             }
             else
             {
+                shapes[index].PropertyChanged -= Canvas_PropertyChanged;
                 shapes.RemoveAt(index);
-                count--;
+                OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
             }
         }
         /// <summary>
@@ -169,8 +179,15 @@ namespace Shapes.Models
         /// <returns></returns>
         public int RemoveAll(Predicate<ShapeBase> match)
         {
+            foreach (ShapeBase item in shapes)
+            {
+                if (match(item))
+                {
+                    item.PropertyChanged -= Canvas_PropertyChanged;
+                }
+            }
             int result = shapes.RemoveAll(match);
-            count = shapes.Count;
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
             return result;
         }
         /// <summary>
@@ -178,8 +195,12 @@ namespace Shapes.Models
         /// </summary>
         public void Clear()
         {
+            foreach (ShapeBase item in shapes)
+            {
+                item.PropertyChanged -= Canvas_PropertyChanged;
+            }
             shapes.Clear();
-            count = 0;
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
         }
         /// <summary>
         /// Method that check if collection contains preset item
@@ -219,7 +240,7 @@ namespace Shapes.Models
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
         /// <summary>
         /// Method that invokes CollectionChanged event

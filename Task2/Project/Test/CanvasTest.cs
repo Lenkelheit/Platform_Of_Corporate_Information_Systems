@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shapes.Models;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Test
 {
@@ -120,6 +122,39 @@ namespace Test
             Pentagon[] targetArr = new Pentagon[3];
             test.CopyTo(targetArr, 1);
             Assert.AreEqual(2, targetArr.Length);
+        }
+        [TestMethod]
+        public void IndexOfTest()
+        {
+            test = new Canvas();
+            Pentagon added = new Pentagon(), added1 = new Pentagon();
+            added.Opacity = 10;
+            added1.Opacity = 4;
+            test.Add(added);
+            test.Add(added1);
+            Assert.AreEqual(1, test.IndexOf(added1));
+        }
+        [TestMethod]
+        public void SerializationTest()
+        {
+            XmlSerializer xmlFormat = new XmlSerializer(typeof(Canvas),
+                new Type[1] { typeof(ShapeBase) });
+            test = new Canvas();
+            string fileName = AppDomain.CurrentDomain.BaseDirectory + @"Test\Serialization\CanvasData.xml";
+            Pentagon added = new Pentagon();
+            added.Opacity = 10;
+            test.Add(added);
+            using (Stream fStream = new FileStream(fileName,
+                FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                xmlFormat.Serialize(fStream, test);
+            }
+            using (Stream fStream = new FileStream(fileName,
+               FileMode.Open, FileAccess.Read, FileShare.None))
+            {
+                test = (Canvas)xmlFormat.Deserialize(fStream);
+            }
+            Assert.AreEqual(10, test[0].Opacity);
         }
     }
 }
