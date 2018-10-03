@@ -86,6 +86,40 @@ namespace Test
             }));
             Assert.AreEqual(test.Count, 1);
         }
-
+        [TestMethod]
+        public void ClearTest()
+        {
+            test = new Canvas();
+            for (int i = 0; i < 3; i++)
+            {
+                test.Add(new Pentagon());
+            }
+            test.Clear();
+            Assert.AreEqual(0, test.Count);
+        }
+        [TestMethod]
+        public void ContainsTest()
+        {
+            test = new Canvas();
+            Pentagon added = new Pentagon();
+            added.Opacity = 10;
+            test.Add(added);
+            Assert.IsTrue(test.Contains(added) && !(test.Contains(new Pentagon())));
+        }
+        [TestMethod]
+        public void CopyToTest()
+        {
+            test = new Canvas();
+            Pentagon added = new Pentagon(), added1 = new Pentagon(), added2 = new Pentagon();
+            added.Opacity = 10;
+            added1.Opacity = 4;
+            added2.Opacity = 10;
+            test.Add(added);
+            test.Add(added1);
+            test.Add(added2);
+            Pentagon[] targetArr = new Pentagon[3];
+            test.CopyTo(targetArr, 1);
+            Assert.AreEqual(2, targetArr.Length);
+        }
     }
 }

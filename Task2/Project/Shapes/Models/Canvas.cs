@@ -125,6 +125,7 @@ namespace Shapes.Models
             else
             {
                 shapes.Insert(index, shape);
+                count++;
             }
         }
         /// <summary>
@@ -139,6 +140,7 @@ namespace Shapes.Models
                 if (shapes[i] == shape)
                 {
                     shapes.Remove(shape);
+                    count--;
                     return true;
                 }
             }
@@ -157,6 +159,7 @@ namespace Shapes.Models
             else
             {
                 shapes.RemoveAt(index);
+                count--;
             }
         }
         /// <summary>
@@ -166,7 +169,9 @@ namespace Shapes.Models
         /// <returns></returns>
         public int RemoveAll(Predicate<ShapeBase> match)
         {
-            return shapes.RemoveAll(match);
+            int result = shapes.RemoveAll(match);
+            count = shapes.Count;
+            return result;
         }
         /// <summary>
         /// Method that deletes all shapes in collection
@@ -174,6 +179,7 @@ namespace Shapes.Models
         public void Clear()
         {
             shapes.Clear();
+            count = 0;
         }
         /// <summary>
         /// Method that check if collection contains preset item
