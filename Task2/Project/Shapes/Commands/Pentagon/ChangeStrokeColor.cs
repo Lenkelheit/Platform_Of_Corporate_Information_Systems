@@ -6,40 +6,48 @@ namespace Shapes.Commands.Pentagon
     public class ChangeStrokeColor : Interfaces.ICommand
     {
         // FILEDS
-        private Models.Pentagon Pentagon;
-        private System.Windows.Media.Color StrokeColor;
-        private System.Windows.Media.Color PrevStrokeColor;
+        private Models.Pentagon pentagon;
+        private System.Windows.Media.Color strokeColor;
+        private System.Windows.Media.Color prevStrokeColor;
         // CONSTRUCTORS
         /// <summary>
         /// Constructor with parameters.
         /// </summary>
         /// <param name="pentagon">Current pentagon.</param>
-        /// <param name="StrokeColor">New color.</param>
-        public ChangeStrokeColor(Models.Pentagon pentagon, System.Windows.Media.Color StrokeColor)
+        /// <param name="strokeColor">New color.</param>
+        /// <exception cref="System.ArgumentNullException">Thrown when pentagon is null.</exception>
+        public ChangeStrokeColor(Models.Pentagon pentagon, System.Windows.Media.Color strokeColor)
         {
-            this.Pentagon = pentagon;
-            this.StrokeColor = StrokeColor;
+            if (pentagon != null)
+            {
+                this.pentagon = pentagon;
+                this.strokeColor = strokeColor;
+            }
+            else
+            {
+                throw new System.ArgumentNullException("Pentagon is null");
+            }
         }
         // PROPERTIES
         /// <summary>
         /// Command name.
         /// </summary>
-        public string Name => "StrokeColor changed";
+        public string Name => "Stroke Color changed";
         // METHODS
         /// <summary>
         /// Changes <see cref="Models.Pentagon"/> stroke color.
         /// </summary>
         public void Execute()
         {
-            PrevStrokeColor = Pentagon.StrokeColor;
-            Pentagon.StrokeColor = StrokeColor;
+            prevStrokeColor = pentagon.StrokeColor;
+            pentagon.StrokeColor = strokeColor;
         }
         /// <summary>
         /// Returns <see cref="Models.Pentagon"/> to its previous stroke color.
         /// </summary>
         public void UnExecute()
         {
-            Pentagon.StrokeColor = StrokeColor;
+            pentagon.StrokeColor = strokeColor;
         }
     }
 }
