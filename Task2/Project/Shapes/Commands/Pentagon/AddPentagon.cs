@@ -91,7 +91,7 @@ namespace Shapes.Commands.Pentagon
                     Points = arrPoints
                 };
             }
-            canvas.RemoveAll(vertex => vertex is Models.Vertex);
+            canvas.RemoveAll(shape => shape is Models.Vertex);
             canvas.Add(pentagon);
         }        
         /// <summary>
