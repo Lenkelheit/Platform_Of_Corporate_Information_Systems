@@ -6,40 +6,48 @@ namespace Shapes.Commands.Pentagon
     public class ChangeStrokeWidth : Interfaces.ICommand
     {
         // FIELDS
-        private Models.Pentagon Pentagon;
-        private double StrokeThickness;
-        private double PrevStrokeThickness;
+        private Models.Pentagon pentagon;
+        private double strokeThickness;
+        private double prevStrokeThickness;
         // CONSTRUCTORS
         /// <summary>
         /// Constructor with parameters.
         /// </summary>
         /// <param name="pentagon"></param>
-        /// <param name="StrokeThickness"></param>
-        public ChangeStrokeWidth(Models.Pentagon pentagon, double StrokeThickness)
+        /// <param name="strokeThickness"></param>
+        /// <exception cref="System.ArgumentNullException">Thrown when pentagon is null.</exception>
+        public ChangeStrokeWidth(Models.Pentagon pentagon, double strokeThickness)
         {
-            this.Pentagon = pentagon;
-            this.StrokeThickness = StrokeThickness;
+            if (pentagon != null)
+            {
+                this.pentagon = pentagon;
+                this.strokeThickness = strokeThickness;
+            }
+            else
+            {
+                throw new System.ArgumentNullException("Pentagon is null");
+            }
         }
         // PROPERTIES
         /// <summary>
         /// Command name.
         /// </summary>
-        public string Name => "StrokeWidth changed";
+        public string Name => "Stroke Width changed";
         // METHODS
         /// <summary>
         /// Changes <see cref="Models.Pentagon"/> stroke width.
         /// </summary>
         public void Execute()
         {
-            PrevStrokeThickness = Pentagon.StrokeThickness;
-            Pentagon.StrokeThickness = StrokeThickness;
+            prevStrokeThickness = pentagon.StrokeThickness;
+            pentagon.StrokeThickness = strokeThickness;
         }
         /// <summary>
         /// Returns <see cref="Models.Pentagon"/> to its previous stroke width.
         /// </summary>
         public void UnExecute()
         {
-            Pentagon.StrokeThickness = StrokeThickness;
+            pentagon.StrokeThickness = strokeThickness;
         }
     }
 }
