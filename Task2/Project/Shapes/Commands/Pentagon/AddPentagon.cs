@@ -81,7 +81,7 @@ namespace Shapes.Commands.Pentagon
         /// </summary>
         public void Execute()
         {
-            if (pentagon == null) 
+            if (pentagon == null || canvas.PresentVertex.Last().Location != arrVertices.Last().Location) 
             {
                 arrVertices = canvas.Shapes.OfType<Models.Vertex>().ToArray();
                 var arrPoints = (arrVertices.Select(vertex => vertex.Location)).ToArray();
@@ -100,7 +100,7 @@ namespace Shapes.Commands.Pentagon
         public void UnExecute()
         {
             canvas.Remove(pentagon);
-            for (int i = 0; i < COUNT_VERTEX; i++)
+            for (int i = 0; i < COUNT_VERTEX - 1; i++) 
             {
                 canvas.Add(arrVertices[i]);
             }
