@@ -6,19 +6,27 @@ namespace Shapes.Commands.Pentagon
     public class ChangeOpacity : Interfaces.ICommand
     {
         // FILEDS
-        private Models.Pentagon Pentagon;
-        private double Opacity;
-        private double PrevState;
+        private Models.Pentagon pentagon;
+        private double opacity;
+        private double prevState;
         // CONSTRUCTORS
         /// <summary>
         /// Constructor with parameters.
         /// </summary>
-        /// <param name="Pentagon">Current pentagon.</param>
-        /// <param name="Opacity">New opacity.</param>
-        public ChangeOpacity(Models.Pentagon Pentagon, double Opacity)
+        /// <param name="pentagon">Current pentagon.</param>
+        /// <param name="opacity">New opacity.</param>
+        /// <exception cref="System.ArgumentNullException">Thrown when pentagon is null.</exception>
+        public ChangeOpacity(Models.Pentagon pentagon, double opacity)
         {
-            this.Pentagon = Pentagon;
-            this.Opacity = Opacity;
+            if (pentagon != null)
+            {
+                this.pentagon = pentagon;
+                this.opacity = opacity;
+            }
+            else
+            {
+                throw new System.ArgumentNullException("Pentagon is null");
+            }
         }
         // PROPERTIES
         /// <summary>
@@ -31,15 +39,15 @@ namespace Shapes.Commands.Pentagon
         /// </summary>
         public void Execute()
         {
-            PrevState = Pentagon.Opacity;
-            Pentagon.Opacity = Opacity;
+            prevState = pentagon.Opacity;
+            pentagon.Opacity = opacity;
         }
         /// <summary>
         /// Returns <see cref="Models.Pentagon"/> to its previous opacity.
         /// </summary>
         public void UnExecute()
         {
-            Pentagon.Opacity = Opacity;
+            pentagon.Opacity = opacity;
         }
     }
 }
