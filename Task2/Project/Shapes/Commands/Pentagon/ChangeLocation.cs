@@ -15,16 +15,24 @@ namespace Shapes.Commands.Pentagon
         /// </summary>
         /// <param name="pentagon">Current pentagon.</param>
         /// <param name="point">New points.</param>
+        /// <exception cref="System.ArgumentNullException">Thrown when pentagon is null.</exception>
         public ChangeLocation(Models.Pentagon pentagon, System.Windows.Point point)
         {
-            this.pentagon = pentagon;
-            this.point = point;
+            if (pentagon != null)
+            {
+                this.pentagon = pentagon;
+                this.point = point;
+            }
+            else
+            {
+                throw new System.ArgumentNullException("Pentagon is null");
+            }
         }
         // PROPERTIES
         /// <summary>
         /// Command name.
         /// </summary>
-        public string Name => "Location change";
+        public string Name => "Location changed";
         // METHODS
         /// <summary>
         /// Changes <see cref="Models.Pentagon"/> location.
@@ -32,7 +40,7 @@ namespace Shapes.Commands.Pentagon
         public void Execute()
         {
             prevLocation = pentagon.Points;
-            for(int i=0; i<5; ++i)
+            for(int i = 0; i < 5; ++i)
             {
                 pentagon.Points[i].X += point.X;
                 pentagon.Points[i].Y += point.Y;
