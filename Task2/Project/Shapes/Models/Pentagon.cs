@@ -133,7 +133,7 @@ namespace Shapes.Models
             points = new System.Windows.Point[5];
         }
 
-        //METHODS
+        // METHODS
         /// <summary>
         /// Method that check if point is in the shape
         /// </summary>
@@ -141,7 +141,29 @@ namespace Shapes.Models
         /// <returns>Availability point in shape</returns>
         public bool HitTest(System.Windows.Point p)
         {
-            throw new System.NotImplementedException();
+            bool hitted = false;
+
+            // go through each of the vertices, plus
+            // the next vertex in the list
+            for (int i = 0; i < points.Length; ++i)
+            {
+                // get next vertex in list
+                // if we've hit the end, wrap around to 0
+                
+                // get the Point at our current position
+                // this makes our if statement a little cleaner
+                System.Windows.Point pc = points[i];    // c for "current"
+                System.Windows.Point pn = points[i % points.Length];       // n for "next"
+
+                // compare position, flip 'hitted' variable
+                // back and forth
+                if (((pc.Y >= p.Y && pn.Y < p.Y) || (pc.Y < p.Y && pn.Y >= p.Y)) &&
+                     (p.X < (pn.X - pc.X) * (p.Y - pc.Y) / (pn.Y - pc.Y) + pc.X))
+                {
+                    hitted = !hitted;
+                }
+            }
+            return hitted;
         }
     }
 }

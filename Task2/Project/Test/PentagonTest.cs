@@ -91,6 +91,26 @@ namespace Test
 
         }
 
+        [TestMethod]
+        public void HitTest()
+        {
+            Pentagon p = new Pentagon()
+            {
+                Points = new System.Windows.Point[5]
+                {
+                    new System.Windows.Point(1, 0),
+                    new System.Windows.Point(0, 3),
+                    new System.Windows.Point(3, 5),
+                    new System.Windows.Point(5, 2),
+                    new System.Windows.Point(1, 0)
+                }
+            };
+
+            Assert.IsFalse(p.HitTest(new System.Windows.Point(0, 0)));
+            Assert.IsTrue(p.HitTest(new System.Windows.Point(2, 2)));
+            Assert.IsTrue(p.HitTest(new System.Windows.Point(5, 2)));
+
+        }
         #region RemovePentagonCommandTests
 
         [TestMethod]
