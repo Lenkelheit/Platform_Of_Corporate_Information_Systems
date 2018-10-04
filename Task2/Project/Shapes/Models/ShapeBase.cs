@@ -25,5 +25,13 @@ namespace Shapes.Models
         {
             PropertyChanged?.Invoke(this, e);
         }
+        /// <summary>
+        /// Checks if current point is in shape.
+        /// </summary>
+        /// <param name="point">Current point.</param>
+        /// <returns>
+        /// True if current point is in shape, else - false.
+        /// </returns>
+        public abstract bool HitTest(System.Windows.Point point);
     }
 }
