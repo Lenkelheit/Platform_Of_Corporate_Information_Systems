@@ -14,21 +14,22 @@ namespace Shapes.Commands.Pentagon
 
         //CONSTRUCTORS
         /// <summary>
-        /// Basic constructor without parameters
-        /// </summary>
-        RemovePentagon()
-        {
-
-        }
-        /// <summary>
         /// Constructor with 2 parameters
         /// </summary>
         /// <param name="baseCanvas">Basic canvas from which will be removed pentagon</param>
         /// <param name="target">Pentagon that will be removed</param>
+        /// <exception cref="System.NullReferenceException">Pentagon or canvas doesn't exist!</exception>
         RemovePentagon(Canvas baseCanvas, Models.Pentagon target)
         {
-            this.target = target;
-            this.baseCanvas = baseCanvas;
+            if (target != null && baseCanvas != null)
+            {
+                this.target = target;
+                this.baseCanvas = baseCanvas;
+            }
+            else
+            {
+                throw new System.NullReferenceException("Pentagon or canvas doesn't exist!");
+            }
         }
 
         // PROPETRIES
@@ -49,8 +50,8 @@ namespace Shapes.Commands.Pentagon
         /// </summary>
         public void Execute()
         {
-            positionInCanvas = baseCanvas.IndexOf(target);
-            baseCanvas.RemoveAt(positionInCanvas);
+                positionInCanvas = baseCanvas.IndexOf(target);
+                baseCanvas.RemoveAt(positionInCanvas);
         }
         /// <summary>
         /// Method that returns command execution

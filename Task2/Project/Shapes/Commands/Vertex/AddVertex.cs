@@ -11,21 +11,22 @@
 
         //CONSTRUCTORS
         /// <summary>
-        /// Basic constructor without parameters
-        /// </summary>
-        AddVertex()
-        {
-
-        }
-        /// <summary>
         /// Constructor with 2 parameters
         /// </summary>
         /// <param name="basePentagon">Pentagon in which will be added vertex</param>
         /// <param name="target">Added vertex</param>
+        /// <exception cref="System.NullReferenceException">Pentagon or vertex doesn't exist!</exception>
         AddVertex(Models.Pentagon basePentagon, Models.Vertex target)
         {
-            this.basePentagon = basePentagon;
-            this.target = target;
+            if (basePentagon!= null && target != null)
+            {
+                this.basePentagon = basePentagon;
+                this.target = target; 
+            }
+            else
+            {
+                throw new System.NullReferenceException("Pentagon or vertex doesn't exist!");
+            }
         }
 
         // PROPERTIES
