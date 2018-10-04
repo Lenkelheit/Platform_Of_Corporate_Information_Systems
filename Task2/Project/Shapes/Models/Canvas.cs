@@ -14,6 +14,7 @@ namespace Shapes.Models
     {
         // FIELDS
         List<ShapeBase> shapes;
+        List<Vertex> presentVertex;
 
         // CONSTRUCTORS
         /// <summary>
@@ -22,6 +23,7 @@ namespace Shapes.Models
         public Canvas()
         {
             shapes = new List<ShapeBase>();
+            presentVertex = new List<Vertex>();
         }
 
         // PROPERTIES
@@ -56,6 +58,21 @@ namespace Shapes.Models
             get
             {
                 return shapes;
+            }
+        }
+        /// <summary>
+        /// Property that enable to interact with present vertex
+        /// </summary>
+        /// <returns>Present vertex list</returns>
+        public List<Vertex> PresentVertex
+        {
+            get
+            {
+                return presentVertex;
+            }
+            set
+            {
+                presentVertex = value;
             }
         }
 

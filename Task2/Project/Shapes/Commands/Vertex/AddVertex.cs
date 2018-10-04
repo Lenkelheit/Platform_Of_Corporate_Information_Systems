@@ -1,27 +1,33 @@
-﻿namespace Shapes.Commands.Vertex
+﻿using System.Collections.Generic;
+
+namespace Shapes.Commands.Vertex
 {
     /// <summary>
     /// Class that represents command for adding vertex to pentagon
     /// </summary>
     public class AddVertex : Interfaces.ICommand
     {
+        // CONSTANTS
+        const int numOfEdgesInPentagon = 5;
+
         // FIELDS
-        Models.Pentagon basePentagon;
+        Models.Canvas baseCanvas;
         Models.Vertex target;
+
 
         //CONSTRUCTORS
         /// <summary>
         /// Constructor with 2 parameters
         /// </summary>
-        /// <param name="basePentagon">Pentagon in which will be added vertex</param>
+        /// <param name="baseCanvas">Vertex in which will be added vertex</param>
         /// <param name="target">Added vertex</param>
         /// <exception cref="System.NullReferenceException">Pentagon or vertex doesn't exist!</exception>
-        AddVertex(Models.Pentagon basePentagon, Models.Vertex target)
+        AddVertex(Models.Canvas baseCanvas, Models.Vertex target)
         {
-            if (basePentagon!= null && target != null)
+            if (baseCanvas != null && target != null)
             {
-                this.basePentagon = basePentagon;
-                this.target = target; 
+                this.baseCanvas = baseCanvas;
+                this.target = target;
             }
             else
             {
@@ -48,28 +54,34 @@
         /// </summary>
         public void Execute()
         {
-            for (int i = 0; i < basePentagon.Points.Length; i++)
+            baseCanvas.PresentVertex.Add(target);
+            if (baseCanvas.PresentVertex.Count == numOfEdgesInPentagon)
             {
-                if (basePentagon.Points[i] == null)
+                Models.Pentagon newPentagon = new Models.Pentagon();
+                for (int i = 0; i < numOfEdgesInPentagon; i++)
                 {
-                    basePentagon.Points[i] = target.Location;
-                    return;
+                    newPentagon.Points[i] = baseCanvas.PresentVertex[i].Location;
                 }
+                new Pentagon.AddPentagon(baseCanvas, newPentagon).Execute();
+                baseCanvas.PresentVertex.Clear();
+
             }
         }
         /// <summary>
         /// Method that returns command execution
         /// </summary>
+        /// <exception cref="System.NullReferenceException">Vertex doesn't exist!</exception>
         public void UnExecute()
         {
-            for (int i = 0; i < basePentagon.Points.Length; i++)
+            if (baseCanvas.PresentVertex.Count == 0)
             {
-                if (basePentagon.Points[i] == target.Location)
-                {
-                    basePentagon.Points[i] = new System.Windows.Point();// я не знаю як її занулити (null не допускає)
-                    return;
-                }
+                throw new System.NullReferenceException("Vertex doesn't exist!");
             }
+            else
+            {
+                baseCanvas.PresentVertex.RemoveAt(baseCanvas.PresentVertex.Count - 1);
+            }
+
         }
     }
 }
