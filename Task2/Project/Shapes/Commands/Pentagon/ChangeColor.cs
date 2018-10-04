@@ -6,19 +6,27 @@ namespace Shapes.Commands.Pentagon
     public class ChangeColor : Interfaces.ICommand
     {
         // FIELDS
-        private Models.Pentagon Pentagon;
-        private System.Windows.Media.Color Color;
-        private System.Windows.Media.Color PrevColor;
+        private Models.Pentagon pentagon;
+        private System.Windows.Media.Color color;
+        private System.Windows.Media.Color prevColor;
         // CONSTRUCTORS
         /// <summary>
         /// Constructor with parameters.
         /// </summary>
         /// <param name="pentagon">Current pentagon.</param>
         /// <param name="color">New color.</param>
+        /// <exception cref="System.ArgumentNullException">Thrown when pentagon is null.</exception>
         public ChangeColor(Models.Pentagon pentagon, System.Windows.Media.Color color)
         {
-            this.Pentagon = pentagon;
-            this.Color = color;
+            if (pentagon != null)
+            {
+                this.pentagon = pentagon;
+                this.color = color;
+            }
+            else
+            {
+                throw new System.ArgumentNullException("Pentagon is null");
+            }
         }
         // PROPERTIES
         /// <summary>
@@ -31,15 +39,15 @@ namespace Shapes.Commands.Pentagon
         /// </summary>
         public void Execute()
         {
-            PrevColor = Pentagon.Color;
-            Pentagon.Color = Color;
+            prevColor = pentagon.Color;
+            pentagon.Color = color;
         }
         /// <summary>
         /// Returns <see cref="Models.Pentagon"/> to its previous color.
         /// </summary>
         public void UnExecute()
         {
-            Pentagon.Color = PrevColor;
+            pentagon.Color = prevColor;
         }
     }
 }
