@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 namespace Shapes.Commands.Pentagon
 {
     /// <summary>
@@ -9,7 +11,8 @@ namespace Shapes.Commands.Pentagon
         private const int COUNT_VERTEX = 5;
         // FIELDS
         private Models.Canvas canvas;
-        private System.Collections.Generic.List<System.Windows.Point> sortedPoints;
+        private Models.Vertex[] arrVertices;
+        private Models.Pentagon pentagon;
         // PROPERTIES
         /// <summary>
         /// Command name.
@@ -30,94 +33,75 @@ namespace Shapes.Commands.Pentagon
                 throw new System.ArgumentNullException("Canvas is null.");
             }
             this.canvas = canvas;
-            sortedPoints = new System.Collections.Generic.List<System.Windows.Point>();
         }
         // METHODS
-        private void SortPoints(System.Collections.Generic.List<System.Windows.Point> pointsList)
+        private IEnumerable<IEnumerable<T>> GetPermutations<T>(IEnumerable<T> list, int length)
         {
-            double distance = 0, prevDistance = 0;
+            if (length == 1)
+            {
+                return list.Select(t => new T[] { t });
+            }
+            return GetPermutations(list, length - 1)
+                .SelectMany(t => list.Where(e => !t.Contains(e)),
+                    (t1, t2) => t1.Concat(new T[] { t2 }));
+        }
+        private double CalculateDistanceByIndeces(Models.Vertex[] arrVertices, int[] indices)
+        {
+            double distance = 0;
+            for (int i = 1; i < COUNT_VERTEX; i++) 
+            {
+                distance += Models.Vertex.GetDistance(arrVertices[indices[i - 1]], arrVertices[indices[i]]);
+            }
+            return distance += Models.Vertex.GetDistance(arrVertices[indices[0]], arrVertices[indices[COUNT_VERTEX - 1]]);
+        }
+        private int[] SortIndicesForVertices(Models.Vertex[] arrVertices)
+        {
+            double minDistance = double.MaxValue, localDistance = 0;
+            int indexOfMinDistance = 0;
+            int[] arrIndices = new int[COUNT_VERTEX];
             for (int i = 0; i < COUNT_VERTEX; i++)
             {
-                for (int j = 0; j < COUNT_VERTEX; j++)
+                arrIndices[i] = i;
+            }
+            var matrixIndices = GetPermutations(arrIndices, COUNT_VERTEX).ToArray();
+            for (int i = 0; i < matrixIndices.Length; i++) 
+            {
+                localDistance = CalculateDistanceByIndeces(arrVertices, matrixIndices[i].ToArray());
+                if (localDistance < minDistance)
                 {
-                    if (j == i)
-                    {
-                        continue;
-                    }
-                    for (int k = 0; k < COUNT_VERTEX; k++)
-                    {
-                        if (k == i || k == j)
-                        {
-                            continue;
-                        }
-                        for (int m = 0; m < COUNT_VERTEX; m++)
-                        {
-                            if (m == i || m == j || m == k)
-                            {
-                                continue;
-                            }
-                            for (int p = 0; p < COUNT_VERTEX; p++)
-                            {
-                                if (p == i || p == j || p == k || p == m)
-                                {
-                                    continue;
-                                }
-
-                                distance = System.Math.Sqrt(System.Math.Pow(pointsList[j].X - pointsList[i].X, 2) + System.Math.Pow(pointsList[j].Y - pointsList[i].Y, 2)) +
-                                    System.Math.Sqrt(System.Math.Pow(pointsList[k].X - pointsList[j].X, 2) + System.Math.Pow(pointsList[k].Y - pointsList[j].Y, 2)) +
-                                    System.Math.Sqrt(System.Math.Pow(pointsList[m].X - pointsList[k].X, 2) + System.Math.Pow(pointsList[m].Y - pointsList[k].Y, 2)) +
-                                    System.Math.Sqrt(System.Math.Pow(pointsList[p].X - pointsList[m].X, 2) + System.Math.Pow(pointsList[p].Y - pointsList[m].Y, 2));
-                                if (prevDistance == 0 || prevDistance > distance)
-                                {
-                                    sortedPoints.Clear();
-                                    sortedPoints.Add(pointsList[i]);
-                                    sortedPoints.Add(pointsList[j]);
-                                    sortedPoints.Add(pointsList[k]);
-                                    sortedPoints.Add(pointsList[m]);
-                                    sortedPoints.Add(pointsList[p]);
-
-                                    prevDistance = distance;
-                                }
-                            }
-                        }
-                    }
+                    minDistance = localDistance;
+                    indexOfMinDistance = i;
                 }
             }
+            return matrixIndices[indexOfMinDistance].ToArray();
         }
         /// <summary>
         /// Adds <see cref="Models.Pentagon"/>.
         /// </summary>
         public void Execute()
         {
-            System.Collections.Generic.List<System.Windows.Point> pointsList = new System.Collections.Generic.List<System.Windows.Point>();
-            for (int i = 0; i < COUNT_VERTEX; i++)
+            if (pentagon == null) 
             {
-                pointsList.Add((canvas[canvas.Count - 1] as Models.Vertex).Location);
-                canvas.Remove(canvas[canvas.Count - 1]);
+                arrVertices = canvas.Shapes.OfType<Models.Vertex>().ToArray();
+                var arrPoints = (arrVertices.Select(vertex => vertex.Location)).ToArray();
+                System.Array.Sort(SortIndicesForVertices(arrVertices), arrPoints);
+                pentagon = new Models.Pentagon
+                {
+                    Points = arrPoints
+                };
             }
-            // Sorts points if they aren`t sorted.
-            if (sortedPoints.Count == 0)  
-            {
-                SortPoints(pointsList);
-            }
-            Models.Pentagon pentagon = new Models.Pentagon
-            {
-                Points = sortedPoints.ToArray()
-            };
+            canvas.RemoveAll(vertex => vertex is Models.Vertex);
             canvas.Add(pentagon);
-        }
+        }        
         /// <summary>
         /// Restores previous state without added <see cref="Models.Pentagon"/>.
         /// </summary>
         public void UnExecute()
         {
-            canvas.RemoveAt(canvas.Count - 1);
+            canvas.Remove(pentagon);
             for (int i = 0; i < COUNT_VERTEX; i++)
             {
-                canvas.Add(new Models.Vertex
-                {
-                    Location = sortedPoints[i]
-                });
+                canvas.Add(arrVertices[i]);
             }
         }
     }
