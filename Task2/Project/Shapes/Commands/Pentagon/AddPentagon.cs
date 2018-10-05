@@ -12,8 +12,9 @@ namespace Shapes.Commands.Pentagon
         private const int COUNT_VERTEX = 5;
         // FIELDS
         private Models.Canvas canvas;
-        private Models.Vertex[] arrVertices;
+        private Models.Vertex[] arrUnsortedVertices;
         private Models.Pentagon pentagon;
+        private int[] arrSortedIndices;
         // PROPERTIES
         /// <summary>
         /// Command name.
@@ -55,7 +56,7 @@ namespace Shapes.Commands.Pentagon
             }
             return distance += Models.Vertex.GetDistance(arrVertices[indices[0]], arrVertices[indices[COUNT_VERTEX - 1]]);
         }
-        private int[] SortIndicesForVertices(Models.Vertex[] arrVertices)
+        private void SortIndicesForVertices(Models.Vertex[] arrVertices)
         {
             double minDistance = double.MaxValue, localDistance = 0;
             int indexOfMinDistance = 0;
@@ -74,23 +75,24 @@ namespace Shapes.Commands.Pentagon
                     indexOfMinDistance = i;
                 }
             }
-            return matrixIndices[indexOfMinDistance].ToArray();
+            arrSortedIndices = matrixIndices[indexOfMinDistance].ToArray();
         }
         /// <summary>
         /// Adds <see cref="Models.Pentagon"/>.
         /// </summary>
         public void Execute()
         {
-            if (pentagon == null || canvas.PresentVertex.Last().Location != arrVertices.Last().Location) 
+            if (arrSortedIndices == null)  
             {
-                arrVertices = canvas.Shapes.OfType<Models.Vertex>().ToArray();
-                var arrPoints = (arrVertices.Select(vertex => vertex.Location)).ToArray();
-                System.Array.Sort(SortIndicesForVertices(arrVertices), arrPoints);
-                pentagon = new Models.Pentagon
-                {
-                    Points = arrPoints
-                };
+                arrUnsortedVertices = canvas.Shapes.OfType<Models.Vertex>().ToArray();
+                SortIndicesForVertices(arrUnsortedVertices);
             }
+            var arrPoints = (arrUnsortedVertices.Select(vertex => vertex.Location)).ToArray();
+            System.Array.Sort(arrSortedIndices, arrPoints);
+            pentagon = new Models.Pentagon
+            {
+                Points = arrPoints
+            };
             canvas.RemoveAll(shape => shape is Models.Vertex);
             canvas.Add(pentagon);
         }        
@@ -102,7 +104,7 @@ namespace Shapes.Commands.Pentagon
             canvas.Remove(pentagon);
             for (int i = 0; i < COUNT_VERTEX - 1; i++) 
             {
-                canvas.Add(arrVertices[i]);
+                canvas.Add(arrUnsortedVertices[i]);
             }
         }
     }
