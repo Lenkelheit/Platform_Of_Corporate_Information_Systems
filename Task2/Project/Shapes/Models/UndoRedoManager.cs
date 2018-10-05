@@ -52,6 +52,13 @@ namespace Shapes.Models
         public event PropertyChangedEventHandler PropertyChanged;
 
         // METHODS
+        internal void PopUndo()
+        {
+            if (CanUndo)
+            {
+                undoStack.Pop();
+            }
+        }
         /// <summary>
         /// Execute a command.
         /// </summary>
