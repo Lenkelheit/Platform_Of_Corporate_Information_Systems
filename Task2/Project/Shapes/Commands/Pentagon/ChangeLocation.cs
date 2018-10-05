@@ -7,21 +7,21 @@ namespace Shapes.Commands.Pentagon
     {
         // FIELDS
         private Models.Pentagon pentagon;
-        private System.Windows.Point point;
+        private System.Windows.Point[] points;
         private System.Windows.Point[] prevLocation;
         // CONSTRUCTORS
         /// <summary>
         /// Constructor with parameters.
         /// </summary>
         /// <param name="pentagon">Current pentagon.</param>
-        /// <param name="point">New points.</param>
+        /// <param name="points">New points.</param>
         /// <exception cref="System.ArgumentNullException">Thrown when pentagon is null.</exception>
-        public ChangeLocation(Models.Pentagon pentagon, System.Windows.Point point)
+        public ChangeLocation(Models.Pentagon pentagon, System.Windows.Point[] points)
         {
             if (pentagon != null)
             {
                 this.pentagon = pentagon;
-                this.point = point;
+                this.points = points;
             }
             else
             {
@@ -40,11 +40,7 @@ namespace Shapes.Commands.Pentagon
         public void Execute()
         {
             prevLocation = pentagon.Points;
-            for(int i = 0; i < 5; ++i)
-            {
-                pentagon.Points[i].X += point.X;
-                pentagon.Points[i].Y += point.Y;
-            }
+            pentagon.Points = points;
         }
         /// <summary>
         /// Returns <see cref="Models.Pentagon"/> to its previous location.
