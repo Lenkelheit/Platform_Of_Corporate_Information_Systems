@@ -47,7 +47,7 @@ namespace Shapes.Commands.Pentagon
         /// </summary>
         public void UnExecute()
         {
-            pentagon.StrokeThickness = strokeThickness;
+            pentagon.StrokeThickness = prevStrokeThickness;
         }
     }
 }
