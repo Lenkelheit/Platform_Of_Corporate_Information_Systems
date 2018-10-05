@@ -127,10 +127,30 @@ namespace Shapes.Models
         public Pentagon()
         {
             color = new System.Windows.Media.Color();
+            color = System.Windows.Media.Color.FromRgb(255, 255, 255);
             strokeColor = new System.Windows.Media.Color();
-            strokeThickness = 0;
+            strokeColor = System.Windows.Media.Color.FromRgb(72, 72, 72);
+            strokeThickness = 5;
             opacity = 0;
             points = new System.Windows.Point[5];
+        }
+        /// <summary>
+        /// Constructor with 1 parameter
+        /// </summary>
+        /// <param name="pentagonVertex">Collection of new pentagon vertex</param>
+        public Pentagon(Vertex[] pentagonVertex)
+        {
+            color = new System.Windows.Media.Color();
+            color = System.Windows.Media.Color.FromRgb(255, 255, 255);
+            strokeColor = new System.Windows.Media.Color();
+            strokeColor = System.Windows.Media.Color.FromRgb(72, 72, 72);
+            strokeThickness = 5;
+            opacity = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                points[i] = pentagonVertex[i].Location;
+            }
+            
         }
 
         // METHODS

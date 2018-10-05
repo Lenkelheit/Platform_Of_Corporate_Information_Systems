@@ -13,21 +13,24 @@ namespace Shapes.Commands.Vertex
         // FIELDS
         Models.Canvas baseCanvas;
         Models.Vertex target;
+        Models.UndoRedoManager workCommandManger;
 
 
         //CONSTRUCTORS
         /// <summary>
-        /// Constructor with 2 parameters
+        /// Constructor with 3 parameters
         /// </summary>
         /// <param name="baseCanvas">Vertex in which will be added vertex</param>
         /// <param name="target">Added vertex</param>
+        /// <param name="workCommandManger">program command manager</param>
         /// <exception cref="System.NullReferenceException">Pentagon or vertex doesn't exist!</exception>
-        AddVertex(Models.Canvas baseCanvas, Models.Vertex target)
+        AddVertex(Models.Canvas baseCanvas, Models.Vertex target, Models.UndoRedoManager workCommandManger)
         {
             if (baseCanvas != null && target != null)
             {
                 this.baseCanvas = baseCanvas;
                 this.target = target;
+                this.workCommandManger = workCommandManger;
             }
             else
             {
@@ -54,17 +57,12 @@ namespace Shapes.Commands.Vertex
         /// </summary>
         public void Execute()
         {
-            baseCanvas.PresentVertex.Add(target);
-            if (baseCanvas.PresentVertex.Count == numOfEdgesInPentagon)
+            baseCanvas.Add(target);
+            target.NumberOfVertex++;
+            if (target.NumberOfVertex == numOfEdgesInPentagon)
             {
-                Models.Pentagon newPentagon = new Models.Pentagon();
-                for (int i = 0; i < numOfEdgesInPentagon; i++)
-                {
-                    newPentagon.Points[i] = baseCanvas.PresentVertex[i].Location;
-                }
-                new Pentagon.AddPentagon(baseCanvas, newPentagon).Execute();
-                baseCanvas.PresentVertex.Clear();
-
+                workCommandManger.PopUndo();
+                workCommandManger.Execute(new Pentagon.AddPentagon(baseCanvas));
             }
         }
         /// <summary>
@@ -73,13 +71,13 @@ namespace Shapes.Commands.Vertex
         /// <exception cref="System.NullReferenceException">Vertex doesn't exist!</exception>
         public void UnExecute()
         {
-            if (baseCanvas.PresentVertex.Count == 0)
+            if (target.NumberOfVertex == 0)
             {
                 throw new System.NullReferenceException("Vertex doesn't exist!");
             }
             else
             {
-                baseCanvas.PresentVertex.RemoveAt(baseCanvas.PresentVertex.Count - 1);
+                baseCanvas.RemoveAt(target.NumberOfVertex - 1);
             }
 
         }
