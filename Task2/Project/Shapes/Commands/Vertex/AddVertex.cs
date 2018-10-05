@@ -39,7 +39,7 @@ namespace Shapes.Commands.Vertex
         /// <summary>
         /// Property that enable to interract with command name
         /// </summary>
-        /// /// <returns>Command name</returns>
+        /// <returns>Command name</returns>
         public string Name
         {
             get

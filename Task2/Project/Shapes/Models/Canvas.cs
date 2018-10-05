@@ -135,8 +135,11 @@ namespace Shapes.Models
         public bool Remove(ShapeBase shape)
         {
             bool result;
-            shape.PropertyChanged -= Canvas_PropertyChanged;
             result = shapes.Remove(shape);
+            if (result == true)
+            {
+                shape.PropertyChanged -= Canvas_PropertyChanged; 
+            }
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
             return result;
         }
