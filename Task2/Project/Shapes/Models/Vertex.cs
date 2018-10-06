@@ -10,10 +10,7 @@ namespace Shapes.Models
         private const int RADIUS = 5;
         // FIELDS
         private System.Windows.Point location;
-        /// <summary>
-        /// Vertices counter.
-        /// </summary>
-        public static int CountVertices;
+        internal static int NumberOfVertex { get; set; }
         // PROPERTIES
         /// <summary>
         /// Point position on the coordinate plane.
@@ -40,13 +37,6 @@ namespace Shapes.Models
         public Vertex()
         {
             location = new System.Windows.Point();
-        }
-        /// <summary>
-        /// Basic static constructor.
-        /// </summary>
-        static Vertex()
-        {
-            CountVertices = 0;
         }
         // METHODS
         /// <summary>
