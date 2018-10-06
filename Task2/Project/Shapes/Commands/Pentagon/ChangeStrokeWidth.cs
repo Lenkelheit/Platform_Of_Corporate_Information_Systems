@@ -27,6 +27,8 @@ namespace Shapes.Commands.Pentagon
             {
                 throw new System.ArgumentNullException("Pentagon is null");
             }
+
+            prevStrokeThickness = pentagon.StrokeThickness;
         }
         // PROPERTIES
         /// <summary>
@@ -39,7 +41,6 @@ namespace Shapes.Commands.Pentagon
         /// </summary>
         public void Execute()
         {
-            prevStrokeThickness = pentagon.StrokeThickness;
             pentagon.StrokeThickness = strokeThickness;
         }
         /// <summary>
