@@ -44,7 +44,7 @@ namespace Shapes.Models
         /// <summary>
         /// Property that enable to interract with stroke color
         /// </summary>
-        ///<retruns>Pentagon stroke color</retruns>
+        /// <returns>Pentagon stroke color</returns>
         public System.Windows.Media.Color StrokeColor
         {
             get
@@ -63,7 +63,7 @@ namespace Shapes.Models
         /// <summary>
         /// Property that enable to interract with stroke thickness
         /// </summary>
-        ///<retruns>Pentagon stroke thickness</retruns>
+        /// <returns>Pentagon stroke thickness</returns>
         public double StrokeThickness
         {
             get
@@ -82,7 +82,7 @@ namespace Shapes.Models
         /// <summary>
         /// Property that enable to interract with opacity
         /// </summary>
-        ///<retruns>Pentagon opacity</retruns>
+        /// <returns>Pentagon opacity</returns>
         public double Opacity
         {
             get
@@ -101,7 +101,7 @@ namespace Shapes.Models
         /// <summary>
         /// Property that enable to interract with Pentagon edge points
         /// </summary>
-        /// <retruns>Pentagon edges</retruns>
+        /// <returns>Pentagon edges</returns>
         /// <exception cref="System.ArgumentException">Pentagon should have 5 edges</exception>
         public System.Windows.Point[] Points
         {
