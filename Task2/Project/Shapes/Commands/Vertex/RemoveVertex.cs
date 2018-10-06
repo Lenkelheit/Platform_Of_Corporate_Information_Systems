@@ -26,6 +26,9 @@ namespace Shapes.Commands.Vertex
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when vertex is null.
         /// </exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">
+        /// Thrown when vertex hasn`t been found in canvas.
+        /// </exception>
         public RemoveVertex(Models.Canvas canvas, Models.Vertex vertex)
         {
             if (canvas == null)
@@ -38,21 +41,18 @@ namespace Shapes.Commands.Vertex
             }
             this.canvas = canvas;
             this.vertex = vertex;
-        }
-        // METHODS
-        /// <summary>
-        /// Removes <see cref="Models.Vertex"/>.
-        /// </summary>
-        /// <exception cref="System.ArgumentOutOfRangeException">
-        /// Thrown when vertex hasn`t been found.
-        /// </exception>
-        public void Execute()
-        {
             index = canvas.IndexOf(vertex);
             if (index == -1)
             {
                 throw new System.ArgumentOutOfRangeException("Vertex hasn`t been found.");
             }
+        }
+        // METHODS
+        /// <summary>
+        /// Removes <see cref="Models.Vertex"/>.
+        /// </summary>
+        public void Execute()
+        {
             canvas.RemoveAt(index);
             Models.Vertex.CountVertices--;
         }
