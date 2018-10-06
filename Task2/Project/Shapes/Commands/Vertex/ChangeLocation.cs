@@ -29,7 +29,7 @@ namespace Shapes.Commands.Vertex
             {
                 this.vertex = vertex;
                 this.location = location;
-                prevLocation = vertex.Location;
+                this.prevLocation = vertex.Location;
             }
             else
             {
