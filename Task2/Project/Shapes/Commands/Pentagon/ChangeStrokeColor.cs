@@ -27,6 +27,8 @@ namespace Shapes.Commands.Pentagon
             {
                 throw new System.ArgumentNullException("Pentagon is null");
             }
+
+            prevStrokeColor = pentagon.StrokeColor;
         }
         // PROPERTIES
         /// <summary>
@@ -39,7 +41,6 @@ namespace Shapes.Commands.Pentagon
         /// </summary>
         public void Execute()
         {
-            prevStrokeColor = pentagon.StrokeColor;
             pentagon.StrokeColor = strokeColor;
         }
         /// <summary>
@@ -51,3 +52,4 @@ namespace Shapes.Commands.Pentagon
         }
     }
 }
+
