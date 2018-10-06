@@ -144,7 +144,7 @@ namespace Shapes.Models
         /// Constructor with 1 parameter
         /// </summary>
         /// <param name="pentagonVertex">Collection of new pentagon vertex</param>
-        /// <exception cref="throw new System.ArgumentException">Vertex doesn't exist!</exception>
+        /// <exception cref="System.ArgumentException">Vertex doesn't exist!</exception>
         public Pentagon(Vertex[] pentagonVertex) : this()
         {
             if (pentagonVertex == null)
