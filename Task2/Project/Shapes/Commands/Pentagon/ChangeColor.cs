@@ -22,13 +22,12 @@ namespace Shapes.Commands.Pentagon
             {
                 this.pentagon = pentagon;
                 this.color = color;
+                this.prevColor = pentagon.Color;
             }
             else
             {
                 throw new System.ArgumentNullException("Pentagon is null");
             }
-
-            prevColor = pentagon.Color;
         }
         // PROPERTIES
         /// <summary>
