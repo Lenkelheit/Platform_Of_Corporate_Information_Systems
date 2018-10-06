@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shapes.Models;
 using System.Xml.Serialization;
@@ -39,7 +39,7 @@ namespace Test
             Pentagon added = new Pentagon();
             added.Opacity = 10;
             test.Add(added);
-            Assert.AreEqual(test[0].Opacity, 10);
+            Assert.AreEqual((test[0] as Pentagon).Opacity, 10);
         }
         [TestMethod]
         public void InsertTest()
@@ -48,7 +48,7 @@ namespace Test
             Pentagon added = new Pentagon();
             added.Opacity = 10;
             test.Insert(0, added);
-            Assert.AreEqual(test[0].Opacity, 10);
+            Assert.AreEqual((test[0] as Pentagon).Opacity, 10);
         }
         [TestMethod]
         public void RemoveTest()
@@ -154,7 +154,7 @@ namespace Test
             {
                 test = (Canvas)xmlFormat.Deserialize(fStream);
             }
-            Assert.AreEqual(10, test[0].Opacity);
+            Assert.AreEqual(10, (test[0] as Pentagon).Opacity);
         }
     }
 }
