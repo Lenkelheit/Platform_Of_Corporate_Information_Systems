@@ -28,7 +28,7 @@ namespace Shapes.Commands.Vertex
         /// </exception>
         public RemoveVertex(Models.Canvas canvas, Models.Vertex vertex)
         {
-            if (canvas == null) 
+            if (canvas == null)
             {
                 throw new System.ArgumentNullException("Canvas is null.");
             }
@@ -49,11 +49,12 @@ namespace Shapes.Commands.Vertex
         public void Execute()
         {
             index = canvas.IndexOf(vertex);
-            if (index == -1) 
+            if (index == -1)
             {
                 throw new System.ArgumentOutOfRangeException("Vertex hasn`t been found.");
             }
             canvas.RemoveAt(index);
+            Models.Vertex.CountVertices--;
         }
         /// <summary>
         /// Restores removed <see cref="Models.Vertex"/>.
@@ -61,6 +62,7 @@ namespace Shapes.Commands.Vertex
         public void UnExecute()
         {
             canvas.Insert(index, vertex);
+            Models.Vertex.CountVertices++;
         }
     }
 }
