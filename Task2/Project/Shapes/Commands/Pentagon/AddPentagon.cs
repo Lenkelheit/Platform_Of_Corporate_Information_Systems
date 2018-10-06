@@ -8,8 +8,6 @@ namespace Shapes.Commands.Pentagon
     /// </summary>
     public class AddPentagon : Interfaces.ICommand
     {
-        // CONST
-        private const int COUNT_VERTEX = 5;
         // FIELDS
         private Models.Canvas canvas;
         private Models.Vertex[] arrUnsortedVertices;
@@ -50,22 +48,22 @@ namespace Shapes.Commands.Pentagon
         private double CalculateDistanceByIndeces(Models.Vertex[] arrVertices, int[] indices)
         {
             double distance = 0;
-            for (int i = 1; i < COUNT_VERTEX; i++)
+            for (int i = 1; i < Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON; i++)
             {
                 distance += Models.Vertex.GetDistance(arrVertices[indices[i - 1]], arrVertices[indices[i]]);
             }
-            return distance += Models.Vertex.GetDistance(arrVertices[indices[0]], arrVertices[indices[COUNT_VERTEX - 1]]);
+            return distance += Models.Vertex.GetDistance(arrVertices[indices[0]], arrVertices[indices[Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON - 1]]);
         }
         private void SortIndicesForVertices(Models.Vertex[] arrVertices)
         {
             double minDistance = double.MaxValue, localDistance = 0;
             int indexOfMinDistance = 0;
-            int[] arrIndices = new int[COUNT_VERTEX];
-            for (int i = 0; i < COUNT_VERTEX; i++)
+            int[] arrIndices = new int[Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON];
+            for (int i = 0; i < Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON; i++)
             {
                 arrIndices[i] = i;
             }
-            var matrixIndices = GetPermutations(arrIndices, COUNT_VERTEX).ToArray();
+            var matrixIndices = GetPermutations(arrIndices, Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON).ToArray();
             for (int i = 0; i < matrixIndices.Length; i++)
             {
                 localDistance = CalculateDistanceByIndeces(arrVertices, matrixIndices[i].ToArray());
@@ -103,11 +101,11 @@ namespace Shapes.Commands.Pentagon
         public void UnExecute()
         {
             canvas.Remove(pentagon);
-            for (int i = 0; i < COUNT_VERTEX - 1; i++)
+            for (int i = 0; i < Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON - 1; i++)
             {
                 canvas.Add(arrUnsortedVertices[i]);
             }
-            Models.Vertex.CountVertices = COUNT_VERTEX - 1;
+            Models.Vertex.CountVertices = Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON - 1;
         }
     }
 }
