@@ -14,7 +14,7 @@ namespace Shapes.Commands.Vertex
         Models.UndoRedoManager workCommandManger;
 
 
-        //CONSTRUCTORS
+        // CONSTRUCTORS
         /// <summary>
         /// Constructor with 3 parameters
         /// </summary>
@@ -22,7 +22,7 @@ namespace Shapes.Commands.Vertex
         /// <param name="target">Added vertex</param>
         /// <param name="workCommandManger">program command manager</param>
         /// <exception cref="System.NullReferenceException">Pentagon, command manager or vertex doesn't exist!</exception>
-        AddVertex(Models.Canvas baseCanvas, Models.Vertex target, Models.UndoRedoManager workCommandManger)
+        public AddVertex(Models.Canvas baseCanvas, Models.Vertex target, Models.UndoRedoManager workCommandManger)
         {
             if (baseCanvas == null)
             {
