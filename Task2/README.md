@@ -16,11 +16,11 @@ We are working with **pentagon**.
 |-|:----------------------:|:--------------------------------------------------------------------------|:------------:|:----------:|
 | |                        | <p align="center">   1. Main menu has    </p>                             |              |            |
 | |                        | <p align="center"> **File** </p>                                          |              |            |
-| |<ul><li>- [ ] </li></ul>| *New* – create new empty canvas                                           |              |            |
-| |<ul><li>- [ ] </li></ul>| *Open* – open file dialog                                                 |              |            |
-| |<ul><li>- [ ] </li></ul>| *Save* – save the canvas with shapes into the file                        |              |            |
-| |<ul><li>- [ ] </li></ul>| Information about the shapes is stored in an object-oriented way          |              |            |
-| |<ul><li>- [ ] </li></ul>| Use Xml-serialization                                                     |              |            |
+| |<ul><li>- [ ] </li></ul>| *New* – create new empty canvas                                           |  Lenkelheit  | 09/10/2018 |
+| |<ul><li>- [ ] </li></ul>| *Open* – open file dialog                                                 |  Lenkelheit  | 09/10/2018 |
+| |<ul><li>- [ ] </li></ul>| *Save* – save the canvas with shapes into the file                        |  Lenkelheit  | 09/10/2018 |
+| |<ul><li>- [ ] </li></ul>| Information about the shapes is stored in an object-oriented way          |  Lenkelheit  | 09/10/2018 |
+| |<ul><li>- [ ] </li></ul>| Use Xml-serialization                                                     |  Lenkelheit  | 09/10/2018 |
 | |                        | <p align="center">**Shapes** </p>                                         |              |            |
 | |<ul><li>- [ ] </li></ul>|   Menu item is dynamic, shapes could be added and removed                 |              |            |
 | |<ul><li>- [ ] </li></ul>|   If shape is choosen it could be moved with mouse or keybord keys        |              |            |
