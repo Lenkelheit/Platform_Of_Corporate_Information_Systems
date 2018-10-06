@@ -21,14 +21,21 @@ namespace Shapes.Commands.Pentagon
         /// <exception cref="System.NullReferenceException">Pentagon or canvas doesn't exist!</exception>
         RemovePentagon(Canvas baseCanvas, Models.Pentagon target)
         {
-            if (target != null && baseCanvas != null)
+            if (target != null)
             {
-                this.target = target;
-                this.baseCanvas = baseCanvas;
+                if (baseCanvas != null)
+                {
+                    this.target = target;
+                    this.baseCanvas = baseCanvas;
+                }
+                else
+                {
+                    throw new System.NullReferenceException("Canvas doesn't exist!");
+                }
             }
             else
             {
-                throw new System.NullReferenceException("Pentagon or canvas doesn't exist!");
+                throw new System.NullReferenceException("Pentagon doesn't exist!");
             }
         }
 

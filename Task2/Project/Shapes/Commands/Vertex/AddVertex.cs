@@ -7,8 +7,6 @@ namespace Shapes.Commands.Vertex
     /// </summary>
     public class AddVertex : Interfaces.ICommand
     {
-        // CONSTANTS
-        const int NUM_OF_EDGES_IN_PENTAGON = 5;
 
         // FIELDS
         Models.Canvas baseCanvas;
@@ -26,32 +24,23 @@ namespace Shapes.Commands.Vertex
         /// <exception cref="System.NullReferenceException">Pentagon, command manager or vertex doesn't exist!</exception>
         AddVertex(Models.Canvas baseCanvas, Models.Vertex target, Models.UndoRedoManager workCommandManger)
         {
-            if (baseCanvas != null)
+            if (baseCanvas == null)
             {
-
-                if (target != null)
-                {
-                    if (workCommandManger != null)
-                    {
-                        this.baseCanvas = baseCanvas;
-                        this.target = target;
-                        this.workCommandManger = workCommandManger;  
-                    }
-                    else
-                    {
-                        throw new System.NullReferenceException("Pentagon or vertex doesn't exist!");
-                    }
-                }
-                else
-                {
-                    throw new System.NullReferenceException("Pentagon or vertex doesn't exist!");
-                }
+                throw new System.NullReferenceException("Canvas doesn't exist!");
             }
-            else
+            if (target == null)
             {
-                throw new System.NullReferenceException("Pentagon or vertex doesn't exist!");
+                throw new System.NullReferenceException("Vertex doesn't exist!");
             }
+            if (workCommandManger == null)
+            {
+                throw new System.NullReferenceException("Command manager doesn't exist!");
+            }
+            this.baseCanvas = baseCanvas;
+            this.target = target;
+            this.workCommandManger = workCommandManger;
         }
+
 
         // PROPERTIES
         /// <summary>
@@ -74,7 +63,7 @@ namespace Shapes.Commands.Vertex
         {
             baseCanvas.Add(target);
             Models.Vertex.NumberOfVertex++;
-            if (Models.Vertex.NumberOfVertex == NUM_OF_EDGES_IN_PENTAGON)
+            if (Models.Vertex.NumberOfVertex == Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON)
             {
                 workCommandManger.PopUndo();
                 workCommandManger.Execute(new Pentagon.AddPentagon(baseCanvas));

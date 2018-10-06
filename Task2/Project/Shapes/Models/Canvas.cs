@@ -117,8 +117,7 @@ namespace Shapes.Models
         /// <returns>If shape was deleted</returns>
         public bool Remove(ShapeBase shape)
         {
-            bool result;
-            result = shapes.Remove(shape);
+            bool result= shapes.Remove(shape);
             if (result == true)
             {
                 shape.PropertyChanged -= Canvas_PropertyChanged; 
@@ -207,11 +206,6 @@ namespace Shapes.Models
         {
             return GetEnumerator();
         }
-        /// <summary>
-        /// Method that invokes items in collection property changed
-        /// </summary>
-        /// <param name="sender">Item in collection</param>
-        /// <param name="e">Property change argument</param>
         private void Canvas_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, sender));

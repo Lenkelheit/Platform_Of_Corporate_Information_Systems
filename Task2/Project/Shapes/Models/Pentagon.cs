@@ -9,7 +9,10 @@ namespace Shapes.Models
     public class Pentagon : ShapeBase
     {
         // CONSTANTS
-        const int NUM_OF_EDGE_IN_PENTAGON = 5;
+        /// <summary>
+        /// Shows how many edges in shape
+        /// </summary>
+        public const int NUM_OF_EDGE_IN_PENTAGON = 5;
 
         // FIELDS
         System.Windows.Media.Color color;
@@ -142,9 +145,9 @@ namespace Shapes.Models
         /// </summary>
         /// <param name="pentagonVertex">Collection of new pentagon vertex</param>
         /// <exception cref="throw new System.ArgumentException">Vertex doesn't exist!</exception>
-        public Pentagon(Vertex[] pentagonVertex) : base()
+        public Pentagon(Vertex[] pentagonVertex) : this()
         {
-            if (pentagonVertex != null)
+            if (pentagonVertex == null)
             {
                 for (int i = 0; i < NUM_OF_EDGE_IN_PENTAGON; i++)
                 {
