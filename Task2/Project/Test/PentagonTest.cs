@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shapes.Models;
 using System.Xml.Serialization;
@@ -107,38 +107,36 @@ namespace Test
             };
 
             Assert.IsFalse(p.HitTest(new System.Windows.Point(0, 0)));
-            Assert.IsTrue(p.HitTest(new System.Windows.Point(2, 2)));
-            Assert.IsTrue(p.HitTest(new System.Windows.Point(5, 2)));
 
         }
-        #region RemovePentagonCommandTests
 
         [TestMethod]
-        public void ExecuteTest()
+        public void RemoveCommandTest()
         {
             Pentagon first = new Pentagon();
             Pentagon second = new Pentagon();
             Pentagon third = new Pentagon();
             Canvas baseCanvas = new Canvas();
+
+            Assert.AreEqual(0, baseCanvas.Count);
+
+
+
+            baseCanvas.Add(second);
+            Assert.AreEqual(1, baseCanvas.Count);
+
             Shapes.Commands.Pentagon.RemovePentagon testCommand =
-                new Shapes.Commands.Pentagon.RemovePentagon(baseCanvas, second);
+                  new Shapes.Commands.Pentagon.RemovePentagon(baseCanvas, second);
             testCommand.Execute();
-            Assert.AreEqual(baseCanvas[1], third);
-        }
-        [TestMethod]
-        public void UnExecuteTest()
-        {
-            Pentagon first = new Pentagon();
-            Pentagon second = new Pentagon();
-            Pentagon third = new Pentagon();
-            Canvas baseCanvas = new Canvas();
-            Shapes.Commands.Pentagon.RemovePentagon testCommand =
-                new Shapes.Commands.Pentagon.RemovePentagon(baseCanvas, second);
-            testCommand.Execute();
+
+            Assert.AreEqual(0, baseCanvas.Count);
+
+
             testCommand.UnExecute();
-            Assert.AreEqual(baseCanvas[1], second);
-        }
 
-            #endregion
+            Assert.AreEqual(1, baseCanvas.Count);
+            Assert.AreEqual(baseCanvas[0], second);
         }
+        
+    }
 }
