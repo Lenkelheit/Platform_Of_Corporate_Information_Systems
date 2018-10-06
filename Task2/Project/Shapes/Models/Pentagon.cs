@@ -8,6 +8,9 @@ namespace Shapes.Models
     [System.Serializable]
     public class Pentagon : ShapeBase
     {
+        // CONSTANTS
+        const int NUM_OF_EDGE_IN_PENTAGON = 5;
+
         // FIELDS
         System.Windows.Media.Color color;
         System.Windows.Media.Color strokeColor;
@@ -111,7 +114,7 @@ namespace Shapes.Models
                     {
                         points = value;
                         OnPropertyChanged(new PropertyChangedEventArgs("Points"));
-                    } 
+                    }
                 }
                 else
                 {
@@ -138,19 +141,27 @@ namespace Shapes.Models
         /// Constructor with 1 parameter
         /// </summary>
         /// <param name="pentagonVertex">Collection of new pentagon vertex</param>
-        public Pentagon(Vertex[] pentagonVertex)
+        /// <exception cref="throw new System.ArgumentException">Vertex doesn't exist!</exception>
+        public Pentagon(Vertex[] pentagonVertex) : base()
         {
-            color = new System.Windows.Media.Color();
-            color = System.Windows.Media.Color.FromRgb(255, 255, 255);
-            strokeColor = new System.Windows.Media.Color();
-            strokeColor = System.Windows.Media.Color.FromRgb(72, 72, 72);
-            strokeThickness = 5;
-            opacity = 0;
-            for (int i = 0; i < 5; i++)
+            if (pentagonVertex != null)
             {
-                points[i] = pentagonVertex[i].Location;
+                for (int i = 0; i < NUM_OF_EDGE_IN_PENTAGON; i++)
+                {
+                    if (pentagonVertex[i] != null)
+                    {
+                        points[i] = pentagonVertex[i].Location;
+                    }
+                    else
+                    {
+                        throw new System.ArgumentException("Vertex doesn't exist!");
+                    }
+                }
             }
-            
+            else
+            {
+                throw new System.ArgumentException("Vertex doesn't exist!");
+            }
         }
 
         // METHODS
@@ -169,7 +180,7 @@ namespace Shapes.Models
             {
                 // get next vertex in list
                 // if we've hit the end, wrap around to 0
-                
+
                 // get the Point at our current position
                 // this makes our if statement a little cleaner
                 System.Windows.Point pc = points[i];    // c for "current"
