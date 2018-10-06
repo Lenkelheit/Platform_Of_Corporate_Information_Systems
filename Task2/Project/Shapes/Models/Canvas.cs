@@ -28,7 +28,7 @@ namespace Shapes.Models
         /// <summary>
         /// Property that enable to get count of shapes
         /// </summary>
-        ///<returns>Count of shapes</returns>
+        /// <returns>Count of shapes</returns>
         public int Count
         {
             get
@@ -39,7 +39,7 @@ namespace Shapes.Models
         /// <summary>
         /// Property that shows if canvas is only for read
         /// </summary>
-        ///<returns>Is canvas only for read</returns>
+        /// <returns>Is canvas only for read</returns>
         public bool IsReadOnly
         {
             get
@@ -50,7 +50,7 @@ namespace Shapes.Models
         /// <summary>
         /// Property that enable to get shapes collection
         /// </summary>
-        ///<returns>Shapes collecton</returns>
+        /// <returns>Shapes collecton</returns>
         public IEnumerable<ShapeBase> Shapes
         {
             get
@@ -117,7 +117,7 @@ namespace Shapes.Models
         /// <returns>If shape was deleted</returns>
         public bool Remove(ShapeBase shape)
         {
-            bool result= shapes.Remove(shape);
+            bool result = shapes.Remove(shape);
             if (result == true)
             {
                 shape.PropertyChanged -= Canvas_PropertyChanged; 
@@ -150,9 +150,9 @@ namespace Shapes.Models
                     item.PropertyChanged -= Canvas_PropertyChanged;
                 }
             }
-            int result = shapes.RemoveAll(match);
+            
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
-            return result;
+            return shapes.RemoveAll(match);
         }
         /// <summary>
         /// Method that deletes all shapes in collection
