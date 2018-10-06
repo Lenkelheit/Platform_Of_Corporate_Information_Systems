@@ -27,6 +27,8 @@ namespace Shapes.Commands.Pentagon
             {
                 throw new System.ArgumentNullException("Pentagon is null");
             }
+
+            prevColor = pentagon.Color;
         }
         // PROPERTIES
         /// <summary>
@@ -39,7 +41,6 @@ namespace Shapes.Commands.Pentagon
         /// </summary>
         public void Execute()
         {
-            prevColor = pentagon.Color;
             pentagon.Color = color;
         }
         /// <summary>
