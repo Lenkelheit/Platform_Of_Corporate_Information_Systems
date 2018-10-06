@@ -73,8 +73,8 @@ namespace Shapes.Commands.Vertex
         public void Execute()
         {
             baseCanvas.Add(target);
-            target.NumberOfVertex++;
-            if (target.NumberOfVertex == NUM_OF_EDGES_IN_PENTAGON)
+            Models.Vertex.NumberOfVertex++;
+            if (Models.Vertex.NumberOfVertex == NUM_OF_EDGES_IN_PENTAGON)
             {
                 workCommandManger.PopUndo();
                 workCommandManger.Execute(new Pentagon.AddPentagon(baseCanvas));
@@ -86,14 +86,14 @@ namespace Shapes.Commands.Vertex
         /// <exception cref="System.NullReferenceException">Vertex doesn't exist!</exception>
         public void UnExecute()
         {
-            if (target.NumberOfVertex == 0)
+            if (Models.Vertex.NumberOfVertex == 0)
             {
                 throw new System.NullReferenceException("Vertex doesn't exist!");
             }
             else
             {
-                baseCanvas.RemoveAt(target.NumberOfVertex - 1);
-                target.NumberOfVertex--;
+                baseCanvas.RemoveAt(Models.Vertex.NumberOfVertex - 1);
+                Models.Vertex.NumberOfVertex--;
             }
 
         }
