@@ -22,13 +22,13 @@ namespace Shapes.Commands.Pentagon
             {
                 this.pentagon = pentagon;
                 this.opacity = opacity;
+                this.prevState = pentagon.Opacity;
             }
             else
             {
                 throw new System.ArgumentNullException("Pentagon is null");
             }
 
-            prevState = pentagon.Opacity;
         }
         // PROPERTIES
         /// <summary>
