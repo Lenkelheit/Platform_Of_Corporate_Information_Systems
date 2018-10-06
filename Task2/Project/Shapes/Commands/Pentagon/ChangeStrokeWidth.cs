@@ -22,13 +22,12 @@ namespace Shapes.Commands.Pentagon
             {
                 this.pentagon = pentagon;
                 this.strokeThickness = strokeThickness;
+                this.prevStrokeThickness = pentagon.StrokeThickness;
             }
             else
             {
                 throw new System.ArgumentNullException("Pentagon is null");
             }
-
-            prevStrokeThickness = pentagon.StrokeThickness;
         }
         // PROPERTIES
         /// <summary>
