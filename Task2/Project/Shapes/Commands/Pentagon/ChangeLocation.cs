@@ -29,8 +29,7 @@ namespace Shapes.Commands.Pentagon
             }
             this.pentagon = pentagon;
             this.points = points;
-
-            prevLocation = pentagon.Points;
+            this.prevLocation = pentagon.Points;
         }
         // PROPERTIES
         /// <summary>
