@@ -58,12 +58,12 @@ namespace Test
         #endregion
 
         [TestMethod]
-        void SerialiseUnitTest()
+        public void SerialiseUnitTest()
         {
             XmlSerializer xmlFormat = new XmlSerializer(typeof(Pentagon),
                new Type[] { typeof(System.Windows.Media.Color), typeof(System.Windows.Point[]) });
             Pentagon temp = new Pentagon();
-            string fileName = AppDomain.CurrentDomain.BaseDirectory + @"Test\Serialization\PentagonData.xml";
+            string fileName =  @"..\..\Serialization\PentagonData.xml";
             temp.Points = test.Points;
             temp.Color = test.Color;
             temp.StrokeColor = test.StrokeColor;
@@ -137,6 +137,6 @@ namespace Test
             Assert.AreEqual(1, baseCanvas.Count);
             Assert.AreEqual(baseCanvas[0], second);
         }
-        
+
     }
 }
