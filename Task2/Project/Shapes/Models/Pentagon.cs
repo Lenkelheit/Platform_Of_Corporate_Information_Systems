@@ -173,7 +173,7 @@ namespace Shapes.Models
         /// </summary>
         /// <param name="p">Target point</param>
         /// <returns>Availability point in shape</returns>
-        public bool HitTest(System.Windows.Point p)
+        public override bool HitTest(System.Windows.Point p)
         {
             bool hitted = false;
 
