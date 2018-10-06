@@ -29,6 +29,7 @@ namespace Shapes.Commands.Vertex
             {
                 this.vertex = vertex;
                 this.location = location;
+                prevLocation = vertex.Location;
             }
             else
             {
@@ -41,7 +42,6 @@ namespace Shapes.Commands.Vertex
         /// </summary>
         public void Execute()
         {
-            prevLocation = vertex.Location;
             vertex.Location = location;
         }
         /// <summary>
