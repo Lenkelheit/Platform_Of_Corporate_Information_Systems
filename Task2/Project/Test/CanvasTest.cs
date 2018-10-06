@@ -23,14 +23,15 @@ namespace Test
         public void ConstructorTest()
         {
             test = new Canvas();
-            Assert.IsTrue(test.Count == 0 && test[0] == null);
+            Assert.IsTrue(test.Count == 0);
         }
         [TestMethod]
         public void IndexerTest()
         {
             test = new Canvas();
-            test[0] = new Pentagon();
-            Assert.IsTrue(test[0] == new Pentagon());
+            Pentagon p = new Pentagon();
+            test.Add(p);
+            Assert.IsTrue(test[0] == p);
         }
         [TestMethod]
         public void AddTest()
@@ -58,7 +59,6 @@ namespace Test
             added.Opacity = 10;
             test.Insert(0, added);
             test.Remove(added);
-            Assert.AreEqual(test[0], null);
         }
         [TestMethod]
         public void RemoveAtTest()
@@ -68,7 +68,6 @@ namespace Test
             added.Opacity = 10;
             test.Insert(0, added);
             test.RemoveAt(0);
-            Assert.AreEqual(test[0], null);
         }
         [TestMethod]
         public void RemoveAllTest()
@@ -120,8 +119,8 @@ namespace Test
             test.Add(added1);
             test.Add(added2);
             Pentagon[] targetArr = new Pentagon[3];
-            test.CopyTo(targetArr, 1);
-            Assert.AreEqual(2, targetArr.Length);
+            test.CopyTo(targetArr, 0);
+            Assert.AreEqual(3, targetArr.Length);
         }
         [TestMethod]
         public void IndexOfTest()
@@ -138,9 +137,9 @@ namespace Test
         public void SerializationTest()
         {
             XmlSerializer xmlFormat = new XmlSerializer(typeof(Canvas),
-                new Type[1] { typeof(ShapeBase) });
+                new Type[3] { typeof(ShapeBase) , typeof(Pentagon), typeof(Vertex)});
             test = new Canvas();
-            string fileName = AppDomain.CurrentDomain.BaseDirectory + @"Test\Serialization\CanvasData.xml";
+            string fileName = @"..\..\Serialization\CanvasData.xml";
             Pentagon added = new Pentagon();
             added.Opacity = 10;
             test.Add(added);
