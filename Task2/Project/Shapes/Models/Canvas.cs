@@ -76,7 +76,7 @@ namespace Shapes.Models
                 shapes[index].PropertyChanged -= Canvas_PropertyChanged;
                 shapes[index] = value;
                 shapes[index].PropertyChanged += Canvas_PropertyChanged;
-                OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace));
+                OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, value, index));
             }
         }
 
@@ -95,7 +95,7 @@ namespace Shapes.Models
         {
             shapes.Add(shape);
             shape.PropertyChanged += Canvas_PropertyChanged;
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, shape));
         }
         /// <summary>
         /// Method that allow to insert shape in collection
@@ -107,7 +107,7 @@ namespace Shapes.Models
         {
             shapes.Insert(index, shape);
             this[index].PropertyChanged += Canvas_PropertyChanged;
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, shape));
         }
         /// <summary>
         /// Method that removes preset shape
@@ -119,9 +119,10 @@ namespace Shapes.Models
             bool result = shapes.Remove(shape);
             if (result == true)
             {
-                shape.PropertyChanged -= Canvas_PropertyChanged; 
+                shape.PropertyChanged -= Canvas_PropertyChanged;
+
+                OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, shape));
             }
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
             return result;
         }
         /// <summary>
@@ -132,8 +133,8 @@ namespace Shapes.Models
         public void RemoveAt(int index)
         {
             shapes[index].PropertyChanged -= Canvas_PropertyChanged;
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, shapes[index]));
             shapes.RemoveAt(index);
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
         }
         /// <summary>
         /// Method that removes all shapes with preset predicate
@@ -150,7 +151,7 @@ namespace Shapes.Models
                 }
             }
             
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
             return shapes.RemoveAll(match);
         }
         /// <summary>
@@ -163,7 +164,7 @@ namespace Shapes.Models
                 item.PropertyChanged -= Canvas_PropertyChanged;
             }
             shapes.Clear();
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
         /// <summary>
         /// Method that check if collection contains preset item
