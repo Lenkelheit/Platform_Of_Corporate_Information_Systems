@@ -50,7 +50,7 @@ namespace Shapes.Commands.Pentagon
         private double CalculateDistanceByIndeces(Models.Vertex[] arrVertices, int[] indices)
         {
             double distance = 0;
-            for (int i = 1; i < COUNT_VERTEX; i++) 
+            for (int i = 1; i < COUNT_VERTEX; i++)
             {
                 distance += Models.Vertex.GetDistance(arrVertices[indices[i - 1]], arrVertices[indices[i]]);
             }
@@ -66,7 +66,7 @@ namespace Shapes.Commands.Pentagon
                 arrIndices[i] = i;
             }
             var matrixIndices = GetPermutations(arrIndices, COUNT_VERTEX).ToArray();
-            for (int i = 0; i < matrixIndices.Length; i++) 
+            for (int i = 0; i < matrixIndices.Length; i++)
             {
                 localDistance = CalculateDistanceByIndeces(arrVertices, matrixIndices[i].ToArray());
                 if (localDistance < minDistance)
@@ -82,7 +82,7 @@ namespace Shapes.Commands.Pentagon
         /// </summary>
         public void Execute()
         {
-            if (arrSortedIndices == null)  
+            if (arrSortedIndices == null)
             {
                 arrUnsortedVertices = canvas.Shapes.OfType<Models.Vertex>().ToArray();
                 SortIndicesForVertices(arrUnsortedVertices);
@@ -94,18 +94,20 @@ namespace Shapes.Commands.Pentagon
                 Points = arrPoints
             };
             canvas.RemoveAll(shape => shape is Models.Vertex);
+            Models.Vertex.CountVertices = 0;
             canvas.Add(pentagon);
-        }        
+        }
         /// <summary>
         /// Restores previous state without added <see cref="Models.Pentagon"/>.
         /// </summary>
         public void UnExecute()
         {
             canvas.Remove(pentagon);
-            for (int i = 0; i < COUNT_VERTEX - 1; i++) 
+            for (int i = 0; i < COUNT_VERTEX - 1; i++)
             {
                 canvas.Add(arrUnsortedVertices[i]);
             }
+            Models.Vertex.CountVertices = COUNT_VERTEX - 1;
         }
     }
 }
