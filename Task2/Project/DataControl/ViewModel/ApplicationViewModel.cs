@@ -63,7 +63,7 @@ namespace DataControl
             dataChanged = false;
             currentFileName = null;
 
-            newFile = new RelayCommand(NewFile);
+            newFile = new RelayCommand(NewFileMethod);
 
             throw new System.NotImplementedException();
         }
@@ -151,7 +151,7 @@ namespace DataControl
         public RelayCommand ChangeShapeLocation => changeShapeLocation;
 
         // METHODS
-        private void NewFile(object o)
+        private void NewFileMethod(object o)
         {
             throw new System.NotImplementedException();
         }
