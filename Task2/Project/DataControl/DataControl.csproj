@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="Shapes">
       <HintPath>..\Shapes\_dll\Shapes.dll</HintPath>
     </Reference>
@@ -53,7 +54,7 @@
     <Compile Include="Services\DefaultDialogService .cs" />
     <Compile Include="Services\XmlFileService.cs" />
     <Compile Include="ViewModel\ApplicationViewModel.cs" />
-    <Compile Include="WpfCommands\DelegateCommands.cs" />
+    <Compile Include="WpfCommands\RelayCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

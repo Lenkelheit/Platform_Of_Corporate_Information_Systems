@@ -144,7 +144,7 @@ namespace Shapes.Models
         /// Constructor with 1 parameter
         /// </summary>
         /// <param name="pentagonVertex">Collection of new pentagon vertex</param>
-        /// <exception cref="throw new System.ArgumentException">Vertex doesn't exist!</exception>
+        /// <exception cref="System.ArgumentException">Vertex doesn't exist!</exception>
         public Pentagon(Vertex[] pentagonVertex) : this()
         {
             if (pentagonVertex == null)
@@ -173,7 +173,7 @@ namespace Shapes.Models
         /// </summary>
         /// <param name="p">Target point</param>
         /// <returns>Availability point in shape</returns>
-        public bool HitTest(System.Windows.Point p)
+        public override bool HitTest(System.Windows.Point p)
         {
             bool hitted = false;
 
