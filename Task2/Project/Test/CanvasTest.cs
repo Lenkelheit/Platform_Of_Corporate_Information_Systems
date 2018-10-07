@@ -139,7 +139,7 @@ namespace Test
             XmlSerializer xmlFormat = new XmlSerializer(typeof(Canvas),
                 new Type[3] { typeof(ShapeBase) , typeof(Pentagon), typeof(Vertex)});
             test = new Canvas();
-            string fileName = @"..\..\Serialization\CanvasData.xml";
+            string fileName = Configuration.CANVAS_SERIALIZATION_FILE_NAME;
             Pentagon added = new Pentagon();
             added.Opacity = 10;
             test.Add(added);
