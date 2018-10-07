@@ -26,6 +26,7 @@ namespace DataControl
 
 
         RelayCommand newFile;
+        RelayCommand openFile;
         RelayCommand saveFile;
         RelayCommand saveAsFile;
         RelayCommand exit;
@@ -115,6 +116,11 @@ namespace DataControl
             }
         }
 
+  
+
+        public RelayCommand NewFile => newFile;
+
+        public RelayCommand OpenFile => openFile;
 
         public RelayCommand SaveFile => saveFile;
 
