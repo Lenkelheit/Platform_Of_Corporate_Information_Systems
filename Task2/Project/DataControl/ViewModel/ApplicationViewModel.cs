@@ -16,22 +16,28 @@ namespace DataControl
         ShapeBase selectedShape;
         Canvas canvas;
 
+
         IFileService fileService;
         IDialogService dialogService;
 
+
         bool dataChanged;
         string currentFileName;
+
 
         RelayCommand newFile;
         RelayCommand saveFile;
         RelayCommand saveAsFile;
         RelayCommand exit;
-        RelayCommand deleteShape;
+
         RelayCommand undoAction;
         RelayCommand redoAction;
         RelayCommand undoManyAction;
         RelayCommand redoManyAction;
-        RelayCommand changeShapeColoe;
+
+        RelayCommand addVertex;
+        RelayCommand deleteShape;
+        RelayCommand changeShapeColor;
         RelayCommand changeShapeOpacity;
         RelayCommand changeShapeStrokeColor;
         RelayCommand changeStrokeWidth;
@@ -75,6 +81,10 @@ namespace DataControl
             {
                 throw new System.NotImplementedException();
             }
+            set
+            {
+                throw new System.NotImplementedException();
+            }
         }
         public Canvas Canvas
         {
@@ -83,8 +93,21 @@ namespace DataControl
                 throw new System.NotImplementedException();
             }
         }
-
-        public RelayCommand SaveFile
+        public System.Collections.Generic.IEnumerable<string> shapeNames
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+        public System.Collections.Generic.IEnumerable<string> undoActionNames
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+        public System.Collections.Generic.IEnumerable<string> redoActionNames
         {
             get
             {
@@ -92,101 +115,34 @@ namespace DataControl
             }
         }
 
-        public RelayCommand SaveAsFile
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
 
-        public RelayCommand Exit
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public RelayCommand SaveFile => saveFile;
 
-        public RelayCommand DeleteShape
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public RelayCommand SaveAsFile => saveAsFile;
 
-        public RelayCommand UndoAction
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public RelayCommand Exit => exit;
 
-        public RelayCommand RedoAction
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public RelayCommand DeleteShape => deleteShape;
 
-        public RelayCommand UndoManyAction
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public RelayCommand UndoAction => undoAction;
 
-        public RelayCommand RedoManyAction
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public RelayCommand RedoAction => redoAction;
 
-        public RelayCommand ChangeShapeColoe
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public RelayCommand UndoManyAction => undoManyAction;
 
-        public RelayCommand ChangeShapeOpacity
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public RelayCommand RedoManyAction => redoManyAction;
 
-        public RelayCommand ChangeShapeStrokeColor
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public RelayCommand AddVertex => addVertex;
 
-        public RelayCommand ChangeStrokeWidth
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public RelayCommand ChangeShapeColor => changeShapeColor;
 
-        public RelayCommand ChangeShapeLocation
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public RelayCommand ChangeShapeOpacity => changeShapeOpacity;
+
+        public RelayCommand ChangeShapeStrokeColor => changeShapeStrokeColor;
+
+        public RelayCommand ChangeStrokeWidth => changeStrokeWidth;
+
+        public RelayCommand ChangeShapeLocation => changeShapeLocation;
 
         // METHODS
         private void NewFile(object o)
