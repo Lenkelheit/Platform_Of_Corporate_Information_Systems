@@ -63,7 +63,7 @@ namespace Test
             XmlSerializer xmlFormat = new XmlSerializer(typeof(Pentagon),
                new Type[] { typeof(System.Windows.Media.Color), typeof(System.Windows.Point[]) });
             Pentagon temp = new Pentagon();
-            string fileName =  @"..\..\Serialization\PentagonData.xml";
+            string fileName = Configuration.PENTAGON_SERIALIZATION_FILE_NAME;
             temp.Points = test.Points;
             temp.Color = test.Color;
             temp.StrokeColor = test.StrokeColor;
