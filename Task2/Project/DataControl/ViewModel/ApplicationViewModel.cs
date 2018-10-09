@@ -64,6 +64,11 @@ namespace DataControl
             currentFileName = null;
 
             newFile = new RelayCommand(NewFileMethod);
+            addVertex = new RelayCommand(AddVertexMethod);
+            deleteShape = new RelayCommand(DeleteShapeMethod, CanDeleteShape);
+            undoAction = new RelayCommand(UndoActionMethod, CanUndoMethod);
+            undoManyAction = new RelayCommand(UndoManyItemsMethod);
+            redoManyAction = new RelayCommand(RedoManyActionMethod);
 
             throw new System.NotImplementedException();
         }
@@ -76,24 +81,35 @@ namespace DataControl
                 throw new System.NotImplementedException();
             }
         }
+        /// <summary>
+        /// Property that enable to interract with selected shape
+        /// </summary>
         public ShapeBase SelectedShape
         {
             get
             {
-                throw new System.NotImplementedException();
+                return selectedShape;
             }
             set
             {
-                throw new System.NotImplementedException();
+                if (value != selectedShape)
+                {
+                    selectedShape = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs("SelectedShape"));
+                }
             }
         }
+        /// <summary>
+        /// Property that enable to interract with canvas
+        /// </summary>
         public Canvas Canvas
         {
             get
             {
-                throw new System.NotImplementedException();
+                return canvas;
             }
         }
+
         public System.Collections.Generic.IEnumerable<string> shapeNames
         {
             get
@@ -101,22 +117,28 @@ namespace DataControl
                 throw new System.NotImplementedException();
             }
         }
+        /// <summary>
+        /// Property that enable to get undo action names
+        /// </summary>
         public System.Collections.Generic.IEnumerable<string> undoActionNames
         {
             get
             {
-                throw new System.NotImplementedException();
+                return manager.UndoItems;
             }
         }
+        /// <summary>
+        /// Property that enable to get redo action names
+        /// </summary>
         public System.Collections.Generic.IEnumerable<string> redoActionNames
         {
             get
             {
-                throw new System.NotImplementedException();
+                return manager.RedoItems;
             }
         }
 
-  
+
 
         public RelayCommand NewFile => newFile;
 
@@ -127,17 +149,29 @@ namespace DataControl
         public RelayCommand SaveAsFile => saveAsFile;
 
         public RelayCommand Exit => exit;
-
+        /// <summary>
+        /// Property that enable to interract with DeleteShape command
+        /// </summary>
         public RelayCommand DeleteShape => deleteShape;
-
+        /// <summary>
+        /// Property that enable to interract with UndoAction command
+        /// </summary>
         public RelayCommand UndoAction => undoAction;
-
+        /// <summary>
+        /// Property that enable to interract with RedoAction command
+        /// </summary>
         public RelayCommand RedoAction => redoAction;
-
+        /// <summary>
+        /// Property that enable to interract with UndoManyAction command
+        /// </summary>
         public RelayCommand UndoManyAction => undoManyAction;
-
+        /// <summary>
+        /// Property that enable to interract with RedoManyAction command
+        /// </summary>
         public RelayCommand RedoManyAction => redoManyAction;
-
+        /// <summary>
+        /// Property that enable to interract with AddVertex command
+        /// </summary>
         public RelayCommand AddVertex => addVertex;
 
         public RelayCommand ChangeShapeColor => changeShapeColor;
@@ -150,11 +184,73 @@ namespace DataControl
 
         public RelayCommand ChangeShapeLocation => changeShapeLocation;
 
+        
+
         // METHODS
         private void NewFileMethod(object o)
         {
             throw new System.NotImplementedException();
         }
         // your methods here
+
+        private void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e);
+        }
+        private void AddVertexMethod(object o)
+        {
+            Vertex target = new Vertex(/*mouse control*/);
+            manager.Execute(new Shapes.Commands.Vertex.AddVertex(canvas, target, manager));
+        }
+        private bool CanDeleteShape(object o)
+        {
+            return selectedShape == null;
+        }
+        private void DeleteShapeMethod(object o)
+        {
+            if (selectedShape is Pentagon)
+            {
+                manager.Execute(new Shapes.Commands.Pentagon.RemovePentagon(canvas, (Pentagon)selectedShape));
+            }
+            else if (selectedShape is Vertex)
+            {
+                manager.Execute(new Shapes.Commands.Vertex.RemoveVertex(canvas, (Vertex)selectedShape));
+            }
+            else
+            {
+                throw new System.NullReferenceException("Shape don't chosed!");
+            }
+
+        }
+        private void UndoActionMethod(object o)
+        {
+            manager.Undo();
+        }
+        private bool CanUndoMethod(object o)
+        {
+            return manager.CanUndo;
+        }
+        private void RedoActionMethod(object o)
+        {
+            manager.Redo();
+        }
+        private bool CanRedoAction(object o)
+        {
+            return manager.CanRedo;
+        }
+        private void UndoManyItemsMethod(object o)
+        {
+            for (int i = 0; i < (int)o + 1; i++)
+            {
+                manager.Undo();
+            }
+        }
+        private void RedoManyActionMethod(object o)
+        {
+            for (int i = 0; i < (int)o + 1; i++)
+            {
+                manager.Redo();
+            }
+        }
     }
 }
