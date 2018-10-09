@@ -67,6 +67,7 @@ namespace DataControl
             addVertex = new RelayCommand(AddVertexMethod);
             deleteShape = new RelayCommand(DeleteShapeMethod, CanDeleteShape);
             undoAction = new RelayCommand(UndoActionMethod, CanUndoMethod);
+            redoAction = new RelayCommand(RedoActionMethod, CanRedoAction);
             undoManyAction = new RelayCommand(UndoManyItemsMethod);
             redoManyAction = new RelayCommand(RedoManyActionMethod);
 
@@ -204,7 +205,7 @@ namespace DataControl
         }
         private bool CanDeleteShape(object o)
         {
-            return selectedShape == null;
+            return selectedShape != null;
         }
         private void DeleteShapeMethod(object o)
         {
@@ -240,17 +241,11 @@ namespace DataControl
         }
         private void UndoManyItemsMethod(object o)
         {
-            for (int i = 0; i < (int)o + 1; i++)
-            {
-                manager.Undo();
-            }
+                manager.Undo((int)o + 1);
         }
         private void RedoManyActionMethod(object o)
         {
-            for (int i = 0; i < (int)o + 1; i++)
-            {
-                manager.Redo();
-            }
+                manager.Redo((int)o + 1);
         }
     }
 }
