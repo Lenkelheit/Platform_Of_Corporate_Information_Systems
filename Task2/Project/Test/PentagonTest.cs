@@ -113,6 +113,7 @@ namespace Test
         [TestMethod]
         public void RemoveCommandTest()
         {
+            UndoRedoManager manager = new UndoRedoManager();
             Pentagon first = new Pentagon();
             Pentagon second = new Pentagon();
             Pentagon third = new Pentagon();
@@ -127,15 +128,19 @@ namespace Test
 
             Shapes.Commands.Pentagon.RemovePentagon testCommand =
                   new Shapes.Commands.Pentagon.RemovePentagon(baseCanvas, second);
-            testCommand.Execute();
+
+            manager.Execute(testCommand);
 
             Assert.AreEqual(0, baseCanvas.Count);
 
 
-            testCommand.UnExecute();
+            manager.Undo();
 
             Assert.AreEqual(1, baseCanvas.Count);
             Assert.AreEqual(baseCanvas[0], second);
+
+            manager.Redo();
+            Assert.AreEqual(0, baseCanvas.Count);
         }
 
     }
