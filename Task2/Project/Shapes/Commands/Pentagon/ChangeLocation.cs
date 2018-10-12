@@ -19,6 +19,9 @@ namespace Shapes.Commands.Pentagon
         /// <exception cref="System.ArgumentNullException">Thrown when points is null.</exception>
         public ChangeLocation(Models.Pentagon pentagon, System.Windows.Point[] points)
         {
+            this.pentagon = pentagon;
+            this.points = points;
+            this.prevLocation = pentagon.Points;
             if (this.pentagon == null)
             { 
                 throw new System.ArgumentNullException("Pentagon is null");
@@ -27,9 +30,6 @@ namespace Shapes.Commands.Pentagon
             {
                 throw new System.ArgumentNullException("Points is null");
             }
-            this.pentagon = pentagon;
-            this.points = points;
-            this.prevLocation = pentagon.Points;
         }
         // PROPERTIES
         /// <summary>
