@@ -9,6 +9,9 @@ using System.ComponentModel;
 
 namespace DataControl
 {
+    /// <summary>
+    /// A class that bond view and models.
+    /// </summary>
     public class ApplicationViewModel : INotifyPropertyChanged
     {
         // FIELDS
@@ -234,7 +237,7 @@ namespace DataControl
                 manager.Redo((int)o + 1);
         }
 
-
+        // RESTRICTIONS
         private bool CanDeleteShapeAction(object o)
         {
             return selectedShape != null;
@@ -247,8 +250,8 @@ namespace DataControl
         {
             return manager.CanRedo;
         }
-
-        private void OnPropertyChanged(PropertyChangedEventArgs e)
+        // EVENT METHODS
+        protected void OnPropertyChanged(PropertyChangedEventArgs e)
         {
             PropertyChanged?.Invoke(this, e);
         }
