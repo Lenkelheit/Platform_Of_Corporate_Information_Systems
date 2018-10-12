@@ -147,7 +147,7 @@ namespace Shapes.Models
         /// <exception cref="System.ArgumentException">Vertex doesn't exist!</exception>
         public Pentagon(Vertex[] pentagonVertex) : this()
         {
-            if (pentagonVertex == null)
+            if (pentagonVertex != null)
             {
                 for (int i = 0; i < NUM_OF_EDGE_IN_PENTAGON; i++)
                 {
@@ -163,7 +163,7 @@ namespace Shapes.Models
             }
             else
             {
-                throw new System.ArgumentException("Vertex doesn't exist!");
+                throw new System.ArgumentException("Vertexes doesn't exist!");
             }
         }
 
