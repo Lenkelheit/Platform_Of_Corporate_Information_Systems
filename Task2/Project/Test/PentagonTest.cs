@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shapes.Models;
 using System.Xml.Serialization;
 using System.IO;
-using Shapes.Commands;
+using Shapes.Commands.Pentagon;
 
 namespace Test
 {
@@ -12,6 +12,7 @@ namespace Test
     {
         Pentagon test = new Pentagon();
         #region PropertiesTest
+
         [TestMethod]
         public void ColorPropertyUnitTest()
         {
@@ -19,18 +20,21 @@ namespace Test
 
             Assert.AreEqual(test.Color, System.Windows.Media.Color.FromRgb(100, 100, 100));
         }
+
         [TestMethod]
         public void StrokeColorPropertyUnitTest()
         {
             test.StrokeColor = System.Windows.Media.Color.FromRgb(100, 100, 100);
             Assert.AreEqual(test.StrokeColor, System.Windows.Media.Color.FromRgb(100, 100, 100));
         }
+
         [TestMethod]
         public void StrokeThicknessPropertyUnitTest()
         {
             test.StrokeThickness = 10;
             Assert.AreEqual(test.StrokeThickness, 10);
         }
+
         [TestMethod]
         public void OpacityPropertyUnitTest()
         {
@@ -113,7 +117,6 @@ namespace Test
         [TestMethod]
         public void RemoveCommandTest()
         {
-            UndoRedoManager manager = new UndoRedoManager();
             Pentagon first = new Pentagon();
             Pentagon second = new Pentagon();
             Pentagon third = new Pentagon();
@@ -128,20 +131,131 @@ namespace Test
 
             Shapes.Commands.Pentagon.RemovePentagon testCommand =
                   new Shapes.Commands.Pentagon.RemovePentagon(baseCanvas, second);
-
-            manager.Execute(testCommand);
+            testCommand.Execute();
 
             Assert.AreEqual(0, baseCanvas.Count);
 
 
-            manager.Undo();
+            testCommand.UnExecute();
 
             Assert.AreEqual(1, baseCanvas.Count);
             Assert.AreEqual(baseCanvas[0], second);
-
-            manager.Redo();
-            Assert.AreEqual(0, baseCanvas.Count);
         }
 
+
+        #region ChangePentagonTest
+
+        [TestMethod]
+        public void CommandChangeColorTest()
+        {
+            Pentagon pentagon = new Pentagon();
+            System.Windows.Media.Color color = System.Windows.Media.Color.FromRgb(0, 255, 0);
+            System.Windows.Media.Color expectedColor = pentagon.Color;
+
+            UndoRedoManager undoRedoManager = new UndoRedoManager();
+
+            ChangeColor changeColor = new ChangeColor(pentagon, color);
+            undoRedoManager.Execute(changeColor);
+            Assert.AreEqual(pentagon.Color, color);
+
+            undoRedoManager.Undo();
+            Assert.AreEqual(pentagon.Color, expectedColor);
+        }
+
+        [TestMethod]
+        public void CommandChangeLocationTest()
+        {
+            Vertex[] vertices = new Vertex[Configuration.countPoints];
+            for (int i = 0; i < vertices.Length; ++i)
+            {
+                vertices[i] = new Vertex();
+            }
+            vertices[0].Location = new System.Windows.Point(1, 1);
+            vertices[1].Location = new System.Windows.Point(3, 1);
+            vertices[2].Location = new System.Windows.Point(4, 2);
+            vertices[3].Location = new System.Windows.Point(2, 2);
+            vertices[4].Location = new System.Windows.Point(1, 2);
+
+            Pentagon pentagon = new Pentagon(vertices);
+            System.Windows.Point[] points = new System.Windows.Point[Configuration.countPoints];
+            points[0] = new System.Windows.Point(1, 1);
+            points[1] = new System.Windows.Point(3, 1);
+            points[2] = new System.Windows.Point(4, 2);
+            points[3] = new System.Windows.Point(2, 2);
+            points[4] = new System.Windows.Point(1, 2);
+
+            System.Windows.Point[] expectedLocation = new System.Windows.Point[Configuration.countPoints];
+            Array.Copy(pentagon.Points, expectedLocation, Configuration.countPoints);
+
+            UndoRedoManager undoRedoManager = new UndoRedoManager();
+
+            ChangeLocation changeLocation = new ChangeLocation(pentagon, points);
+            undoRedoManager.Execute(changeLocation);
+            //for (int i = 0; i < Configuration.countPoints; ++i)
+            //{
+            //    Assert.AreEqual(pentagon.Points[i], points[i]);
+            //}
+            CollectionAssert.AreEqual(pentagon.Points, points);
+
+            undoRedoManager.Undo();
+            //for (int i = 0; i < 5; ++i)
+            //{
+            //    Assert.AreEqual(pentagon.Points[i], expectedLocation[i]);
+            //}
+            CollectionAssert.AreEqual(pentagon.Points, expectedLocation);
+        }
+
+        [TestMethod]
+        public void CommandChangeOpacityTest()
+        {
+            Pentagon pentagon = new Pentagon();
+            double opacity = Configuration.opacity;
+            double expectedOpacity = pentagon.Opacity;
+
+            UndoRedoManager undoRedoManager = new UndoRedoManager();
+
+            ChangeOpacity changeOpacity = new ChangeOpacity(pentagon, opacity);
+            undoRedoManager.Execute(changeOpacity);
+            Assert.AreEqual(pentagon.Opacity, opacity);
+
+            undoRedoManager.Undo();
+            Assert.AreEqual(pentagon.Opacity, expectedOpacity);
+        }
+
+        [TestMethod]
+        public void CommandChangeStrokeColorTest()
+        {
+            Pentagon pentagon = new Pentagon();
+            System.Windows.Media.Color color = System.Windows.Media.Color.FromRgb(255, 0, 0);
+            System.Windows.Media.Color expectedColor = pentagon.StrokeColor;
+
+            UndoRedoManager undoRedoManager = new UndoRedoManager();
+
+            ChangeStrokeColor changeStrokeColor = new ChangeStrokeColor(pentagon, color);
+            undoRedoManager.Execute(changeStrokeColor);
+            Assert.AreEqual(pentagon.StrokeColor, color);
+
+            undoRedoManager.Undo();
+            Assert.AreEqual(pentagon.StrokeColor, expectedColor);
+        }
+
+        [TestMethod]
+        public void CommandChangeStrokeWidthTest()
+        {
+            Pentagon pentagon = new Pentagon();
+            double strokeThickness = Configuration.strokeThickness;
+            double expectedStrokeThickness = pentagon.StrokeThickness;
+
+            UndoRedoManager undoRedoManager = new UndoRedoManager();
+
+            ChangeStrokeWidth changeStrokeWidth = new ChangeStrokeWidth(pentagon, strokeThickness);
+            undoRedoManager.Execute(changeStrokeWidth);
+            Assert.AreEqual(pentagon.StrokeThickness, strokeThickness);
+
+            undoRedoManager.Undo();
+            Assert.AreEqual(pentagon.StrokeThickness, expectedStrokeThickness);
+        }
+
+        #endregion
     }
 }
