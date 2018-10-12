@@ -68,9 +68,9 @@ namespace Shapes.Models
         public void Execute(ICommand command)
         {
             RememberState();
-            undoStack.Push(command);
-            command.Execute();
             
+            undoStack.Push(command);
+            command.Execute();            
             redoStack.Clear();
 
             OnStateChanged();
