@@ -197,8 +197,6 @@ namespace DataControl
         {
             throw new System.NotImplementedException();
         }
-        // your methods here
-
         private void AddVertexMethod(object o)
         {
             Vertex target = new Vertex(/*mouse control*/);
@@ -218,7 +216,6 @@ namespace DataControl
             {
                 throw new System.NullReferenceException("Shape don't chosed!");
             }
-
         }
         private void UndoActionMethod(object o)
         {
@@ -230,11 +227,11 @@ namespace DataControl
         }
         private void UndoManyItemsMethod(object o)
         {
-                manager.Undo((int)o + 1);
+            manager.Undo((int)o + 1);
         }
         private void RedoManyActionMethod(object o)
         {
-                manager.Redo((int)o + 1);
+            manager.Redo((int)o + 1);
         }
 
         // RESTRICTIONS
