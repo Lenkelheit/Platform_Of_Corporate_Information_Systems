@@ -64,12 +64,14 @@ namespace DataControl
             currentFileName = null;
 
             newFile = new RelayCommand(NewFileMethod);
-            addVertex = new RelayCommand(AddVertexMethod);
-            deleteShape = new RelayCommand(DeleteShapeMethod, CanDeleteShape);
-            undoAction = new RelayCommand(UndoActionMethod, CanUndoMethod);
+
+            undoAction = new RelayCommand(UndoActionMethod, CanUndoAction);
             redoAction = new RelayCommand(RedoActionMethod, CanRedoAction);
             undoManyAction = new RelayCommand(UndoManyItemsMethod);
             redoManyAction = new RelayCommand(RedoManyActionMethod);
+
+            addVertex = new RelayCommand(AddVertexMethod);
+            deleteShape = new RelayCommand(DeleteShapeMethod, CanDeleteShapeAction);
 
             throw new System.NotImplementedException();
         }
@@ -194,18 +196,10 @@ namespace DataControl
         }
         // your methods here
 
-        private void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            PropertyChanged?.Invoke(this, e);
-        }
         private void AddVertexMethod(object o)
         {
             Vertex target = new Vertex(/*mouse control*/);
             manager.Execute(new Shapes.Commands.Vertex.AddVertex(canvas, target, manager));
-        }
-        private bool CanDeleteShape(object o)
-        {
-            return selectedShape != null;
         }
         private void DeleteShapeMethod(object o)
         {
@@ -227,17 +221,9 @@ namespace DataControl
         {
             manager.Undo();
         }
-        private bool CanUndoMethod(object o)
-        {
-            return manager.CanUndo;
-        }
         private void RedoActionMethod(object o)
         {
             manager.Redo();
-        }
-        private bool CanRedoAction(object o)
-        {
-            return manager.CanRedo;
         }
         private void UndoManyItemsMethod(object o)
         {
@@ -246,6 +232,25 @@ namespace DataControl
         private void RedoManyActionMethod(object o)
         {
                 manager.Redo((int)o + 1);
+        }
+
+
+        private bool CanDeleteShapeAction(object o)
+        {
+            return selectedShape != null;
+        }
+        private bool CanUndoAction(object o)
+        {
+            return manager.CanUndo;
+        }
+        private bool CanRedoAction(object o)
+        {
+            return manager.CanRedo;
+        }
+
+        private void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e);
         }
     }
 }
