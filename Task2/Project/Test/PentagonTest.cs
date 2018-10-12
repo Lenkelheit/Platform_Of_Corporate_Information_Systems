@@ -1,9 +1,7 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shapes.Models;
 using System.Xml.Serialization;
-using System.IO;
-using Shapes.Commands;
+using System.Linq;
 
 namespace Test
 {
@@ -61,7 +59,7 @@ namespace Test
         public void SerialiseUnitTest()
         {
             XmlSerializer xmlFormat = new XmlSerializer(typeof(Pentagon),
-               new Type[] { typeof(System.Windows.Media.Color), typeof(System.Windows.Point[]) });
+               new System.Type[] { typeof(System.Windows.Media.Color), typeof(System.Windows.Point[]) });
             Pentagon temp = new Pentagon();
             string fileName = Configuration.PENTAGON_SERIALIZATION_FILE_NAME;
             temp.Points = test.Points;
@@ -69,13 +67,13 @@ namespace Test
             temp.StrokeColor = test.StrokeColor;
             temp.Opacity = test.Opacity;
             temp.StrokeThickness = test.StrokeThickness;
-            using (Stream fStream = new FileStream(fileName,
-                FileMode.Create, FileAccess.Write, FileShare.None))
+            using (System.IO.Stream fStream = new System.IO.FileStream(fileName,
+                System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
             {
                 xmlFormat.Serialize(fStream, temp);
             }
-            using (Stream fStream = new FileStream(fileName,
-               FileMode.Open, FileAccess.Read, FileShare.None))
+            using (System.IO.Stream fStream = new System.IO.FileStream(fileName,
+               System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.None))
             {
                 test = (Pentagon)xmlFormat.Deserialize(fStream);
             }
@@ -87,8 +85,6 @@ namespace Test
             {
                 Assert.IsTrue(true);
             }
-
-
         }
 
         [TestMethod]
@@ -143,5 +139,83 @@ namespace Test
             Assert.AreEqual(0, baseCanvas.Count);
         }
 
+        [TestMethod]
+        public void AddPentagonCommandTest()
+        {
+            UndoRedoManager manager = new UndoRedoManager();
+            Canvas canvas = new Canvas();
+            Assert.AreEqual(0, canvas.Count);
+
+            Pentagon first;
+            Vertex[] arrVertices = new Vertex[Pentagon.NUM_OF_EDGE_IN_PENTAGON];
+            arrVertices[0] = new Vertex
+            {
+                Location = new System.Windows.Point(0, 1)
+            };
+            arrVertices[1] = new Vertex
+            {
+                Location = new System.Windows.Point(3, 1)
+            };
+            arrVertices[2] = new Vertex
+            {
+                Location = new System.Windows.Point(1.5, -4)
+            };
+            arrVertices[3] = new Vertex
+            {
+                Location = new System.Windows.Point(1, 5)
+            };
+            arrVertices[4] = new Vertex
+            {
+                Location = new System.Windows.Point(6, -2)
+            };
+            for (int i = 0; i < arrVertices.Length; ++i) 
+            {
+                canvas.Add(arrVertices[i]);
+            }
+            Assert.AreEqual(5, canvas.Count);
+            for (int i = 0; i < arrVertices.Length; ++i) 
+            {
+                Assert.IsTrue(canvas.Contains(arrVertices[i]));
+            }
+
+            Shapes.Commands.Pentagon.AddPentagon addPentagonCommand =
+                  new Shapes.Commands.Pentagon.AddPentagon(canvas);
+
+            manager.Execute(addPentagonCommand);
+
+            Assert.AreEqual(1, canvas.Count);
+            for (int i = 0; i < arrVertices.Length; ++i) 
+            {
+                Assert.IsFalse(canvas.Contains(arrVertices[i]));
+            }
+
+            Assert.IsTrue(canvas[0] is Pentagon);
+            first = (Pentagon)canvas[0];
+            for (int i = 0; i < arrVertices.Length; ++i) 
+            {
+                Assert.IsTrue(first.Points.Contains(arrVertices[i].Location));
+            }
+
+            manager.Undo();
+            Assert.AreEqual(4, canvas.Count);
+            for (int i = 0; i < arrVertices.Length - 1; ++i) 
+            {
+                Assert.IsTrue(canvas.Contains(arrVertices[i]));
+            }
+
+            manager.Redo();
+            Assert.AreEqual(1, canvas.Count);
+            for (int i = 0; i < arrVertices.Length; ++i)
+            {
+                Assert.IsFalse(canvas.Contains(arrVertices[i]));
+            }
+
+            Assert.IsTrue(canvas[0] is Pentagon);
+            first = (Pentagon)canvas[0];
+            for (int i = 0; i < arrVertices.Length; ++i)
+            {
+                Assert.IsTrue(first.Points.Contains(arrVertices[i].Location));
+            }
+        }
     }
 }
