@@ -6,19 +6,14 @@ using Shapes.Models;
 
 using System.ComponentModel;
 
-
 namespace DataControl
 {
-    /// <summary>
-    /// A class that bond view and models.
-    /// </summary>
     public class ApplicationViewModel : INotifyPropertyChanged
     {
         // FIELDS
         UndoRedoManager manager;
         ShapeBase selectedShape;
         Canvas canvas;
-
 
         IFileService fileService;
         IDialogService dialogService;
@@ -68,13 +63,12 @@ namespace DataControl
 
             newFile = new RelayCommand(NewFileMethod);
 
-            undoAction = new RelayCommand(UndoActionMethod, CanUndoAction);
-            redoAction = new RelayCommand(RedoActionMethod, CanRedoAction);
-            undoManyAction = new RelayCommand(UndoManyItemsMethod);
-            redoManyAction = new RelayCommand(RedoManyActionMethod);
 
-            addVertex = new RelayCommand(AddVertexMethod);
-            deleteShape = new RelayCommand(DeleteShapeMethod, CanDeleteShapeAction);
+            changeShapeColor = new RelayCommand(ChangeColorMethod);
+            changeShapeOpacity = new RelayCommand(ChangeOpacityMethod);
+            changeShapeStrokeColor = new RelayCommand(ChangeStrokeColorMethod);
+            changeStrokeWidth = new RelayCommand(ChangeStrokeWidthMethod);
+            changeShapeLocation = new RelayCommand(ChangeLocationMethod);
 
             throw new System.NotImplementedException();
         }
@@ -87,35 +81,24 @@ namespace DataControl
                 throw new System.NotImplementedException();
             }
         }
-        /// <summary>
-        /// Property that enable to interract with selected shape
-        /// </summary>
         public ShapeBase SelectedShape
         {
             get
             {
-                return selectedShape;
+                throw new System.NotImplementedException();
             }
             set
             {
-                if (value != selectedShape)
-                {
-                    selectedShape = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("SelectedShape"));
-                }
+                throw new System.NotImplementedException();
             }
         }
-        /// <summary>
-        /// Property that enable to interract with canvas
-        /// </summary>
         public Canvas Canvas
         {
             get
             {
-                return canvas;
+                throw new System.NotImplementedException();
             }
         }
-
         public System.Collections.Generic.IEnumerable<string> shapeNames
         {
             get
@@ -123,28 +106,22 @@ namespace DataControl
                 throw new System.NotImplementedException();
             }
         }
-        /// <summary>
-        /// Property that enable to get undo action names
-        /// </summary>
         public System.Collections.Generic.IEnumerable<string> undoActionNames
         {
             get
             {
-                return manager.UndoItems;
+                throw new System.NotImplementedException();
             }
         }
-        /// <summary>
-        /// Property that enable to get redo action names
-        /// </summary>
         public System.Collections.Generic.IEnumerable<string> redoActionNames
         {
             get
             {
-                return manager.RedoItems;
+                throw new System.NotImplementedException();
             }
         }
 
-
+  
 
         public RelayCommand NewFile => newFile;
 
@@ -155,102 +132,105 @@ namespace DataControl
         public RelayCommand SaveAsFile => saveAsFile;
 
         public RelayCommand Exit => exit;
-        /// <summary>
-        /// Property that enable to interract with DeleteShape command
-        /// </summary>
+
         public RelayCommand DeleteShape => deleteShape;
-        /// <summary>
-        /// Property that enable to interract with UndoAction command
-        /// </summary>
+
         public RelayCommand UndoAction => undoAction;
-        /// <summary>
-        /// Property that enable to interract with RedoAction command
-        /// </summary>
+
         public RelayCommand RedoAction => redoAction;
-        /// <summary>
-        /// Property that enable to interract with UndoManyAction command
-        /// </summary>
+
         public RelayCommand UndoManyAction => undoManyAction;
-        /// <summary>
-        /// Property that enable to interract with RedoManyAction command
-        /// </summary>
+
         public RelayCommand RedoManyAction => redoManyAction;
-        /// <summary>
-        /// Property that enable to interract with AddVertex command
-        /// </summary>
+
         public RelayCommand AddVertex => addVertex;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeShapeColor command.
+        /// </summary>
         public RelayCommand ChangeShapeColor => changeShapeColor;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeShapeOpacity command.
+        /// </summary>
         public RelayCommand ChangeShapeOpacity => changeShapeOpacity;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeShapeStrokeColor command.
+        /// </summary>
         public RelayCommand ChangeShapeStrokeColor => changeShapeStrokeColor;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeStrokeWidth command.
+        /// </summary>
         public RelayCommand ChangeStrokeWidth => changeStrokeWidth;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeShapeLocation command.
+        /// </summary>
         public RelayCommand ChangeShapeLocation => changeShapeLocation;
-
-        
 
         // METHODS
         private void NewFileMethod(object o)
         {
             throw new System.NotImplementedException();
         }
-        private void AddVertexMethod(object o)
+        // your methods here
+
+        // PROPERTIES
+        /// <summary>
+        /// Property that returns the name of a figure.
+        /// </summary>
+        public string ShapeNames => "Name shape";
+
+        private void ChangeColorMethod(object obj)
         {
-            Vertex target = new Vertex(/*mouse control*/);
-            manager.Execute(new Shapes.Commands.Vertex.AddVertex(canvas, target, manager));
-        }
-        private void DeleteShapeMethod(object o)
-        {
-            if (selectedShape is Pentagon)
+            System.Windows.Media.Color target = System.Windows.Media.Color.FromRgb(0,255,0);
+            Pentagon pentagon = obj as Pentagon;
+            if(pentagon == null)
             {
-                manager.Execute(new Shapes.Commands.Pentagon.RemovePentagon(canvas, (Pentagon)selectedShape));
+                throw new System.ArgumentException("object is not pentagon");
             }
-            else if (selectedShape is Vertex)
-            {
-                manager.Execute(new Shapes.Commands.Vertex.RemoveVertex(canvas, (Vertex)selectedShape));
-            }
-            else
-            {
-                throw new System.NullReferenceException("Shape don't chosed!");
-            }
-        }
-        private void UndoActionMethod(object o)
-        {
-            manager.Undo();
-        }
-        private void RedoActionMethod(object o)
-        {
-            manager.Redo();
-        }
-        private void UndoManyItemsMethod(object o)
-        {
-            manager.Undo((int)o + 1);
-        }
-        private void RedoManyActionMethod(object o)
-        {
-            manager.Redo((int)o + 1);
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeColor(pentagon, target));
         }
 
-        // RESTRICTIONS
-        private bool CanDeleteShapeAction(object o)
+        private void ChangeLocationMethod(object obj)
         {
-            return selectedShape != null;
+            System.Windows.Point[] points = new System.Windows.Point[5];
+            Pentagon pentagon = obj as Pentagon;
+            if (pentagon == null)
+            {
+                throw new System.ArgumentException("object is not pentagon");
+            }
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeLocation(pentagon, points));
         }
-        private bool CanUndoAction(object o)
+
+        private void ChangeOpacityMethod(object obj)
         {
-            return manager.CanUndo;
+            double target = 3;
+            Pentagon pentagon = obj as Pentagon;
+            if (pentagon == null)
+            {
+                throw new System.ArgumentException("object is not pentagon");
+            }
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeOpacity(pentagon, target));
         }
-        private bool CanRedoAction(object o)
+
+        private void ChangeStrokeColorMethod(object obj)
         {
-            return manager.CanRedo;
+            System.Windows.Media.Color target = System.Windows.Media.Color.FromRgb(0, 255, 0);
+            Pentagon pentagon = obj as Pentagon;
+            if (pentagon == null)
+            {
+                throw new System.ArgumentException("object is not pentagon");
+            }
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeColor(pentagon, target));
         }
-        // EVENT METHODS
-        protected void OnPropertyChanged(PropertyChangedEventArgs e)
+
+        private void ChangeStrokeWidthMethod(object obj)
         {
-            PropertyChanged?.Invoke(this, e);
+            double target = 3;
+            Pentagon pentagon = obj as Pentagon;
+            if (pentagon == null)
+            {
+                throw new System.ArgumentException("object is not pentagon");
+            }
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeWidth(pentagon, target));
         }
     }
 }
