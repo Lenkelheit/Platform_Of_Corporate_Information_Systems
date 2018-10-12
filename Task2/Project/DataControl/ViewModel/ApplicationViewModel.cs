@@ -116,7 +116,7 @@ namespace DataControl
             }
         }
 
-        public System.Collections.Generic.IEnumerable<string> shapeNames
+        public System.Collections.Generic.IEnumerable<string> ShapeNames
         {
             get
             {
@@ -126,7 +126,7 @@ namespace DataControl
         /// <summary>
         /// Property that enable to get undo action names
         /// </summary>
-        public System.Collections.Generic.IEnumerable<string> undoActionNames
+        public System.Collections.Generic.IEnumerable<string> UndoActionNames
         {
             get
             {
@@ -136,7 +136,7 @@ namespace DataControl
         /// <summary>
         /// Property that enable to get redo action names
         /// </summary>
-        public System.Collections.Generic.IEnumerable<string> redoActionNames
+        public System.Collections.Generic.IEnumerable<string> RedoActionNames
         {
             get
             {
