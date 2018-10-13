@@ -103,7 +103,7 @@ namespace Test
             };
 
             Assert.IsFalse(p.HitTest(new System.Windows.Point(0, 0)));
-
+            Assert.IsTrue(p.HitTest(new System.Windows.Point(2, 2)));
         }
 
         [TestMethod]
