@@ -1,7 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shapes.Models;
 using System.Xml.Serialization;
-using System.IO;
 using System.Linq;
 using Shapes.Commands.Pentagon;
 
@@ -192,10 +191,6 @@ namespace Test
             CollectionAssert.AreEqual(pentagon.Points, points);
 
             undoRedoManager.Undo();
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    Assert.AreEqual(pentagon.Points[i], expectedLocation[i]);
-            //}
             CollectionAssert.AreEqual(pentagon.Points, expectedLocation);
         }
 
