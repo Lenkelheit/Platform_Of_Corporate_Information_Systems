@@ -186,8 +186,8 @@ namespace Shapes.Models
 
                 // get the Point at our current position
                 // this makes our if statement a little cleaner
-                System.Windows.Point pc = points[i];    // c for "current"
-                System.Windows.Point pn = points[i % points.Length];       // n for "next"
+                System.Windows.Point pc = points[i];                           // c for "current"
+                System.Windows.Point pn = points[(i+1) % points.Length];       // n for "next"
 
                 // compare position, flip 'hitted' variable
                 // back and forth
