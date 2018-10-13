@@ -183,7 +183,7 @@ namespace Test
             points[4] = new System.Windows.Point(1, 2);
 
             System.Windows.Point[] expectedLocation = new System.Windows.Point[Configuration.POINTS_AMOUNT];
-            Array.Copy(pentagon.Points, expectedLocation, Configuration.POINTS_AMOUNT);
+            System.Array.Copy(pentagon.Points, expectedLocation, Configuration.POINTS_AMOUNT);
 
             UndoRedoManager undoRedoManager = new UndoRedoManager();
 
