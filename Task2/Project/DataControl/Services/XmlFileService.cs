@@ -7,6 +7,7 @@ namespace DataControl.Services
     /// </summary>
     public class XmlFileService : Interfaces.IFileService
     {
+        // METHODS
         /// <summary>
         /// Loads information from xml file.
         /// </summary>
