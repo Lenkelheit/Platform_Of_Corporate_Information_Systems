@@ -16,6 +16,6 @@ namespace DataControl.Interfaces
         /// </summary>
         /// <param name="item">Object to loading.</param>
         /// <param name="fileName">The name of file.</param>
-        void Load(out Shapes.Models.Canvas item, string fileName);
+        void Load(Shapes.Models.Canvas item, string fileName);
     }
 }
