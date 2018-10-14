@@ -54,7 +54,6 @@ namespace Shapes.Commands.Vertex
         public void Execute()
         {
             canvas.RemoveAt(index);
-            Models.Vertex.NumberOfVertex--;
         }
         /// <summary>
         /// Restores removed <see cref="Models.Vertex"/>.
@@ -62,7 +61,6 @@ namespace Shapes.Commands.Vertex
         public void UnExecute()
         {
             canvas.Insert(index, vertex);
-            Models.Vertex.NumberOfVertex++;
         }
     }
 }
