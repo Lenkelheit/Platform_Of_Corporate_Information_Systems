@@ -40,13 +40,15 @@ namespace DataControl.Services
         /// </returns>
         public bool ColorDialog()
         {
-            System.Windows.Forms.ColorDialog colorDialog = new System.Windows.Forms.ColorDialog();
-            if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) 
+            using (System.Windows.Forms.ColorDialog colorDialog = new System.Windows.Forms.ColorDialog())
             {
-                color = colorDialog.Color;
-                return true;
+                if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    color = colorDialog.Color;
+                    return true;
+                }
+                return false;
             }
-            return false;
         }
         /// <summary>
         /// Opens dialog for opening file.
@@ -61,7 +63,7 @@ namespace DataControl.Services
             {
                 filePath = openFileDialog.FileName;
                 return true;
-            }
+            }            
             return false;
         }
         /// <summary>
