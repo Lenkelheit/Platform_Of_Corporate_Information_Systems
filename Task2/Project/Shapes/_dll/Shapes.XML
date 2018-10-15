@@ -1,0 +1,660 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Shapes</name>
+    </assembly>
+    <members>
+        <member name="T:Shapes.Commands.Pentagon.AddPentagon">
+            <summary>
+            Represents command of adding <see cref="T:Shapes.Models.Pentagon"/>.
+            </summary>
+        </member>
+        <member name="P:Shapes.Commands.Pentagon.AddPentagon.Name">
+            <summary>
+            Command name.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.AddPentagon.#ctor(Shapes.Models.Canvas)">
+            <summary>
+            Constructor with parameters.
+            </summary>
+            <param name="canvas">Current canvas.</param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when canvas is null.
+            </exception>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.AddPentagon.Execute">
+            <summary>
+            Adds <see cref="T:Shapes.Models.Pentagon"/>.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.AddPentagon.UnExecute">
+            <summary>
+            Restores previous state without added <see cref="T:Shapes.Models.Pentagon"/>.
+            </summary>
+        </member>
+        <member name="T:Shapes.Commands.Pentagon.ChangeColor">
+            <summary>
+            Represents the command <see cref = "T:Shapes.Models.Pentagon" /> which changes its color.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeColor.#ctor(Shapes.Models.Pentagon,System.Windows.Media.Color)">
+            <summary>
+            Constructor with parameters.
+            </summary>
+            <param name="pentagon">Current pentagon.</param>
+            <param name="color">New color.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when pentagon is null.</exception>
+        </member>
+        <member name="P:Shapes.Commands.Pentagon.ChangeColor.Name">
+            <summary>
+            Command name.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeColor.Execute">
+            <summary>
+            Changes <see cref="T:Shapes.Models.Pentagon"/> color.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeColor.UnExecute">
+            <summary>
+            Returns <see cref="T:Shapes.Models.Pentagon"/> to its previous color.
+            </summary>
+        </member>
+        <member name="T:Shapes.Commands.Pentagon.ChangeLocation">
+            <summary>
+            Represents the command <see cref = "T:Shapes.Models.Pentagon" /> which changes its location.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeLocation.#ctor(Shapes.Models.Pentagon,System.Windows.Point[])">
+            <summary>
+            Constructor with parameters.
+            </summary>
+            <param name="pentagon">Current pentagon.</param>
+            <param name="points">New points.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when pentagon is null.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when points is null.</exception>
+        </member>
+        <member name="P:Shapes.Commands.Pentagon.ChangeLocation.Name">
+            <summary>
+            Command name.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeLocation.Execute">
+            <summary>
+            Changes <see cref="T:Shapes.Models.Pentagon"/> location.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeLocation.UnExecute">
+            <summary>
+            Returns <see cref="T:Shapes.Models.Pentagon"/> to its previous location.
+            </summary>
+        </member>
+        <member name="T:Shapes.Commands.Pentagon.ChangeOpacity">
+            <summary>
+            Represents the command <see cref = "T:Shapes.Models.Pentagon" /> which changes its opacity.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeOpacity.#ctor(Shapes.Models.Pentagon,System.Double)">
+            <summary>
+            Constructor with parameters.
+            </summary>
+            <param name="pentagon">Current pentagon.</param>
+            <param name="opacity">New opacity.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when pentagon is null.</exception>
+        </member>
+        <member name="P:Shapes.Commands.Pentagon.ChangeOpacity.Name">
+            <summary>
+            Command name.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeOpacity.Execute">
+            <summary>
+            Changes <see cref="T:Shapes.Models.Pentagon"/> opacity.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeOpacity.UnExecute">
+            <summary>
+            Returns <see cref="T:Shapes.Models.Pentagon"/> to its previous opacity.
+            </summary>
+        </member>
+        <member name="T:Shapes.Commands.Pentagon.ChangeStrokeColor">
+            <summary>
+            Represents the command <see cref = "T:Shapes.Models.Pentagon" /> which changes its stroke color.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeStrokeColor.#ctor(Shapes.Models.Pentagon,System.Windows.Media.Color)">
+            <summary>
+            Constructor with parameters.
+            </summary>
+            <param name="pentagon">Current pentagon.</param>
+            <param name="strokeColor">New color.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when pentagon is null.</exception>
+        </member>
+        <member name="P:Shapes.Commands.Pentagon.ChangeStrokeColor.Name">
+            <summary>
+            Command name.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeStrokeColor.Execute">
+            <summary>
+            Changes <see cref="T:Shapes.Models.Pentagon"/> stroke color.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeStrokeColor.UnExecute">
+            <summary>
+            Returns <see cref="T:Shapes.Models.Pentagon"/> to its previous stroke color.
+            </summary>
+        </member>
+        <member name="T:Shapes.Commands.Pentagon.ChangeStrokeWidth">
+            <summary>
+            Represents the command <see cref = "T:Shapes.Models.Pentagon" /> which changes its stroke width.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeStrokeWidth.#ctor(Shapes.Models.Pentagon,System.Double)">
+            <summary>
+            Constructor with parameters.
+            </summary>
+            <param name="pentagon"></param>
+            <param name="strokeThickness"></param>
+            <exception cref="T:System.ArgumentNullException">Thrown when pentagon is null.</exception>
+        </member>
+        <member name="P:Shapes.Commands.Pentagon.ChangeStrokeWidth.Name">
+            <summary>
+            Command name.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeStrokeWidth.Execute">
+            <summary>
+            Changes <see cref="T:Shapes.Models.Pentagon"/> stroke width.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.ChangeStrokeWidth.UnExecute">
+            <summary>
+            Returns <see cref="T:Shapes.Models.Pentagon"/> to its previous stroke width.
+            </summary>
+        </member>
+        <member name="T:Shapes.Commands.Pentagon.RemovePentagon">
+            <summary>
+            Class that represents command for removing pentagon
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.RemovePentagon.#ctor(Shapes.Models.Canvas,Shapes.Models.Pentagon)">
+            <summary>
+            Constructor with 2 parameters
+            </summary>
+            <param name="baseCanvas">Basic canvas from which will be removed pentagon</param>
+            <param name="target">Pentagon that will be removed</param>
+            <exception cref="T:System.NullReferenceException">Pentagon or canvas doesn't exist!</exception>
+            <exception cref="T:System.ArgumentException">Thrown when pentagon has not been found in canvas.</exception>
+        </member>
+        <member name="P:Shapes.Commands.Pentagon.RemovePentagon.Name">
+            <summary>
+            Property that allows to get command name
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.RemovePentagon.Execute">
+            <summary>
+            Method that execute command
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Pentagon.RemovePentagon.UnExecute">
+            <summary>
+            Method that returns command execution
+            </summary>
+        </member>
+        <member name="T:Shapes.Commands.Vertex.AddVertex">
+            <summary>
+            Class that represents command for adding vertex to pentagon
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Vertex.AddVertex.#ctor(Shapes.Models.Canvas,Shapes.Models.Vertex,Shapes.Models.UndoRedoManager)">
+            <summary>
+            Constructor with 3 parameters
+            </summary>
+            <param name="baseCanvas">Vertex in which will be added vertex</param>
+            <param name="target">Added vertex</param>
+            <param name="workCommandManger">program command manager</param>
+            <exception cref="T:System.NullReferenceException">Pentagon, command manager or vertex doesn't exist!</exception>
+        </member>
+        <member name="P:Shapes.Commands.Vertex.AddVertex.Name">
+            <summary>
+            Property that enable to interract with command name
+            </summary>
+            <returns>Command name</returns>
+        </member>
+        <member name="M:Shapes.Commands.Vertex.AddVertex.Execute">
+            <summary>
+            Method that execute command
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Vertex.AddVertex.UnExecute">
+            <summary>
+            Method that returns command execution
+            </summary>
+        </member>
+        <member name="T:Shapes.Commands.Vertex.ChangeLocation">
+            <summary>
+            Represents command for <see cref="T:Shapes.Models.Vertex"/> that changes its location.
+            </summary>
+        </member>
+        <member name="P:Shapes.Commands.Vertex.ChangeLocation.Name">
+            <summary>
+            Command name.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Vertex.ChangeLocation.#ctor(Shapes.Models.Vertex,System.Windows.Point)">
+            <summary>
+            Constructor with parameters.
+            </summary>
+            <param name="vertex">Current vertex.</param>
+            <param name="location">New location.</param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when vertex is null.
+            </exception> 
+        </member>
+        <member name="M:Shapes.Commands.Vertex.ChangeLocation.Execute">
+            <summary>
+            Changes <see cref="T:Shapes.Models.Vertex"/>'s location.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Vertex.ChangeLocation.UnExecute">
+            <summary>
+            Returns <see cref="T:Shapes.Models.Vertex"/> to its previous location.
+            </summary>
+        </member>
+        <member name="T:Shapes.Commands.Vertex.RemoveVertex">
+            <summary>
+            Represents command of removing <see cref="T:Shapes.Models.Vertex"/>.
+            </summary>
+        </member>
+        <member name="P:Shapes.Commands.Vertex.RemoveVertex.Name">
+            <summary>
+            Command name.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Vertex.RemoveVertex.#ctor(Shapes.Models.Canvas,Shapes.Models.Vertex)">
+            <summary>
+            Constructor with parameters.
+            </summary>
+            <param name="canvas">Current canvas.</param>
+            <param name="vertex">Current vertex.</param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when canvas is null.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when vertex is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            Thrown when vertex hasn`t been found in canvas.
+            </exception>
+        </member>
+        <member name="M:Shapes.Commands.Vertex.RemoveVertex.Execute">
+            <summary>
+            Removes <see cref="T:Shapes.Models.Vertex"/>.
+            </summary>
+        </member>
+        <member name="M:Shapes.Commands.Vertex.RemoveVertex.UnExecute">
+            <summary>
+            Restores removed <see cref="T:Shapes.Models.Vertex"/>.
+            </summary>
+        </member>
+        <member name="T:Shapes.Interfaces.ICommand">
+            <summary>
+            Defines structure of the command.
+            </summary>
+        </member>
+        <member name="P:Shapes.Interfaces.ICommand.Name">
+            <summary>
+            Returns command name.
+            </summary>
+        </member>
+        <member name="M:Shapes.Interfaces.ICommand.Execute">
+            <summary>
+            Execute command. Change model's state.
+            </summary>
+        </member>
+        <member name="M:Shapes.Interfaces.ICommand.UnExecute">
+            <summary>
+            Unexecute command. Return model to its previous state.
+            </summary>
+        </member>
+        <member name="T:Shapes.Models.Canvas">
+            <summary>
+            Class that represents collection of shapes
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Canvas.#ctor">
+            <summary>
+            Basic constructor without parameters
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Canvas.Count">
+            <summary>
+            Property that enable to get count of shapes
+            </summary>
+            <returns>Count of shapes</returns>
+        </member>
+        <member name="P:Shapes.Models.Canvas.IsReadOnly">
+            <summary>
+            Property that shows if canvas is only for read
+            </summary>
+            <returns>Is canvas only for read</returns>
+        </member>
+        <member name="P:Shapes.Models.Canvas.Shapes">
+            <summary>
+            Property that enable to get shapes collection
+            </summary>
+            <returns>Shapes collecton</returns>
+        </member>
+        <member name="P:Shapes.Models.Canvas.Item(System.Int32)">
+            <summary>
+            Indexer that enable to interract with collection elements
+            </summary>
+            <param name="index">Shape index in collection</param>
+            <returns>Shape with preset index</returns>
+            <exception cref="T:System.IndexOutOfRangeException">Index out of range</exception>
+        </member>
+        <member name="E:Shapes.Models.Canvas.CollectionChanged">
+            <summary>
+            Event that message about canvas property change
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Canvas.Add(Shapes.Models.ShapeBase)">
+            <summary>
+            Method that allow to add new shape to collection
+            </summary>
+            <param name="shape">Shape that should be added</param>
+        </member>
+        <member name="M:Shapes.Models.Canvas.Insert(System.Int32,Shapes.Models.ShapeBase)">
+            <summary>
+            Method that allow to insert shape in collection
+            </summary>
+            <param name="index">Index where shape should be inserted</param>
+            <param name="shape">Shape that should be inserted</param>
+            <exception cref="T:System.IndexOutOfRangeException">Index out of range</exception>
+        </member>
+        <member name="M:Shapes.Models.Canvas.Remove(Shapes.Models.ShapeBase)">
+            <summary>
+            Method that removes preset shape
+            </summary>
+            <param name="shape">Preset shape</param>
+            <returns>If shape was deleted</returns>
+        </member>
+        <member name="M:Shapes.Models.Canvas.RemoveAt(System.Int32)">
+            <summary>
+            Method that remove shape with preset index
+            </summary>
+            <param name="index">Index with which shape should be removed</param>
+            <exception cref="T:System.IndexOutOfRangeException">Index out of range</exception>
+        </member>
+        <member name="M:Shapes.Models.Canvas.RemoveAll(System.Predicate{Shapes.Models.ShapeBase})">
+            <summary>
+            Method that removes all shapes with preset predicate
+            </summary>
+            <param name="match">Predicate with whitch shapes should be removed</param>
+            <returns>Number of deleted items</returns>
+        </member>
+        <member name="M:Shapes.Models.Canvas.Clear">
+            <summary>
+            Method that deletes all shapes in collection
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Canvas.Contains(Shapes.Models.ShapeBase)">
+            <summary>
+            Method that check if collection contains preset item
+            </summary>
+            <param name="item">Shape should bechecked</param>
+            <returns>If collection contains item</returns>
+        </member>
+        <member name="M:Shapes.Models.Canvas.CountIf(System.Predicate{Shapes.Models.ShapeBase})">
+            <summary>
+            Count number of element that satisfy condition
+            </summary>
+            <param name="predicate">
+            The condition that should be satisfied
+            </param>
+            <returns>
+            Number of elements that satisfy condition
+            </returns>
+        </member>
+        <member name="M:Shapes.Models.Canvas.CopyTo(Shapes.Models.ShapeBase[],System.Int32)">
+            <summary>
+            Method that copy collection to preset array started from preset index
+            </summary>
+            <param name="array">Array where collection should be copied</param>
+            <param name="arrayIndex">Index from which stated copiing</param>
+            <exception cref="T:System.IndexOutOfRangeException">Index out of range</exception>
+        </member>
+        <member name="M:Shapes.Models.Canvas.IndexOf(Shapes.Models.ShapeBase)">
+            <summary>
+            Method that returns index of preset item in collection
+            </summary>
+            <param name="item">Item should be founded</param>
+            <returns>Index of item in collection</returns>
+        </member>
+        <member name="M:Shapes.Models.Canvas.GetEnumerator">
+            <summary>
+            Method that returns collections enumerator
+            </summary>
+            <returns>Collections enumerator</returns>
+        </member>
+        <member name="M:Shapes.Models.Canvas.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Method that invokes CollectionChanged event
+            </summary>
+            <param name="e">Event argument</param>
+        </member>
+        <member name="T:Shapes.Models.Pentagon">
+            <summary>
+            Represents class that models Pentagon
+            </summary>
+        </member>
+        <member name="F:Shapes.Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON">
+            <summary>
+            Shows how many edges in shape
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Pentagon.Color">
+            <summary>
+            Property that enable to interract with color
+            </summary>
+            <returns>Pentagon color</returns>
+        </member>
+        <member name="P:Shapes.Models.Pentagon.StrokeColor">
+            <summary>
+            Property that enable to interract with stroke color
+            </summary>
+            <returns>Pentagon stroke color</returns>
+        </member>
+        <member name="P:Shapes.Models.Pentagon.StrokeThickness">
+            <summary>
+            Property that enable to interract with stroke thickness
+            </summary>
+            <returns>Pentagon stroke thickness</returns>
+        </member>
+        <member name="P:Shapes.Models.Pentagon.Opacity">
+            <summary>
+            Property that enable to interract with opacity
+            </summary>
+            <returns>Pentagon opacity</returns>
+        </member>
+        <member name="P:Shapes.Models.Pentagon.Points">
+            <summary>
+            Property that enable to interract with Pentagon edge points
+            </summary>
+            <returns>Pentagon edges</returns>
+            <exception cref="T:System.ArgumentException">Pentagon should have 5 edges</exception>
+        </member>
+        <member name="M:Shapes.Models.Pentagon.#ctor">
+            <summary>
+            Default constructor without parameters
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Pentagon.#ctor(Shapes.Models.Vertex[])">
+            <summary>
+            Constructor with 1 parameter
+            </summary>
+            <param name="pentagonVertex">Collection of new pentagon vertex</param>
+            <exception cref="T:System.ArgumentException">Vertex doesn't exist!</exception>
+        </member>
+        <member name="M:Shapes.Models.Pentagon.HitTest(System.Windows.Point)">
+            <summary>
+            Method that check if point is in the shape
+            </summary>
+            <param name="p">Target point</param>
+            <returns>Availability point in shape</returns>
+        </member>
+        <member name="T:Shapes.Models.ShapeBase">
+            <summary>
+            Represents basic algorithms for the shape objects.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.ShapeBase.Name">
+            <summary>
+            The name of shape.
+            </summary>
+        </member>
+        <member name="E:Shapes.Models.ShapeBase.PropertyChanged">
+            <summary>
+            Notifies that some property is changed.
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.ShapeBase.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Notifies event <see cref="E:Shapes.Models.ShapeBase.PropertyChanged"/> that some property is changed.
+            </summary>
+            <param name="e">Data for event <see cref="E:Shapes.Models.ShapeBase.PropertyChanged"/>.</param>
+        </member>
+        <member name="M:Shapes.Models.ShapeBase.HitTest(System.Windows.Point)">
+            <summary>
+            Checks if current point is in shape.
+            </summary>
+            <param name="point">Current point.</param>
+            <returns>
+            True if current point is in shape, else - false.
+            </returns>
+        </member>
+        <member name="T:Shapes.Models.UndoRedoManager">
+            <summary>
+            Provides algorithms to manipulate undo redo actions.
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.UndoRedoManager.#ctor">
+            <summary>
+            Initialize a new instance of <see cref="T:Shapes.Models.UndoRedoManager"/>.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.UndoRedoManager.CanUndo">
+            <summary>
+            Determine if undo action can be performed.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.UndoRedoManager.CanRedo">
+            <summary>
+            Determine if redo action can be performed.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.UndoRedoManager.UndoItems">
+            <summary>
+            Gets all undo items name.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.UndoRedoManager.RedoItems">
+            <summary>
+            Gets all redo items name.
+            </summary>
+        </member>
+        <member name="E:Shapes.Models.UndoRedoManager.PropertyChanged">
+            <summary>
+            Occurs when the <see cref="T:Shapes.Models.UndoRedoManager"/> state changed.
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.UndoRedoManager.Execute(Shapes.Interfaces.ICommand)">
+            <summary>
+            Execute a command.
+            </summary>
+            <param name="command">
+            An command that should be executed.
+            </param>
+        </member>
+        <member name="M:Shapes.Models.UndoRedoManager.Undo">
+            <summary>
+            If possible, undo a command.
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.UndoRedoManager.Redo">
+            <summary>
+            If possible, redo a command.
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.UndoRedoManager.Undo(System.Int32)">
+            <summary>
+            If possible, undo commands.
+            </summary>
+            <param name="count">
+            Number of commands that should be undone.
+            </param>
+        </member>
+        <member name="M:Shapes.Models.UndoRedoManager.Redo(System.Int32)">
+            <summary>
+            If possible, redo commands.
+            </summary>
+            <param name="count">
+            Number of commands that should be redone.
+            </param>
+        </member>
+        <member name="M:Shapes.Models.UndoRedoManager.Clear">
+            <summary>
+            Clear manager
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.UndoRedoManager.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Raise the <see cref="E:Shapes.Models.UndoRedoManager.PropertyChanged"/> event.
+            </summary>
+            <param name="e">
+            The instance of <see cref="T:System.ComponentModel.ProgressChangedEventArgs"/> that contains the event data.
+            </param>
+        </member>
+        <member name="T:Shapes.Models.Vertex">
+            <summary>
+            Represents one of points for creating the shape objects.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Vertex.Radius">
+            <summary>
+            Radius of the vertex
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Vertex.Location">
+            <summary>
+            Point position on the coordinate plane.
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Vertex.#ctor">
+            <summary>
+            Basic constructor without parameters.
+            </summary>
+        </member>
+        <member name="M:Shapes.Models.Vertex.GetDistance(Shapes.Models.Vertex,Shapes.Models.Vertex)">
+            <summary>
+            Calculates distance between two vertices.
+            </summary>
+            <param name="firstVertex">First vertex.</param>
+            <param name="secondVertex">Second vertex.</param>
+            <returns>
+            The distance between two vertices.
+            </returns>
+        </member>
+        <member name="M:Shapes.Models.Vertex.HitTest(System.Windows.Point)">
+            <summary>
+            Checks if current point is in vertex.
+            </summary>
+            <param name="point">Current point.</param>
+            <returns>
+            True if current point is in vertex, else - false.
+            </returns>
+        </member>
+    </members>
+</doc>
