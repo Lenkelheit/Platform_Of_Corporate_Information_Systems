@@ -48,24 +48,22 @@ namespace Shapes.Commands.Pentagon
         private double CalculateDistanceByIndeces(Models.Vertex[] arrVertices, int[] indices)
         {
             double distance = 0;
-            for (int i = 1; i < Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON; i++)
+            for (int i = 0; i < Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON - 1; ++i)
             {
-                distance += Models.Vertex.GetDistance(arrVertices[indices[i - 1]], arrVertices[indices[i]]);
+                distance += Models.Vertex.GetDistance(arrVertices[indices[i]], arrVertices[indices[i + 1]]);
             }
-            return distance += Models.
-                Vertex.GetDistance(arrVertices[indices[0]], arrVertices[indices[Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON - 1]]);
+            return distance;
         }
         private void SortIndicesForVertices(Models.Vertex[] arrVertices)
         {
-            double minDistance = double.MaxValue, localDistance = 0;
-            int indexOfMinDistance = 0;
-            int[] arrIndices = new int[Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON];
-            for (int i = 0; i < Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON; i++)
-            {
-                arrIndices[i] = i;
-            }
-            var matrixIndices = GetPermutations(arrIndices, Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON).ToArray();
-            for (int i = 0; i < matrixIndices.Length; i++)
+            double minDistance = double.MaxValue, localDistance;
+            int indexOfMinDistance = -1;
+
+            var matrixIndices = GetPermutations(
+                Enumerable.Range(0, Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON), 
+                Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON).ToArray();
+
+            for (int i = 0; i < matrixIndices.Length; ++i)
             {
                 localDistance = CalculateDistanceByIndeces(arrVertices, matrixIndices[i].ToArray());
                 if (localDistance < minDistance)
@@ -86,7 +84,7 @@ namespace Shapes.Commands.Pentagon
                 arrUnsortedVertices = canvas.Shapes.OfType<Models.Vertex>().ToArray();
                 SortIndicesForVertices(arrUnsortedVertices);
             }
-            var arrPoints = (arrUnsortedVertices.Select(vertex => vertex.Location)).ToArray();
+            System.Windows.Point[] arrPoints = arrUnsortedVertices.Select(vertex => vertex.Location).ToArray();
             System.Array.Sort(arrSortedIndices, arrPoints);
             pentagon = new Models.Pentagon
             {
