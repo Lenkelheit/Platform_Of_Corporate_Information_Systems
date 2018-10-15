@@ -20,7 +20,6 @@ namespace DataControl
         private IFileService fileService;
         private IDialogService dialogService;
 
-        private bool dataChanged;
         private string currentFileName;
 
         #region Commands
@@ -70,8 +69,7 @@ namespace DataControl
             selectedShape = null;
             canvas = new Canvas();
 
-            dataChanged = false;
-            currentFileName = "Pentagon Editor";
+            currentFileName = null;
 
             newFile = new RelayCommand(NewFileMethod);
             openFile = new RelayCommand(OpenFileMethod);
@@ -96,7 +94,7 @@ namespace DataControl
         {
             get
             {
-                return currentFileName;
+                return currentFileName ?? "Pentagon Editor";
             }
         }
         /// <summary>
@@ -218,7 +216,7 @@ namespace DataControl
         private void NewFileMethod(object o)
         {
             canvas.Clear();
-            OnPropertyChanged(new PropertyChangedEventArgs("dataChanged"));
+            OnPropertyChanged(new PropertyChangedEventArgs("Canvas"));
         }
         private void OpenFileMethod(object o)
         {
@@ -226,9 +224,11 @@ namespace DataControl
             {
                 if (dialogService.OpenFileDialog()) 
                 {
+                    fileService.Load(canvas, dialogService.FilePath);
                     currentFileName = dialogService.FilePath;
-                    fileService.Load(canvas, currentFileName);
-                    dialogService.ShowMessage("File is opened and data is loaded from it.");
+                    int index = currentFileName.LastIndexOf('\\');
+                    currentFileName = currentFileName.Substring(index + 1);
+                    OnPropertyChanged(new PropertyChangedEventArgs("Canvas"));
                 }
             }
             catch (System.Exception ex)
@@ -240,20 +240,19 @@ namespace DataControl
         {
             try
             {
-                if (currentFileName.Contains("Pentagon Editor"))  
+                if (currentFileName == null)   
                 {
                     if (dialogService.SaveFileDialog())
                     {
+                        fileService.Save(canvas, dialogService.FilePath);
                         currentFileName = dialogService.FilePath;
-                        fileService.Save(canvas, currentFileName);
-                        dialogService.ShowMessage("Data is saved to file.");
+                        int index = currentFileName.LastIndexOf('\\');
+                        currentFileName = currentFileName.Substring(index + 1);
                     }
                 }
                 else
                 {
-                    currentFileName = currentFileName.Remove(currentFileName.Length - 1, 1);
-                    fileService.Save(canvas, currentFileName);
-                    dialogService.ShowMessage("Data is saved to file.");
+                    fileService.Save(canvas, dialogService.FilePath);
                 }
             }
             catch (System.Exception ex)
@@ -268,7 +267,6 @@ namespace DataControl
                 if (dialogService.SaveFileDialog())
                 {
                     fileService.Save(canvas, dialogService.FilePath);
-                    dialogService.ShowMessage("Data is saved to file.");
                 }
             }
             catch (System.Exception ex)
@@ -278,82 +276,22 @@ namespace DataControl
         }
         private void ExitMethod(object o)
         {
-            if (SavingBeforeClosingWindow() != System.Windows.MessageBoxResult.Cancel) 
-            {
-                ((System.Windows.Window)o).Close();
-            }
-        }
-        private System.Windows.MessageBoxResult SavingBeforeClosingWindow()
-        {
-            if (currentFileName.Contains("*")) 
-            {
-                System.Windows.MessageBoxResult boxResult = System.Windows.MessageBox.Show("Save", "Saving", System.Windows.MessageBoxButton.YesNoCancel);
-                if (boxResult == System.Windows.MessageBoxResult.Yes) 
-                {
-                    Save();
-                }
-                return boxResult;
-            }
-            return System.Windows.MessageBoxResult.None;
-        }
-        private void Save()
-        {
-            try
-            {
-                if (currentFileName.Contains("Pentagon Editor"))
-                {
-                    if (dialogService.SaveFileDialog())
-                    {
-                        currentFileName = dialogService.FilePath;
-                        fileService.Save(canvas, currentFileName);
-                        dialogService.ShowMessage("Data is saved to file.");
-                    }
-                }
-                else
-                {
-                    currentFileName = currentFileName.Remove(currentFileName.Length - 1, 1);
-                    fileService.Save(canvas, currentFileName);
-                    dialogService.ShowMessage("Data is saved to file.");
-                }
-            }
-            catch (System.Exception ex)
-            {
-                dialogService.ShowMessage(ex.Message);
-            }
-        }
-        private void UpdateInterface()
-        {
-            IsSaved(!dataChanged);
-        }
-        private void IsSaved(bool isSaved)
-        {
-            bool hasStar = currentFileName.Contains("*");
-            if (isSaved && hasStar)
-            {
-                currentFileName = currentFileName.Remove(currentFileName.Length - 1, 1);
-            }
-            else if (!isSaved && !hasStar)
-            {
-                currentFileName += "*";
-            }
+            ((System.Windows.Application)o).Shutdown();
         }
         private void AddVertexMethod(object o)
         {
             Vertex target = new Vertex(/*mouse control*/);
             manager.Execute(new Shapes.Commands.Vertex.AddVertex(canvas, target, manager));
-            OnPropertyChanged(new PropertyChangedEventArgs("dataChanged"));
         }
         private void DeleteShapeMethod(object o)
         {
             if (selectedShape is Pentagon)
             {
                 manager.Execute(new Shapes.Commands.Pentagon.RemovePentagon(canvas, (Pentagon)selectedShape));
-                OnPropertyChanged(new PropertyChangedEventArgs("dataChanged"));
             }
             else if (selectedShape is Vertex)
             {
                 manager.Execute(new Shapes.Commands.Vertex.RemoveVertex(canvas, (Vertex)selectedShape));
-                OnPropertyChanged(new PropertyChangedEventArgs("dataChanged"));
             }
             else
             {
@@ -363,22 +301,18 @@ namespace DataControl
         private void UndoActionMethod(object o)
         {
             manager.Undo();
-            OnPropertyChanged(new PropertyChangedEventArgs("dataChanged"));
         }
         private void RedoActionMethod(object o)
         {
             manager.Redo();
-            OnPropertyChanged(new PropertyChangedEventArgs("dataChanged"));
         }
         private void UndoManyItemsMethod(object o)
         {
             manager.Undo((int)o + 1);
-            OnPropertyChanged(new PropertyChangedEventArgs("dataChanged"));
         }
         private void RedoManyActionMethod(object o)
         {
             manager.Redo((int)o + 1);
-            OnPropertyChanged(new PropertyChangedEventArgs("dataChanged"));
         }
 
         // RESTRICTIONS
@@ -402,11 +336,6 @@ namespace DataControl
         /// <param name="e">Data for event <see cref="PropertyChanged"/>.</param>
         protected void OnPropertyChanged(PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "dataChanged")
-            {
-                dataChanged = true;
-                UpdateInterface();
-            }
             PropertyChanged?.Invoke(this, e);
         }
     }
