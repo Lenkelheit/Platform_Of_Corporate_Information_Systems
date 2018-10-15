@@ -94,7 +94,14 @@ namespace DataControl
         {
             get
             {
-                return currentFileName ?? "Pentagon Editor";
+                if (currentFileName == null)
+                {
+                    return "Pentagon Editor";
+                }
+                else
+                {
+                    return System.IO.Path.GetFileName(currentFileName);
+                }
             }
         }
         /// <summary>
@@ -224,10 +231,9 @@ namespace DataControl
             {
                 if (dialogService.OpenFileDialog()) 
                 {
-                    fileService.Load(canvas, dialogService.FilePath);
                     currentFileName = dialogService.FilePath;
-                    int index = currentFileName.LastIndexOf('\\');
-                    currentFileName = currentFileName.Substring(index + 1);
+                    fileService.Load(canvas, currentFileName);
+                    OnPropertyChanged(new PropertyChangedEventArgs("FileName"));
                     OnPropertyChanged(new PropertyChangedEventArgs("Canvas"));
                 }
             }
@@ -244,15 +250,14 @@ namespace DataControl
                 {
                     if (dialogService.SaveFileDialog())
                     {
-                        fileService.Save(canvas, dialogService.FilePath);
                         currentFileName = dialogService.FilePath;
-                        int index = currentFileName.LastIndexOf('\\');
-                        currentFileName = currentFileName.Substring(index + 1);
+                        fileService.Save(canvas, currentFileName);
+                        OnPropertyChanged(new PropertyChangedEventArgs("FileName"));
                     }
                 }
                 else
                 {
-                    fileService.Save(canvas, dialogService.FilePath);
+                    fileService.Save(canvas, currentFileName);
                 }
             }
             catch (System.Exception ex)
@@ -276,7 +281,7 @@ namespace DataControl
         }
         private void ExitMethod(object o)
         {
-            ((System.Windows.Application)o).Shutdown();
+            System.Windows.Application.Current.Shutdown();
         }
         private void AddVertexMethod(object o)
         {
