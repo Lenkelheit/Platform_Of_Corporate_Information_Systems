@@ -100,14 +100,7 @@ namespace DataControl
         {
             get
             {
-                if (currentFileName == null)
-                {
-                    return "Pentagon Editor";
-                }
-                else
-                {
-                    return System.IO.Path.GetFileName(currentFileName);
-                }
+                return currentFileName == null ? "Pentagon Editor" : System.IO.Path.GetFileName(currentFileName);
             }
         }
         /// <summary>
@@ -229,16 +222,19 @@ namespace DataControl
         private void NewFileMethod(object o)
         {
             canvas.Clear();
+            this.Reset();
             OnPropertyChanged(new PropertyChangedEventArgs("Canvas"));
         }
         private void OpenFileMethod(object o)
         {
             try
             {
-                if (dialogService.OpenFileDialog()) 
+                if (dialogService.OpenFileDialog())
                 {
+                    this.Reset();
                     currentFileName = dialogService.FilePath;
-                    fileService.Load(canvas, currentFileName);
+                    fileService.Load(ref canvas, currentFileName);
+
                     OnPropertyChanged(new PropertyChangedEventArgs("FileName"));
                     OnPropertyChanged(new PropertyChangedEventArgs("Canvas"));
                 }
@@ -348,6 +344,12 @@ namespace DataControl
             return manager.CanRedo;
         }
 
+        // ADDITIONAL METHODS
+        private void Reset()
+        {
+            manager.Clear();
+            selectedShape = null;
+        }
         // EVENT METHODS
         /// <summary>
         /// Notifies event <see cref="PropertyChanged"/> that some property is changed.
