@@ -58,7 +58,10 @@ namespace DataControl.Services
         /// </returns>
         public bool OpenFileDialog()
         {
-            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog()
+            {
+                Filter = "Xml Files *.xml | *.xml"
+            };
             if (openFileDialog.ShowDialog() == true) 
             {
                 filePath = openFileDialog.FileName;
@@ -74,7 +77,10 @@ namespace DataControl.Services
         /// </returns>
         public bool SaveFileDialog()
         {
-            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog()
+            {
+                Filter = "Xml Files *.xml | *.xml"
+            };
             if (saveFileDialog.ShowDialog() == true)
             {
                 filePath = saveFileDialog.FileName;
