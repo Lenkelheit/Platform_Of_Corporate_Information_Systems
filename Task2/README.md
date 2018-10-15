@@ -26,7 +26,7 @@ We are working with **pentagon**.
 | |<ul><li>- [ ] </li></ul>|   If shape is choosen it could be moved with mouse or keybord keys      |SvyatoslavFedynyak|09.10.2018|
 | |<ul><li>- [ ] </li></ul>|   Show the shapes and action on them                         |SvyatoslavFedynyak<br>vasil98|09.10.2018|
 | |                        | <p align="center">    2       </p>                                        |              |            |
-| |<ul><li>- [ ] </li></ul>| When you click on a canvas a certain number of times (the number of vertices or the center and radius of a circle), a shape with the specified coordinates is created and a color-dialog is shown.              |SvyatoslavFedynyak|09.10.2018|
+| |<ul><li>- [x] </li></ul>| When you click on a canvas a certain number of times (the number of vertices or the center and radius of a circle), a shape with the specified coordinates is created and a color-dialog is shown.              |SvyatoslavFedynyak|09.10.2018|
 | |                        | <p align="center"> 3. The program should has next layers </p>             |              |            |
 | |<ul><li>- [x] </li></ul>| Data access                                                               |      —       |      —     |
 | |<ul><li>- [x] </li></ul>| Business Logic                                                            |      —       |      —     |
