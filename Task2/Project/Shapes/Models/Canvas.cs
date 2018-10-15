@@ -116,12 +116,11 @@ namespace Shapes.Models
         /// <returns>If shape was deleted</returns>
         public bool Remove(ShapeBase shape)
         {
-            bool result = shapes.Remove(shape);
+            int index = shapes.IndexOf(shape);
+            bool result = index != -1;
             if (result == true)
             {
-                shape.PropertyChanged -= Canvas_PropertyChanged;
-
-                OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, shape));
+                this.RemoveAt(index);
             }
             return result;
         }
@@ -133,7 +132,7 @@ namespace Shapes.Models
         public void RemoveAt(int index)
         {
             shapes[index].PropertyChanged -= Canvas_PropertyChanged;
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, shapes[index]));
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, shapes[index], index));
             shapes.RemoveAt(index);
         }
         /// <summary>
@@ -174,6 +173,27 @@ namespace Shapes.Models
         public bool Contains(ShapeBase item)
         {
             return shapes.Contains(item);
+        }
+        /// <summary>
+        /// Count number of element that satisfy condition
+        /// </summary>
+        /// <param name="predicate">
+        /// The condition that should be satisfied
+        /// </param>
+        /// <returns>
+        /// Number of elements that satisfy condition
+        /// </returns>
+        public int CountIf(Predicate<ShapeBase> predicate)
+        {
+            int counter = 0;
+            foreach (ShapeBase shape in shapes)
+            {
+                if (predicate(shape))
+                {
+                    ++counter;
+                }
+            }
+            return counter;
         }
         /// <summary>
         /// Method that copy collection to preset array started from preset index
