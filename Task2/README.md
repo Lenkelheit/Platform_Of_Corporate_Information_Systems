@@ -16,9 +16,9 @@ We are working with **pentagon**.
 |-|:----------------------:|:--------------------------------------------------------------------------|:------------:|:----------:|
 | |                        | <p align="center">   1. Main menu has    </p>                             |              |            |
 | |                        | <p align="center"> **File** </p>                                          |              |            |
-| |<ul><li>- [ ] </li></ul>| *New* – create new empty canvas                                           |  Lenkelheit  | 09.10.2018 |
-| |<ul><li>- [ ] </li></ul>| *Open* – open file dialog                                                 |  Lenkelheit  | 09.10.2018 |
-| |<ul><li>- [ ] </li></ul>| *Save* – save the canvas with shapes into the file                        |  Lenkelheit  | 09.10.2018 |
+| |<ul><li>- [x] </li></ul>| *New* – create new empty canvas                                           |  Lenkelheit  | 09.10.2018 |
+| |<ul><li>- [x] </li></ul>| *Open* – open file dialog                                                 |  Lenkelheit  | 09.10.2018 |
+| |<ul><li>- [x] </li></ul>| *Save* – save the canvas with shapes into the file                        |  Lenkelheit  | 09.10.2018 |
 | |<ul><li>- [x] </li></ul>| Information about the shapes is stored in an object-oriented way          |  Lenkelheit  | 09.10.2018 |
 | |<ul><li>- [x] </li></ul>| Use Xml-serialization                                                     |  Lenkelheit  | 09.10.2018 |
 | |                        | <p align="center">**Shapes** </p>                                         |              |            |

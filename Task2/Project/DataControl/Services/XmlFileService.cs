@@ -11,7 +11,7 @@ namespace DataControl.Services
         /// </summary>
         /// <param name="item">Object to loading.</param>
         /// <param name="fileName">The name of file.</param>
-        public void Load(Shapes.Models.Canvas item, string fileName)
+        public void Load(ref Shapes.Models.Canvas item, string fileName)
         {
             item.Clear();
             System.Xml.Serialization.XmlSerializer xmlFormat = new System.Xml.Serialization.XmlSerializer(typeof(Shapes.Models.Canvas),

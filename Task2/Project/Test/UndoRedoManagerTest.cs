@@ -29,11 +29,42 @@ namespace Test
 
             Assert.IsFalse(urm.CanUndo);
 
+            Canvas testCanvas = new Canvas();
+            Vertex first = new Vertex();
+            Shapes.Commands.Vertex.AddVertex testCommand =
+                new Shapes.Commands.Vertex.AddVertex(testCanvas, first, urm);
+            urm.Execute(testCommand);
+
+            Assert.IsTrue(urm.CanUndo);
+
+            urm.Undo();
+
+            Assert.IsFalse(urm.CanUndo);
+
+            urm.Redo();
+
+            Assert.IsTrue(urm.CanUndo);
         }
         [TestMethod]
         public void CanRedoTest()
         {
             UndoRedoManager urm = new UndoRedoManager();
+
+            Assert.IsFalse(urm.CanRedo);
+
+            Canvas testCanvas = new Canvas();
+            Vertex first = new Vertex();
+            Shapes.Commands.Vertex.AddVertex testCommand =
+                new Shapes.Commands.Vertex.AddVertex(testCanvas, first, urm);
+
+            urm.Execute(testCommand);
+            Assert.IsFalse(urm.CanRedo);
+
+            urm.Undo();
+
+            Assert.IsTrue(urm.CanRedo);
+
+            urm.Redo();
 
             Assert.IsFalse(urm.CanRedo);
         }
@@ -128,6 +159,34 @@ namespace Test
                     new Shapes.Commands.Vertex.AddVertex(testCanvas, new Vertex(), manager));
             Assert.IsTrue(checker && manager.CanUndo);
             Configuration.UndoAll(manager);
+        }
+        [TestMethod]
+        public void ClearTest()
+        {
+            UndoRedoManager manager = new UndoRedoManager();
+
+            Canvas testCanvas = new Canvas();
+            Vertex first = new Vertex();
+            Shapes.Commands.Vertex.AddVertex testCommand =
+                new Shapes.Commands.Vertex.AddVertex(testCanvas, first, manager);
+
+
+            Assert.AreEqual(0, manager.UndoItems.Count());
+            Assert.AreEqual(0, manager.RedoItems.Count());
+
+            manager.Execute(testCommand);
+            manager.Execute(testCommand);
+            manager.Execute(testCommand);
+
+            manager.Undo();
+
+            Assert.AreEqual(2, manager.UndoItems.Count());
+            Assert.AreEqual(1, manager.RedoItems.Count());
+
+            manager.Clear();
+
+            Assert.AreEqual(0, manager.UndoItems.Count());
+            Assert.AreEqual(0, manager.RedoItems.Count());
         }
 
         private void Manager_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
