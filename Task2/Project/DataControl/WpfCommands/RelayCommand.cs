@@ -1,7 +1,7 @@
 namespace DataControl.WpfCommands
 {
     /// <summary>
-    /// A WPF command which represent action as <see cref="System.Action"/>;
+    /// A WPF command which represent action as <see cref="System.Action"/>.
     /// </summary>
     public class RelayCommand : System.Windows.Input.ICommand
     {
@@ -11,7 +11,7 @@ namespace DataControl.WpfCommands
 
         // EVENT
         /// <summary>
-        /// Raise when <see cref="DataControl.WpfCommands.RelayCommand.CanExecute(object)"/> changed.
+        /// Raise when <see cref="CanExecute(object)"/> changed.
         /// </summary>
         public event System.EventHandler CanExecuteChanged
         {
@@ -27,7 +27,7 @@ namespace DataControl.WpfCommands
 
         // CONSTRUCTORS
         /// <summary>
-        /// Initialize a new instance of <see cref="DataControl.WpfCommands.RelayCommand"/>.
+        /// Initialize a new instance of <see cref="RelayCommand"/>.
         /// </summary>
         /// <param name="execute">
         /// An method that should be executed.

@@ -11,7 +11,6 @@ namespace Shapes.Models
         // FIELDS
         private System.Windows.Point location;
         // PROPERTIES        
-        internal static int NumberOfVertex { get; set; }
         /// <summary>
         /// Point position on the coordinate plane.
         /// </summary>
@@ -37,10 +36,6 @@ namespace Shapes.Models
         public Vertex()
         {
             location = new System.Windows.Point();
-        }
-        static Vertex()
-        {
-            NumberOfVertex = 0;
         }
         // METHODS
         /// <summary>

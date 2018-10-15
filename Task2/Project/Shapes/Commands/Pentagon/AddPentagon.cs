@@ -93,7 +93,6 @@ namespace Shapes.Commands.Pentagon
                 Points = arrPoints
             };
             canvas.RemoveAll(shape => shape is Models.Vertex);
-            Models.Vertex.NumberOfVertex = 0;
             canvas.Add(pentagon);
         }
         /// <summary>
@@ -106,7 +105,6 @@ namespace Shapes.Commands.Pentagon
             {
                 canvas.Add(arrUnsortedVertices[i]);
             }
-            Models.Vertex.NumberOfVertex = Models.Pentagon.NUM_OF_EDGE_IN_PENTAGON - 1;
         }
     }
 }

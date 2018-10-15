@@ -175,6 +175,27 @@ namespace Shapes.Models
             return shapes.Contains(item);
         }
         /// <summary>
+        /// Count number of element that satisfy condition
+        /// </summary>
+        /// <param name="predicate">
+        /// The condition that should be satisfied
+        /// </param>
+        /// <returns>
+        /// Number of elements that satisfy condition
+        /// </returns>
+        public int CountIf(Predicate<ShapeBase> predicate)
+        {
+            int counter = 0;
+            foreach (ShapeBase shape in shapes)
+            {
+                if (predicate(shape))
+                {
+                    ++counter;
+                }
+            }
+            return counter;
+        }
+        /// <summary>
         /// Method that copy collection to preset array started from preset index
         /// </summary>
         /// <param name="array">Array where collection should be copied</param>
