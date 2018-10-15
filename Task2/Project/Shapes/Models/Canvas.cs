@@ -115,12 +115,11 @@ namespace Shapes.Models
         /// <returns>If shape was deleted</returns>
         public bool Remove(ShapeBase shape)
         {
-            bool result = shapes.Remove(shape);
+            int index = shapes.IndexOf(shape);
+            bool result = index != -1;
             if (result == true)
             {
-                shape.PropertyChanged -= Canvas_PropertyChanged;
-
-                OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, shape));
+                this.RemoveAt(index);
             }
             return result;
         }
@@ -132,7 +131,7 @@ namespace Shapes.Models
         public void RemoveAt(int index)
         {
             shapes[index].PropertyChanged -= Canvas_PropertyChanged;
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, shapes[index]));
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, shapes[index], index));
             shapes.RemoveAt(index);
         }
         /// <summary>

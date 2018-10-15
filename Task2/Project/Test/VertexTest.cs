@@ -67,7 +67,7 @@ namespace Test
         }
 
         [TestMethod]
-        public void AddVertexCommandTest()//цей тест валиться при запуску всіх тестів ібо не занулюється статична NumberOfVertex
+        public void AddVertexCommandTest()
         {
             Shapes.Models.UndoRedoManager manager = new Shapes.Models.UndoRedoManager();
             Shapes.Models.Canvas testCanvas = new Shapes.Models.Canvas();
@@ -158,6 +158,25 @@ namespace Test
             manager.Redo();
             Assert.AreEqual(0, canvas.Count);
             Assert.IsFalse(canvas.Contains(first));
+        }
+        [TestMethod]
+        public void Radius()
+        {
+            Vertex v1 = new Vertex();
+            Vertex v2 = new Vertex();
+
+            int startRadiusValue = v1.Radius;
+
+            Assert.AreEqual(startRadiusValue, v1.Radius);
+            Assert.AreEqual(startRadiusValue, v2.Radius);
+
+            int newRadiusValue = 8;
+            v1.Radius = newRadiusValue;
+
+            Assert.AreEqual(newRadiusValue, v1.Radius);
+            Assert.AreEqual(newRadiusValue, v2.Radius);
+
+            v1.Radius = startRadiusValue;
         }
     }
 }

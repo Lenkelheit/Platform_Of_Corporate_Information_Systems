@@ -1,8 +1,12 @@
 using DataControl.Interfaces;
 using DataControl.Services;
 using DataControl.WpfCommands;
+
 using Shapes.Models;
 using System.ComponentModel;
+
+using System.Windows;
+using System.Windows.Input;
 
 namespace DataControl
 {
@@ -84,6 +88,8 @@ namespace DataControl
 
             addVertex = new RelayCommand(AddVertexMethod);
             deleteShape = new RelayCommand(DeleteShapeMethod, CanDeleteShapeAction);
+
+            manager.PropertyChanged += Manager_PropertyChanged;
         }
 
         // PROPERTIES
@@ -217,7 +223,7 @@ namespace DataControl
 
         public RelayCommand ChangeShapeLocation => changeShapeLocation;
         #endregion
-
+        
 
         // METHODS
         private void NewFileMethod(object o)
@@ -285,8 +291,14 @@ namespace DataControl
         }
         private void AddVertexMethod(object o)
         {
-            Vertex target = new Vertex(/*mouse control*/);
+            Vertex target = new Vertex()
+            {
+                Location = Mouse.GetPosition((IInputElement)o)
+            };
             manager.Execute(new Shapes.Commands.Vertex.AddVertex(canvas, target, manager));
+
+            selectedShape = canvas[canvas.Count - 1];
+            OnPropertyChanged(new PropertyChangedEventArgs("Canvas"));
         }
         private void DeleteShapeMethod(object o)
         {
@@ -300,8 +312,10 @@ namespace DataControl
             }
             else
             {
-                throw new System.NullReferenceException("Shape isn`t chosen!");
+                throw new System.NullReferenceException("Shape don't chosed!");
             }
+
+            selectedShape = canvas.Count > 0 ? canvas[canvas.Count - 1] : null;
         }
         private void UndoActionMethod(object o)
         {
@@ -342,6 +356,15 @@ namespace DataControl
         protected void OnPropertyChanged(PropertyChangedEventArgs e)
         {
             PropertyChanged?.Invoke(this, e);
+        }
+
+        private void Manager_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "UndoItems": OnPropertyChanged(new PropertyChangedEventArgs("UndoActionNames")); break;
+                case "RedoItems": OnPropertyChanged(new PropertyChangedEventArgs("RedoActionNames")); break;
+            }
         }
     }
 }

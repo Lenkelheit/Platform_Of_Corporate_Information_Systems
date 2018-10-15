@@ -50,7 +50,7 @@ namespace Test
             added.Opacity = 10;
             test.Insert(0, added);
             Assert.AreEqual((test[0] as Pentagon).Opacity, 10);
-        }
+        }        
         [TestMethod]
         public void RemoveTest()
         {
@@ -106,6 +106,30 @@ namespace Test
             added.Opacity = 10;
             test.Add(added);
             Assert.IsTrue(test.Contains(added) && !(test.Contains(new Pentagon())));
+        }
+        [TestMethod]
+        public void CountIfTest()
+        {
+            test = new Canvas();
+            test.Add(new Pentagon()
+            {
+                Opacity = 0.8
+            });
+            test.Add(new Vertex());
+            test.Add(new Vertex());
+            test.Add(new Pentagon()
+            {
+                Opacity = 0.6
+            });
+            test.Add(new Pentagon()
+            {
+                Opacity = 0.4
+            });
+            test.Add(new Pentagon());
+
+            Assert.AreEqual(2, test.CountIf((s) => s is Vertex));
+            Assert.AreEqual(4, test.CountIf((s) => s is Pentagon));
+            Assert.AreEqual(2, test.CountIf((s) => s is Pentagon && ((Pentagon)s).Opacity > 0.5));
         }
         [TestMethod]
         public void CopyToTest()

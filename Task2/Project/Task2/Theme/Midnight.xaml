@@ -1,6 +1,13 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Task2.Theme">
+                    xmlns:local="clr-namespace:Task2"
+                    xmlns:s="clr-namespace:Shapes.Models;assembly=Shapes">
+    
+    <!--CONVERTERS-->
+
+    <local:PointArrayToPointCollection x:Key="PointConverter"/>
+    <local:StringToLower x:Key="StringConverter"/>
+    <local:Math x:Key="MathConverter"/>
     
     <!--COLORS-->
     
@@ -200,9 +207,41 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+    
+    <!--CANVAS-->
+    <ItemsPanelTemplate x:Key="CanvasTemplate">
+        <Canvas/>
+    </ItemsPanelTemplate>
+
+    <DataTemplate DataType="{x:Type s:Pentagon}">
+        <Polygon
+            Points="{Binding s:Points, Converter={StaticResource PointConverter}}"
+            Stroke="{Binding s:StrokeColor}"
+            StrokeThickness="{Binding s:StrokeThickness}"
+            Opacity="{Binding s:Opacity}">
+            <Polygon.Fill>
+                <SolidColorBrush Color="{Binding s:Color}"/>
+            </Polygon.Fill>
+        </Polygon>
+    </DataTemplate>
 
     
-    
+    <DataTemplate DataType="{x:Type s:Vertex}">
+        <Ellipse
+             Fill="{StaticResource WhiteBrush}"
+             Height="{Binding Path=Radius, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE*2}"
+             Width="{Binding Path=Radius, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE*2}"
+             StrokeThickness="2"
+             Stroke="{StaticResource HoverFontBrush}">
+
+            <Ellipse.RenderTransform>
+                <TranslateTransform X="{Binding Path=Location.X, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE-5}" 
+                                    Y="{Binding Path=Location.Y, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE-5}"/>
+            </Ellipse.RenderTransform>
+        </Ellipse>
+    </DataTemplate>
+
+
     <!--STYLES-->
     
     
@@ -247,7 +286,9 @@
         </Style.Triggers>
     </Style>
     <!--CANVAS-->
-    <Style TargetType="Canvas">
-        <Setter Property="Background" Value="{StaticResource DefaultBackgroundWhiteBrush}" />
-    </Style>
+
+    <Style TargetType="ItemsControl">
+        <Setter Property="Background" Value="{StaticResource DefaultBackgroundWhiteBrush}"/>
+    </Style>    
+
 </ResourceDictionary>
