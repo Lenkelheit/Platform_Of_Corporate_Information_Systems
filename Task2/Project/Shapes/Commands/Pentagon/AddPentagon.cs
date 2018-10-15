@@ -52,7 +52,7 @@ namespace Shapes.Commands.Pentagon
             {
                 distance += Models.Vertex.GetDistance(arrVertices[indices[i]], arrVertices[indices[i + 1]]);
             }
-            return distance;
+            return distance += Models.Vertex.GetDistance(arrVertices[indices.Last()], arrVertices[indices.First()]); ;
         }
         private void SortIndicesForVertices(Models.Vertex[] arrVertices)
         {
