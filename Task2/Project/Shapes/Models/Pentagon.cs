@@ -147,7 +147,7 @@ namespace Shapes.Models
         /// <exception cref="System.ArgumentException">Vertex doesn't exist!</exception>
         public Pentagon(Vertex[] pentagonVertex) : this()
         {
-            if (pentagonVertex == null)
+            if (pentagonVertex != null)
             {
                 for (int i = 0; i < NUM_OF_EDGE_IN_PENTAGON; i++)
                 {
@@ -163,7 +163,7 @@ namespace Shapes.Models
             }
             else
             {
-                throw new System.ArgumentException("Vertex doesn't exist!");
+                throw new System.ArgumentException("Vertexes doesn't exist!");
             }
         }
 
@@ -186,8 +186,8 @@ namespace Shapes.Models
 
                 // get the Point at our current position
                 // this makes our if statement a little cleaner
-                System.Windows.Point pc = points[i];    // c for "current"
-                System.Windows.Point pn = points[i % points.Length];       // n for "next"
+                System.Windows.Point pc = points[i];                           // c for "current"
+                System.Windows.Point pn = points[(i+1) % points.Length];       // n for "next"
 
                 // compare position, flip 'hitted' variable
                 // back and forth

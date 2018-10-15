@@ -3,8 +3,8 @@ using DataControl.Services;
 using DataControl.WpfCommands;
 
 using Shapes.Models;
-
 using System.ComponentModel;
+
 using System.Windows;
 using System.Windows.Input;
 
@@ -16,45 +16,54 @@ namespace DataControl
     public class ApplicationViewModel : INotifyPropertyChanged
     {
         // FIELDS
-        UndoRedoManager manager;
-        ShapeBase selectedShape;
-        Canvas canvas;
+        private UndoRedoManager manager;
+        private ShapeBase selectedShape;
+        private Canvas canvas;
 
 
-        IFileService fileService;
-        IDialogService dialogService;
+        private IFileService fileService;
+        private IDialogService dialogService;
 
+        private string currentFileName;
 
-        bool dataChanged;
-        string currentFileName;
+        #region Commands
+        private RelayCommand newFile;
+        private RelayCommand openFile;
+        private RelayCommand saveFile;
+        private RelayCommand saveAsFile;
+        private RelayCommand exit;
 
+        private RelayCommand undoAction;
+        private RelayCommand redoAction;
+        private RelayCommand undoManyAction;
+        private RelayCommand redoManyAction;
 
-        RelayCommand newFile;
-        RelayCommand openFile;
-        RelayCommand saveFile;
-        RelayCommand saveAsFile;
-        RelayCommand exit;
-
-        RelayCommand undoAction;
-        RelayCommand redoAction;
-        RelayCommand undoManyAction;
-        RelayCommand redoManyAction;
-
-        RelayCommand addVertex;
-        RelayCommand deleteShape;
-        RelayCommand changeShapeColor;
-        RelayCommand changeShapeOpacity;
-        RelayCommand changeShapeStrokeColor;
-        RelayCommand changeStrokeWidth;
-        RelayCommand changeShapeLocation;
+        private RelayCommand addVertex;
+        private RelayCommand deleteShape;
+        private RelayCommand changeShapeColor;
+        private RelayCommand changeShapeOpacity;
+        private RelayCommand changeShapeStrokeColor;
+        private RelayCommand changeStrokeWidth;
+        private RelayCommand changeShapeLocation;
+        #endregion
 
         // EVENT
+        /// <summary>
+        /// Notifies that some property is changed.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         // CONSTRUCTORS
+        /// <summary>
+        /// Basic constructor without parameters.
+        /// </summary>
         public ApplicationViewModel()
             : this(new XmlFileService(), new DefaultDialogService()) { }
-
+        /// <summary>
+        /// Constructor with parameters.
+        /// </summary>
+        /// <param name="fileService">Service for work with files.</param>
+        /// <param name="dialogService">Service for work with dialog windows.</param>
         public ApplicationViewModel(IFileService fileService, IDialogService dialogService)
         {
             this.fileService = fileService;
@@ -64,10 +73,13 @@ namespace DataControl
             selectedShape = null;
             canvas = new Canvas();
 
-            dataChanged = false;
             currentFileName = null;
 
             newFile = new RelayCommand(NewFileMethod);
+            openFile = new RelayCommand(OpenFileMethod);
+            saveFile = new RelayCommand(SaveFileMethod);
+            saveAsFile = new RelayCommand(SaveAsFileMethod);
+            exit = new RelayCommand(ExitMethod);
 
             undoAction = new RelayCommand(UndoActionMethod, CanUndoAction);
             redoAction = new RelayCommand(RedoActionMethod, CanRedoAction);
@@ -78,17 +90,24 @@ namespace DataControl
             deleteShape = new RelayCommand(DeleteShapeMethod, CanDeleteShapeAction);
 
             manager.PropertyChanged += Manager_PropertyChanged;
-
         }
 
-
-
         // PROPERTIES
+        /// <summary>
+        /// Returns name of file.
+        /// </summary>
         public string FileName
         {
             get
             {
-                throw new System.NotImplementedException();
+                if (currentFileName == null)
+                {
+                    return "Pentagon Editor";
+                }
+                else
+                {
+                    return System.IO.Path.GetFileName(currentFileName);
+                }
             }
         }
         /// <summary>
@@ -148,39 +167,49 @@ namespace DataControl
             }
         }
 
-
-
+        #region Commands
+        /// <summary>
+        /// Property that enable to interact with NewFile command.
+        /// </summary>
         public RelayCommand NewFile => newFile;
-
+        /// <summary>
+        /// Property that enable to interact with OpenFile command.
+        /// </summary>
         public RelayCommand OpenFile => openFile;
-
+        /// <summary>
+        /// Property that enable to interact with SaveFile command.
+        /// </summary>
         public RelayCommand SaveFile => saveFile;
-
+        /// <summary>
+        /// Property that enable to interact with SaveAsFile command.
+        /// </summary>
         public RelayCommand SaveAsFile => saveAsFile;
-
+        /// <summary>
+        /// Property that enable to interact with Exit command.
+        /// </summary>
         public RelayCommand Exit => exit;
         /// <summary>
-        /// Property that enable to interract with DeleteShape command
+        /// Property that enable to interact with DeleteShape command
         /// </summary>
         public RelayCommand DeleteShape => deleteShape;
         /// <summary>
-        /// Property that enable to interract with UndoAction command
+        /// Property that enable to interact with UndoAction command
         /// </summary>
         public RelayCommand UndoAction => undoAction;
         /// <summary>
-        /// Property that enable to interract with RedoAction command
+        /// Property that enable to interact with RedoAction command
         /// </summary>
         public RelayCommand RedoAction => redoAction;
         /// <summary>
-        /// Property that enable to interract with UndoManyAction command
+        /// Property that enable to interact with UndoManyAction command
         /// </summary>
         public RelayCommand UndoManyAction => undoManyAction;
         /// <summary>
-        /// Property that enable to interract with RedoManyAction command
+        /// Property that enable to interact with RedoManyAction command
         /// </summary>
         public RelayCommand RedoManyAction => redoManyAction;
         /// <summary>
-        /// Property that enable to interract with AddVertex command
+        /// Property that enable to interact with AddVertex command
         /// </summary>
         public RelayCommand AddVertex => addVertex;
 
@@ -193,13 +222,72 @@ namespace DataControl
         public RelayCommand ChangeStrokeWidth => changeStrokeWidth;
 
         public RelayCommand ChangeShapeLocation => changeShapeLocation;
-
+        #endregion
         
 
         // METHODS
         private void NewFileMethod(object o)
         {
-            throw new System.NotImplementedException();
+            canvas.Clear();
+            OnPropertyChanged(new PropertyChangedEventArgs("Canvas"));
+        }
+        private void OpenFileMethod(object o)
+        {
+            try
+            {
+                if (dialogService.OpenFileDialog()) 
+                {
+                    currentFileName = dialogService.FilePath;
+                    fileService.Load(canvas, currentFileName);
+                    OnPropertyChanged(new PropertyChangedEventArgs("FileName"));
+                    OnPropertyChanged(new PropertyChangedEventArgs("Canvas"));
+                }
+            }
+            catch (System.Exception ex)
+            {
+                dialogService.ShowMessage(ex.Message);
+            }
+        }
+        private void SaveFileMethod(object o)
+        {
+            try
+            {
+                if (currentFileName == null)   
+                {
+                    if (dialogService.SaveFileDialog())
+                    {
+                        currentFileName = dialogService.FilePath;
+                        fileService.Save(canvas, currentFileName);
+                        OnPropertyChanged(new PropertyChangedEventArgs("FileName"));
+                    }
+                }
+                else
+                {
+                    fileService.Save(canvas, currentFileName);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                dialogService.ShowMessage(ex.Message);
+            }
+        }
+        private void SaveAsFileMethod(object o)
+        {
+            try
+            {
+                if (dialogService.SaveFileDialog())
+                {
+                    fileService.Save(canvas, dialogService.FilePath);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                dialogService.ShowMessage(ex.Message);
+            }
+        }
+        private void ExitMethod(object o)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
         private void AddVertexMethod(object o)
         {
@@ -246,7 +334,7 @@ namespace DataControl
             manager.Redo((int)o + 1);
         }
 
-        // RESTRICTION
+        // RESTRICTIONS
         private bool CanDeleteShapeAction(object o)
         {
             return selectedShape != null;
@@ -259,11 +347,17 @@ namespace DataControl
         {
             return manager.CanRedo;
         }
+
         // EVENT METHODS
-        private void OnPropertyChanged(PropertyChangedEventArgs e)
+        /// <summary>
+        /// Notifies event <see cref="PropertyChanged"/> that some property is changed.
+        /// </summary>
+        /// <param name="e">Data for event <see cref="PropertyChanged"/>.</param>
+        protected void OnPropertyChanged(PropertyChangedEventArgs e)
         {
             PropertyChanged?.Invoke(this, e);
         }
+
         private void Manager_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)

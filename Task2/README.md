@@ -19,8 +19,8 @@ We are working with **pentagon**.
 | |<ul><li>- [ ] </li></ul>| *New* – create new empty canvas                                           |  Lenkelheit  | 09.10.2018 |
 | |<ul><li>- [ ] </li></ul>| *Open* – open file dialog                                                 |  Lenkelheit  | 09.10.2018 |
 | |<ul><li>- [ ] </li></ul>| *Save* – save the canvas with shapes into the file                        |  Lenkelheit  | 09.10.2018 |
-| |<ul><li>- [ ] </li></ul>| Information about the shapes is stored in an object-oriented way          |  Lenkelheit  | 09.10.2018 |
-| |<ul><li>- [ ] </li></ul>| Use Xml-serialization                                                     |  Lenkelheit  | 09.10.2018 |
+| |<ul><li>- [x] </li></ul>| Information about the shapes is stored in an object-oriented way          |  Lenkelheit  | 09.10.2018 |
+| |<ul><li>- [x] </li></ul>| Use Xml-serialization                                                     |  Lenkelheit  | 09.10.2018 |
 | |                        | <p align="center">**Shapes** </p>                                         |              |            |
 | |<ul><li>- [ ] </li></ul>|   Menu item is dynamic, shapes could be added and removed                 |   vasil98    | 09.10.2018 |
 | |<ul><li>- [ ] </li></ul>|   If shape is choosen it could be moved with mouse or keybord keys      |SvyatoslavFedynyak|09.10.2018|
@@ -28,19 +28,19 @@ We are working with **pentagon**.
 | |                        | <p align="center">    2       </p>                                        |              |            |
 | |<ul><li>- [ ] </li></ul>| When you click on a canvas a certain number of times (the number of vertices or the center and radius of a circle), a shape with the specified coordinates is created and a color-dialog is shown.              |SvyatoslavFedynyak|09.10.2018|
 | |                        | <p align="center"> 3. The program should has next layers </p>             |              |            |
-| |<ul><li>- [ ] </li></ul>| Data access                                                               |      —       |      —     |
-| |<ul><li>- [ ] </li></ul>| Business Logic                                                            |      —       |      —     |
-| |<ul><li>- [ ] </li></ul>| View                                                                      |      —       |      —     |
+| |<ul><li>- [x] </li></ul>| Data access                                                               |      —       |      —     |
+| |<ul><li>- [x] </li></ul>| Business Logic                                                            |      —       |      —     |
+| |<ul><li>- [x] </li></ul>| View                                                                      |      —       |      —     |
 | |                        | <p align="center"> 4. Requirements </p>                                   |              |            |
-| |<ul><li>- [ ] </li></ul>| Unit-test project                                                         |      —       |      —     |
-| |<ul><li>- [ ] </li></ul>| Xml-documentation                                                         |      —       |      —     |
-| |<ul><li>- [ ] </li></ul>| Handling exceptions                                                       |      —       |      —     |
+| |<ul><li>- [x] </li></ul>| Unit-test project                                                         |      —       |      —     |
+| |<ul><li>- [x] </li></ul>| Xml-documentation                                                         |      —       |      —     |
+| |<ul><li>- [x] </li></ul>| Handling exceptions                                                       |      —       |      —     |
 | |                        |  <p align="center"> 5. Use such WPF feature as </p>                       |              |            |
-| |<ul><li>- [ ] </li></ul>| Binding                                                                   |      —       |      —     |
-| |<ul><li>- [ ] </li></ul>| Command                                                                   |      —       |      —     |
-| |<ul><li>- [ ] </li></ul>| Style                                                                     |      —       |      —     |
-| |<ul><li>- [ ] </li></ul>| Template                                                                  |      —       |      —     |
-| |<ul><li>- [ ] </li></ul>| Vector graphics                                                           |      —       |      —     |
+| |<ul><li>- [x] </li></ul>| Binding                                                                   |      —       |      —     |
+| |<ul><li>- [x] </li></ul>| Command                                                                   |      —       |      —     |
+| |<ul><li>- [x] </li></ul>| Style                                                                     |      —       |      —     |
+| |<ul><li>- [x] </li></ul>| Template                                                                  |      —       |      —     |
+| |<ul><li>- [x] </li></ul>| Vector graphics                                                           |      —       |      —     |
 
 ## Icon
 

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -8,7 +7,7 @@ namespace Shapes.Models
     /// <summary>
     /// Class that represents collection of shapes
     /// </summary>
-    [Serializable]
+    [System.Serializable]
     public class Canvas : IList<ShapeBase>, INotifyCollectionChanged
     {
         // FIELDS
@@ -140,7 +139,7 @@ namespace Shapes.Models
         /// </summary>
         /// <param name="match">Predicate with whitch shapes should be removed</param>
         /// <returns>Number of deleted items</returns>
-        public int RemoveAll(Predicate<ShapeBase> match)
+        public int RemoveAll(System.Predicate<ShapeBase> match)
         {
             foreach (ShapeBase item in shapes)
             {
