@@ -215,14 +215,17 @@
 
     <DataTemplate DataType="{x:Type s:Pentagon}">
         <Polygon
-            Points="{Binding s:Points, Converter={StaticResource PointConverter}}"
-            Stroke="{Binding s:StrokeColor}"
-            StrokeThickness="{Binding s:StrokeThickness}"
-            Opacity="{Binding s:Opacity}">
+            Points="{Binding Path=Points, Converter={StaticResource PointConverter}}"
+            Opacity="{Binding Path=Opacity}"
+            StrokeThickness="{Binding Path=StrokeThickness}">
             <Polygon.Fill>
-                <SolidColorBrush Color="{Binding s:Color}"/>
+                <SolidColorBrush Color="{Binding Path=Color}"/>
             </Polygon.Fill>
+            <Polygon.Stroke>
+                <SolidColorBrush Color="{Binding Path=StrokeColor}"/>
+            </Polygon.Stroke>
         </Polygon>
+
     </DataTemplate>
 
     
