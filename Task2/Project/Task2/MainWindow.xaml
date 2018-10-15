@@ -3,20 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Task2"
         xmlns:VM="clr-namespace:DataControl;assembly=DataControl"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"   
         
-        Title="PentagonEditor"
+        Title="{Binding FileName}"
         Height="600" Width="850"
         MinHeight="600" MinWidth="850"
         Icon="Resources/ico/ico.ico" 
         WindowStartupLocation="CenterScreen">
+    
     <!--DATA CONTEXT-->
-    <!--<Window.DataContext>
+    <Window.DataContext>
         <VM:ApplicationViewModel/>
-    </Window.DataContext>-->
+    </Window.DataContext>
     
     <!-- RESOURCES -->    
     <Window.Resources>
@@ -91,15 +91,27 @@
                 </MenuItem.Icon>
             </MenuItem>
             <!--UNDO REDO-->
-            <MenuItem Width="90">
+            <MenuItem Width="90"
+                      
+                      >
                 <MenuItem.Icon>
                     <Image Source="Resources/images/undo.png"/>
                 </MenuItem.Icon>
                 <MenuItem.Header>
                     <Image Source="Resources/images/arrowDown.png"
                            Height="15" Width="20"/>
-
                 </MenuItem.Header>
+                <!--Command="{Binding UndoAction}"
+                      ItemsSource="{Binding UndoActionNames, 
+                            Converter={StaticResource StringConverter}}"
+                      AlternationCount="{Binding ObservableItems.Count}"-->
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <i:InvokeCommandAction 
+                            Command="{Binding UndoAction}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=(ItemsControl.AlternationIndex)}"     />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </MenuItem>
             <MenuItem Width="90">
                 <MenuItem.Icon>
@@ -109,6 +121,8 @@
                     <Image Source="Resources/images/arrowDown.png" 
                            Height="15" Width="20"/>
                 </MenuItem.Header>
+                
+                
             </MenuItem>
             <!--PROPERTIES-->
             <MenuItem x:Name="propertiesMi" Header="properties">
@@ -190,13 +204,17 @@
 
         <!--CANVAS-->
         <DockPanel Grid.Row="1" x:Name="CanvasPanel">
-            <ItemsControl ItemsSource="{Binding Canvas}">
+            <ItemsControl ItemsSource="{Binding Canvas}"
+                          ItemsPanel="{StaticResource CanvasTemplate}">
                 
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
-                       
+                        <i:InvokeCommandAction 
+                            Command="{Binding AddVertex}"
+                            CommandParameter="{Binding ElementName=CanvasPanel}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
+
             </ItemsControl>
         </DockPanel>
         
