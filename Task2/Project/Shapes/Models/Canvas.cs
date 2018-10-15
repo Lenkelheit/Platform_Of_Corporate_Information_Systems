@@ -182,7 +182,7 @@ namespace Shapes.Models
         /// <returns>
         /// Number of elements that satisfy condition
         /// </returns>
-        public int CountIf(Predicate<ShapeBase> predicate)
+        public int CountIf(System.Predicate<ShapeBase> predicate)
         {
             int counter = 0;
             foreach (ShapeBase shape in shapes)
