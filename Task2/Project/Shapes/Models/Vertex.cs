@@ -6,12 +6,24 @@ namespace Shapes.Models
     [System.Serializable]
     public class Vertex : ShapeBase
     {
-        // CONST
-        private const int RADIUS = 5;
         // FIELDS
         private System.Windows.Point location;
-        // PROPERTIES        
-        internal static int NumberOfVertex { get; set; }
+        private static int radius;
+        // PROPERTIES
+        /// <summary>
+        /// Radius of the vertex
+        /// </summary>
+        public int Radius
+        {
+            get
+            {
+                return radius;
+            }
+            set
+            {
+                radius = value;
+            }
+        }
         /// <summary>
         /// Point position on the coordinate plane.
         /// </summary>
@@ -40,7 +52,7 @@ namespace Shapes.Models
         }
         static Vertex()
         {
-            NumberOfVertex = 0;
+            radius = 5;
         }
         // METHODS
         /// <summary>
@@ -65,7 +77,7 @@ namespace Shapes.Models
         /// </returns>
         public override bool HitTest(System.Windows.Point point)
         {
-            return GetDistance(this, new Vertex { Location = point }) <= RADIUS;
+            return GetDistance(this, new Vertex { Location = point }) <= Radius;
         }
     }
 }
