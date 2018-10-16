@@ -224,6 +224,12 @@
                             Command="{Binding AddVertex}"
                             CommandParameter="{Binding ElementName=CanvasPanel}"/>
                     </i:EventTrigger>
+                    
+                    <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                        <i:InvokeCommandAction 
+                            Command="{Binding SelectShapeByPosition}"
+                            CommandParameter="{Binding ElementName=CanvasPanel}"/>
+                    </i:EventTrigger>
                 </i:Interaction.Triggers>
 
             </ItemsControl>
