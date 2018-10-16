@@ -89,6 +89,12 @@ namespace DataControl
             addVertex = new RelayCommand(AddVertexMethod);
             deleteShape = new RelayCommand(DeleteShapeMethod, CanDeleteShapeAction);
 
+            changeShapeColor = new RelayCommand(ChangeColorMethod, CanChangeAction);
+            changeShapeOpacity = new RelayCommand(ChangeOpacityMethod, CanChangeAction);
+            changeShapeStrokeColor = new RelayCommand(ChangeStrokeColorMethod, CanChangeAction);
+            changeStrokeWidth = new RelayCommand(ChangeStrokeWidthMethod, CanChangeAction);
+            changeShapeLocation = new RelayCommand(ChangeLocationMethod, CanChangeAction);
+
             manager.PropertyChanged += Manager_PropertyChanged;
         }
 
@@ -212,18 +218,28 @@ namespace DataControl
         /// Property that enable to interact with AddVertex command
         /// </summary>
         public RelayCommand AddVertex => addVertex;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeShapeColor command.
+        /// </summary>
         public RelayCommand ChangeShapeColor => changeShapeColor;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeShapeOpacity command.
+        /// </summary>
         public RelayCommand ChangeShapeOpacity => changeShapeOpacity;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeShapeStrokeColor command.
+        /// </summary>
         public RelayCommand ChangeShapeStrokeColor => changeShapeStrokeColor;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeStrokeWidth command.
+        /// </summary>
         public RelayCommand ChangeStrokeWidth => changeStrokeWidth;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeShapeLocation command.
+        /// </summary>
         public RelayCommand ChangeShapeLocation => changeShapeLocation;
         #endregion
-        
+
 
         // METHODS
         private void NewFileMethod(object o)
@@ -334,6 +350,50 @@ namespace DataControl
             manager.Redo((int)o + 1);
         }
 
+        private void ChangeColorMethod(object obj)
+        {
+            if (dialogService.ColorDialog())
+            {
+                System.Windows.Media.Color target = dialogService.Color;
+                manager.Execute(new Shapes.Commands.Pentagon.ChangeColor((Pentagon)selectedShape, target));
+            }
+        }
+        private void ChangeLocationMethod(object obj)
+        {
+            System.Windows.Point[] points = new System.Windows.Point[5];
+            if ((Pentagon)selectedShape == null)
+            {
+                throw new System.ArgumentException("object is not pentagon");
+            }
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeLocation((Pentagon)selectedShape, points));
+        }
+        private void ChangeOpacityMethod(object obj)
+        {
+            double target = 3;
+            if ((Pentagon)selectedShape == null)
+            {
+                throw new System.ArgumentException("object is not pentagon");
+            }
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeOpacity((Pentagon)selectedShape, target));
+        }
+        private void ChangeStrokeColorMethod(object obj)
+        {
+            if (dialogService.ColorDialog())
+            {
+                System.Windows.Media.Color target = dialogService.Color;
+                manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeColor((Pentagon)selectedShape, target));
+            }
+        }      
+        private void ChangeStrokeWidthMethod(object obj)
+        {
+            double target = 3;
+            if ((Pentagon)selectedShape == null)
+            {
+                throw new System.ArgumentException("object is not pentagon");
+            }
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeWidth((Pentagon)selectedShape, target));
+        }
+
         // RESTRICTIONS
         private bool CanDeleteShapeAction(object o)
         {
@@ -346,6 +406,11 @@ namespace DataControl
         private bool CanRedoAction(object o)
         {
             return manager.CanRedo;
+        }
+
+        private bool CanChangeAction(object obj)
+        {
+            return selectedShape != null && selectedShape is Pentagon;
         }
 
         // EVENT METHODS
@@ -366,5 +431,6 @@ namespace DataControl
                 case "RedoItems": OnPropertyChanged(new PropertyChangedEventArgs("RedoActionNames")); break;
             }
         }
+
     }
 }
