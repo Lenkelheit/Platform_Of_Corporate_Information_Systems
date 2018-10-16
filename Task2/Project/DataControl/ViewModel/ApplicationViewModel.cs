@@ -44,6 +44,8 @@ namespace DataControl
 
         private RelayCommand addVertex;
         private RelayCommand deleteShape;
+        private RelayCommand selectShapeByPosition;
+
         private RelayCommand changeShapeColor;
         private RelayCommand changeShapeOpacity;
         private RelayCommand changeShapeStrokeColor;
@@ -92,6 +94,7 @@ namespace DataControl
 
             addVertex = new RelayCommand(AddVertexMethod);
             deleteShape = new RelayCommand(DeleteShapeMethod, CanDeleteShapeAction);
+            selectShapeByPosition = new RelayCommand(SelectShapeByPositionMethod);
 
             manager.PropertyChanged += Manager_PropertyChanged;
         }
@@ -199,10 +202,7 @@ namespace DataControl
         /// Property that enable to interact with Exit command.
         /// </summary>
         public RelayCommand Exit => exit;
-        /// <summary>
-        /// Property that enable to interact with DeleteShape command
-        /// </summary>
-        public RelayCommand DeleteShape => deleteShape;
+
         /// <summary>
         /// Property that enable to interact with UndoAction command
         /// </summary>
@@ -219,10 +219,20 @@ namespace DataControl
         /// Property that enable to interact with RedoManyAction command
         /// </summary>
         public RelayCommand RedoManyAction => redoManyAction;
+
         /// <summary>
         /// Property that enable to interact with AddVertex command
         /// </summary>
         public RelayCommand AddVertex => addVertex;
+        /// <summary>
+        /// Property that enable to interact with DeleteShape command
+        /// </summary>
+        public RelayCommand DeleteShape => deleteShape;
+        /// <summary>
+        /// Property that enable to interact with SelectShapeByPosition command
+        /// </summary>
+        public RelayCommand SelectShapeByPosition => selectShapeByPosition;
+
 
         public RelayCommand ChangeShapeColor => changeShapeColor;
 
@@ -340,6 +350,19 @@ namespace DataControl
             SelectedShape = canvas.Count > 0 ? canvas.Last() : null;
             OnCanvasChanged();
         }
+        private void SelectShapeByPositionMethod(object o)
+        {
+            Point mouseClick = Mouse.GetPosition((IInputElement)o);
+            foreach (ShapeBase shape in canvas.Shapes.Reverse())
+            {
+                if (shape.HitTest(mouseClick))
+                {
+                    SelectedShape = shape;
+                    return;
+                }
+            }
+        }
+
         private void UndoActionMethod(object o)
         {
             manager.Undo();
