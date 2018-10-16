@@ -354,44 +354,30 @@ namespace DataControl
         {
             if (dialogService.ColorDialog())
             {
-                System.Windows.Media.Color target = dialogService.Color;
-                manager.Execute(new Shapes.Commands.Pentagon.ChangeColor((Pentagon)selectedShape, target));
+                manager.Execute(new Shapes.Commands.Pentagon.ChangeColor((Pentagon)selectedShape, 
+                                                                            dialogService.Color));
             }
         }
         private void ChangeLocationMethod(object obj)
         {
-            System.Windows.Point[] points = new System.Windows.Point[5];
-            if ((Pentagon)selectedShape == null)
-            {
-                throw new System.ArgumentException("object is not pentagon");
-            }
-            manager.Execute(new Shapes.Commands.Pentagon.ChangeLocation((Pentagon)selectedShape, points));
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeLocation((Pentagon)selectedShape, 
+                                                                            (System.Windows.Point[])obj));
         }
         private void ChangeOpacityMethod(object obj)
         {
-            double target = 3;
-            if ((Pentagon)selectedShape == null)
-            {
-                throw new System.ArgumentException("object is not pentagon");
-            }
-            manager.Execute(new Shapes.Commands.Pentagon.ChangeOpacity((Pentagon)selectedShape, target));
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeOpacity((Pentagon)selectedShape, (int)obj));
         }
         private void ChangeStrokeColorMethod(object obj)
         {
             if (dialogService.ColorDialog())
             {
-                System.Windows.Media.Color target = dialogService.Color;
-                manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeColor((Pentagon)selectedShape, target));
+                manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeColor((Pentagon)selectedShape,
+                                                                                    dialogService.Color));
             }
         }      
         private void ChangeStrokeWidthMethod(object obj)
         {
-            double target = 3;
-            if ((Pentagon)selectedShape == null)
-            {
-                throw new System.ArgumentException("object is not pentagon");
-            }
-            manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeWidth((Pentagon)selectedShape, target));
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeWidth((Pentagon)selectedShape, (int)obj));
         }
 
         // RESTRICTIONS
