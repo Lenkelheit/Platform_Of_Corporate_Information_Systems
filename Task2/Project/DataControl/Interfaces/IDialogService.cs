@@ -12,7 +12,7 @@ namespace DataControl.Interfaces
         /// <summary>
         /// Returns selected color.
         /// </summary>
-        System.Drawing.Color Color { get; }
+        System.Windows.Media.Color Color { get; }
         /// <summary>
         /// Shows some message.
         /// </summary>
