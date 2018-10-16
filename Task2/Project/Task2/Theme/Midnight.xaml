@@ -1,13 +1,6 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Task2"
-                    xmlns:s="clr-namespace:Shapes.Models;assembly=Shapes">
-    
-    <!--CONVERTERS-->
-
-    <local:PointArrayToPointCollection x:Key="PointConverter"/>
-    <local:StringToLower x:Key="StringConverter"/>
-    <local:Math x:Key="MathConverter"/>
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+   
     
     <!--COLORS-->
     
@@ -213,37 +206,9 @@
         <Canvas/>
     </ItemsPanelTemplate>
 
-    <DataTemplate DataType="{x:Type s:Pentagon}">
-        <Polygon
-            Points="{Binding Path=Points, Converter={StaticResource PointConverter}}"
-            Opacity="{Binding Path=Opacity}"
-            StrokeThickness="{Binding Path=StrokeThickness}">
-            <Polygon.Fill>
-                <SolidColorBrush Color="{Binding Path=Color}"/>
-            </Polygon.Fill>
-            <Polygon.Stroke>
-                <SolidColorBrush Color="{Binding Path=StrokeColor}"/>
-            </Polygon.Stroke>
-        </Polygon>
-
-    </DataTemplate>
-
     
-    <DataTemplate DataType="{x:Type s:Vertex}">
-        <Ellipse
-             Fill="{StaticResource WhiteBrush}"
-             Height="{Binding Path=Radius, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE*2}"
-             Width="{Binding Path=Radius, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE*2}"
-             StrokeThickness="2"
-             Stroke="{StaticResource HoverFontBrush}">
-
-            <Ellipse.RenderTransform>
-                <TranslateTransform X="{Binding Path=Location.X, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE-5}" 
-                                    Y="{Binding Path=Location.Y, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE-5}"/>
-            </Ellipse.RenderTransform>
-        </Ellipse>
-    </DataTemplate>
-
+    
+    
 
     <!--STYLES-->
     

@@ -79,7 +79,10 @@
                 </MenuItem>
             </MenuItem>
             <!--SHAPES-->
-            <MenuItem x:Name="shapesMi" Header="shapes">
+            <MenuItem x:Name="shapesMi" Header="{Binding SelectedShapeName,
+                                                 Converter={StaticResource StringConverter}}"
+                      ItemsSource="{Binding Path=ShapeNames, 
+                                    Converter={StaticResource StringsConverter}}">
                 <MenuItem.Icon>
                     <Image Source="Resources/images/pentagon.png"/>
                 </MenuItem.Icon>
@@ -92,7 +95,10 @@
             </MenuItem>
             <!--UNDO REDO-->
             <MenuItem Width="90"
-                      
+                      Command="{Binding UndoAction}"
+                      ItemsSource="{Binding UndoActionNames, 
+                            Converter={StaticResource StringsConverter}}"
+                      AlternationCount="{Binding ObservableItems.Count}"
                       >
                 <MenuItem.Icon>
                     <Image Source="Resources/images/undo.png"/>
@@ -101,19 +107,19 @@
                     <Image Source="Resources/images/arrowDown.png"
                            Height="15" Width="20"/>
                 </MenuItem.Header>
-                <!--Command="{Binding UndoAction}"
-                      ItemsSource="{Binding UndoActionNames, 
-                            Converter={StaticResource StringConverter}}"
-                      AlternationCount="{Binding ObservableItems.Count}"-->
+
                 <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                    <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction 
                             Command="{Binding UndoAction}"
                             CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=(ItemsControl.AlternationIndex)}"     />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </MenuItem>
-            <MenuItem Width="90">
+            <MenuItem Width="90"
+                      Command="{Binding RedoAction}"
+                      ItemsSource="{Binding RedoActionNames, 
+                            Converter={StaticResource StringsConverter}}">
                 <MenuItem.Icon>
                     <Image Source="Resources/images/redo.png"/>
                 </MenuItem.Icon>
@@ -121,8 +127,13 @@
                     <Image Source="Resources/images/arrowDown.png" 
                            Height="15" Width="20"/>
                 </MenuItem.Header>
-                
-                
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction 
+                            Command="{Binding RedoAction}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </MenuItem>
             <!--PROPERTIES-->
             <MenuItem x:Name="propertiesMi" Header="properties">

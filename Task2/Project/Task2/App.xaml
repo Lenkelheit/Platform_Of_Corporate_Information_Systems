@@ -1,9 +1,48 @@
-﻿<Application x:Class="Task2.App"
+<Application x:Class="Task2.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Task2"
+             xmlns:s="clr-namespace:Shapes.Models;assembly=Shapes"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <!--CONVERTERS-->
+
+        <local:PointArrayToPointCollection x:Key="PointConverter"/>
+        <local:StringsToLower x:Key="StringsConverter"/>
+        <local:StringToLower x:Key="StringConverter"/>
+        <local:Math x:Key="MathConverter"/>
+
+        <!--DATA TEMPLATE-->
+        <DataTemplate DataType="{x:Type s:Pentagon}">
+            <Polygon
+            Points="{Binding Path=Points, Converter={StaticResource PointConverter}}"
+            Opacity="{Binding Path=Opacity}"
+            StrokeThickness="{Binding Path=StrokeThickness}">
+                <Polygon.Fill>
+                    <SolidColorBrush Color="{Binding Path=Color}"/>
+                </Polygon.Fill>
+                <Polygon.Stroke>
+                    <SolidColorBrush Color="{Binding Path=StrokeColor}"/>
+                </Polygon.Stroke>
+            </Polygon>
+
+        </DataTemplate>
+
+
+        <DataTemplate DataType="{x:Type s:Vertex}">
+            <Ellipse
+             Fill="White"
+             Height="{Binding Path=Radius, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE*2}"
+             Width="{Binding Path=Radius, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE*2}"
+             StrokeThickness="2"
+             Stroke="#BE1919">
+
+                <Ellipse.RenderTransform>
+                    <TranslateTransform X="{Binding Path=Location.X, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE-5}" 
+                                    Y="{Binding Path=Location.Y, Converter={StaticResource MathConverter}, ConverterParameter=@VALUE-5}"/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+        </DataTemplate>
     </Application.Resources>
 </Application>
