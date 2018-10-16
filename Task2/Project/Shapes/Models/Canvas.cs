@@ -62,7 +62,7 @@ namespace Shapes.Models
         /// Indexer that enable to interract with collection elements
         /// </summary>
         /// <param name="index">Shape index in collection</param>
-        /// <returns>Shape with preset index</returns>
+        /// <returns>Shape with present index</returns>
         /// <exception cref="System.IndexOutOfRangeException">Index out of range</exception>
         public ShapeBase this[int index]
         {
@@ -109,9 +109,9 @@ namespace Shapes.Models
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, shape));
         }
         /// <summary>
-        /// Method that removes preset shape
+        /// Method that removes present shape
         /// </summary>
-        /// <param name="shape">Preset shape</param>
+        /// <param name="shape">present shape</param>
         /// <returns>If shape was deleted</returns>
         public bool Remove(ShapeBase shape)
         {
@@ -124,7 +124,7 @@ namespace Shapes.Models
             return result;
         }
         /// <summary>
-        /// Method that remove shape with preset index
+        /// Method that remove shape with present index
         /// </summary>
         /// <param name="index">Index with which shape should be removed</param>
         /// <exception cref="System.IndexOutOfRangeException">Index out of range</exception>
@@ -135,7 +135,7 @@ namespace Shapes.Models
             shapes.RemoveAt(index);
         }
         /// <summary>
-        /// Method that removes all shapes with preset predicate
+        /// Method that removes all shapes with present predicate
         /// </summary>
         /// <param name="match">Predicate with whitch shapes should be removed</param>
         /// <returns>Number of deleted items</returns>
@@ -148,9 +148,9 @@ namespace Shapes.Models
                     item.PropertyChanged -= Canvas_PropertyChanged;
                 }
             }
-            
+            int elementRemoved = shapes.RemoveAll(match);
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-            return shapes.RemoveAll(match);
+            return elementRemoved;
         }
         /// <summary>
         /// Method that deletes all shapes in collection
@@ -165,9 +165,9 @@ namespace Shapes.Models
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
         /// <summary>
-        /// Method that check if collection contains preset item
+        /// Method that check if collection contains present item
         /// </summary>
-        /// <param name="item">Shape should bechecked</param>
+        /// <param name="item">Shape should be checked</param>
         /// <returns>If collection contains item</returns>
         public bool Contains(ShapeBase item)
         {
@@ -195,7 +195,7 @@ namespace Shapes.Models
             return counter;
         }
         /// <summary>
-        /// Method that copy collection to preset array started from preset index
+        /// Method that copy collection to present array started from present index
         /// </summary>
         /// <param name="array">Array where collection should be copied</param>
         /// <param name="arrayIndex">Index from which stated copiing</param>
@@ -205,7 +205,7 @@ namespace Shapes.Models
             shapes.CopyTo(array, arrayIndex);
         }
         /// <summary>
-        /// Method that returns index of preset item in collection
+        /// Method that returns index of present item in collection
         /// </summary>
         /// <param name="item">Item should be founded</param>
         /// <returns>Index of item in collection</returns>
