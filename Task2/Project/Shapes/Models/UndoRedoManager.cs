@@ -152,6 +152,18 @@ namespace Shapes.Models
             OnStateChanged();
         }
         /// <summary>
+        /// Clear manager
+        /// </summary>
+        public void Clear()
+        {
+            RememberState();
+
+            redoStack.Clear();
+            undoStack.Clear();
+
+            OnStateChanged();
+        }
+        /// <summary>
         /// Raise the <see cref="Shapes.Models.UndoRedoManager.PropertyChanged"/> event.
         /// </summary>
         /// <param name="e">
