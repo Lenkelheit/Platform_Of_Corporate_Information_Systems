@@ -227,7 +227,7 @@ namespace Shapes.Models
         }
         private void Canvas_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, sender));
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
         /// <summary>
         /// Method that invokes CollectionChanged event

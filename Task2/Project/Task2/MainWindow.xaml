@@ -136,13 +136,15 @@
                 </i:Interaction.Triggers>
             </MenuItem>
             <!--PROPERTIES-->
-            <MenuItem x:Name="propertiesMi" Header="properties">
+            <MenuItem x:Name="propertiesMi" Header="properties"
+                      Command="{Binding CanApplyChanging}">
                 <MenuItem.Icon>
                     <Image Source="Resources/images/settings.png"/>
                 </MenuItem.Icon>
                 
                 <MenuItem IsEnabled="False" Header="shape"/>
-                <MenuItem x:Name="colorShapeMi" Header="color">
+                <MenuItem x:Name="colorShapeMi" Header="color"
+                          Command="{Binding ChangeShapeColor}">
                     <MenuItem.Icon>
                         <Image Source="Resources/images/palette.png"/>
                     </MenuItem.Icon>
@@ -164,13 +166,23 @@
                             </Grid.RowDefinitions>
 
                             <TextBlock>opacity</TextBlock>
-                            
-                            <Slider Style="{StaticResource StyleForSlider}" Grid.Row="1" 
+
+                            <Slider x:Name="OpacitySlider"
+                                    Style="{StaticResource StyleForSlider}" Grid.Row="1" 
                                     Width="100"
                                     Minimum="0" Maximum="1"
                                     IsSnapToTickEnabled="True"
                                     TickFrequency="0.1"
-                                    Value="1"/>
+                                    Value="{Binding Path=SelectedShape.Opacity}">
+                                
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="{Binding Path=OpacitySlider.Thumb.MouseUp}">
+                                        <i:InvokeCommandAction 
+                                                Command="{Binding ChangeShapeOpacity}"
+                                                CommandParameter="{Binding ElementName=OpacitySlider, Path=Value}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Slider>
                         </Grid>
 
                     </MenuItem.Header>
@@ -178,7 +190,8 @@
                 </MenuItem>
 
                 <MenuItem IsEnabled="False" Margin="0, 5, 0, 0" Header="stroke"/>
-                <MenuItem x:Name="colorStrokeMi" Header="color">
+                <MenuItem x:Name="colorStrokeMi" Header="color"
+                          Command="{Binding ChangeShapeStrokeColor}">
                     <MenuItem.Icon>
                         <Image Source="Resources/images/palette.png"/>
                     </MenuItem.Icon>
@@ -201,12 +214,22 @@
 
                             <TextBlock>width</TextBlock>
 
-                            <Slider Style="{StaticResource StyleForSlider}" Grid.Row="1" 
+                            <Slider x:Name="StrokeWidthSlider"
+                                    Style="{StaticResource StyleForSlider}" Grid.Row="1" 
                                     Width="100"
                                     Minimum="1" Maximum="8"
                                     IsSnapToTickEnabled="True"
                                     TickFrequency="1"
-                                    Value="2"/>
+                                    Value="{Binding Path=SelectedShape.StrokeThickness}">
+                               
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="{Binding Path=Thumb.MouseUp}">
+                                            <i:InvokeCommandAction 
+                                                Command="{Binding ChangeStrokeWidth}"
+                                                CommandParameter="{Binding ElementName=StrokeWidthSlider, Path=Value}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                            </Slider>
                         </Grid>                        
                     </MenuItem.Header>
                 </MenuItem>
@@ -222,6 +245,12 @@
                     <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
                         <i:InvokeCommandAction 
                             Command="{Binding AddVertex}"
+                            CommandParameter="{Binding ElementName=CanvasPanel}"/>
+                    </i:EventTrigger>
+                    
+                    <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                        <i:InvokeCommandAction 
+                            Command="{Binding SelectShapeByPosition}"
                             CommandParameter="{Binding ElementName=CanvasPanel}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>

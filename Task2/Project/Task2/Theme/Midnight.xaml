@@ -156,7 +156,14 @@
                                   HorizontalAlignment="Left" VerticalAlignment="Center"/>
             </DockPanel>
             <!--SUB MENU-->
-            <Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="False" HorizontalOffset="1" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" Placement="Bottom" VerticalOffset="-1">
+            <Popup x:Name="PART_Popup" 
+                   AllowsTransparency="True" 
+                   Focusable="False"
+                   HorizontalOffset="1" 
+                   IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" 
+                   PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}"
+                   Placement="Bottom" 
+                   VerticalOffset="-1">
                 <Border x:Name="SubMenuBorder" BorderThickness="0">
                     
                     <ScrollViewer x:Name="SubMenuScrollViewer" Margin="0" 

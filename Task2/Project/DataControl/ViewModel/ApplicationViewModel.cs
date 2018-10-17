@@ -44,6 +44,9 @@ namespace DataControl
 
         private RelayCommand addVertex;
         private RelayCommand deleteShape;
+        private RelayCommand selectShapeByPosition;
+
+        private RelayCommand canApplyChanging;
         private RelayCommand changeShapeColor;
         private RelayCommand changeShapeOpacity;
         private RelayCommand changeShapeStrokeColor;
@@ -92,6 +95,14 @@ namespace DataControl
 
             addVertex = new RelayCommand(AddVertexMethod);
             deleteShape = new RelayCommand(DeleteShapeMethod, CanDeleteShapeAction);
+            selectShapeByPosition = new RelayCommand(SelectShapeByPositionMethod);
+
+            canApplyChanging = new RelayCommand((obj) => { }, CanChangeAction);
+            changeShapeColor = new RelayCommand(ChangeColorMethod, CanChangeAction);
+            changeShapeOpacity = new RelayCommand(ChangeOpacityMethod, CanChangeAction);
+            changeShapeStrokeColor = new RelayCommand(ChangeStrokeColorMethod, CanChangeAction);
+            changeStrokeWidth = new RelayCommand(ChangeStrokeWidthMethod, CanChangeAction);
+            changeShapeLocation = new RelayCommand(ChangeLocationMethod, CanChangeAction);
 
             changeShapeColor = new RelayCommand(ChangeColorMethod, CanChangeAction);
             changeShapeOpacity = new RelayCommand(ChangeOpacityMethod, CanChangeAction);
@@ -205,10 +216,7 @@ namespace DataControl
         /// Property that enable to interact with Exit command.
         /// </summary>
         public RelayCommand Exit => exit;
-        /// <summary>
-        /// Property that enable to interact with DeleteShape command
-        /// </summary>
-        public RelayCommand DeleteShape => deleteShape;
+
         /// <summary>
         /// Property that enable to interact with UndoAction command
         /// </summary>
@@ -225,28 +233,42 @@ namespace DataControl
         /// Property that enable to interact with RedoManyAction command
         /// </summary>
         public RelayCommand RedoManyAction => redoManyAction;
+
         /// <summary>
         /// Property that enable to interact with AddVertex command
         /// </summary>
         public RelayCommand AddVertex => addVertex;
         /// <summary>
-        /// Property that enable to interract with ChangeShapeColor command.
+        /// Property that enable to interact with DeleteShape command
+        /// </summary>
+        public RelayCommand DeleteShape => deleteShape;
+        /// <summary>
+        /// Property that enable to interact with SelectShapeByPosition command
+        /// </summary>
+        public RelayCommand SelectShapeByPosition => selectShapeByPosition;
+
+        /// <summary>
+        /// Property that enable to interact with CanApplyChanging command
+        /// </summary>
+        public RelayCommand CanApplyChanging => canApplyChanging;
+        /// <summary>
+        /// Property that enable to interact with ChangeShapeColor command
         /// </summary>
         public RelayCommand ChangeShapeColor => changeShapeColor;
         /// <summary>
-        /// Property that enable to interract with ChangeShapeOpacity command.
+        /// Property that enable to interact with ChangeShapeOpacity command
         /// </summary>
         public RelayCommand ChangeShapeOpacity => changeShapeOpacity;
         /// <summary>
-        /// Property that enable to interract with ChangeShapeStrokeColor command.
+        /// Property that enable to interact with ChangeShapeStrokeColor command
         /// </summary>
         public RelayCommand ChangeShapeStrokeColor => changeShapeStrokeColor;
         /// <summary>
-        /// Property that enable to interract with ChangeStrokeWidth command.
+        /// Property that enable to interact with ChangeStrokeWidth command
         /// </summary>
         public RelayCommand ChangeStrokeWidth => changeStrokeWidth;
         /// <summary>
-        /// Property that enable to interract with ChangeShapeLocation command.
+        /// Property that enable to interact with ChangeShapeLocation command
         /// </summary>
         public RelayCommand ChangeShapeLocation => changeShapeLocation;
         #endregion
@@ -356,6 +378,19 @@ namespace DataControl
             SelectedShape = canvas.Count > 0 ? canvas.Last() : null;
             OnCanvasChanged();
         }
+        private void SelectShapeByPositionMethod(object o)
+        {
+            Point mouseClick = Mouse.GetPosition((IInputElement)o);
+            foreach (ShapeBase shape in canvas.Shapes.Reverse())
+            {
+                if (shape.HitTest(mouseClick))
+                {
+                    SelectedShape = shape;
+                    return;
+                }
+            }
+        }
+
         private void UndoActionMethod(object o)
         {
             manager.Undo();
@@ -377,32 +412,28 @@ namespace DataControl
         {
             if (dialogService.ColorDialog())
             {
-                manager.Execute(new Shapes.Commands.Pentagon.ChangeColor((Pentagon)selectedShape, 
-                                                                            dialogService.Color));
+                manager.Execute(new Shapes.Commands.Pentagon.ChangeColor((Pentagon)selectedShape, dialogService.Color));
             }
         }
         private void ChangeLocationMethod(object obj)
         {
-            manager.Execute(new Shapes.Commands.Pentagon.ChangeLocation((Pentagon)selectedShape, 
-                                                                            (System.Windows.Point[])obj));
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeLocation((Pentagon)selectedShape, (Point[])obj));
         }
         private void ChangeOpacityMethod(object obj)
         {
-            manager.Execute(new Shapes.Commands.Pentagon.ChangeOpacity((Pentagon)selectedShape, (int)obj));
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeOpacity((Pentagon)selectedShape, (double)obj));
         }
         private void ChangeStrokeColorMethod(object obj)
         {
             if (dialogService.ColorDialog())
             {
-                manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeColor((Pentagon)selectedShape,
-                                                                                    dialogService.Color));
+                manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeColor((Pentagon)selectedShape, dialogService.Color));
             }
-        }      
+        }
         private void ChangeStrokeWidthMethod(object obj)
         {
-            manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeWidth((Pentagon)selectedShape, (int)obj));
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeWidth((Pentagon)selectedShape, (double)obj));
         }
-
         // RESTRICTIONS
         private bool CanDeleteShapeAction(object o)
         {
