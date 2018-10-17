@@ -93,6 +93,12 @@ namespace DataControl
             addVertex = new RelayCommand(AddVertexMethod);
             deleteShape = new RelayCommand(DeleteShapeMethod, CanDeleteShapeAction);
 
+            changeShapeColor = new RelayCommand(ChangeColorMethod, CanChangeAction);
+            changeShapeOpacity = new RelayCommand(ChangeOpacityMethod, CanChangeAction);
+            changeShapeStrokeColor = new RelayCommand(ChangeStrokeColorMethod, CanChangeAction);
+            changeStrokeWidth = new RelayCommand(ChangeStrokeWidthMethod, CanChangeAction);
+            changeShapeLocation = new RelayCommand(ChangeLocationMethod, CanChangeAction);
+
             manager.PropertyChanged += Manager_PropertyChanged;
         }
 
@@ -223,18 +229,28 @@ namespace DataControl
         /// Property that enable to interact with AddVertex command
         /// </summary>
         public RelayCommand AddVertex => addVertex;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeShapeColor command.
+        /// </summary>
         public RelayCommand ChangeShapeColor => changeShapeColor;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeShapeOpacity command.
+        /// </summary>
         public RelayCommand ChangeShapeOpacity => changeShapeOpacity;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeShapeStrokeColor command.
+        /// </summary>
         public RelayCommand ChangeShapeStrokeColor => changeShapeStrokeColor;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeStrokeWidth command.
+        /// </summary>
         public RelayCommand ChangeStrokeWidth => changeStrokeWidth;
-
+        /// <summary>
+        /// Property that enable to interract with ChangeShapeLocation command.
+        /// </summary>
         public RelayCommand ChangeShapeLocation => changeShapeLocation;
         #endregion
-        
+
 
         // METHODS
         private void NewFileMethod(object o)
@@ -357,6 +373,36 @@ namespace DataControl
             manager.Redo((int)o + 1);
         }
 
+        private void ChangeColorMethod(object obj)
+        {
+            if (dialogService.ColorDialog())
+            {
+                manager.Execute(new Shapes.Commands.Pentagon.ChangeColor((Pentagon)selectedShape, 
+                                                                            dialogService.Color));
+            }
+        }
+        private void ChangeLocationMethod(object obj)
+        {
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeLocation((Pentagon)selectedShape, 
+                                                                            (System.Windows.Point[])obj));
+        }
+        private void ChangeOpacityMethod(object obj)
+        {
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeOpacity((Pentagon)selectedShape, (int)obj));
+        }
+        private void ChangeStrokeColorMethod(object obj)
+        {
+            if (dialogService.ColorDialog())
+            {
+                manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeColor((Pentagon)selectedShape,
+                                                                                    dialogService.Color));
+            }
+        }      
+        private void ChangeStrokeWidthMethod(object obj)
+        {
+            manager.Execute(new Shapes.Commands.Pentagon.ChangeStrokeWidth((Pentagon)selectedShape, (int)obj));
+        }
+
         // RESTRICTIONS
         private bool CanDeleteShapeAction(object o)
         {
@@ -370,7 +416,10 @@ namespace DataControl
         {
             return manager.CanRedo;
         }
-
+        private bool CanChangeAction(object obj)
+        {
+            return selectedShape != null && selectedShape is Pentagon;
+        }
         // ADDITIONAL METHODS
         private void Reset()
         {
@@ -400,5 +449,6 @@ namespace DataControl
                 case "RedoItems": OnPropertyChanged(new PropertyChangedEventArgs(nameof(RedoActionNames))); break;
             }
         }
+
     }
 }
