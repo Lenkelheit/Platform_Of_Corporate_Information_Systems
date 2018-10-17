@@ -7,7 +7,7 @@ namespace DataControl.Services
     {
         // FIELDS
         private string filePath;
-        private System.Drawing.Color color;
+        private System.Windows.Media.Color color;
 
         // PROPERTIES
         /// <summary>
@@ -23,7 +23,7 @@ namespace DataControl.Services
         /// <summary>
         /// Returns selected color.
         /// </summary>
-        public System.Drawing.Color Color
+        public System.Windows.Media.Color Color
         {
             get
             {
@@ -44,7 +44,8 @@ namespace DataControl.Services
             {
                 if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    color = colorDialog.Color;
+                    System.Drawing.Color drawColor = colorDialog.Color;
+                    color = System.Windows.Media.Color.FromArgb(drawColor.A, drawColor.R, drawColor.G, drawColor.B);
                     return true;
                 }
                 return false;

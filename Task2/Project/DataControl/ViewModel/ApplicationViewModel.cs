@@ -104,6 +104,12 @@ namespace DataControl
             changeStrokeWidth = new RelayCommand(ChangeStrokeWidthMethod, CanChangeAction);
             changeShapeLocation = new RelayCommand(ChangeLocationMethod, CanChangeAction);
 
+            changeShapeColor = new RelayCommand(ChangeColorMethod, CanChangeAction);
+            changeShapeOpacity = new RelayCommand(ChangeOpacityMethod, CanChangeAction);
+            changeShapeStrokeColor = new RelayCommand(ChangeStrokeColorMethod, CanChangeAction);
+            changeStrokeWidth = new RelayCommand(ChangeStrokeWidthMethod, CanChangeAction);
+            changeShapeLocation = new RelayCommand(ChangeLocationMethod, CanChangeAction);
+
             manager.PropertyChanged += Manager_PropertyChanged;
         }
 
@@ -474,5 +480,6 @@ namespace DataControl
                 case "RedoItems": OnPropertyChanged(new PropertyChangedEventArgs(nameof(RedoActionNames))); break;
             }
         }
+
     }
 }
