@@ -20,6 +20,8 @@ namespace DataControl
         const string APPLICATION_NAME = "Pentagon Editor";
         const string DYNAMIC_MENU_ITEM_SHAPES_NAME = "Shapes";
         // FIELDS
+        private Window mainWindow;
+
         private UndoRedoManager manager;
         private ShapeBase selectedShape;
         private Canvas canvas;
@@ -31,6 +33,8 @@ namespace DataControl
         private string currentFileName;
 
         #region Commands
+        private RelayCommand initialize;
+
         private RelayCommand newFile;
         private RelayCommand openFile;
         private RelayCommand saveFile;
@@ -82,6 +86,8 @@ namespace DataControl
 
             currentFileName = null;
 
+            initialize = new RelayCommand(InitializeMethod);
+
             newFile = new RelayCommand(NewFileMethod);
             openFile = new RelayCommand(OpenFileMethod);
             saveFile = new RelayCommand(SaveFileMethod);
@@ -98,12 +104,6 @@ namespace DataControl
             selectShapeByPosition = new RelayCommand(SelectShapeByPositionMethod);
 
             canApplyChanging = new RelayCommand((obj) => { }, CanChangeAction);
-            changeShapeColor = new RelayCommand(ChangeColorMethod, CanChangeAction);
-            changeShapeOpacity = new RelayCommand(ChangeOpacityMethod, CanChangeAction);
-            changeShapeStrokeColor = new RelayCommand(ChangeStrokeColorMethod, CanChangeAction);
-            changeStrokeWidth = new RelayCommand(ChangeStrokeWidthMethod, CanChangeAction);
-            changeShapeLocation = new RelayCommand(ChangeLocationMethod, CanChangeAction);
-
             changeShapeColor = new RelayCommand(ChangeColorMethod, CanChangeAction);
             changeShapeOpacity = new RelayCommand(ChangeOpacityMethod, CanChangeAction);
             changeShapeStrokeColor = new RelayCommand(ChangeStrokeColorMethod, CanChangeAction);
@@ -197,6 +197,10 @@ namespace DataControl
 
         #region Commands
         /// <summary>
+        /// Property that initialize basic tools
+        /// </summary>
+        public RelayCommand Initialize => initialize;
+        /// <summary>
         /// Property that enable to interact with NewFile command.
         /// </summary>
         public RelayCommand NewFile => newFile;
@@ -275,6 +279,46 @@ namespace DataControl
 
 
         // METHODS
+        private void InitializeMethod(object o)
+        {
+            mainWindow = (Window)o;
+
+            mainWindow.KeyDown += KeyDown;
+        }
+
+        private void KeyDown(object sender, KeyEventArgs e)
+        {
+            if (SelectedShape == null) return;
+
+            int xShift = 0, yShift = 0;
+
+            if (e.Key == Key.Up) yShift = -5;
+            else if (e.Key == Key.Down) yShift = 5;
+
+            if (e.Key == Key.Left) xShift = -5;
+            else if (e.Key == Key.Right) xShift = 5;
+
+            if (SelectedShape is Pentagon)
+            {
+                Pentagon penta = (Pentagon)SelectedShape;
+
+                Point[] newPosition = penta.Points.Select(p => new Point(p.X + xShift, p.Y + yShift)).ToArray();
+
+                manager.Execute(new Shapes.Commands.Pentagon.ChangeLocation(penta, newPosition));
+            }
+            else if (SelectedShape is Vertex)
+            {
+                Vertex v = (Vertex)SelectedShape;
+                manager.Execute(new Shapes.Commands.Vertex.ChangeLocation(v, new Point()
+                {
+                    X = v.Location.X + xShift,
+                    Y = v.Location.Y + yShift
+                }));
+            }
+
+            OnPropertyChanged(new PropertyChangedEventArgs(nameof(SelectedShape)));
+        }
+
         private void NewFileMethod(object o)
         {
             canvas.Clear();
@@ -390,7 +434,6 @@ namespace DataControl
                 }
             }
         }
-
         private void UndoActionMethod(object o)
         {
             manager.Undo();
@@ -480,6 +523,5 @@ namespace DataControl
                 case "RedoItems": OnPropertyChanged(new PropertyChangedEventArgs(nameof(RedoActionNames))); break;
             }
         }
-
     }
 }
