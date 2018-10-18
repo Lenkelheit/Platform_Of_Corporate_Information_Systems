@@ -162,8 +162,8 @@ namespace Test
         [TestMethod]
         public void Radius()
         {
-            Vertex v1 = new Vertex();
-            Vertex v2 = new Vertex();
+            Shapes.Models.Vertex v1 = new Shapes.Models.Vertex();
+            Shapes.Models.Vertex v2 = new Shapes.Models.Vertex();
 
             int startRadiusValue = v1.Radius;
 

@@ -1,6 +1,6 @@
 ﻿namespace Task2
 {
-    public class StringToLower : System.Windows.Data.IValueConverter
+    public class StringsToLower : System.Windows.Data.IValueConverter
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

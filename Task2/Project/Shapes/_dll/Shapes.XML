@@ -232,7 +232,6 @@
             <summary>
             Method that returns command execution
             </summary>
-            <exception cref="T:System.NullReferenceException">Vertex doesn't exist!</exception>
         </member>
         <member name="T:Shapes.Commands.Vertex.ChangeLocation">
             <summary>
@@ -407,6 +406,17 @@
             </summary>
             <param name="item">Shape should bechecked</param>
             <returns>If collection contains item</returns>
+        </member>
+        <member name="M:Shapes.Models.Canvas.CountIf(System.Predicate{Shapes.Models.ShapeBase})">
+            <summary>
+            Count number of element that satisfy condition
+            </summary>
+            <param name="predicate">
+            The condition that should be satisfied
+            </param>
+            <returns>
+            Number of elements that satisfy condition
+            </returns>
         </member>
         <member name="M:Shapes.Models.Canvas.CopyTo(Shapes.Models.ShapeBase[],System.Int32)">
             <summary>
@@ -594,6 +604,11 @@
             Number of commands that should be redone.
             </param>
         </member>
+        <member name="M:Shapes.Models.UndoRedoManager.Clear">
+            <summary>
+            Clear manager
+            </summary>
+        </member>
         <member name="M:Shapes.Models.UndoRedoManager.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
             <summary>
             Raise the <see cref="E:Shapes.Models.UndoRedoManager.PropertyChanged"/> event.
@@ -605,6 +620,11 @@
         <member name="T:Shapes.Models.Vertex">
             <summary>
             Represents one of points for creating the shape objects.
+            </summary>
+        </member>
+        <member name="P:Shapes.Models.Vertex.Radius">
+            <summary>
+            Radius of the vertex
             </summary>
         </member>
         <member name="P:Shapes.Models.Vertex.Location">

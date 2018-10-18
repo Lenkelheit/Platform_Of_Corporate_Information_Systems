@@ -132,12 +132,10 @@ namespace Shapes.Models
         /// </summary>
         public Pentagon()
         {
-            color = new System.Windows.Media.Color();
             color = System.Windows.Media.Color.FromRgb(255, 255, 255);
-            strokeColor = new System.Windows.Media.Color();
             strokeColor = System.Windows.Media.Color.FromRgb(72, 72, 72);
             strokeThickness = 5;
-            opacity = 0;
+            opacity = 1;
             points = new System.Windows.Point[5];
         }
         /// <summary>
