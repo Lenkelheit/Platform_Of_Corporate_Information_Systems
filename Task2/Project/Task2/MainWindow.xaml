@@ -7,6 +7,7 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"   
         
+        x:Name="ShapeMainWindow"
         Title="{Binding FileName}"
         Height="600" Width="850"
         MinHeight="600" MinWidth="850"
@@ -259,5 +260,12 @@
         </DockPanel>
         
     </Grid>
-    
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction 
+                            Command="{Binding Initialize}"
+                            CommandParameter="{Binding ElementName=ShapeMainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 </Window>
