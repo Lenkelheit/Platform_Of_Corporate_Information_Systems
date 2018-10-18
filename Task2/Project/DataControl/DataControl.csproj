@@ -31,6 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="Shapes">
       <HintPath>..\Shapes\_dll\Shapes.dll</HintPath>
     </Reference>
@@ -38,6 +40,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Input.Manipulations" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +48,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IDialogService.cs" />
@@ -53,7 +57,7 @@
     <Compile Include="Services\DefaultDialogService .cs" />
     <Compile Include="Services\XmlFileService.cs" />
     <Compile Include="ViewModel\ApplicationViewModel.cs" />
-    <Compile Include="WpfCommands\DelegateCommands.cs" />
+    <Compile Include="WpfCommands\RelayCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
