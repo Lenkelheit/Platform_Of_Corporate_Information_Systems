@@ -50,9 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Interfaces\IConfiguration.cs" />
     <Compile Include="Interfaces\IDataAccessService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CsvFileService.cs" />
+    <Compile Include="Services\FileConfiguration.cs" />
     <Compile Include="ViewModel\ApplicationViewModel.cs" />
   </ItemGroup>
   <ItemGroup />

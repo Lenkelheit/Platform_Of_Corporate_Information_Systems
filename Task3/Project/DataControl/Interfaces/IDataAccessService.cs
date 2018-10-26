@@ -1,4 +1,4 @@
-﻿namespace DataControl.Interfaces
+namespace DataControl.Interfaces
 {
     public interface IDataAccessService
     {
@@ -7,6 +7,7 @@
 
         string[] GetBest(int amount);
         TaxiDriver.Order GetRandomOrder();
+        IDataAccessService SetConfiguration(IConfiguration configuration);
         void SaveResult(TaxiDriver.Driver driver);
         bool SignUp(string name, string password);
         bool LogIn(string name, string password);

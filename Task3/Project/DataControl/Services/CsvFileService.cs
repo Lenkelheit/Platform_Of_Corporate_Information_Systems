@@ -1,6 +1,8 @@
-﻿namespace DataControl.Services
+using DataControl.Interfaces;
+
+namespace DataControl.Services
 {
-    public class CsvFileService : Interfaces.IDataAccessService
+    public class CsvFileService : IDataAccessService
     {
         public TaxiDriver.Driver Driver
         {
@@ -34,6 +36,11 @@
         }
 
         public void SaveResult(TaxiDriver.Driver driver)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IDataAccessService SetConfiguration(IConfiguration configuration)
         {
             throw new System.NotImplementedException();
         }
