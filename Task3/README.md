@@ -29,7 +29,7 @@ Our task is **Taxi order (for taxi driver)**.
 ## Icon
 
 <p align="center">
-  <img src="/Images/Task3/ico.png">
+  <img src="/Images/Task3/ico.png" width="200" height="200">
 </p>
 
 ## Folders diagram
