@@ -1,11 +1,10 @@
-﻿<Window x:Class="Task3.Forms.LogInWindow"
+<Window x:Class="Task3.Forms.LogInWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Task3.Forms"
         mc:Ignorable="d"
-        Title="Log In" Height="250" Width="300" 
+        Title="Log In" Height="250" Width="400" 
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Resources/ico/ico.ico">
     <Grid>
         <!--SCALE-->
@@ -15,7 +14,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="Header" FontSize="25"/>
+        <Label Grid.Row="0" Content="Header" Style="{StaticResource Header}"/>
         <!--SIGN UP FIELDS-->
         <Grid Grid.Row="1">
             <!--SCALING-->
@@ -28,8 +27,8 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <!--DATA-->
-            <Label Grid.Row="0" Grid.Column="0" Content="User Name"/>
-            <Label Grid.Row="1" Grid.Column="0" Content="Password"/>
+            <Label Grid.Row="0" Grid.Column="0" Content="User Name" Style="{StaticResource CenterLabel}"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Password"  Style="{StaticResource CenterLabel}"/>
 
             <TextBox Grid.Row="0" Grid.Column="1"/>
             <TextBox Grid.Row="1" Grid.Column="1"/>
@@ -43,8 +42,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <!--BUTTONS-->
-            <Button Grid.Column="0" FontSize="25" Content="Enter"/>
-            <Button Grid.Column="1" FontSize="25" Content="Sign Up"/>
+            <Button Grid.Column="0" FontSize="25" Content="Enter" Style="{StaticResource MainButton}"/>
+            <Button Grid.Column="1" FontSize="25" Content="Sign Up" Style="{StaticResource MainButton}"/>
         </Grid>
     </Grid>
 </Window>
