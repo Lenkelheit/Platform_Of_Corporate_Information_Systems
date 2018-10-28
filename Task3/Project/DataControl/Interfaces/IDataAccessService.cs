@@ -5,7 +5,7 @@ namespace DataControl.Interfaces
         TaxiDriver.Driver Driver { get; }
         string Message { get; }
 
-        string[] GetBest(int amount);
+        TaxiDriver.Сhampion[] GetBest(int amount);
         TaxiDriver.Order GetRandomOrder();
         IDataAccessService SetConfiguration(IConfiguration configuration);
         void SaveResult(TaxiDriver.Driver driver);
