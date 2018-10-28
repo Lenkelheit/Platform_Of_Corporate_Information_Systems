@@ -1,4 +1,4 @@
-﻿using DataControl.Interfaces;
+using DataControl.Interfaces;
 using DataControl.Services;
 using DataControl.Commands;
 
@@ -53,6 +53,27 @@ namespace DataControl.ViewModel
             }
         }
         public ObservableCollection<Order> Orders
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+        public System.TimeSpan Time
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+        public double CurrentScore
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+        public ObservableCollection<Champion> Champions
         {
             get
             {
