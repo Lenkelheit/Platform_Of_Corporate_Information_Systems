@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Title="Cabinet" Height="400" Width="400"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
-        Icon="/Resources/ico/ico.ico" Background="{StaticResource DefaultBtnBrush}">
+        Style="{StaticResource WindowBase}" Background="{StaticResource DefaultBtnBrush}">
     <Grid>
         <!--SCALING-->
         <Grid.RowDefinitions>
@@ -45,12 +45,12 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <!--INFORMATION-->
-            <Label Grid.Row="0" Grid.Column="0" Content="Name" Style="{StaticResource LeftCabinetLabel}"/>
-            <Label Grid.Row="1" Grid.Column="0" Content="Total Score"  Style="{StaticResource LeftCabinetLabel}"/>
-            <Label Grid.Row="2" Grid.Column="0" Content="Best Score"  Style="{StaticResource LeftCabinetLabel}"/>
-            <Label Grid.Row="0" Grid.Column="1" Content="*****" Style="{StaticResource RightCabinetLabel}"/>
-            <Label Grid.Row="1" Grid.Column="1" Content="1000$" Style="{StaticResource RightCabinetLabel}"/>
-            <Label Grid.Row="2" Grid.Column="1" Content="1000$" Style="{StaticResource RightCabinetLabel}"/>
+            <Label Grid.Row="0" Grid.Column="0" Content="Name" Style="{StaticResource LeftLabel}"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Total Score"  Style="{StaticResource LeftLabel}"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Best Score"  Style="{StaticResource LeftLabel}"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="*****" Style="{StaticResource RightLabel}"/>
+            <Label Grid.Row="1" Grid.Column="1" Content="1000$" Style="{StaticResource RightLabel}"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="1000$" Style="{StaticResource RightLabel}"/>
         </Grid>
     </Grid>
 </Window>

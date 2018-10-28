@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Log In" Height="250" Width="400" 
-        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Resources/ico/ico.ico">
+        Height="225" Width="400" WindowStartupLocation="CenterScreen"
+        Style="{StaticResource MessageWindow}">
     <Grid>
         <!--SCALE-->
         <Grid.RowDefinitions>
@@ -14,7 +14,19 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="Header" Style="{StaticResource Header}"/>
+        <DockPanel Grid.Row="0" LastChildFill="False">
+            <Label DockPanel.Dock="Left" Width="340" Content="Header" Style="{StaticResource Header}" MouseDown="MovingWindow"/>
+            <Button DockPanel.Dock="Right" Click="Exit" 
+                    Style="{StaticResource BtnStandart}"
+                    Width="60"
+                    BorderThickness="0, 0, 0, 1"
+                    BorderBrush="{StaticResource BlackBrush}">
+                <Button.Content>
+                    <Image Source="/Resources/images/delete.png"/>
+                </Button.Content>
+            </Button>
+
+        </DockPanel>
         <!--SIGN UP FIELDS-->
         <Grid Grid.Row="1">
             <!--SCALING-->
