@@ -9,7 +9,28 @@ namespace Task3.Forms
         {
             InitializeComponent();
         }
-
+        public string HeaderText
+        {
+            get
+            {
+                return Header.Content.ToString();
+            }
+            set
+            {
+                Header.Content = value;
+            }
+        }
+        public string ContentText
+        {
+            get
+            {
+                return Text.Content.ToString();
+            }
+            set
+            {
+                Text.Content = value;
+            }
+        }
         private void MovingWindow(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == System.Windows.Input.MouseButton.Left)
