@@ -1,7 +1,7 @@
 namespace TaxiDriver
 {
     /// <summary>
-    /// Represents class that models Order.
+    /// Represents class that models Order
     /// </summary>
     public class Order
     {
@@ -11,7 +11,7 @@ namespace TaxiDriver
         private Route route;
         // PROPERTIES
         /// <summary>
-        /// Property that defines the number.
+        /// Property that defines the number
         /// </summary>
         public int Number
         {
@@ -21,7 +21,7 @@ namespace TaxiDriver
             }
         }
         /// <summary>
-        /// Property that defines the Client.
+        /// Property that defines the Client
         /// </summary>
         public Client Client
         {
@@ -31,7 +31,7 @@ namespace TaxiDriver
             }
         }
         /// <summary>
-        /// Property that defines the Route.
+        /// Property that defines the Route
         /// </summary>
         public Route Route
         {
@@ -42,11 +42,11 @@ namespace TaxiDriver
         }
         // CONSTRUCTORS
         /// <summary>
-        /// Constructor with parameters.
+        /// Constructor with parameters
         /// </summary>
-        /// <param name="number"></param>
-        /// <param name="client"></param>
-        /// <param name="route"></param>
+        /// <param name="number">order number</param>
+        /// <param name="client">client who accepted the refraction</param>
+        /// <param name="route">destination</param>
         public Order(int number, Client client, Route route)
         {
             this.number = number;
