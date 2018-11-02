@@ -1,7 +1,7 @@
 namespace TaxiDriver
 {
     /// <summary>
-    /// Represents class that models Route.
+    /// Represents struct that models Route
     /// </summary>
     public struct Route
     {
@@ -12,7 +12,7 @@ namespace TaxiDriver
         private double price;
         // PROPERTIES
         /// <summary>
-        /// Property that defines the start street.
+        /// Property that defines the start street
         /// </summary>
         public string StartStreet
         {
@@ -22,7 +22,7 @@ namespace TaxiDriver
             }
         }
         /// <summary>
-        /// Property that defines the end street.
+        /// Property that defines the end street
         /// </summary>
         public string EndStreet
         {
@@ -32,7 +32,7 @@ namespace TaxiDriver
             }
         }
         /// <summary>
-        /// Property that defines the time.
+        /// Property that defines the time
         /// </summary>
         public System.TimeSpan Time
         {
@@ -42,7 +42,7 @@ namespace TaxiDriver
             }
         }
         /// <summary>
-        /// Property that defines the price.
+        /// Property that defines the price
         /// </summary>
         public double Price
         {
@@ -53,12 +53,12 @@ namespace TaxiDriver
         }
         // CONSTRUCTORS
         /// <summary>
-        /// Constructor with parameters.
+        /// Constructor with parameters
         /// </summary>
-        /// <param name="startStreet"></param>
-        /// <param name="endStreet"></param>
-        /// <param name="time"></param>
-        /// <param name="price"></param>
+        /// <param name="startStreet">start of the route</param>
+        /// <param name="endStreet">end of the route</param>
+        /// <param name="time">the duration of the trip</param>
+        /// <param name="price">trip price</param>
         public Route(string startStreet, string endStreet, System.TimeSpan time, double price)
         {
             this.startStreet = startStreet;
