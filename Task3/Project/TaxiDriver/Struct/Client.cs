@@ -1,7 +1,7 @@
 namespace TaxiDriver
 {
     /// <summary>
-    /// Represents class that models Client.
+    /// Represents struct that models Client
     /// </summary>
     public struct Client
     {
@@ -10,7 +10,7 @@ namespace TaxiDriver
         private string phone;
         // PROPERTIES
         /// <summary>
-        /// Property that defines the name.
+        /// Property that defines the name
         /// </summary>
         public string Name
         {
@@ -20,7 +20,7 @@ namespace TaxiDriver
             }
         }
         /// <summary>
-        /// Property that defines the phone.
+        /// Property that defines the phone
         /// </summary>
         public string Phone
         {
@@ -31,10 +31,10 @@ namespace TaxiDriver
         }
         // CONSTRUCTORS
         /// <summary>
-        /// Constructor with parameters.
+        /// Constructor with parameters
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="phone"></param>
+        /// <param name="name">the name of the client</param>
+        /// <param name="phone">client phone number</param>
         public Client(string name, string phone)
         {
             this.name = name;
