@@ -1,7 +1,7 @@
 namespace TaxiDriver
 {
     /// <summary>
-    /// Represents class that models Champion.
+    /// Represents struct that models Champion
     /// </summary>
     public struct Сhampion
     {
@@ -11,7 +11,7 @@ namespace TaxiDriver
         private double score;
         // PROPERTIES
         /// <summary>
-        /// Property that defines the number.
+        /// Property that defines the number
         /// </summary>
         public int Number
         {
@@ -21,7 +21,7 @@ namespace TaxiDriver
             }
         }
         /// <summary>
-        /// Property that defines the name.
+        /// Property that defines the name
         /// </summary>
         public string Name
         {
@@ -31,7 +31,7 @@ namespace TaxiDriver
             }
         }
         /// <summary>
-        /// Property that defines the score.
+        /// Property that defines the score
         /// </summary>
         public double Score
         {
@@ -40,13 +40,13 @@ namespace TaxiDriver
                 return score;
             }
         }
-        // CONSTROCTORS
+        // CONSTRUCTORS
         /// <summary>
-        /// Constructors with parameters.
+        /// Constructors with parameters
         /// </summary>
-        /// <param name="number"></param>
-        /// <param name="name"></param>
-        /// <param name="score"></param>
+        /// <param name="number">number champion's</param>
+        /// <param name="name">name champion's</param>
+        /// <param name="score">score champion's</param>
         public Сhampion(int number, string name, double score)
         {
             this.number = number;
