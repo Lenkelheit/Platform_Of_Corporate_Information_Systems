@@ -1,5 +1,4 @@
 using System.Timers;
-using System.Threading;
 
 using DataControl.Interfaces;
 using DataControl.Services;
@@ -18,24 +17,14 @@ namespace DataControl.ViewModel
     /// </summary>
     public class ApplicationViewModel : INotifyPropertyChanged
     {
-        //CONSTANTS
+        // CONSTANTS
         const string APPLICATION_NAME = "Taxi Driver";
-        const int MILISECONDS_IN_HOUR = 3600000;
-        const int MILISECOND_IN_MINUTE = 60000;
-        const int MILISECONDS_IN_SECOND = 1000;
         const int SESION_TIME = 30;
         const double PENALTY_SCORE = 50;
-        const double MAX_PRICE = 70;
-        const double MIN_PRICE = 30;
-        const double MAX_TIME_IN_MILISECONDS = 5000;
-        const double MIN_TIME_IN_MILISECONDS = 2000;
-
 
         // FIELDS
-
         private IDataAccessService dataAccessService;
 
-        
         Driver currentDriver;
         Order selectedOrder;
         ObservableCollection<Order> orders;
@@ -45,7 +34,7 @@ namespace DataControl.ViewModel
         string login;
         string password;
         ObservableCollection<Champion> champions;
-        System.Random randomiser = new System.Random();
+        System.Random randomiser;
 
         #region Commands
         private RelayCommand logIn;
@@ -69,6 +58,7 @@ namespace DataControl.ViewModel
             this.dataAccessService = dataAccessService;
             orders = new ObservableCollection<Order>();
             sessionTimer = new System.Timers.Timer();
+            randomiser = new System.Random();
 
             logIn = new RelayCommand(LogInMethod);
             logOut = new RelayCommand(LogInMethod);
@@ -79,11 +69,9 @@ namespace DataControl.ViewModel
             removeOrder = new RelayCommand(RemoveOrderMethod, IsSessionContinuing);
             showCabinetOrRegistrate = new RelayCommand(ShowCabinetOrRegistrateMethod);
             showScores = new RelayCommand(ShowScoresMethod);
-
-            orders.CollectionChanged += Orders_CollectionChanged;
         }
 
-        
+
 
         // PROPERTIES
         /// <summary>
@@ -163,10 +151,6 @@ namespace DataControl.ViewModel
         /// <returns>User password</returns>
         public string Password
         {
-            get
-            {
-                return password;
-            }
             set
             {
                 password = value;
@@ -178,10 +162,6 @@ namespace DataControl.ViewModel
         /// <returns>User login</returns>
         public string Login
         {
-            get
-            {
-                return login;
-            }
             set
             {
                 login = value;
@@ -242,27 +222,21 @@ namespace DataControl.ViewModel
         #region Commands
         private void LogInMethod(object obj)
         {
-            if (login != null && login != "")
+            if (login == null && login == "")
             {
-                if (password != null && password != "")
-                {
-                    if (dataAccessService.LogIn(login, password))
-                    {
-                        currentDriver = dataAccessService.Driver;
-                    }
-                    else
-                    {
-                        //show message box (dataAccessService.Message)
-                    }
-                }
-                else
-                {
-                    //show message box (out of password error)
-                }
+                //show message box (out of login error)
+            }
+            if (password == null && password == "")
+            {
+                //show message box (out of password error)
+            }
+            if (dataAccessService.LogIn(login, password))
+            {
+                currentDriver = dataAccessService.Driver;
             }
             else
             {
-                //show message box (out of login error)
+                //show message box (dataAccessService.Message)
             }
         }
         private void LogOutMethod(object obj)
@@ -275,27 +249,22 @@ namespace DataControl.ViewModel
         }
         private void SignUpMethod(object obj)
         {
-            if (login != null && login != "")
+            if (login == null && login == "")
             {
-                if (password != null && password != "")
-                {
-                    if (dataAccessService.SignUp(login, password))
-                    {
-                        //show message box (sucsess)
-                    }
-                    else
-                    {
-                        //show message box (dataAccessService.Message)
-                    }
-                }
-                else
-                {
-                    //show message box (out of password error)
-                }
+                //show message box (out of login error)
+            }
+
+            if (password == null && password == "")
+            {
+                //show message box (out of password error)
+            }
+            if (dataAccessService.SignUp(login, password))
+            {
+                //show message box (sucsess)
             }
             else
             {
-                //show message box (out of login error)
+                //show message box (dataAccessService.Message)
             }
         }
         private void StartGameMethod(object obj)
@@ -307,23 +276,23 @@ namespace DataControl.ViewModel
         }
         private void ExecuteOrderMethod(object obj)
         {
-                if (/*executing window show dialog(selected order) */true)
-                {
-                    currentScore += selectedOrder.Route.Price;
-                }
-                else
-                {
-                    currentScore -= PENALTY_SCORE;
-                }
-                orders.Remove(selectedOrder); 
+            if (/*executing window show dialog(selected order) */true)
+            {
+                currentScore += selectedOrder.Route.Price;
+            }
+            else
+            {
+                currentScore -= PENALTY_SCORE;
+            }
+            orders.Remove(selectedOrder);
         }
         private void SearchOrderMethod(object obj)
         {
-            orders.Add(new Order());
+            orders.Add(dataAccessService.GetRandomOrder());
         }
         private void RemoveOrderMethod(object obj)
         {
-            orders.Remove((Order)obj);
+            orders.Remove(selectedOrder);
         }
         private void ShowCabinetOrRegistrateMethod(object obj)
         {
@@ -342,11 +311,6 @@ namespace DataControl.ViewModel
         protected void OnPropertyChange(PropertyChangedEventArgs e)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(e.PropertyName));
-        }
-
-        private void Orders_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            OnPropertyChange(new PropertyChangedEventArgs("Orders"));
         }
 
         private void gameEnded(object sender, ElapsedEventArgs e)
