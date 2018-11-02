@@ -6,7 +6,9 @@
         mc:Ignorable="d"
         Height="150" Width="400"
         WindowStartupLocation="CenterScreen"
-        Style="{StaticResource MessageWindow}">
+        Style="{StaticResource MessageWindow}"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing">
     <Grid>
         <!--SCALING-->
         <Grid.RowDefinitions>
@@ -16,7 +18,7 @@
         </Grid.RowDefinitions>
         <!--DATA-->
         <Label Grid.Row="0" Content="Content" Style="{StaticResource Header}" x:Name="Header" MouseDown="MovingWindow"/>
-        <ProgressBar Grid.Row="1" Margin="10"/>
+        <ProgressBar Grid.Row="1" Margin="10" x:Name="ProgressBar" ValueChanged="ProgressBar_ValueChanged"/>
         <Button Grid.Row="2" Content="Cancel" Style="{StaticResource MainButton}" Click="Exit"/>
 
     </Grid>
