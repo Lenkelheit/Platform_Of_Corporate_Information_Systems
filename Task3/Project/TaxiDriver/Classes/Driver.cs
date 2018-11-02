@@ -1,7 +1,7 @@
 namespace TaxiDriver
 {
     /// <summary>
-    /// Represents class that models Driver.
+    /// Represents class that models Driver
     /// </summary>
     public class Driver
     {
@@ -13,7 +13,7 @@ namespace TaxiDriver
         private double lastScore;
         // PROPERTIES
         /// <summary>
-        /// Property that defines the name.
+        /// Property that defines the name
         /// </summary>
         public string Name
         {
@@ -23,7 +23,7 @@ namespace TaxiDriver
             }
         }
         /// <summary>
-        /// Property that defines the password.
+        /// Property that defines the password
         /// </summary>
         public string Password
         {
@@ -33,7 +33,7 @@ namespace TaxiDriver
             }
         }
         /// <summary>
-        /// Property that defines the name best score.
+        /// Property that defines the best score
         /// </summary>
         public double BestScore
         {
@@ -43,7 +43,7 @@ namespace TaxiDriver
             }
         }
         /// <summary>
-        /// Property that defines the total score.
+        /// Property that defines the total score
         /// </summary>
         public double TotalScore
         {
@@ -53,7 +53,7 @@ namespace TaxiDriver
             }
         }
         /// <summary>
-        /// Property that defines the last score.
+        /// Property that defines the last score
         /// </summary>
         public double LastScore
         {
@@ -63,29 +63,25 @@ namespace TaxiDriver
             }
             set
             {
-                if(value < 0)
-                {
-                    throw new System.ArgumentOutOfRangeException("score can not be zero");
-                }
                 lastScore = value;
             }
         }
         // CONSTRUCTORS
         /// <summary>
-        /// Constructor with parameters.
+        /// Constructor with parameters
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="password"></param>
-        /// <param name="bestScore"></param>
-        /// <param name="totalScore"></param>
-        /// <param name="lastScore"></param>
-        public Driver(string name, string password, double bestScore, double totalScore, double lastScore)
+        /// <param name="name">driver's name</param>
+        /// <param name="password">driver's password</param>
+        /// <param name="bestScore">best score driver's</param>
+        /// <param name="totalScore">total score driver's</param>
+        public Driver(string name, string password, double bestScore, double totalScore)
         {
             this.name = name;
             this.password = password;
             this.bestScore = bestScore;
             this.totalScore = totalScore;
-            this.lastScore = lastScore;
+            this.lastScore = 0;
         }
     }
 }
+
