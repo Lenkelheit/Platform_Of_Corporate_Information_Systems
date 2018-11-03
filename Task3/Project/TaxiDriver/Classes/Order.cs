@@ -44,9 +44,9 @@ namespace TaxiDriver
         /// <summary>
         /// Constructor with parameters
         /// </summary>
-        /// <param name="number">order number</param>
-        /// <param name="client">client who accepted the refraction</param>
-        /// <param name="route">destination</param>
+        /// <param name="number">Order number</param>
+        /// <param name="client">Client who accepted the refraction</param>
+        /// <param name="route">Destination</param>
         public Order(int number, Client client, Route route)
         {
             this.number = number;
