@@ -55,10 +55,10 @@ namespace TaxiDriver
         /// <summary>
         /// Constructor with parameters
         /// </summary>
-        /// <param name="startStreet">start of the route</param>
-        /// <param name="endStreet">end of the route</param>
-        /// <param name="time">the duration of the trip</param>
-        /// <param name="price">trip price</param>
+        /// <param name="startStreet">Start of the route</param>
+        /// <param name="endStreet">End of the route</param>
+        /// <param name="time">The duration of the trip</param>
+        /// <param name="price">Trip price</param>
         public Route(string startStreet, string endStreet, System.TimeSpan time, double price)
         {
             this.startStreet = startStreet;
