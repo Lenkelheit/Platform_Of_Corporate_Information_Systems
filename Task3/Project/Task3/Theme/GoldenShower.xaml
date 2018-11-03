@@ -10,6 +10,7 @@
     <Color x:Key="DefaultBackgroundColor">#FFFFFF</Color>
     <Color x:Key="DefaultDisabledBackgroundColor">#E1E1E1</Color>
 
+    <Color x:Key="DisabledBtnColor">#CDC8C8</Color>
     <Color x:Key="DefaultBtnColor">#FFFAC8</Color>
     <Color x:Key="HoverBtnColor">#FFFA9B</Color>
     <Color x:Key="PressedBtnColor">#FFAA2D</Color>
@@ -35,6 +36,7 @@
     <SolidColorBrush x:Key="MoneyBrush" Color="{StaticResource MoneyColor}"/>
     <SolidColorBrush x:Key="TimeBrush" Color="{StaticResource TimeColor}"/>
 
+    <SolidColorBrush x:Key="DisabledBtnBrush" Color="{StaticResource DisabledBtnColor}"/>
     <SolidColorBrush x:Key="DefaultBtnBrush" Color="{StaticResource DefaultBtnColor}" />
     <SolidColorBrush x:Key="HoverBtnBrush" Color="{StaticResource HoverBtnColor}" />
     <SolidColorBrush x:Key="PressedBtnBrush" Color="{StaticResource PressedBtnColor}" />
@@ -261,8 +263,17 @@
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
         </Grid>
     </ControlTemplate>
+    
+    
+    
+    
+
     <!--STYLES-->
 
+    
+    
+    
+    
     <!--WINDOW-->
     <Style TargetType="Window" x:Key="WindowBase">
         <Setter Property="Icon" Value="/Resources/ico/ico.ico"/>
@@ -315,6 +326,9 @@
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="{StaticResource PressedBtnBrush}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource DisabledBtnBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
