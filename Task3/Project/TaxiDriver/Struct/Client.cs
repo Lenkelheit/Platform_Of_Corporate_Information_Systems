@@ -33,8 +33,8 @@ namespace TaxiDriver
         /// <summary>
         /// Constructor with parameters
         /// </summary>
-        /// <param name="name">the name of the client</param>
-        /// <param name="phone">client phone number</param>
+        /// <param name="name">The name of the client</param>
+        /// <param name="phone">Client phone number</param>
         public Client(string name, string phone)
         {
             this.name = name;
