@@ -70,10 +70,10 @@ namespace TaxiDriver
         /// <summary>
         /// Constructor with parameters
         /// </summary>
-        /// <param name="name">driver's name</param>
-        /// <param name="password">driver's password</param>
-        /// <param name="bestScore">best score driver's</param>
-        /// <param name="totalScore">total score driver's</param>
+        /// <param name="name">Driver's name</param>
+        /// <param name="password">Driver's password</param>
+        /// <param name="bestScore">Best score driver's</param>
+        /// <param name="totalScore">Total score driver's</param>
         public Driver(string name, string password, double bestScore, double totalScore)
         {
             this.name = name;
