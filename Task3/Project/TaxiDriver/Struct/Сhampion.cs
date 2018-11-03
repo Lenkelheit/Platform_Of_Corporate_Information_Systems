@@ -44,9 +44,9 @@ namespace TaxiDriver
         /// <summary>
         /// Constructors with parameters
         /// </summary>
-        /// <param name="number">number champion's</param>
-        /// <param name="name">name champion's</param>
-        /// <param name="score">score champion's</param>
+        /// <param name="number">Number champion's</param>
+        /// <param name="name">Name champion's</param>
+        /// <param name="score">Score champion's</param>
         public Сhampion(int number, string name, double score)
         {
             this.number = number;
