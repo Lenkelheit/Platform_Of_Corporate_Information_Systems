@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <DockPanel Grid.Row="0" LastChildFill="False">
-            <Label DockPanel.Dock="Left" Width="340" Content="Header" Style="{StaticResource Header}" MouseDown="MovingWindow"/>
+            <Label DockPanel.Dock="Left" Width="340" Content="Registration" Style="{StaticResource Header}" MouseDown="MovingWindow"/>
             <Button DockPanel.Dock="Right" Click="Exit" 
                     Style="{StaticResource BtnStandart}"
                     Width="60"
@@ -42,8 +42,10 @@
             <Label Grid.Row="0" Grid.Column="0" Content="User Name" Style="{StaticResource CenterLabel}"/>
             <Label Grid.Row="1" Grid.Column="0" Content="Password"  Style="{StaticResource CenterLabel}"/>
 
-            <TextBox Grid.Row="0" Grid.Column="1"/>
-            <TextBox Grid.Row="1" Grid.Column="1"/>
+            <TextBox Grid.Row="0" Grid.Column="1"
+                     Text="{Binding Login, Mode=OneWayToSource}"/>
+            <TextBox Grid.Row="1" Grid.Column="1"
+                     Text="{Binding Password, Mode=OneWayToSource}"/>
         </Grid>
 
         <!--BUTTON-->
@@ -54,8 +56,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <!--BUTTONS-->
-            <Button Grid.Column="0" FontSize="25" Content="Enter" Style="{StaticResource MainButton}"/>
-            <Button Grid.Column="1" FontSize="25" Content="Sign Up" Style="{StaticResource MainButton}"/>
+            <Button Grid.Column="0" FontSize="25" Content="Enter" Style="{StaticResource MainButton}"
+                    Command="{Binding LogIn}"/>
+            <Button Grid.Column="1" FontSize="25" Content="Sign Up" Style="{StaticResource MainButton}"
+                    Command="{Binding SignUp}"/>
         </Grid>
     </Grid>
 </Window>
