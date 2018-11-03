@@ -42,6 +42,16 @@ namespace Test
             Driver driver = new Driver("Jason", "pa$$word", 100, 76);
             Assert.IsTrue(driver.TotalScore == expectedTotalSore);
         }
+        
+        
+        [TestMethod]
+        public void LastScore()
+        {
+            double expectedLastScore = 0;
+
+            Driver driver = new Driver("Jason", "pa$$word", 100, 76);
+            Assert.IsTrue(driver.LastScore == expectedLastScore);           
+        }
 
         [TestMethod]
         public void ConstrucrtorTest()
@@ -50,12 +60,14 @@ namespace Test
             string expectePassword = "pa$$word";
             double expectedBestScore = 100;
             double expectedTotalScore = 76;
+            double expectedLastScore = 0;
 
             Driver driver = new Driver("Jason", "pa$$word", 100, 76);
             Assert.IsTrue(driver.Name == expectedName 
                        && driver.Password == expectePassword
                        && driver.BestScore == expectedBestScore 
-                       && driver.TotalScore == expectedTotalScore);
+                       && driver.TotalScore == expectedTotalScore
+                       && driver.LastScore == expectedLastScore);
         }
     }
 }
