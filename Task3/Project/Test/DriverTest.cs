@@ -42,8 +42,7 @@ namespace Test
             Driver driver = new Driver("Jason", "pa$$word", 100, 76);
             Assert.IsTrue(driver.TotalScore == expectedTotalSore);
         }
-        
-        
+            
         [TestMethod]
         public void LastScore()
         {
