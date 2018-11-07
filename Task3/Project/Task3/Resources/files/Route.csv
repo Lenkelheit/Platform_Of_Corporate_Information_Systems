@@ -1,1 +1,1722 @@
-﻿
+1;Liubinska;Universytetska;1;276
+2;Liubinska;Okruzhna;1;299
+3;Liubinska;Heroiv UPA;1;441
+4;Liubinska;Konovaltcia;3;126
+5;Liubinska;Vyhovskoho;1;217
+6;Liubinska;Sadova;1;112
+7;Liubinska;Stepana Bandery;2;386
+8;Liubinska;Antonovycha;2;177
+9;Liubinska;Naukova;2;142
+10;Liubinska;Knyahyni Olhy;3;401
+11;Liubinska;Volodymyra Velykoho;3;123
+12;Liubinska;Stryiska;4;201
+13;Liubinska;Luhanska;2;141
+14;Liubinska;Khutorivka;3;353
+15;Liubinska;Uhorska;4;462
+16;Liubinska;Snopkivska;3;482
+17;Liubinska;Batalna;1;312
+18;Liubinska;Zelena;2;158
+19;Liubinska;Ivana Franka;2;334
+20;Liubinska;Pasichna;1;349
+21;Liubinska;Mechnykova;2;397
+22;Liubinska;Lychakivska;3;100
+23;Liubinska;Kniazia Romana;4;166
+24;Liubinska;Stefanyka;1;243
+25;Liubinska;Doroshenka;4;360
+26;Liubinska;Kopernyka;4;269
+27;Liubinska;Kulparkivska;3;285
+28;Liubinska;Patona;1;149
+29;Liubinska;Sychivska;3;423
+30;Liubinska;Horodotska;1;480
+31;Liubinska;Siaivo;1;107
+32;Liubinska;Levandivska;1;217
+33;Liubinska;Subotivska;3;182
+34;Liubinska;Shyroka;4;433
+35;Liubinska;Shevchenka;2;220
+36;Liubinska;Zolota;4;432
+37;Liubinska;Lypynskoho;1;464
+38;Liubinska;Zamarstynivska;2;408
+39;Liubinska;Linkolna;3;436
+40;Liubinska;Mazepy;2;224
+41;Liubinska;Sacharova;1;199
+42;Universytetska;Liubinska;3;211
+43;Universytetska;Okruzhna;1;162
+44;Universytetska;Heroiv UPA;2;400
+45;Universytetska;Konovaltcia;2;168
+46;Universytetska;Vyhovskoho;3;307
+47;Universytetska;Sadova;3;143
+48;Universytetska;Stepana Bandery;2;267
+49;Universytetska;Antonovycha;3;200
+50;Universytetska;Naukova;2;399
+51;Universytetska;Knyahyni Olhy;2;201
+52;Universytetska;Volodymyra Velykoho;4;359
+53;Universytetska;Stryiska;4;496
+54;Universytetska;Luhanska;2;346
+55;Universytetska;Khutorivka;1;232
+56;Universytetska;Uhorska;3;402
+57;Universytetska;Snopkivska;3;384
+58;Universytetska;Batalna;4;498
+59;Universytetska;Zelena;2;443
+60;Universytetska;Ivana Franka;1;323
+61;Universytetska;Pasichna;4;126
+62;Universytetska;Mechnykova;2;201
+63;Universytetska;Lychakivska;4;239
+64;Universytetska;Kniazia Romana;2;474
+65;Universytetska;Stefanyka;3;458
+66;Universytetska;Doroshenka;1;204
+67;Universytetska;Kopernyka;3;321
+68;Universytetska;Kulparkivska;4;403
+69;Universytetska;Patona;2;114
+70;Universytetska;Sychivska;2;136
+71;Universytetska;Horodotska;4;424
+72;Universytetska;Siaivo;3;138
+73;Universytetska;Levandivska;3;415
+74;Universytetska;Subotivska;1;441
+75;Universytetska;Shyroka;1;253
+76;Universytetska;Shevchenka;1;398
+77;Universytetska;Zolota;1;390
+78;Universytetska;Lypynskoho;4;213
+79;Universytetska;Zamarstynivska;4;373
+80;Universytetska;Linkolna;4;273
+81;Universytetska;Mazepy;3;275
+82;Universytetska;Sacharova;1;201
+83;Okruzhna;Liubinska;1;239
+84;Okruzhna;Universytetska;1;481
+85;Okruzhna;Heroiv UPA;4;170
+86;Okruzhna;Konovaltcia;3;219
+87;Okruzhna;Vyhovskoho;2;147
+88;Okruzhna;Sadova;4;486
+89;Okruzhna;Stepana Bandery;2;223
+90;Okruzhna;Antonovycha;3;486
+91;Okruzhna;Naukova;2;265
+92;Okruzhna;Knyahyni Olhy;4;159
+93;Okruzhna;Volodymyra Velykoho;4;267
+94;Okruzhna;Stryiska;1;431
+95;Okruzhna;Luhanska;3;370
+96;Okruzhna;Khutorivka;4;352
+97;Okruzhna;Uhorska;1;123
+98;Okruzhna;Snopkivska;2;236
+99;Okruzhna;Batalna;3;240
+100;Okruzhna;Zelena;4;185
+101;Okruzhna;Ivana Franka;3;121
+102;Okruzhna;Pasichna;1;497
+103;Okruzhna;Mechnykova;3;414
+104;Okruzhna;Lychakivska;2;468
+105;Okruzhna;Kniazia Romana;4;101
+106;Okruzhna;Stefanyka;4;316
+107;Okruzhna;Doroshenka;4;470
+108;Okruzhna;Kopernyka;1;224
+109;Okruzhna;Kulparkivska;3;475
+110;Okruzhna;Patona;2;399
+111;Okruzhna;Sychivska;1;248
+112;Okruzhna;Horodotska;2;129
+113;Okruzhna;Siaivo;2;119
+114;Okruzhna;Levandivska;1;222
+115;Okruzhna;Subotivska;4;276
+116;Okruzhna;Shyroka;1;145
+117;Okruzhna;Shevchenka;2;291
+118;Okruzhna;Zolota;2;213
+119;Okruzhna;Lypynskoho;2;408
+120;Okruzhna;Zamarstynivska;2;110
+121;Okruzhna;Linkolna;1;219
+122;Okruzhna;Mazepy;4;331
+123;Okruzhna;Sacharova;4;247
+124;Heroiv UPA;Liubinska;3;186
+125;Heroiv UPA;Universytetska;4;123
+126;Heroiv UPA;Okruzhna;3;415
+127;Heroiv UPA;Konovaltcia;4;172
+128;Heroiv UPA;Vyhovskoho;1;186
+129;Heroiv UPA;Sadova;3;111
+130;Heroiv UPA;Stepana Bandery;3;361
+131;Heroiv UPA;Antonovycha;3;130
+132;Heroiv UPA;Naukova;1;302
+133;Heroiv UPA;Knyahyni Olhy;4;383
+134;Heroiv UPA;Volodymyra Velykoho;1;305
+135;Heroiv UPA;Stryiska;3;424
+136;Heroiv UPA;Luhanska;4;461
+137;Heroiv UPA;Khutorivka;2;266
+138;Heroiv UPA;Uhorska;3;430
+139;Heroiv UPA;Snopkivska;2;417
+140;Heroiv UPA;Batalna;1;459
+141;Heroiv UPA;Zelena;2;475
+142;Heroiv UPA;Ivana Franka;2;377
+143;Heroiv UPA;Pasichna;4;280
+144;Heroiv UPA;Mechnykova;1;179
+145;Heroiv UPA;Lychakivska;2;165
+146;Heroiv UPA;Kniazia Romana;3;213
+147;Heroiv UPA;Stefanyka;1;416
+148;Heroiv UPA;Doroshenka;2;484
+149;Heroiv UPA;Kopernyka;1;251
+150;Heroiv UPA;Kulparkivska;4;158
+151;Heroiv UPA;Patona;1;151
+152;Heroiv UPA;Sychivska;3;161
+153;Heroiv UPA;Horodotska;1;405
+154;Heroiv UPA;Siaivo;2;297
+155;Heroiv UPA;Levandivska;2;203
+156;Heroiv UPA;Subotivska;3;455
+157;Heroiv UPA;Shyroka;4;431
+158;Heroiv UPA;Shevchenka;1;375
+159;Heroiv UPA;Zolota;3;290
+160;Heroiv UPA;Lypynskoho;3;224
+161;Heroiv UPA;Zamarstynivska;3;486
+162;Heroiv UPA;Linkolna;1;253
+163;Heroiv UPA;Mazepy;1;386
+164;Heroiv UPA;Sacharova;4;380
+165;Konovaltcia;Liubinska;1;400
+166;Konovaltcia;Universytetska;3;143
+167;Konovaltcia;Okruzhna;4;128
+168;Konovaltcia;Heroiv UPA;3;212
+169;Konovaltcia;Vyhovskoho;2;176
+170;Konovaltcia;Sadova;3;104
+171;Konovaltcia;Stepana Bandery;1;384
+172;Konovaltcia;Antonovycha;3;152
+173;Konovaltcia;Naukova;2;385
+174;Konovaltcia;Knyahyni Olhy;2;186
+175;Konovaltcia;Volodymyra Velykoho;3;383
+176;Konovaltcia;Stryiska;1;361
+177;Konovaltcia;Luhanska;3;301
+178;Konovaltcia;Khutorivka;3;195
+179;Konovaltcia;Uhorska;1;214
+180;Konovaltcia;Snopkivska;4;237
+181;Konovaltcia;Batalna;4;337
+182;Konovaltcia;Zelena;2;386
+183;Konovaltcia;Ivana Franka;3;348
+184;Konovaltcia;Pasichna;4;395
+185;Konovaltcia;Mechnykova;1;485
+186;Konovaltcia;Lychakivska;2;316
+187;Konovaltcia;Kniazia Romana;4;388
+188;Konovaltcia;Stefanyka;1;416
+189;Konovaltcia;Doroshenka;1;495
+190;Konovaltcia;Kopernyka;4;298
+191;Konovaltcia;Kulparkivska;1;358
+192;Konovaltcia;Patona;1;223
+193;Konovaltcia;Sychivska;3;117
+194;Konovaltcia;Horodotska;2;289
+195;Konovaltcia;Siaivo;2;281
+196;Konovaltcia;Levandivska;2;493
+197;Konovaltcia;Subotivska;1;216
+198;Konovaltcia;Shyroka;1;324
+199;Konovaltcia;Shevchenka;1;105
+200;Konovaltcia;Zolota;3;425
+201;Konovaltcia;Lypynskoho;4;394
+202;Konovaltcia;Zamarstynivska;1;332
+203;Konovaltcia;Linkolna;2;375
+204;Konovaltcia;Mazepy;4;469
+205;Konovaltcia;Sacharova;2;440
+206;Vyhovskoho;Liubinska;1;107
+207;Vyhovskoho;Universytetska;2;279
+208;Vyhovskoho;Okruzhna;1;202
+209;Vyhovskoho;Heroiv UPA;2;165
+210;Vyhovskoho;Konovaltcia;1;308
+211;Vyhovskoho;Sadova;1;275
+212;Vyhovskoho;Stepana Bandery;2;371
+213;Vyhovskoho;Antonovycha;3;274
+214;Vyhovskoho;Naukova;2;320
+215;Vyhovskoho;Knyahyni Olhy;3;337
+216;Vyhovskoho;Volodymyra Velykoho;3;188
+217;Vyhovskoho;Stryiska;2;154
+218;Vyhovskoho;Luhanska;3;301
+219;Vyhovskoho;Khutorivka;3;329
+220;Vyhovskoho;Uhorska;1;433
+221;Vyhovskoho;Snopkivska;1;315
+222;Vyhovskoho;Batalna;1;330
+223;Vyhovskoho;Zelena;2;201
+224;Vyhovskoho;Ivana Franka;3;419
+225;Vyhovskoho;Pasichna;1;440
+226;Vyhovskoho;Mechnykova;1;129
+227;Vyhovskoho;Lychakivska;4;119
+228;Vyhovskoho;Kniazia Romana;3;244
+229;Vyhovskoho;Stefanyka;2;261
+230;Vyhovskoho;Doroshenka;4;441
+231;Vyhovskoho;Kopernyka;2;204
+232;Vyhovskoho;Kulparkivska;2;402
+233;Vyhovskoho;Patona;2;413
+234;Vyhovskoho;Sychivska;3;179
+235;Vyhovskoho;Horodotska;4;339
+236;Vyhovskoho;Siaivo;3;446
+237;Vyhovskoho;Levandivska;1;243
+238;Vyhovskoho;Subotivska;2;347
+239;Vyhovskoho;Shyroka;2;393
+240;Vyhovskoho;Shevchenka;1;274
+241;Vyhovskoho;Zolota;4;298
+242;Vyhovskoho;Lypynskoho;2;404
+243;Vyhovskoho;Zamarstynivska;2;292
+244;Vyhovskoho;Linkolna;2;248
+245;Vyhovskoho;Mazepy;2;233
+246;Vyhovskoho;Sacharova;1;164
+247;Sadova;Liubinska;3;166
+248;Sadova;Universytetska;2;487
+249;Sadova;Okruzhna;1;246
+250;Sadova;Heroiv UPA;2;367
+251;Sadova;Konovaltcia;3;278
+252;Sadova;Vyhovskoho;1;335
+253;Sadova;Stepana Bandery;1;202
+254;Sadova;Antonovycha;4;284
+255;Sadova;Naukova;4;114
+256;Sadova;Knyahyni Olhy;1;376
+257;Sadova;Volodymyra Velykoho;1;282
+258;Sadova;Stryiska;1;458
+259;Sadova;Luhanska;4;320
+260;Sadova;Khutorivka;2;426
+261;Sadova;Uhorska;2;190
+262;Sadova;Snopkivska;3;267
+263;Sadova;Batalna;3;312
+264;Sadova;Zelena;1;491
+265;Sadova;Ivana Franka;4;227
+266;Sadova;Pasichna;2;479
+267;Sadova;Mechnykova;2;324
+268;Sadova;Lychakivska;4;237
+269;Sadova;Kniazia Romana;2;409
+270;Sadova;Stefanyka;3;185
+271;Sadova;Doroshenka;3;475
+272;Sadova;Kopernyka;3;277
+273;Sadova;Kulparkivska;2;254
+274;Sadova;Patona;4;190
+275;Sadova;Sychivska;1;318
+276;Sadova;Horodotska;1;369
+277;Sadova;Siaivo;1;284
+278;Sadova;Levandivska;2;271
+279;Sadova;Subotivska;3;349
+280;Sadova;Shyroka;1;351
+281;Sadova;Shevchenka;1;479
+282;Sadova;Zolota;3;276
+283;Sadova;Lypynskoho;3;138
+284;Sadova;Zamarstynivska;1;345
+285;Sadova;Linkolna;3;388
+286;Sadova;Mazepy;2;149
+287;Sadova;Sacharova;4;129
+288;Stepana Bandery;Liubinska;2;277
+289;Stepana Bandery;Universytetska;3;209
+290;Stepana Bandery;Okruzhna;1;153
+291;Stepana Bandery;Heroiv UPA;3;483
+292;Stepana Bandery;Konovaltcia;4;248
+293;Stepana Bandery;Vyhovskoho;1;388
+294;Stepana Bandery;Sadova;4;497
+295;Stepana Bandery;Antonovycha;2;240
+296;Stepana Bandery;Naukova;3;431
+297;Stepana Bandery;Knyahyni Olhy;3;488
+298;Stepana Bandery;Volodymyra Velykoho;1;341
+299;Stepana Bandery;Stryiska;2;168
+300;Stepana Bandery;Luhanska;4;176
+301;Stepana Bandery;Khutorivka;1;248
+302;Stepana Bandery;Uhorska;3;253
+303;Stepana Bandery;Snopkivska;1;478
+304;Stepana Bandery;Batalna;3;102
+305;Stepana Bandery;Zelena;1;436
+306;Stepana Bandery;Ivana Franka;4;282
+307;Stepana Bandery;Pasichna;2;473
+308;Stepana Bandery;Mechnykova;1;145
+309;Stepana Bandery;Lychakivska;1;169
+310;Stepana Bandery;Kniazia Romana;1;468
+311;Stepana Bandery;Stefanyka;1;196
+312;Stepana Bandery;Doroshenka;2;229
+313;Stepana Bandery;Kopernyka;1;345
+314;Stepana Bandery;Kulparkivska;2;491
+315;Stepana Bandery;Patona;4;363
+316;Stepana Bandery;Sychivska;1;277
+317;Stepana Bandery;Horodotska;2;476
+318;Stepana Bandery;Siaivo;4;169
+319;Stepana Bandery;Levandivska;2;296
+320;Stepana Bandery;Subotivska;2;220
+321;Stepana Bandery;Shyroka;4;445
+322;Stepana Bandery;Shevchenka;4;273
+323;Stepana Bandery;Zolota;3;163
+324;Stepana Bandery;Lypynskoho;2;408
+325;Stepana Bandery;Zamarstynivska;4;111
+326;Stepana Bandery;Linkolna;3;188
+327;Stepana Bandery;Mazepy;4;451
+328;Stepana Bandery;Sacharova;4;464
+329;Antonovycha;Liubinska;1;190
+330;Antonovycha;Universytetska;2;295
+331;Antonovycha;Okruzhna;3;396
+332;Antonovycha;Heroiv UPA;1;316
+333;Antonovycha;Konovaltcia;4;247
+334;Antonovycha;Vyhovskoho;4;321
+335;Antonovycha;Sadova;4;464
+336;Antonovycha;Stepana Bandery;3;333
+337;Antonovycha;Naukova;4;456
+338;Antonovycha;Knyahyni Olhy;4;245
+339;Antonovycha;Volodymyra Velykoho;2;461
+340;Antonovycha;Stryiska;4;479
+341;Antonovycha;Luhanska;2;358
+342;Antonovycha;Khutorivka;1;460
+343;Antonovycha;Uhorska;1;431
+344;Antonovycha;Snopkivska;2;337
+345;Antonovycha;Batalna;4;127
+346;Antonovycha;Zelena;1;172
+347;Antonovycha;Ivana Franka;1;411
+348;Antonovycha;Pasichna;4;203
+349;Antonovycha;Mechnykova;4;201
+350;Antonovycha;Lychakivska;3;167
+351;Antonovycha;Kniazia Romana;1;412
+352;Antonovycha;Stefanyka;4;491
+353;Antonovycha;Doroshenka;2;478
+354;Antonovycha;Kopernyka;2;135
+355;Antonovycha;Kulparkivska;4;340
+356;Antonovycha;Patona;2;151
+357;Antonovycha;Sychivska;2;231
+358;Antonovycha;Horodotska;1;452
+359;Antonovycha;Siaivo;3;169
+360;Antonovycha;Levandivska;2;485
+361;Antonovycha;Subotivska;4;255
+362;Antonovycha;Shyroka;3;454
+363;Antonovycha;Shevchenka;4;310
+364;Antonovycha;Zolota;2;150
+365;Antonovycha;Lypynskoho;1;365
+366;Antonovycha;Zamarstynivska;3;176
+367;Antonovycha;Linkolna;2;347
+368;Antonovycha;Mazepy;4;298
+369;Antonovycha;Sacharova;4;144
+370;Naukova;Liubinska;3;172
+371;Naukova;Universytetska;3;251
+372;Naukova;Okruzhna;3;249
+373;Naukova;Heroiv UPA;3;104
+374;Naukova;Konovaltcia;3;455
+375;Naukova;Vyhovskoho;3;456
+376;Naukova;Sadova;3;345
+377;Naukova;Stepana Bandery;4;371
+378;Naukova;Antonovycha;2;414
+379;Naukova;Knyahyni Olhy;1;472
+380;Naukova;Volodymyra Velykoho;1;419
+381;Naukova;Stryiska;3;175
+382;Naukova;Luhanska;4;217
+383;Naukova;Khutorivka;1;209
+384;Naukova;Uhorska;4;427
+385;Naukova;Snopkivska;3;385
+386;Naukova;Batalna;1;315
+387;Naukova;Zelena;3;192
+388;Naukova;Ivana Franka;2;309
+389;Naukova;Pasichna;4;180
+390;Naukova;Mechnykova;2;404
+391;Naukova;Lychakivska;4;291
+392;Naukova;Kniazia Romana;3;190
+393;Naukova;Stefanyka;1;483
+394;Naukova;Doroshenka;2;333
+395;Naukova;Kopernyka;2;494
+396;Naukova;Kulparkivska;2;458
+397;Naukova;Patona;4;411
+398;Naukova;Sychivska;3;229
+399;Naukova;Horodotska;2;237
+400;Naukova;Siaivo;2;231
+401;Naukova;Levandivska;1;469
+402;Naukova;Subotivska;2;441
+403;Naukova;Shyroka;4;127
+404;Naukova;Shevchenka;1;344
+405;Naukova;Zolota;1;397
+406;Naukova;Lypynskoho;1;101
+407;Naukova;Zamarstynivska;3;278
+408;Naukova;Linkolna;1;140
+409;Naukova;Mazepy;3;397
+410;Naukova;Sacharova;1;127
+411;Knyahyni Olhy;Liubinska;4;212
+412;Knyahyni Olhy;Universytetska;2;327
+413;Knyahyni Olhy;Okruzhna;2;162
+414;Knyahyni Olhy;Heroiv UPA;3;427
+415;Knyahyni Olhy;Konovaltcia;3;149
+416;Knyahyni Olhy;Vyhovskoho;1;264
+417;Knyahyni Olhy;Sadova;4;481
+418;Knyahyni Olhy;Stepana Bandery;3;444
+419;Knyahyni Olhy;Antonovycha;1;381
+420;Knyahyni Olhy;Naukova;2;495
+421;Knyahyni Olhy;Volodymyra Velykoho;4;395
+422;Knyahyni Olhy;Stryiska;2;343
+423;Knyahyni Olhy;Luhanska;4;214
+424;Knyahyni Olhy;Khutorivka;1;282
+425;Knyahyni Olhy;Uhorska;4;300
+426;Knyahyni Olhy;Snopkivska;3;365
+427;Knyahyni Olhy;Batalna;1;211
+428;Knyahyni Olhy;Zelena;2;444
+429;Knyahyni Olhy;Ivana Franka;2;405
+430;Knyahyni Olhy;Pasichna;2;373
+431;Knyahyni Olhy;Mechnykova;2;179
+432;Knyahyni Olhy;Lychakivska;4;141
+433;Knyahyni Olhy;Kniazia Romana;3;349
+434;Knyahyni Olhy;Stefanyka;1;378
+435;Knyahyni Olhy;Doroshenka;4;162
+436;Knyahyni Olhy;Kopernyka;4;470
+437;Knyahyni Olhy;Kulparkivska;2;199
+438;Knyahyni Olhy;Patona;1;173
+439;Knyahyni Olhy;Sychivska;4;443
+440;Knyahyni Olhy;Horodotska;3;154
+441;Knyahyni Olhy;Siaivo;4;171
+442;Knyahyni Olhy;Levandivska;1;150
+443;Knyahyni Olhy;Subotivska;2;279
+444;Knyahyni Olhy;Shyroka;2;330
+445;Knyahyni Olhy;Shevchenka;3;401
+446;Knyahyni Olhy;Zolota;2;252
+447;Knyahyni Olhy;Lypynskoho;2;380
+448;Knyahyni Olhy;Zamarstynivska;3;397
+449;Knyahyni Olhy;Linkolna;4;199
+450;Knyahyni Olhy;Mazepy;4;231
+451;Knyahyni Olhy;Sacharova;1;320
+452;Volodymyra Velykoho;Liubinska;3;343
+453;Volodymyra Velykoho;Universytetska;3;407
+454;Volodymyra Velykoho;Okruzhna;2;443
+455;Volodymyra Velykoho;Heroiv UPA;1;188
+456;Volodymyra Velykoho;Konovaltcia;4;338
+457;Volodymyra Velykoho;Vyhovskoho;1;218
+458;Volodymyra Velykoho;Sadova;4;201
+459;Volodymyra Velykoho;Stepana Bandery;1;442
+460;Volodymyra Velykoho;Antonovycha;3;172
+461;Volodymyra Velykoho;Naukova;2;329
+462;Volodymyra Velykoho;Knyahyni Olhy;1;130
+463;Volodymyra Velykoho;Stryiska;4;329
+464;Volodymyra Velykoho;Luhanska;3;362
+465;Volodymyra Velykoho;Khutorivka;3;253
+466;Volodymyra Velykoho;Uhorska;2;371
+467;Volodymyra Velykoho;Snopkivska;4;214
+468;Volodymyra Velykoho;Batalna;4;242
+469;Volodymyra Velykoho;Zelena;3;279
+470;Volodymyra Velykoho;Ivana Franka;3;365
+471;Volodymyra Velykoho;Pasichna;1;278
+472;Volodymyra Velykoho;Mechnykova;2;231
+473;Volodymyra Velykoho;Lychakivska;4;422
+474;Volodymyra Velykoho;Kniazia Romana;1;490
+475;Volodymyra Velykoho;Stefanyka;4;220
+476;Volodymyra Velykoho;Doroshenka;3;459
+477;Volodymyra Velykoho;Kopernyka;3;418
+478;Volodymyra Velykoho;Kulparkivska;1;325
+479;Volodymyra Velykoho;Patona;2;319
+480;Volodymyra Velykoho;Sychivska;4;489
+481;Volodymyra Velykoho;Horodotska;1;360
+482;Volodymyra Velykoho;Siaivo;1;408
+483;Volodymyra Velykoho;Levandivska;4;201
+484;Volodymyra Velykoho;Subotivska;3;444
+485;Volodymyra Velykoho;Shyroka;2;267
+486;Volodymyra Velykoho;Shevchenka;3;378
+487;Volodymyra Velykoho;Zolota;2;104
+488;Volodymyra Velykoho;Lypynskoho;1;449
+489;Volodymyra Velykoho;Zamarstynivska;1;427
+490;Volodymyra Velykoho;Linkolna;2;477
+491;Volodymyra Velykoho;Mazepy;2;370
+492;Volodymyra Velykoho;Sacharova;3;255
+493;Stryiska;Liubinska;4;311
+494;Stryiska;Universytetska;1;133
+495;Stryiska;Okruzhna;2;273
+496;Stryiska;Heroiv UPA;4;100
+497;Stryiska;Konovaltcia;3;343
+498;Stryiska;Vyhovskoho;3;295
+499;Stryiska;Sadova;2;360
+500;Stryiska;Stepana Bandery;3;326
+501;Stryiska;Antonovycha;1;250
+502;Stryiska;Naukova;3;302
+503;Stryiska;Knyahyni Olhy;3;460
+504;Stryiska;Volodymyra Velykoho;3;325
+505;Stryiska;Luhanska;4;154
+506;Stryiska;Khutorivka;2;335
+507;Stryiska;Uhorska;2;465
+508;Stryiska;Snopkivska;3;275
+509;Stryiska;Batalna;4;410
+510;Stryiska;Zelena;4;205
+511;Stryiska;Ivana Franka;1;353
+512;Stryiska;Pasichna;3;446
+513;Stryiska;Mechnykova;2;380
+514;Stryiska;Lychakivska;1;366
+515;Stryiska;Kniazia Romana;2;320
+516;Stryiska;Stefanyka;3;299
+517;Stryiska;Doroshenka;2;376
+518;Stryiska;Kopernyka;4;484
+519;Stryiska;Kulparkivska;4;188
+520;Stryiska;Patona;4;452
+521;Stryiska;Sychivska;4;315
+522;Stryiska;Horodotska;2;155
+523;Stryiska;Siaivo;1;244
+524;Stryiska;Levandivska;3;370
+525;Stryiska;Subotivska;4;144
+526;Stryiska;Shyroka;3;300
+527;Stryiska;Shevchenka;3;207
+528;Stryiska;Zolota;2;282
+529;Stryiska;Lypynskoho;4;425
+530;Stryiska;Zamarstynivska;1;459
+531;Stryiska;Linkolna;4;483
+532;Stryiska;Mazepy;1;182
+533;Stryiska;Sacharova;3;465
+534;Luhanska;Liubinska;2;340
+535;Luhanska;Universytetska;1;369
+536;Luhanska;Okruzhna;2;380
+537;Luhanska;Heroiv UPA;4;141
+538;Luhanska;Konovaltcia;2;344
+539;Luhanska;Vyhovskoho;2;278
+540;Luhanska;Sadova;4;143
+541;Luhanska;Stepana Bandery;4;271
+542;Luhanska;Antonovycha;3;240
+543;Luhanska;Naukova;4;137
+544;Luhanska;Knyahyni Olhy;4;105
+545;Luhanska;Volodymyra Velykoho;2;258
+546;Luhanska;Stryiska;1;173
+547;Luhanska;Khutorivka;1;457
+548;Luhanska;Uhorska;1;477
+549;Luhanska;Snopkivska;2;148
+550;Luhanska;Batalna;3;142
+551;Luhanska;Zelena;1;143
+552;Luhanska;Ivana Franka;3;220
+553;Luhanska;Pasichna;3;446
+554;Luhanska;Mechnykova;3;325
+555;Luhanska;Lychakivska;4;421
+556;Luhanska;Kniazia Romana;1;238
+557;Luhanska;Stefanyka;4;470
+558;Luhanska;Doroshenka;4;246
+559;Luhanska;Kopernyka;2;400
+560;Luhanska;Kulparkivska;1;278
+561;Luhanska;Patona;1;217
+562;Luhanska;Sychivska;2;365
+563;Luhanska;Horodotska;3;202
+564;Luhanska;Siaivo;3;137
+565;Luhanska;Levandivska;1;267
+566;Luhanska;Subotivska;1;173
+567;Luhanska;Shyroka;4;396
+568;Luhanska;Shevchenka;1;453
+569;Luhanska;Zolota;4;257
+570;Luhanska;Lypynskoho;3;146
+571;Luhanska;Zamarstynivska;3;207
+572;Luhanska;Linkolna;1;289
+573;Luhanska;Mazepy;1;430
+574;Luhanska;Sacharova;1;204
+575;Khutorivka;Liubinska;4;387
+576;Khutorivka;Universytetska;3;374
+577;Khutorivka;Okruzhna;4;160
+578;Khutorivka;Heroiv UPA;1;404
+579;Khutorivka;Konovaltcia;4;480
+580;Khutorivka;Vyhovskoho;4;265
+581;Khutorivka;Sadova;2;267
+582;Khutorivka;Stepana Bandery;3;295
+583;Khutorivka;Antonovycha;3;486
+584;Khutorivka;Naukova;2;190
+585;Khutorivka;Knyahyni Olhy;4;108
+586;Khutorivka;Volodymyra Velykoho;3;449
+587;Khutorivka;Stryiska;1;142
+588;Khutorivka;Luhanska;4;424
+589;Khutorivka;Uhorska;1;439
+590;Khutorivka;Snopkivska;2;370
+591;Khutorivka;Batalna;1;201
+592;Khutorivka;Zelena;1;218
+593;Khutorivka;Ivana Franka;3;294
+594;Khutorivka;Pasichna;2;378
+595;Khutorivka;Mechnykova;3;217
+596;Khutorivka;Lychakivska;1;444
+597;Khutorivka;Kniazia Romana;3;206
+598;Khutorivka;Stefanyka;4;164
+599;Khutorivka;Doroshenka;3;346
+600;Khutorivka;Kopernyka;4;212
+601;Khutorivka;Kulparkivska;2;495
+602;Khutorivka;Patona;2;486
+603;Khutorivka;Sychivska;1;421
+604;Khutorivka;Horodotska;3;416
+605;Khutorivka;Siaivo;2;184
+606;Khutorivka;Levandivska;3;474
+607;Khutorivka;Subotivska;3;149
+608;Khutorivka;Shyroka;2;139
+609;Khutorivka;Shevchenka;2;199
+610;Khutorivka;Zolota;3;157
+611;Khutorivka;Lypynskoho;3;420
+612;Khutorivka;Zamarstynivska;3;331
+613;Khutorivka;Linkolna;4;376
+614;Khutorivka;Mazepy;2;421
+615;Khutorivka;Sacharova;2;381
+616;Uhorska;Liubinska;1;329
+617;Uhorska;Universytetska;1;155
+618;Uhorska;Okruzhna;2;121
+619;Uhorska;Heroiv UPA;4;156
+620;Uhorska;Konovaltcia;1;475
+621;Uhorska;Vyhovskoho;4;298
+622;Uhorska;Sadova;2;302
+623;Uhorska;Stepana Bandery;3;165
+624;Uhorska;Antonovycha;2;288
+625;Uhorska;Naukova;4;366
+626;Uhorska;Knyahyni Olhy;4;288
+627;Uhorska;Volodymyra Velykoho;4;380
+628;Uhorska;Stryiska;3;310
+629;Uhorska;Luhanska;2;424
+630;Uhorska;Khutorivka;1;290
+631;Uhorska;Snopkivska;3;425
+632;Uhorska;Batalna;2;332
+633;Uhorska;Zelena;1;100
+634;Uhorska;Ivana Franka;4;258
+635;Uhorska;Pasichna;4;226
+636;Uhorska;Mechnykova;1;168
+637;Uhorska;Lychakivska;1;423
+638;Uhorska;Kniazia Romana;2;172
+639;Uhorska;Stefanyka;2;102
+640;Uhorska;Doroshenka;4;403
+641;Uhorska;Kopernyka;2;423
+642;Uhorska;Kulparkivska;4;371
+643;Uhorska;Patona;4;347
+644;Uhorska;Sychivska;3;221
+645;Uhorska;Horodotska;3;429
+646;Uhorska;Siaivo;3;121
+647;Uhorska;Levandivska;1;361
+648;Uhorska;Subotivska;2;121
+649;Uhorska;Shyroka;1;431
+650;Uhorska;Shevchenka;2;387
+651;Uhorska;Zolota;1;472
+652;Uhorska;Lypynskoho;3;331
+653;Uhorska;Zamarstynivska;2;370
+654;Uhorska;Linkolna;2;123
+655;Uhorska;Mazepy;2;268
+656;Uhorska;Sacharova;1;288
+657;Snopkivska;Liubinska;4;213
+658;Snopkivska;Universytetska;1;386
+659;Snopkivska;Okruzhna;4;407
+660;Snopkivska;Heroiv UPA;3;301
+661;Snopkivska;Konovaltcia;2;350
+662;Snopkivska;Vyhovskoho;4;480
+663;Snopkivska;Sadova;3;171
+664;Snopkivska;Stepana Bandery;1;286
+665;Snopkivska;Antonovycha;2;188
+666;Snopkivska;Naukova;1;325
+667;Snopkivska;Knyahyni Olhy;3;155
+668;Snopkivska;Volodymyra Velykoho;3;272
+669;Snopkivska;Stryiska;1;231
+670;Snopkivska;Luhanska;1;171
+671;Snopkivska;Khutorivka;2;358
+672;Snopkivska;Uhorska;4;146
+673;Snopkivska;Batalna;3;141
+674;Snopkivska;Zelena;1;426
+675;Snopkivska;Ivana Franka;3;379
+676;Snopkivska;Pasichna;1;212
+677;Snopkivska;Mechnykova;1;451
+678;Snopkivska;Lychakivska;2;342
+679;Snopkivska;Kniazia Romana;1;397
+680;Snopkivska;Stefanyka;4;201
+681;Snopkivska;Doroshenka;3;454
+682;Snopkivska;Kopernyka;3;181
+683;Snopkivska;Kulparkivska;2;328
+684;Snopkivska;Patona;4;425
+685;Snopkivska;Sychivska;4;373
+686;Snopkivska;Horodotska;3;331
+687;Snopkivska;Siaivo;3;318
+688;Snopkivska;Levandivska;1;359
+689;Snopkivska;Subotivska;3;397
+690;Snopkivska;Shyroka;2;353
+691;Snopkivska;Shevchenka;1;201
+692;Snopkivska;Zolota;4;378
+693;Snopkivska;Lypynskoho;1;440
+694;Snopkivska;Zamarstynivska;2;396
+695;Snopkivska;Linkolna;3;468
+696;Snopkivska;Mazepy;2;246
+697;Snopkivska;Sacharova;2;496
+698;Batalna;Liubinska;3;251
+699;Batalna;Universytetska;4;369
+700;Batalna;Okruzhna;4;147
+701;Batalna;Heroiv UPA;2;214
+702;Batalna;Konovaltcia;1;443
+703;Batalna;Vyhovskoho;1;327
+704;Batalna;Sadova;4;323
+705;Batalna;Stepana Bandery;3;409
+706;Batalna;Antonovycha;4;231
+707;Batalna;Naukova;2;182
+708;Batalna;Knyahyni Olhy;1;240
+709;Batalna;Volodymyra Velykoho;4;487
+710;Batalna;Stryiska;1;275
+711;Batalna;Luhanska;1;143
+712;Batalna;Khutorivka;1;434
+713;Batalna;Uhorska;2;194
+714;Batalna;Snopkivska;1;312
+715;Batalna;Zelena;4;443
+716;Batalna;Ivana Franka;3;130
+717;Batalna;Pasichna;4;158
+718;Batalna;Mechnykova;2;417
+719;Batalna;Lychakivska;1;126
+720;Batalna;Kniazia Romana;3;301
+721;Batalna;Stefanyka;1;460
+722;Batalna;Doroshenka;1;476
+723;Batalna;Kopernyka;1;111
+724;Batalna;Kulparkivska;4;212
+725;Batalna;Patona;4;188
+726;Batalna;Sychivska;2;105
+727;Batalna;Horodotska;3;254
+728;Batalna;Siaivo;1;158
+729;Batalna;Levandivska;1;189
+730;Batalna;Subotivska;3;443
+731;Batalna;Shyroka;2;189
+732;Batalna;Shevchenka;3;412
+733;Batalna;Zolota;1;412
+734;Batalna;Lypynskoho;2;234
+735;Batalna;Zamarstynivska;4;252
+736;Batalna;Linkolna;1;458
+737;Batalna;Mazepy;2;351
+738;Batalna;Sacharova;2;184
+739;Zelena;Liubinska;1;162
+740;Zelena;Universytetska;4;219
+741;Zelena;Okruzhna;2;424
+742;Zelena;Heroiv UPA;3;400
+743;Zelena;Konovaltcia;2;361
+744;Zelena;Vyhovskoho;3;311
+745;Zelena;Sadova;1;193
+746;Zelena;Stepana Bandery;3;488
+747;Zelena;Antonovycha;3;396
+748;Zelena;Naukova;1;447
+749;Zelena;Knyahyni Olhy;2;227
+750;Zelena;Volodymyra Velykoho;4;213
+751;Zelena;Stryiska;3;320
+752;Zelena;Luhanska;2;274
+753;Zelena;Khutorivka;1;308
+754;Zelena;Uhorska;3;465
+755;Zelena;Snopkivska;1;418
+756;Zelena;Batalna;1;111
+757;Zelena;Ivana Franka;2;193
+758;Zelena;Pasichna;3;366
+759;Zelena;Mechnykova;3;433
+760;Zelena;Lychakivska;2;281
+761;Zelena;Kniazia Romana;1;453
+762;Zelena;Stefanyka;1;336
+763;Zelena;Doroshenka;4;174
+764;Zelena;Kopernyka;2;350
+765;Zelena;Kulparkivska;3;290
+766;Zelena;Patona;4;375
+767;Zelena;Sychivska;2;294
+768;Zelena;Horodotska;3;419
+769;Zelena;Siaivo;2;210
+770;Zelena;Levandivska;3;469
+771;Zelena;Subotivska;1;348
+772;Zelena;Shyroka;2;237
+773;Zelena;Shevchenka;1;330
+774;Zelena;Zolota;3;221
+775;Zelena;Lypynskoho;1;244
+776;Zelena;Zamarstynivska;2;292
+777;Zelena;Linkolna;4;252
+778;Zelena;Mazepy;1;392
+779;Zelena;Sacharova;2;444
+780;Ivana Franka;Liubinska;3;452
+781;Ivana Franka;Universytetska;1;108
+782;Ivana Franka;Okruzhna;2;326
+783;Ivana Franka;Heroiv UPA;4;279
+784;Ivana Franka;Konovaltcia;3;487
+785;Ivana Franka;Vyhovskoho;3;383
+786;Ivana Franka;Sadova;2;194
+787;Ivana Franka;Stepana Bandery;1;266
+788;Ivana Franka;Antonovycha;2;350
+789;Ivana Franka;Naukova;2;441
+790;Ivana Franka;Knyahyni Olhy;2;179
+791;Ivana Franka;Volodymyra Velykoho;3;122
+792;Ivana Franka;Stryiska;2;196
+793;Ivana Franka;Luhanska;1;264
+794;Ivana Franka;Khutorivka;3;475
+795;Ivana Franka;Uhorska;2;480
+796;Ivana Franka;Snopkivska;2;297
+797;Ivana Franka;Batalna;3;421
+798;Ivana Franka;Zelena;4;494
+799;Ivana Franka;Pasichna;2;468
+800;Ivana Franka;Mechnykova;2;358
+801;Ivana Franka;Lychakivska;4;318
+802;Ivana Franka;Kniazia Romana;4;310
+803;Ivana Franka;Stefanyka;1;148
+804;Ivana Franka;Doroshenka;2;326
+805;Ivana Franka;Kopernyka;4;264
+806;Ivana Franka;Kulparkivska;2;301
+807;Ivana Franka;Patona;2;285
+808;Ivana Franka;Sychivska;1;141
+809;Ivana Franka;Horodotska;3;127
+810;Ivana Franka;Siaivo;2;296
+811;Ivana Franka;Levandivska;3;407
+812;Ivana Franka;Subotivska;3;339
+813;Ivana Franka;Shyroka;2;426
+814;Ivana Franka;Shevchenka;3;238
+815;Ivana Franka;Zolota;3;284
+816;Ivana Franka;Lypynskoho;2;289
+817;Ivana Franka;Zamarstynivska;2;439
+818;Ivana Franka;Linkolna;2;149
+819;Ivana Franka;Mazepy;2;446
+820;Ivana Franka;Sacharova;1;498
+821;Pasichna;Liubinska;1;155
+822;Pasichna;Universytetska;1;115
+823;Pasichna;Okruzhna;3;476
+824;Pasichna;Heroiv UPA;1;159
+825;Pasichna;Konovaltcia;3;363
+826;Pasichna;Vyhovskoho;2;195
+827;Pasichna;Sadova;2;479
+828;Pasichna;Stepana Bandery;4;139
+829;Pasichna;Antonovycha;1;162
+830;Pasichna;Naukova;2;193
+831;Pasichna;Knyahyni Olhy;2;493
+832;Pasichna;Volodymyra Velykoho;4;289
+833;Pasichna;Stryiska;1;444
+834;Pasichna;Luhanska;1;306
+835;Pasichna;Khutorivka;1;134
+836;Pasichna;Uhorska;4;404
+837;Pasichna;Snopkivska;4;280
+838;Pasichna;Batalna;2;341
+839;Pasichna;Zelena;4;292
+840;Pasichna;Ivana Franka;4;229
+841;Pasichna;Mechnykova;3;289
+842;Pasichna;Lychakivska;4;498
+843;Pasichna;Kniazia Romana;1;130
+844;Pasichna;Stefanyka;1;285
+845;Pasichna;Doroshenka;4;192
+846;Pasichna;Kopernyka;1;159
+847;Pasichna;Kulparkivska;3;482
+848;Pasichna;Patona;2;137
+849;Pasichna;Sychivska;1;312
+850;Pasichna;Horodotska;4;401
+851;Pasichna;Siaivo;4;344
+852;Pasichna;Levandivska;1;302
+853;Pasichna;Subotivska;4;338
+854;Pasichna;Shyroka;2;108
+855;Pasichna;Shevchenka;3;219
+856;Pasichna;Zolota;2;318
+857;Pasichna;Lypynskoho;1;474
+858;Pasichna;Zamarstynivska;3;110
+859;Pasichna;Linkolna;1;466
+860;Pasichna;Mazepy;2;107
+861;Pasichna;Sacharova;4;351
+862;Mechnykova;Liubinska;3;460
+863;Mechnykova;Universytetska;4;361
+864;Mechnykova;Okruzhna;1;468
+865;Mechnykova;Heroiv UPA;4;226
+866;Mechnykova;Konovaltcia;2;193
+867;Mechnykova;Vyhovskoho;3;192
+868;Mechnykova;Sadova;2;131
+869;Mechnykova;Stepana Bandery;2;198
+870;Mechnykova;Antonovycha;1;302
+871;Mechnykova;Naukova;3;492
+872;Mechnykova;Knyahyni Olhy;4;358
+873;Mechnykova;Volodymyra Velykoho;4;319
+874;Mechnykova;Stryiska;4;368
+875;Mechnykova;Luhanska;2;288
+876;Mechnykova;Khutorivka;4;223
+877;Mechnykova;Uhorska;1;470
+878;Mechnykova;Snopkivska;4;188
+879;Mechnykova;Batalna;1;146
+880;Mechnykova;Zelena;3;181
+881;Mechnykova;Ivana Franka;2;275
+882;Mechnykova;Pasichna;1;188
+883;Mechnykova;Lychakivska;4;139
+884;Mechnykova;Kniazia Romana;1;477
+885;Mechnykova;Stefanyka;2;287
+886;Mechnykova;Doroshenka;3;494
+887;Mechnykova;Kopernyka;4;446
+888;Mechnykova;Kulparkivska;2;451
+889;Mechnykova;Patona;3;469
+890;Mechnykova;Sychivska;1;277
+891;Mechnykova;Horodotska;3;293
+892;Mechnykova;Siaivo;3;293
+893;Mechnykova;Levandivska;2;126
+894;Mechnykova;Subotivska;1;344
+895;Mechnykova;Shyroka;2;201
+896;Mechnykova;Shevchenka;1;235
+897;Mechnykova;Zolota;3;474
+898;Mechnykova;Lypynskoho;1;210
+899;Mechnykova;Zamarstynivska;4;382
+900;Mechnykova;Linkolna;3;419
+901;Mechnykova;Mazepy;3;112
+902;Mechnykova;Sacharova;1;477
+903;Lychakivska;Liubinska;4;450
+904;Lychakivska;Universytetska;3;217
+905;Lychakivska;Okruzhna;3;105
+906;Lychakivska;Heroiv UPA;3;147
+907;Lychakivska;Konovaltcia;1;128
+908;Lychakivska;Vyhovskoho;3;482
+909;Lychakivska;Sadova;4;333
+910;Lychakivska;Stepana Bandery;4;442
+911;Lychakivska;Antonovycha;1;259
+912;Lychakivska;Naukova;3;182
+913;Lychakivska;Knyahyni Olhy;2;192
+914;Lychakivska;Volodymyra Velykoho;2;437
+915;Lychakivska;Stryiska;4;110
+916;Lychakivska;Luhanska;4;498
+917;Lychakivska;Khutorivka;1;181
+918;Lychakivska;Uhorska;4;358
+919;Lychakivska;Snopkivska;2;327
+920;Lychakivska;Batalna;3;330
+921;Lychakivska;Zelena;3;413
+922;Lychakivska;Ivana Franka;4;229
+923;Lychakivska;Pasichna;3;467
+924;Lychakivska;Mechnykova;1;364
+925;Lychakivska;Kniazia Romana;2;144
+926;Lychakivska;Stefanyka;2;231
+927;Lychakivska;Doroshenka;4;447
+928;Lychakivska;Kopernyka;4;155
+929;Lychakivska;Kulparkivska;2;101
+930;Lychakivska;Patona;3;367
+931;Lychakivska;Sychivska;3;375
+932;Lychakivska;Horodotska;2;338
+933;Lychakivska;Siaivo;1;310
+934;Lychakivska;Levandivska;4;464
+935;Lychakivska;Subotivska;1;451
+936;Lychakivska;Shyroka;3;243
+937;Lychakivska;Shevchenka;4;175
+938;Lychakivska;Zolota;2;196
+939;Lychakivska;Lypynskoho;2;213
+940;Lychakivska;Zamarstynivska;2;305
+941;Lychakivska;Linkolna;1;337
+942;Lychakivska;Mazepy;2;374
+943;Lychakivska;Sacharova;3;354
+944;Kniazia Romana;Liubinska;1;231
+945;Kniazia Romana;Universytetska;2;406
+946;Kniazia Romana;Okruzhna;1;208
+947;Kniazia Romana;Heroiv UPA;1;466
+948;Kniazia Romana;Konovaltcia;4;439
+949;Kniazia Romana;Vyhovskoho;2;257
+950;Kniazia Romana;Sadova;2;182
+951;Kniazia Romana;Stepana Bandery;4;225
+952;Kniazia Romana;Antonovycha;2;312
+953;Kniazia Romana;Naukova;2;497
+954;Kniazia Romana;Knyahyni Olhy;2;400
+955;Kniazia Romana;Volodymyra Velykoho;3;313
+956;Kniazia Romana;Stryiska;3;157
+957;Kniazia Romana;Luhanska;3;499
+958;Kniazia Romana;Khutorivka;3;111
+959;Kniazia Romana;Uhorska;2;423
+960;Kniazia Romana;Snopkivska;4;264
+961;Kniazia Romana;Batalna;2;336
+962;Kniazia Romana;Zelena;2;259
+963;Kniazia Romana;Ivana Franka;3;264
+964;Kniazia Romana;Pasichna;2;133
+965;Kniazia Romana;Mechnykova;1;287
+966;Kniazia Romana;Lychakivska;4;105
+967;Kniazia Romana;Stefanyka;1;207
+968;Kniazia Romana;Doroshenka;3;377
+969;Kniazia Romana;Kopernyka;1;461
+970;Kniazia Romana;Kulparkivska;2;373
+971;Kniazia Romana;Patona;2;221
+972;Kniazia Romana;Sychivska;4;457
+973;Kniazia Romana;Horodotska;1;130
+974;Kniazia Romana;Siaivo;3;123
+975;Kniazia Romana;Levandivska;2;470
+976;Kniazia Romana;Subotivska;3;292
+977;Kniazia Romana;Shyroka;2;444
+978;Kniazia Romana;Shevchenka;3;263
+979;Kniazia Romana;Zolota;4;138
+980;Kniazia Romana;Lypynskoho;4;107
+981;Kniazia Romana;Zamarstynivska;3;198
+982;Kniazia Romana;Linkolna;3;132
+983;Kniazia Romana;Mazepy;3;386
+984;Kniazia Romana;Sacharova;1;204
+985;Stefanyka;Liubinska;2;486
+986;Stefanyka;Universytetska;4;240
+987;Stefanyka;Okruzhna;3;195
+988;Stefanyka;Heroiv UPA;1;166
+989;Stefanyka;Konovaltcia;4;335
+990;Stefanyka;Vyhovskoho;2;333
+991;Stefanyka;Sadova;3;196
+992;Stefanyka;Stepana Bandery;4;223
+993;Stefanyka;Antonovycha;4;289
+994;Stefanyka;Naukova;3;158
+995;Stefanyka;Knyahyni Olhy;3;142
+996;Stefanyka;Volodymyra Velykoho;4;101
+997;Stefanyka;Stryiska;1;195
+998;Stefanyka;Luhanska;4;123
+999;Stefanyka;Khutorivka;4;379
+1000;Stefanyka;Uhorska;2;226
+1001;Stefanyka;Snopkivska;4;292
+1002;Stefanyka;Batalna;3;214
+1003;Stefanyka;Zelena;4;197
+1004;Stefanyka;Ivana Franka;4;193
+1005;Stefanyka;Pasichna;4;328
+1006;Stefanyka;Mechnykova;3;197
+1007;Stefanyka;Lychakivska;3;215
+1008;Stefanyka;Kniazia Romana;2;280
+1009;Stefanyka;Doroshenka;2;182
+1010;Stefanyka;Kopernyka;1;143
+1011;Stefanyka;Kulparkivska;1;495
+1012;Stefanyka;Patona;3;250
+1013;Stefanyka;Sychivska;1;470
+1014;Stefanyka;Horodotska;2;224
+1015;Stefanyka;Siaivo;1;118
+1016;Stefanyka;Levandivska;2;145
+1017;Stefanyka;Subotivska;2;118
+1018;Stefanyka;Shyroka;3;175
+1019;Stefanyka;Shevchenka;3;316
+1020;Stefanyka;Zolota;2;352
+1021;Stefanyka;Lypynskoho;3;223
+1022;Stefanyka;Zamarstynivska;2;483
+1023;Stefanyka;Linkolna;3;348
+1024;Stefanyka;Mazepy;2;396
+1025;Stefanyka;Sacharova;4;315
+1026;Doroshenka;Liubinska;3;332
+1027;Doroshenka;Universytetska;2;182
+1028;Doroshenka;Okruzhna;1;481
+1029;Doroshenka;Heroiv UPA;4;179
+1030;Doroshenka;Konovaltcia;1;128
+1031;Doroshenka;Vyhovskoho;4;347
+1032;Doroshenka;Sadova;4;383
+1033;Doroshenka;Stepana Bandery;1;293
+1034;Doroshenka;Antonovycha;4;374
+1035;Doroshenka;Naukova;3;163
+1036;Doroshenka;Knyahyni Olhy;4;450
+1037;Doroshenka;Volodymyra Velykoho;4;329
+1038;Doroshenka;Stryiska;3;446
+1039;Doroshenka;Luhanska;3;408
+1040;Doroshenka;Khutorivka;4;293
+1041;Doroshenka;Uhorska;3;331
+1042;Doroshenka;Snopkivska;2;384
+1043;Doroshenka;Batalna;2;417
+1044;Doroshenka;Zelena;3;126
+1045;Doroshenka;Ivana Franka;4;375
+1046;Doroshenka;Pasichna;2;286
+1047;Doroshenka;Mechnykova;2;195
+1048;Doroshenka;Lychakivska;3;470
+1049;Doroshenka;Kniazia Romana;2;372
+1050;Doroshenka;Stefanyka;4;111
+1051;Doroshenka;Kopernyka;3;334
+1052;Doroshenka;Kulparkivska;1;392
+1053;Doroshenka;Patona;4;406
+1054;Doroshenka;Sychivska;3;467
+1055;Doroshenka;Horodotska;3;210
+1056;Doroshenka;Siaivo;2;492
+1057;Doroshenka;Levandivska;2;380
+1058;Doroshenka;Subotivska;2;238
+1059;Doroshenka;Shyroka;1;209
+1060;Doroshenka;Shevchenka;2;260
+1061;Doroshenka;Zolota;4;460
+1062;Doroshenka;Lypynskoho;4;483
+1063;Doroshenka;Zamarstynivska;3;228
+1064;Doroshenka;Linkolna;3;362
+1065;Doroshenka;Mazepy;4;355
+1066;Doroshenka;Sacharova;3;466
+1067;Kopernyka;Liubinska;1;435
+1068;Kopernyka;Universytetska;4;127
+1069;Kopernyka;Okruzhna;2;375
+1070;Kopernyka;Heroiv UPA;4;355
+1071;Kopernyka;Konovaltcia;1;380
+1072;Kopernyka;Vyhovskoho;2;351
+1073;Kopernyka;Sadova;2;282
+1074;Kopernyka;Stepana Bandery;1;363
+1075;Kopernyka;Antonovycha;4;244
+1076;Kopernyka;Naukova;3;119
+1077;Kopernyka;Knyahyni Olhy;2;244
+1078;Kopernyka;Volodymyra Velykoho;1;399
+1079;Kopernyka;Stryiska;4;154
+1080;Kopernyka;Luhanska;1;271
+1081;Kopernyka;Khutorivka;2;112
+1082;Kopernyka;Uhorska;1;101
+1083;Kopernyka;Snopkivska;3;275
+1084;Kopernyka;Batalna;4;298
+1085;Kopernyka;Zelena;4;239
+1086;Kopernyka;Ivana Franka;4;302
+1087;Kopernyka;Pasichna;2;366
+1088;Kopernyka;Mechnykova;2;165
+1089;Kopernyka;Lychakivska;2;160
+1090;Kopernyka;Kniazia Romana;3;205
+1091;Kopernyka;Stefanyka;1;442
+1092;Kopernyka;Doroshenka;4;301
+1093;Kopernyka;Kulparkivska;4;297
+1094;Kopernyka;Patona;3;357
+1095;Kopernyka;Sychivska;3;132
+1096;Kopernyka;Horodotska;2;238
+1097;Kopernyka;Siaivo;3;311
+1098;Kopernyka;Levandivska;2;130
+1099;Kopernyka;Subotivska;3;267
+1100;Kopernyka;Shyroka;4;458
+1101;Kopernyka;Shevchenka;2;354
+1102;Kopernyka;Zolota;4;288
+1103;Kopernyka;Lypynskoho;2;189
+1104;Kopernyka;Zamarstynivska;3;385
+1105;Kopernyka;Linkolna;1;100
+1106;Kopernyka;Mazepy;2;361
+1107;Kopernyka;Sacharova;3;399
+1108;Kulparkivska;Liubinska;1;257
+1109;Kulparkivska;Universytetska;1;319
+1110;Kulparkivska;Okruzhna;1;195
+1111;Kulparkivska;Heroiv UPA;4;231
+1112;Kulparkivska;Konovaltcia;4;415
+1113;Kulparkivska;Vyhovskoho;1;306
+1114;Kulparkivska;Sadova;4;414
+1115;Kulparkivska;Stepana Bandery;2;186
+1116;Kulparkivska;Antonovycha;3;123
+1117;Kulparkivska;Naukova;2;392
+1118;Kulparkivska;Knyahyni Olhy;4;322
+1119;Kulparkivska;Volodymyra Velykoho;1;244
+1120;Kulparkivska;Stryiska;1;374
+1121;Kulparkivska;Luhanska;4;429
+1122;Kulparkivska;Khutorivka;3;368
+1123;Kulparkivska;Uhorska;4;343
+1124;Kulparkivska;Snopkivska;4;471
+1125;Kulparkivska;Batalna;2;497
+1126;Kulparkivska;Zelena;4;139
+1127;Kulparkivska;Ivana Franka;2;363
+1128;Kulparkivska;Pasichna;4;161
+1129;Kulparkivska;Mechnykova;4;100
+1130;Kulparkivska;Lychakivska;2;493
+1131;Kulparkivska;Kniazia Romana;2;478
+1132;Kulparkivska;Stefanyka;2;440
+1133;Kulparkivska;Doroshenka;2;185
+1134;Kulparkivska;Kopernyka;2;411
+1135;Kulparkivska;Patona;4;373
+1136;Kulparkivska;Sychivska;2;434
+1137;Kulparkivska;Horodotska;3;264
+1138;Kulparkivska;Siaivo;2;130
+1139;Kulparkivska;Levandivska;4;161
+1140;Kulparkivska;Subotivska;4;291
+1141;Kulparkivska;Shyroka;3;459
+1142;Kulparkivska;Shevchenka;2;213
+1143;Kulparkivska;Zolota;2;266
+1144;Kulparkivska;Lypynskoho;3;339
+1145;Kulparkivska;Zamarstynivska;3;351
+1146;Kulparkivska;Linkolna;3;125
+1147;Kulparkivska;Mazepy;4;109
+1148;Kulparkivska;Sacharova;2;426
+1149;Patona;Liubinska;2;389
+1150;Patona;Universytetska;1;337
+1151;Patona;Okruzhna;1;123
+1152;Patona;Heroiv UPA;4;343
+1153;Patona;Konovaltcia;3;117
+1154;Patona;Vyhovskoho;3;465
+1155;Patona;Sadova;1;467
+1156;Patona;Stepana Bandery;2;363
+1157;Patona;Antonovycha;1;462
+1158;Patona;Naukova;2;297
+1159;Patona;Knyahyni Olhy;2;160
+1160;Patona;Volodymyra Velykoho;3;127
+1161;Patona;Stryiska;2;419
+1162;Patona;Luhanska;1;235
+1163;Patona;Khutorivka;4;204
+1164;Patona;Uhorska;4;308
+1165;Patona;Snopkivska;1;364
+1166;Patona;Batalna;3;111
+1167;Patona;Zelena;4;254
+1168;Patona;Ivana Franka;2;347
+1169;Patona;Pasichna;4;454
+1170;Patona;Mechnykova;3;216
+1171;Patona;Lychakivska;4;428
+1172;Patona;Kniazia Romana;2;427
+1173;Patona;Stefanyka;1;134
+1174;Patona;Doroshenka;1;127
+1175;Patona;Kopernyka;3;418
+1176;Patona;Kulparkivska;2;195
+1177;Patona;Sychivska;1;145
+1178;Patona;Horodotska;1;266
+1179;Patona;Siaivo;1;349
+1180;Patona;Levandivska;3;261
+1181;Patona;Subotivska;1;114
+1182;Patona;Shyroka;4;308
+1183;Patona;Shevchenka;1;248
+1184;Patona;Zolota;3;355
+1185;Patona;Lypynskoho;3;374
+1186;Patona;Zamarstynivska;3;326
+1187;Patona;Linkolna;3;189
+1188;Patona;Mazepy;1;364
+1189;Patona;Sacharova;2;189
+1190;Sychivska;Liubinska;1;440
+1191;Sychivska;Universytetska;1;416
+1192;Sychivska;Okruzhna;4;228
+1193;Sychivska;Heroiv UPA;2;279
+1194;Sychivska;Konovaltcia;4;442
+1195;Sychivska;Vyhovskoho;2;439
+1196;Sychivska;Sadova;3;225
+1197;Sychivska;Stepana Bandery;1;185
+1198;Sychivska;Antonovycha;1;430
+1199;Sychivska;Naukova;1;458
+1200;Sychivska;Knyahyni Olhy;3;443
+1201;Sychivska;Volodymyra Velykoho;2;261
+1202;Sychivska;Stryiska;2;113
+1203;Sychivska;Luhanska;1;418
+1204;Sychivska;Khutorivka;3;493
+1205;Sychivska;Uhorska;4;281
+1206;Sychivska;Snopkivska;1;416
+1207;Sychivska;Batalna;3;427
+1208;Sychivska;Zelena;1;257
+1209;Sychivska;Ivana Franka;1;289
+1210;Sychivska;Pasichna;1;412
+1211;Sychivska;Mechnykova;3;433
+1212;Sychivska;Lychakivska;2;416
+1213;Sychivska;Kniazia Romana;1;198
+1214;Sychivska;Stefanyka;2;227
+1215;Sychivska;Doroshenka;1;252
+1216;Sychivska;Kopernyka;3;294
+1217;Sychivska;Kulparkivska;3;200
+1218;Sychivska;Patona;2;427
+1219;Sychivska;Horodotska;2;407
+1220;Sychivska;Siaivo;1;299
+1221;Sychivska;Levandivska;3;434
+1222;Sychivska;Subotivska;4;427
+1223;Sychivska;Shyroka;4;425
+1224;Sychivska;Shevchenka;4;259
+1225;Sychivska;Zolota;1;384
+1226;Sychivska;Lypynskoho;3;320
+1227;Sychivska;Zamarstynivska;3;422
+1228;Sychivska;Linkolna;2;325
+1229;Sychivska;Mazepy;1;353
+1230;Sychivska;Sacharova;4;497
+1231;Horodotska;Liubinska;2;255
+1232;Horodotska;Universytetska;4;310
+1233;Horodotska;Okruzhna;4;319
+1234;Horodotska;Heroiv UPA;1;204
+1235;Horodotska;Konovaltcia;2;245
+1236;Horodotska;Vyhovskoho;1;285
+1237;Horodotska;Sadova;2;390
+1238;Horodotska;Stepana Bandery;1;384
+1239;Horodotska;Antonovycha;4;318
+1240;Horodotska;Naukova;4;207
+1241;Horodotska;Knyahyni Olhy;2;481
+1242;Horodotska;Volodymyra Velykoho;2;262
+1243;Horodotska;Stryiska;4;134
+1244;Horodotska;Luhanska;4;432
+1245;Horodotska;Khutorivka;4;456
+1246;Horodotska;Uhorska;4;392
+1247;Horodotska;Snopkivska;4;135
+1248;Horodotska;Batalna;1;241
+1249;Horodotska;Zelena;4;269
+1250;Horodotska;Ivana Franka;1;206
+1251;Horodotska;Pasichna;3;315
+1252;Horodotska;Mechnykova;1;366
+1253;Horodotska;Lychakivska;3;151
+1254;Horodotska;Kniazia Romana;1;478
+1255;Horodotska;Stefanyka;4;338
+1256;Horodotska;Doroshenka;3;295
+1257;Horodotska;Kopernyka;3;373
+1258;Horodotska;Kulparkivska;3;297
+1259;Horodotska;Patona;1;284
+1260;Horodotska;Sychivska;3;392
+1261;Horodotska;Siaivo;3;229
+1262;Horodotska;Levandivska;2;289
+1263;Horodotska;Subotivska;3;219
+1264;Horodotska;Shyroka;3;221
+1265;Horodotska;Shevchenka;3;374
+1266;Horodotska;Zolota;3;284
+1267;Horodotska;Lypynskoho;3;384
+1268;Horodotska;Zamarstynivska;3;463
+1269;Horodotska;Linkolna;4;348
+1270;Horodotska;Mazepy;3;364
+1271;Horodotska;Sacharova;4;447
+1272;Siaivo;Liubinska;1;238
+1273;Siaivo;Universytetska;1;216
+1274;Siaivo;Okruzhna;1;153
+1275;Siaivo;Heroiv UPA;3;323
+1276;Siaivo;Konovaltcia;2;304
+1277;Siaivo;Vyhovskoho;3;208
+1278;Siaivo;Sadova;3;234
+1279;Siaivo;Stepana Bandery;1;324
+1280;Siaivo;Antonovycha;1;253
+1281;Siaivo;Naukova;2;441
+1282;Siaivo;Knyahyni Olhy;2;132
+1283;Siaivo;Volodymyra Velykoho;4;187
+1284;Siaivo;Stryiska;4;479
+1285;Siaivo;Luhanska;1;355
+1286;Siaivo;Khutorivka;3;292
+1287;Siaivo;Uhorska;3;130
+1288;Siaivo;Snopkivska;4;446
+1289;Siaivo;Batalna;2;489
+1290;Siaivo;Zelena;2;216
+1291;Siaivo;Ivana Franka;1;306
+1292;Siaivo;Pasichna;4;145
+1293;Siaivo;Mechnykova;2;191
+1294;Siaivo;Lychakivska;4;209
+1295;Siaivo;Kniazia Romana;1;209
+1296;Siaivo;Stefanyka;3;242
+1297;Siaivo;Doroshenka;3;235
+1298;Siaivo;Kopernyka;1;129
+1299;Siaivo;Kulparkivska;3;492
+1300;Siaivo;Patona;2;496
+1301;Siaivo;Sychivska;2;150
+1302;Siaivo;Horodotska;1;461
+1303;Siaivo;Levandivska;4;407
+1304;Siaivo;Subotivska;4;344
+1305;Siaivo;Shyroka;2;366
+1306;Siaivo;Shevchenka;1;198
+1307;Siaivo;Zolota;2;416
+1308;Siaivo;Lypynskoho;1;485
+1309;Siaivo;Zamarstynivska;1;163
+1310;Siaivo;Linkolna;3;350
+1311;Siaivo;Mazepy;2;368
+1312;Siaivo;Sacharova;4;419
+1313;Levandivska;Liubinska;4;188
+1314;Levandivska;Universytetska;4;259
+1315;Levandivska;Okruzhna;4;392
+1316;Levandivska;Heroiv UPA;2;211
+1317;Levandivska;Konovaltcia;2;208
+1318;Levandivska;Vyhovskoho;4;140
+1319;Levandivska;Sadova;2;443
+1320;Levandivska;Stepana Bandery;1;366
+1321;Levandivska;Antonovycha;2;165
+1322;Levandivska;Naukova;4;305
+1323;Levandivska;Knyahyni Olhy;1;277
+1324;Levandivska;Volodymyra Velykoho;1;398
+1325;Levandivska;Stryiska;1;186
+1326;Levandivska;Luhanska;4;274
+1327;Levandivska;Khutorivka;2;444
+1328;Levandivska;Uhorska;3;371
+1329;Levandivska;Snopkivska;2;203
+1330;Levandivska;Batalna;4;404
+1331;Levandivska;Zelena;4;250
+1332;Levandivska;Ivana Franka;3;393
+1333;Levandivska;Pasichna;2;418
+1334;Levandivska;Mechnykova;4;111
+1335;Levandivska;Lychakivska;4;121
+1336;Levandivska;Kniazia Romana;3;192
+1337;Levandivska;Stefanyka;1;492
+1338;Levandivska;Doroshenka;1;212
+1339;Levandivska;Kopernyka;4;202
+1340;Levandivska;Kulparkivska;3;301
+1341;Levandivska;Patona;1;179
+1342;Levandivska;Sychivska;1;371
+1343;Levandivska;Horodotska;3;433
+1344;Levandivska;Siaivo;4;348
+1345;Levandivska;Subotivska;3;206
+1346;Levandivska;Shyroka;3;178
+1347;Levandivska;Shevchenka;4;248
+1348;Levandivska;Zolota;4;131
+1349;Levandivska;Lypynskoho;2;129
+1350;Levandivska;Zamarstynivska;1;261
+1351;Levandivska;Linkolna;3;111
+1352;Levandivska;Mazepy;4;151
+1353;Levandivska;Sacharova;3;400
+1354;Subotivska;Liubinska;2;241
+1355;Subotivska;Universytetska;3;205
+1356;Subotivska;Okruzhna;4;139
+1357;Subotivska;Heroiv UPA;3;280
+1358;Subotivska;Konovaltcia;3;350
+1359;Subotivska;Vyhovskoho;1;115
+1360;Subotivska;Sadova;4;324
+1361;Subotivska;Stepana Bandery;4;157
+1362;Subotivska;Antonovycha;2;333
+1363;Subotivska;Naukova;2;224
+1364;Subotivska;Knyahyni Olhy;2;361
+1365;Subotivska;Volodymyra Velykoho;1;137
+1366;Subotivska;Stryiska;4;414
+1367;Subotivska;Luhanska;1;178
+1368;Subotivska;Khutorivka;4;153
+1369;Subotivska;Uhorska;2;133
+1370;Subotivska;Snopkivska;4;498
+1371;Subotivska;Batalna;2;336
+1372;Subotivska;Zelena;4;284
+1373;Subotivska;Ivana Franka;2;358
+1374;Subotivska;Pasichna;3;280
+1375;Subotivska;Mechnykova;4;186
+1376;Subotivska;Lychakivska;4;263
+1377;Subotivska;Kniazia Romana;1;322
+1378;Subotivska;Stefanyka;3;314
+1379;Subotivska;Doroshenka;3;225
+1380;Subotivska;Kopernyka;4;258
+1381;Subotivska;Kulparkivska;2;402
+1382;Subotivska;Patona;1;338
+1383;Subotivska;Sychivska;2;111
+1384;Subotivska;Horodotska;4;285
+1385;Subotivska;Siaivo;3;285
+1386;Subotivska;Levandivska;2;131
+1387;Subotivska;Shyroka;1;496
+1388;Subotivska;Shevchenka;1;204
+1389;Subotivska;Zolota;1;435
+1390;Subotivska;Lypynskoho;1;364
+1391;Subotivska;Zamarstynivska;4;451
+1392;Subotivska;Linkolna;4;470
+1393;Subotivska;Mazepy;1;270
+1394;Subotivska;Sacharova;3;333
+1395;Shyroka;Liubinska;3;215
+1396;Shyroka;Universytetska;2;495
+1397;Shyroka;Okruzhna;2;329
+1398;Shyroka;Heroiv UPA;3;366
+1399;Shyroka;Konovaltcia;2;233
+1400;Shyroka;Vyhovskoho;1;267
+1401;Shyroka;Sadova;3;128
+1402;Shyroka;Stepana Bandery;4;224
+1403;Shyroka;Antonovycha;4;435
+1404;Shyroka;Naukova;2;138
+1405;Shyroka;Knyahyni Olhy;2;216
+1406;Shyroka;Volodymyra Velykoho;2;455
+1407;Shyroka;Stryiska;1;164
+1408;Shyroka;Luhanska;3;317
+1409;Shyroka;Khutorivka;4;213
+1410;Shyroka;Uhorska;2;100
+1411;Shyroka;Snopkivska;2;250
+1412;Shyroka;Batalna;4;235
+1413;Shyroka;Zelena;1;233
+1414;Shyroka;Ivana Franka;4;297
+1415;Shyroka;Pasichna;2;288
+1416;Shyroka;Mechnykova;4;451
+1417;Shyroka;Lychakivska;4;385
+1418;Shyroka;Kniazia Romana;4;381
+1419;Shyroka;Stefanyka;1;328
+1420;Shyroka;Doroshenka;1;235
+1421;Shyroka;Kopernyka;1;341
+1422;Shyroka;Kulparkivska;1;241
+1423;Shyroka;Patona;4;307
+1424;Shyroka;Sychivska;4;141
+1425;Shyroka;Horodotska;4;111
+1426;Shyroka;Siaivo;4;138
+1427;Shyroka;Levandivska;4;112
+1428;Shyroka;Subotivska;1;223
+1429;Shyroka;Shevchenka;2;294
+1430;Shyroka;Zolota;2;323
+1431;Shyroka;Lypynskoho;1;438
+1432;Shyroka;Zamarstynivska;3;478
+1433;Shyroka;Linkolna;2;277
+1434;Shyroka;Mazepy;1;286
+1435;Shyroka;Sacharova;1;466
+1436;Shevchenka;Liubinska;2;221
+1437;Shevchenka;Universytetska;2;132
+1438;Shevchenka;Okruzhna;4;390
+1439;Shevchenka;Heroiv UPA;1;286
+1440;Shevchenka;Konovaltcia;2;314
+1441;Shevchenka;Vyhovskoho;3;384
+1442;Shevchenka;Sadova;3;255
+1443;Shevchenka;Stepana Bandery;3;414
+1444;Shevchenka;Antonovycha;4;410
+1445;Shevchenka;Naukova;3;366
+1446;Shevchenka;Knyahyni Olhy;2;327
+1447;Shevchenka;Volodymyra Velykoho;2;289
+1448;Shevchenka;Stryiska;2;196
+1449;Shevchenka;Luhanska;4;187
+1450;Shevchenka;Khutorivka;4;308
+1451;Shevchenka;Uhorska;2;237
+1452;Shevchenka;Snopkivska;4;115
+1453;Shevchenka;Batalna;3;295
+1454;Shevchenka;Zelena;4;433
+1455;Shevchenka;Ivana Franka;1;245
+1456;Shevchenka;Pasichna;1;414
+1457;Shevchenka;Mechnykova;1;387
+1458;Shevchenka;Lychakivska;1;224
+1459;Shevchenka;Kniazia Romana;2;216
+1460;Shevchenka;Stefanyka;2;349
+1461;Shevchenka;Doroshenka;2;222
+1462;Shevchenka;Kopernyka;4;308
+1463;Shevchenka;Kulparkivska;2;469
+1464;Shevchenka;Patona;4;410
+1465;Shevchenka;Sychivska;4;370
+1466;Shevchenka;Horodotska;4;497
+1467;Shevchenka;Siaivo;3;440
+1468;Shevchenka;Levandivska;1;172
+1469;Shevchenka;Subotivska;4;300
+1470;Shevchenka;Shyroka;4;176
+1471;Shevchenka;Zolota;4;152
+1472;Shevchenka;Lypynskoho;3;204
+1473;Shevchenka;Zamarstynivska;3;366
+1474;Shevchenka;Linkolna;2;338
+1475;Shevchenka;Mazepy;2;101
+1476;Shevchenka;Sacharova;4;352
+1477;Zolota;Liubinska;4;227
+1478;Zolota;Universytetska;1;152
+1479;Zolota;Okruzhna;3;258
+1480;Zolota;Heroiv UPA;3;345
+1481;Zolota;Konovaltcia;2;126
+1482;Zolota;Vyhovskoho;1;276
+1483;Zolota;Sadova;3;141
+1484;Zolota;Stepana Bandery;2;205
+1485;Zolota;Antonovycha;3;441
+1486;Zolota;Naukova;3;421
+1487;Zolota;Knyahyni Olhy;2;130
+1488;Zolota;Volodymyra Velykoho;3;238
+1489;Zolota;Stryiska;3;331
+1490;Zolota;Luhanska;4;419
+1491;Zolota;Khutorivka;2;257
+1492;Zolota;Uhorska;2;405
+1493;Zolota;Snopkivska;3;168
+1494;Zolota;Batalna;1;182
+1495;Zolota;Zelena;4;486
+1496;Zolota;Ivana Franka;3;258
+1497;Zolota;Pasichna;4;194
+1498;Zolota;Mechnykova;3;450
+1499;Zolota;Lychakivska;1;187
+1500;Zolota;Kniazia Romana;3;285
+1501;Zolota;Stefanyka;2;176
+1502;Zolota;Doroshenka;4;334
+1503;Zolota;Kopernyka;2;151
+1504;Zolota;Kulparkivska;1;450
+1505;Zolota;Patona;3;379
+1506;Zolota;Sychivska;2;469
+1507;Zolota;Horodotska;2;410
+1508;Zolota;Siaivo;1;142
+1509;Zolota;Levandivska;3;222
+1510;Zolota;Subotivska;3;255
+1511;Zolota;Shyroka;1;122
+1512;Zolota;Shevchenka;2;361
+1513;Zolota;Lypynskoho;1;148
+1514;Zolota;Zamarstynivska;4;181
+1515;Zolota;Linkolna;2;422
+1516;Zolota;Mazepy;2;271
+1517;Zolota;Sacharova;4;294
+1518;Lypynskoho;Liubinska;2;211
+1519;Lypynskoho;Universytetska;2;400
+1520;Lypynskoho;Okruzhna;2;344
+1521;Lypynskoho;Heroiv UPA;4;166
+1522;Lypynskoho;Konovaltcia;3;143
+1523;Lypynskoho;Vyhovskoho;2;400
+1524;Lypynskoho;Sadova;4;160
+1525;Lypynskoho;Stepana Bandery;1;333
+1526;Lypynskoho;Antonovycha;1;403
+1527;Lypynskoho;Naukova;3;224
+1528;Lypynskoho;Knyahyni Olhy;2;239
+1529;Lypynskoho;Volodymyra Velykoho;3;228
+1530;Lypynskoho;Stryiska;2;245
+1531;Lypynskoho;Luhanska;2;495
+1532;Lypynskoho;Khutorivka;2;431
+1533;Lypynskoho;Uhorska;2;122
+1534;Lypynskoho;Snopkivska;1;483
+1535;Lypynskoho;Batalna;2;446
+1536;Lypynskoho;Zelena;3;491
+1537;Lypynskoho;Ivana Franka;1;135
+1538;Lypynskoho;Pasichna;2;458
+1539;Lypynskoho;Mechnykova;2;239
+1540;Lypynskoho;Lychakivska;1;269
+1541;Lypynskoho;Kniazia Romana;1;389
+1542;Lypynskoho;Stefanyka;1;420
+1543;Lypynskoho;Doroshenka;3;310
+1544;Lypynskoho;Kopernyka;4;326
+1545;Lypynskoho;Kulparkivska;1;117
+1546;Lypynskoho;Patona;3;137
+1547;Lypynskoho;Sychivska;2;465
+1548;Lypynskoho;Horodotska;2;496
+1549;Lypynskoho;Siaivo;3;396
+1550;Lypynskoho;Levandivska;3;270
+1551;Lypynskoho;Subotivska;3;497
+1552;Lypynskoho;Shyroka;4;190
+1553;Lypynskoho;Shevchenka;4;167
+1554;Lypynskoho;Zolota;3;272
+1555;Lypynskoho;Zamarstynivska;4;302
+1556;Lypynskoho;Linkolna;4;254
+1557;Lypynskoho;Mazepy;1;493
+1558;Lypynskoho;Sacharova;1;310
+1559;Zamarstynivska;Liubinska;4;375
+1560;Zamarstynivska;Universytetska;1;456
+1561;Zamarstynivska;Okruzhna;1;292
+1562;Zamarstynivska;Heroiv UPA;4;235
+1563;Zamarstynivska;Konovaltcia;2;338
+1564;Zamarstynivska;Vyhovskoho;3;146
+1565;Zamarstynivska;Sadova;3;267
+1566;Zamarstynivska;Stepana Bandery;1;398
+1567;Zamarstynivska;Antonovycha;3;398
+1568;Zamarstynivska;Naukova;3;169
+1569;Zamarstynivska;Knyahyni Olhy;4;453
+1570;Zamarstynivska;Volodymyra Velykoho;4;297
+1571;Zamarstynivska;Stryiska;4;291
+1572;Zamarstynivska;Luhanska;3;331
+1573;Zamarstynivska;Khutorivka;1;163
+1574;Zamarstynivska;Uhorska;4;242
+1575;Zamarstynivska;Snopkivska;3;433
+1576;Zamarstynivska;Batalna;1;494
+1577;Zamarstynivska;Zelena;3;420
+1578;Zamarstynivska;Ivana Franka;2;189
+1579;Zamarstynivska;Pasichna;1;271
+1580;Zamarstynivska;Mechnykova;4;219
+1581;Zamarstynivska;Lychakivska;3;345
+1582;Zamarstynivska;Kniazia Romana;3;294
+1583;Zamarstynivska;Stefanyka;2;146
+1584;Zamarstynivska;Doroshenka;3;261
+1585;Zamarstynivska;Kopernyka;2;109
+1586;Zamarstynivska;Kulparkivska;3;498
+1587;Zamarstynivska;Patona;4;370
+1588;Zamarstynivska;Sychivska;1;366
+1589;Zamarstynivska;Horodotska;4;217
+1590;Zamarstynivska;Siaivo;1;166
+1591;Zamarstynivska;Levandivska;3;211
+1592;Zamarstynivska;Subotivska;2;457
+1593;Zamarstynivska;Shyroka;2;193
+1594;Zamarstynivska;Shevchenka;1;442
+1595;Zamarstynivska;Zolota;2;297
+1596;Zamarstynivska;Lypynskoho;1;310
+1597;Zamarstynivska;Linkolna;4;343
+1598;Zamarstynivska;Mazepy;4;172
+1599;Zamarstynivska;Sacharova;4;170
+1600;Linkolna;Liubinska;2;125
+1601;Linkolna;Universytetska;2;317
+1602;Linkolna;Okruzhna;1;377
+1603;Linkolna;Heroiv UPA;2;147
+1604;Linkolna;Konovaltcia;1;459
+1605;Linkolna;Vyhovskoho;3;345
+1606;Linkolna;Sadova;2;431
+1607;Linkolna;Stepana Bandery;2;395
+1608;Linkolna;Antonovycha;3;200
+1609;Linkolna;Naukova;1;423
+1610;Linkolna;Knyahyni Olhy;1;119
+1611;Linkolna;Volodymyra Velykoho;4;448
+1612;Linkolna;Stryiska;4;408
+1613;Linkolna;Luhanska;4;118
+1614;Linkolna;Khutorivka;1;169
+1615;Linkolna;Uhorska;3;464
+1616;Linkolna;Snopkivska;4;356
+1617;Linkolna;Batalna;4;137
+1618;Linkolna;Zelena;3;142
+1619;Linkolna;Ivana Franka;1;382
+1620;Linkolna;Pasichna;3;174
+1621;Linkolna;Mechnykova;1;210
+1622;Linkolna;Lychakivska;1;441
+1623;Linkolna;Kniazia Romana;1;189
+1624;Linkolna;Stefanyka;2;196
+1625;Linkolna;Doroshenka;4;383
+1626;Linkolna;Kopernyka;4;486
+1627;Linkolna;Kulparkivska;4;197
+1628;Linkolna;Patona;1;323
+1629;Linkolna;Sychivska;3;227
+1630;Linkolna;Horodotska;3;186
+1631;Linkolna;Siaivo;1;111
+1632;Linkolna;Levandivska;1;417
+1633;Linkolna;Subotivska;3;405
+1634;Linkolna;Shyroka;4;170
+1635;Linkolna;Shevchenka;1;316
+1636;Linkolna;Zolota;1;302
+1637;Linkolna;Lypynskoho;1;497
+1638;Linkolna;Zamarstynivska;1;367
+1639;Linkolna;Mazepy;3;132
+1640;Linkolna;Sacharova;3;399
+1641;Mazepy;Liubinska;4;409
+1642;Mazepy;Universytetska;1;101
+1643;Mazepy;Okruzhna;4;469
+1644;Mazepy;Heroiv UPA;3;401
+1645;Mazepy;Konovaltcia;4;170
+1646;Mazepy;Vyhovskoho;2;447
+1647;Mazepy;Sadova;4;267
+1648;Mazepy;Stepana Bandery;1;101
+1649;Mazepy;Antonovycha;1;242
+1650;Mazepy;Naukova;1;230
+1651;Mazepy;Knyahyni Olhy;2;131
+1652;Mazepy;Volodymyra Velykoho;1;267
+1653;Mazepy;Stryiska;3;284
+1654;Mazepy;Luhanska;4;100
+1655;Mazepy;Khutorivka;1;280
+1656;Mazepy;Uhorska;4;310
+1657;Mazepy;Snopkivska;3;488
+1658;Mazepy;Batalna;2;230
+1659;Mazepy;Zelena;4;171
+1660;Mazepy;Ivana Franka;4;419
+1661;Mazepy;Pasichna;1;129
+1662;Mazepy;Mechnykova;1;431
+1663;Mazepy;Lychakivska;1;177
+1664;Mazepy;Kniazia Romana;3;402
+1665;Mazepy;Stefanyka;4;106
+1666;Mazepy;Doroshenka;3;245
+1667;Mazepy;Kopernyka;4;242
+1668;Mazepy;Kulparkivska;2;384
+1669;Mazepy;Patona;3;419
+1670;Mazepy;Sychivska;2;292
+1671;Mazepy;Horodotska;1;357
+1672;Mazepy;Siaivo;3;308
+1673;Mazepy;Levandivska;2;489
+1674;Mazepy;Subotivska;1;105
+1675;Mazepy;Shyroka;4;403
+1676;Mazepy;Shevchenka;1;465
+1677;Mazepy;Zolota;3;233
+1678;Mazepy;Lypynskoho;1;228
+1679;Mazepy;Zamarstynivska;4;263
+1680;Mazepy;Linkolna;2;280
+1681;Mazepy;Sacharova;4;114
+1682;Sacharova;Liubinska;1;184
+1683;Sacharova;Universytetska;4;289
+1684;Sacharova;Okruzhna;3;212
+1685;Sacharova;Heroiv UPA;3;384
+1686;Sacharova;Konovaltcia;4;106
+1687;Sacharova;Vyhovskoho;4;247
+1688;Sacharova;Sadova;3;289
+1689;Sacharova;Stepana Bandery;3;371
+1690;Sacharova;Antonovycha;2;127
+1691;Sacharova;Naukova;4;302
+1692;Sacharova;Knyahyni Olhy;4;160
+1693;Sacharova;Volodymyra Velykoho;4;365
+1694;Sacharova;Stryiska;4;346
+1695;Sacharova;Luhanska;1;113
+1696;Sacharova;Khutorivka;4;151
+1697;Sacharova;Uhorska;2;462
+1698;Sacharova;Snopkivska;3;138
+1699;Sacharova;Batalna;3;226
+1700;Sacharova;Zelena;3;444
+1701;Sacharova;Ivana Franka;2;480
+1702;Sacharova;Pasichna;2;212
+1703;Sacharova;Mechnykova;4;169
+1704;Sacharova;Lychakivska;1;155
+1705;Sacharova;Kniazia Romana;3;394
+1706;Sacharova;Stefanyka;4;178
+1707;Sacharova;Doroshenka;4;222
+1708;Sacharova;Kopernyka;2;273
+1709;Sacharova;Kulparkivska;2;476
+1710;Sacharova;Patona;2;185
+1711;Sacharova;Sychivska;3;483
+1712;Sacharova;Horodotska;1;334
+1713;Sacharova;Siaivo;4;364
+1714;Sacharova;Levandivska;3;465
+1715;Sacharova;Subotivska;4;329
+1716;Sacharova;Shyroka;4;191
+1717;Sacharova;Shevchenka;1;351
+1718;Sacharova;Zolota;3;104
+1719;Sacharova;Lypynskoho;1;292
+1720;Sacharova;Zamarstynivska;1;360
+1721;Sacharova;Linkolna;3;386
+1722;Sacharova;Mazepy;4;263
