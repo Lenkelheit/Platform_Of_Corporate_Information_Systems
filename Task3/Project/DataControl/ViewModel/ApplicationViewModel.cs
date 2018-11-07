@@ -73,7 +73,7 @@ namespace DataControl.ViewModel
                 throw new System.NotImplementedException();
             }
         }
-        public ObservableCollection<Champion> Champions
+        public ObservableCollection<Сhampion> Champions
         {
             get
             {
