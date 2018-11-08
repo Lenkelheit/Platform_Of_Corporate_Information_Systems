@@ -5,6 +5,7 @@ namespace DataControl.Services
     /// </summary>
     public class FileConfiguration : Interfaces.IConfiguration
     {
+        // PROPERTIES
         /// <summary>
         /// Path to file with information about clients.
         /// </summary>
