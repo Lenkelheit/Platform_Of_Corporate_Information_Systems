@@ -28,13 +28,22 @@ namespace DataControl.ViewModel
         Driver currentDriver;
         Order selectedOrder;
         ObservableCollection<Order> orders;
-        System.Timers.Timer sessionTimer;
+        Timer sessionTimer;
         double currentScore;
         bool isSessionContinuing;
         string login;
         string password;
-        ObservableCollection<Champion> champions;
+        ObservableCollection<Ñhampion> champions;
         System.Random randomiser;
+
+        #region Windows
+        MainWindow mainWindow;
+        CabinetWindow cabinetWindow;
+        LogInWindow loginWindow;
+        ProgressWindow progressWindow;
+        ScoreWindow scoreWindow;
+        MessageBoxWindow messageWindow; 
+        #endregion
 
         #region Commands
         private RelayCommand logIn;
@@ -50,16 +59,29 @@ namespace DataControl.ViewModel
         private RelayCommand showScores;
         #endregion
 
-        // EVENT
+        // EVENTS
+        /// <summary>
+        /// Event that invokes when some propery changed
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         // CONSTRUCTORS
+        /// <summary>
+        /// Basic constructor with 1 parametr
+        /// </summary>
+        /// <param name="dataAccessService"></param>
         public ApplicationViewModel(IDataAccessService dataAccessService)
         {
             this.dataAccessService = dataAccessService;
             orders = new ObservableCollection<Order>();
             sessionTimer = new System.Timers.Timer();
             randomiser = new System.Random();
+            messageWindow = new MessageBoxWindow();
+            cabinetWindow = new CabinetWindow();
+            loginWindow = new LogInWindow();
+            scoreWindow = new ScoreWindow();
+            mainWindow = new MainWindow();
 
+            #region Commands Initialise
             logIn = new RelayCommand(LogInMethod);
             logOut = new RelayCommand(LogInMethod);
             signUp = new RelayCommand(SignUpMethod);
@@ -69,6 +91,9 @@ namespace DataControl.ViewModel
             removeOrder = new RelayCommand(RemoveOrderMethod, IsSessionContinuing);
             showCabinetOrRegistrate = new RelayCommand(ShowCabinetOrRegistrateMethod);
             showScores = new RelayCommand(ShowScoresMethod);
+            #endregion
+
+            loginWindow.ShowDialog();
         }
 
 
@@ -115,12 +140,7 @@ namespace DataControl.ViewModel
         {
             get
             {
-                int hours = (int)sessionTimer.Interval / MILISECONDS_IN_HOUR;
-                double remnant = sessionTimer.Interval % MILISECONDS_IN_HOUR;
-                int minutes = (int)remnant / MILISECOND_IN_MINUTE;
-                remnant %= MILISECOND_IN_MINUTE;
-                int seconds = (int)remnant / MILISECONDS_IN_SECOND;
-                return new System.TimeSpan(hours, minutes, seconds);
+                return System.TimeSpan.FromMilliseconds(SESION_TIME);
             }
         }
         /// <summary>
@@ -138,7 +158,7 @@ namespace DataControl.ViewModel
         /// Propetry that enable to interract with championes
         /// </summary>
         /// <returns>Championes</returns>
-        public ObservableCollection<Champion> Champions
+        public ObservableCollection<Ñhampion> Champions
         {
             get
             {
@@ -224,19 +244,26 @@ namespace DataControl.ViewModel
         {
             if (login == null && login == "")
             {
-                //show message box (out of login error)
+                messageWindow.HeaderText = "Empty Login";
+                messageWindow.ContentText = "Login can't be empty!";
+                messageWindow.ShowDialog();
             }
             if (password == null && password == "")
             {
-                //show message box (out of password error)
+                messageWindow.HeaderText = "Empty Password";
+                messageWindow.ContentText = "Password can't be empty!";
+                messageWindow.ShowDialog();
             }
             if (dataAccessService.LogIn(login, password))
             {
                 currentDriver = dataAccessService.Driver;
+                mainWindow
             }
             else
             {
-                //show message box (dataAccessService.Message)
+                messageWindow.HeaderText = "Account problem";
+                messageWindow.ContentText  = dataAccessService.Message;
+                messageWindow.ShowDialog();
             }
         }
         private void LogOutMethod(object obj)
@@ -244,27 +271,39 @@ namespace DataControl.ViewModel
             currentDriver = null;
             password = null;
             login = null;
+            orders.Clear();
+            selectedOrder = null;
+
             //clear all forms
-            //show logIn window
+            mainWindow.Close();
+            loginWindow.ShowDialog();
         }
         private void SignUpMethod(object obj)
         {
             if (login == null && login == "")
             {
-                //show message box (out of login error)
+                messageWindow.HeaderText = "Empty Login";
+                messageWindow.ContentText = "Login can't be empty!";
+                messageWindow.ShowDialog();
             }
 
             if (password == null && password == "")
             {
-                //show message box (out of password error)
+                messageWindow.HeaderText = "Empty Password";
+                messageWindow.ContentText = "Password can't be empty!";
+                messageWindow.ShowDialog();
             }
             if (dataAccessService.SignUp(login, password))
             {
-                //show message box (sucsess)
+                messageWindow.HeaderText = "Done";
+                messageWindow.ContentText = dataAccessService.Message;
+                messageWindow.ShowDialog();
             }
             else
             {
-                //show message box (dataAccessService.Message)
+                messageWindow.HeaderText = "Account problem";
+                messageWindow.ContentText = dataAccessService.Message;
+                messageWindow.ShowDialog();
             }
         }
         private void StartGameMethod(object obj)
