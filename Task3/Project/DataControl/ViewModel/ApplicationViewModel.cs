@@ -73,7 +73,7 @@ namespace DataControl.ViewModel
         {
             this.dataAccessService = dataAccessService;
             orders = new ObservableCollection<Order>();
-            sessionTimer = new System.Timers.Timer();
+            sessionTimer = new Timer();
             randomiser = new System.Random();
             messageWindow = new MessageBoxWindow();
             cabinetWindow = new CabinetWindow();
@@ -93,7 +93,7 @@ namespace DataControl.ViewModel
             showScores = new RelayCommand(ShowScoresMethod);
             #endregion
 
-            loginWindow.ShowDialog();
+            mainWindow.Show();
         }
 
 
@@ -204,7 +204,6 @@ namespace DataControl.ViewModel
         /// </summary>
         /// <returns>Sign Up command</returns>
         public RelayCommand SignUp => signUp;
-
         /// <summary>
         /// Property that enable to interruct with Start Game command
         /// </summary>
@@ -225,7 +224,6 @@ namespace DataControl.ViewModel
         /// </summary>
         /// <returns>Remove Order command</returns>
         public RelayCommand RemoveOrder => removeOrder;
-
         /// <summary>
         /// Property that enable to interruct with Show Cabinet Or Registrate command
         /// </summary>
@@ -257,7 +255,6 @@ namespace DataControl.ViewModel
             if (dataAccessService.LogIn(login, password))
             {
                 currentDriver = dataAccessService.Driver;
-                mainWindow
             }
             else
             {
@@ -273,10 +270,6 @@ namespace DataControl.ViewModel
             login = null;
             orders.Clear();
             selectedOrder = null;
-
-            //clear all forms
-            mainWindow.Close();
-            loginWindow.ShowDialog();
         }
         private void SignUpMethod(object obj)
         {
@@ -308,22 +301,30 @@ namespace DataControl.ViewModel
         }
         private void StartGameMethod(object obj)
         {
-            sessionTimer = new System.Timers.Timer(SESION_TIME);
-            sessionTimer.Elapsed += gameEnded;
-            sessionTimer.Start();
-            isSessionContinuing = true;
+            if (!isSessionContinuing && currentDriver != null)
+            {
+                sessionTimer = new Timer(SESION_TIME);
+                sessionTimer.Elapsed += gameEnded;
+                sessionTimer.Start();
+                isSessionContinuing = true; 
+            }
         }
         private void ExecuteOrderMethod(object obj)
         {
-            if (/*executing window show dialog(selected order) */true)
+            if (selectedOrder != null)
             {
-                currentScore += selectedOrder.Route.Price;
+                progressWindow = new ProgressWindow(selectedOrder.Route.Time);
+                progressWindow.ShowDialog();
+                if (progressWindow.DialogResult == true)
+                {
+                    currentScore += selectedOrder.Route.Price;
+                }
+                else
+                {
+                    currentScore -= PENALTY_SCORE;
+                }
+                orders.Remove(selectedOrder); 
             }
-            else
-            {
-                currentScore -= PENALTY_SCORE;
-            }
-            orders.Remove(selectedOrder);
         }
         private void SearchOrderMethod(object obj)
         {
@@ -335,11 +336,11 @@ namespace DataControl.ViewModel
         }
         private void ShowCabinetOrRegistrateMethod(object obj)
         {
-            //show cabinet window
+            cabinetWindow.ShowDialog();
         }
         private void ShowScoresMethod(object obj)
         {
-            //show score window
+            scoreWindow.ShowDialog();
         }
         #endregion
 
@@ -356,6 +357,8 @@ namespace DataControl.ViewModel
         {
             isSessionContinuing = false;
             dataAccessService.SaveResult(currentDriver);
+            selectedOrder = null;
+            orders = null;
         }
 
         private bool IsSessionContinuing(object o)

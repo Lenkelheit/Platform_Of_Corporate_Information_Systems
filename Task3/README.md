@@ -22,7 +22,7 @@ Our task is **Taxi order (for taxi driver)**.
 | |                        | <p align="center">      3. **User Interface**   </p>                      |              |            |
 | |<ul><li>- [ ] </li></ul>| Do use WPF                                                                |iamprovidence | 06.11.2018 |
 | |                        | <p align="center">      4. **Write Classes**   </p>                       |              |            |
-| |<ul><li>- [ ] </li></ul>| Write all classes                                                         |    vasil98   | 07.11.2018 |
+| |<ul><li>- [x] </li></ul>| Write all classes                                                         |    vasil98   | 07.11.2018 |
 | |                        | <p align="center">         5. Requirements </p>                           |              |            |
 | |<ul><li>- [ ] </li></ul>| Unit-test project                                                         |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Xml-documentation                                                         |      —       |      —     |
