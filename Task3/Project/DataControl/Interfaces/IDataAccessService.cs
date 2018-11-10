@@ -21,7 +21,7 @@ namespace DataControl.Interfaces
         /// <returns>
         /// Array of champions.
         /// </returns>
-        TaxiDriver.Сhampion[] GetBest(int amount);
+        TaxiDriver.Champion[] GetBest(int amount);
         /// <summary>
         /// Gets random order from some data structure.
         /// </summary>
