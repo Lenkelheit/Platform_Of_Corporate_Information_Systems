@@ -85,7 +85,10 @@ namespace DataControl.ViewModel
             {
                 DataContext = this
             };
-            scoreWindow = new ScoreWindow();
+            scoreWindow = new ScoreWindow()
+            {
+                DataContext = this
+            };
 
             #region Commands Initialize
             logIn = new RelayCommand(LogInMethod, IsNotAuthorized);
