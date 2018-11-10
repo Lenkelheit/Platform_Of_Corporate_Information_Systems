@@ -18,7 +18,6 @@ namespace DataControl.ViewModel
     public class ApplicationViewModel : INotifyPropertyChanged
     {
         // CONSTANTS
-        const string APPLICATION_NAME = "Taxi Driver";
         const int SESION_TIME = 30;
         const double PENALTY_SCORE = 50;
 
@@ -33,11 +32,10 @@ namespace DataControl.ViewModel
         bool isSessionContinuing;
         string login;
         string password;
-        ObservableCollection<Ñhampion> champions;
-        System.Random randomiser;
+        ObservableCollection<Champion> champions;
+        System.Random randomizer;
 
         #region Windows
-        MainWindow mainWindow;
         CabinetWindow cabinetWindow;
         LogInWindow loginWindow;
         ProgressWindow progressWindow;
@@ -68,24 +66,23 @@ namespace DataControl.ViewModel
         /// <summary>
         /// Basic constructor with 1 parametr
         /// </summary>
-        /// <param name="dataAccessService"></param>
+        /// <param name="dataAccessService">Programs dataAccessService</param>
         public ApplicationViewModel(IDataAccessService dataAccessService)
         {
             this.dataAccessService = dataAccessService;
             orders = new ObservableCollection<Order>();
             sessionTimer = new Timer();
-            randomiser = new System.Random();
+            randomizer = new System.Random();
             messageWindow = new MessageBoxWindow();
             cabinetWindow = new CabinetWindow();
             loginWindow = new LogInWindow();
             scoreWindow = new ScoreWindow();
-            mainWindow = new MainWindow();
 
-            #region Commands Initialise
-            logIn = new RelayCommand(LogInMethod);
-            logOut = new RelayCommand(LogInMethod);
+            #region Commands Initialize
+            logIn = new RelayCommand(LogInMethod, IsntAutorised);
+            logOut = new RelayCommand(LogInMethod, IsAutorised);
             signUp = new RelayCommand(SignUpMethod);
-            startGame = new RelayCommand(StartGameMethod);
+            startGame = new RelayCommand(StartGameMethod, IsntSessiontContinuing);
             executeOrder = new RelayCommand(ExecuteOrderMethod, IsSessionContinuing);
             searchOrder = new RelayCommand(SearchOrderMethod, IsSessionContinuing);
             removeOrder = new RelayCommand(RemoveOrderMethod, IsSessionContinuing);
@@ -93,7 +90,6 @@ namespace DataControl.ViewModel
             showScores = new RelayCommand(ShowScoresMethod);
             #endregion
 
-            mainWindow.Show();
         }
 
 
@@ -158,7 +154,7 @@ namespace DataControl.ViewModel
         /// Propetry that enable to interract with championes
         /// </summary>
         /// <returns>Championes</returns>
-        public ObservableCollection<Ñhampion> Champions
+        public ObservableCollection<Champion> Champions
         {
             get
             {
@@ -240,13 +236,13 @@ namespace DataControl.ViewModel
         #region Commands
         private void LogInMethod(object obj)
         {
-            if (login == null && login == "")
+            if (string.IsNullOrEmpty(login))
             {
                 messageWindow.HeaderText = "Empty Login";
                 messageWindow.ContentText = "Login can't be empty!";
                 messageWindow.ShowDialog();
             }
-            if (password == null && password == "")
+            if (string.IsNullOrEmpty(password))
             {
                 messageWindow.HeaderText = "Empty Password";
                 messageWindow.ContentText = "Password can't be empty!";
@@ -273,25 +269,20 @@ namespace DataControl.ViewModel
         }
         private void SignUpMethod(object obj)
         {
-            if (login == null && login == "")
+            if (string.IsNullOrEmpty(login))
             {
                 messageWindow.HeaderText = "Empty Login";
                 messageWindow.ContentText = "Login can't be empty!";
                 messageWindow.ShowDialog();
             }
 
-            if (password == null && password == "")
+            if (string.IsNullOrEmpty(password))
             {
                 messageWindow.HeaderText = "Empty Password";
                 messageWindow.ContentText = "Password can't be empty!";
                 messageWindow.ShowDialog();
             }
-            if (dataAccessService.SignUp(login, password))
-            {
-                messageWindow.HeaderText = "Done";
-                messageWindow.ContentText = dataAccessService.Message;
-                messageWindow.ShowDialog();
-            }
+            if (dataAccessService.SignUp(login, password)){}
             else
             {
                 messageWindow.HeaderText = "Account problem";
@@ -304,15 +295,13 @@ namespace DataControl.ViewModel
             if (!isSessionContinuing && currentDriver != null)
             {
                 sessionTimer = new Timer(SESION_TIME);
-                sessionTimer.Elapsed += gameEnded;
+                sessionTimer.Elapsed += GameEnded;
                 sessionTimer.Start();
                 isSessionContinuing = true; 
             }
         }
         private void ExecuteOrderMethod(object obj)
         {
-            if (selectedOrder != null)
-            {
                 progressWindow = new ProgressWindow(selectedOrder.Route.Time);
                 progressWindow.ShowDialog();
                 if (progressWindow.DialogResult == true)
@@ -324,7 +313,6 @@ namespace DataControl.ViewModel
                     currentScore -= PENALTY_SCORE;
                 }
                 orders.Remove(selectedOrder); 
-            }
         }
         private void SearchOrderMethod(object obj)
         {
@@ -353,7 +341,7 @@ namespace DataControl.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(e.PropertyName));
         }
 
-        private void gameEnded(object sender, ElapsedEventArgs e)
+        private void GameEnded(object sender, ElapsedEventArgs e)
         {
             isSessionContinuing = false;
             dataAccessService.SaveResult(currentDriver);
@@ -364,6 +352,21 @@ namespace DataControl.ViewModel
         private bool IsSessionContinuing(object o)
         {
             return isSessionContinuing;
+        }
+
+        private bool IsntSessiontContinuing(object o)
+        {
+            return !isSessionContinuing;
+        }
+
+        private bool IsAutorised(object o)
+        {
+            return currentDriver != null;
+        }
+
+        private bool IsntAutorised(object o)
+        {
+            return currentDriver == null;
         }
     }
 }
