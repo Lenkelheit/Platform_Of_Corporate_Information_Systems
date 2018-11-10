@@ -73,16 +73,25 @@ namespace DataControl.ViewModel
             orders = new ObservableCollection<Order>();
             sessionTimer = new Timer();
             randomizer = new System.Random();
-            messageWindow = new MessageBoxWindow();
-            cabinetWindow = new CabinetWindow();
-            loginWindow = new LogInWindow();
+            messageWindow = new MessageBoxWindow()
+            {
+                DataContext = this
+            };
+            cabinetWindow = new CabinetWindow()
+            {
+                DataContext = this
+            };
+            loginWindow = new LogInWindow()
+            {
+                DataContext = this
+            };
             scoreWindow = new ScoreWindow();
 
             #region Commands Initialize
-            logIn = new RelayCommand(LogInMethod, IsntAutorised);
-            logOut = new RelayCommand(LogInMethod, IsAutorised);
+            logIn = new RelayCommand(LogInMethod, IsNotAuthorized);
+            logOut = new RelayCommand(LogInMethod, IsAuthorized);
             signUp = new RelayCommand(SignUpMethod);
-            startGame = new RelayCommand(StartGameMethod, IsntSessiontContinuing);
+            startGame = new RelayCommand(StartGameMethod, IsNotSessiontContinuing);
             executeOrder = new RelayCommand(ExecuteOrderMethod, IsSessionContinuing);
             searchOrder = new RelayCommand(SearchOrderMethod, IsSessionContinuing);
             removeOrder = new RelayCommand(RemoveOrderMethod, IsSessionContinuing);
@@ -236,13 +245,13 @@ namespace DataControl.ViewModel
         #region Commands
         private void LogInMethod(object obj)
         {
-            if (string.IsNullOrEmpty(login))
+            if (string.IsNullOrWhiteSpace(login))
             {
                 messageWindow.HeaderText = "Empty Login";
                 messageWindow.ContentText = "Login can't be empty!";
                 messageWindow.ShowDialog();
             }
-            if (string.IsNullOrEmpty(password))
+            if (string.IsNullOrWhiteSpace(password))
             {
                 messageWindow.HeaderText = "Empty Password";
                 messageWindow.ContentText = "Password can't be empty!";
@@ -269,20 +278,23 @@ namespace DataControl.ViewModel
         }
         private void SignUpMethod(object obj)
         {
-            if (string.IsNullOrEmpty(login))
+            if (string.IsNullOrWhiteSpace(login))
             {
                 messageWindow.HeaderText = "Empty Login";
                 messageWindow.ContentText = "Login can't be empty!";
                 messageWindow.ShowDialog();
             }
 
-            if (string.IsNullOrEmpty(password))
+            if (string.IsNullOrWhiteSpace(password))
             {
                 messageWindow.HeaderText = "Empty Password";
                 messageWindow.ContentText = "Password can't be empty!";
                 messageWindow.ShowDialog();
             }
-            if (dataAccessService.SignUp(login, password)){}
+            if (dataAccessService.SignUp(login, password))
+            {
+                currentDriver = dataAccessService.Driver;
+            }
             else
             {
                 messageWindow.HeaderText = "Account problem";
@@ -302,7 +314,10 @@ namespace DataControl.ViewModel
         }
         private void ExecuteOrderMethod(object obj)
         {
-                progressWindow = new ProgressWindow(selectedOrder.Route.Time);
+            progressWindow = new ProgressWindow(selectedOrder.Route.Time)
+            {
+                DataContext = this
+            };
                 progressWindow.ShowDialog();
                 if (progressWindow.DialogResult == true)
                 {
@@ -354,17 +369,17 @@ namespace DataControl.ViewModel
             return isSessionContinuing;
         }
 
-        private bool IsntSessiontContinuing(object o)
+        private bool IsNotSessiontContinuing(object o)
         {
             return !isSessionContinuing;
         }
 
-        private bool IsAutorised(object o)
+        private bool IsAuthorized(object o)
         {
             return currentDriver != null;
         }
 
-        private bool IsntAutorised(object o)
+        private bool IsNotAuthorized(object o)
         {
             return currentDriver == null;
         }
