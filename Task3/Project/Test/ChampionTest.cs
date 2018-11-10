@@ -12,7 +12,7 @@ namespace Test
         {
             int expectedNumber = 25;
 
-            Сhampion сhampion = new Сhampion(25, "Steve", 57);
+            Champion сhampion = new Champion(25, "Steve", 57);
             Assert.IsTrue(сhampion.Number == expectedNumber);           
         }
 
@@ -21,7 +21,7 @@ namespace Test
         {
             string expectedName = "Steve";
 
-            Сhampion сhampion = new Сhampion(25, "Steve", 57);
+            Champion сhampion = new Champion(25, "Steve", 57);
             Assert.IsTrue(сhampion.Name == expectedName);
         }
 
@@ -30,7 +30,7 @@ namespace Test
         {
             double expectedScore = 57;
 
-            Сhampion сhampion = new Сhampion(25, "Steve", 57);
+            Champion сhampion = new Champion(25, "Steve", 57);
             Assert.IsTrue(сhampion.Score == expectedScore);
         }
 
@@ -41,7 +41,7 @@ namespace Test
             string expectedName = "Steve";
             double expectedScore = 57;
 
-            Сhampion сhampion = new Сhampion(25, "Steve", 57);
+            Champion сhampion = new Champion(25, "Steve", 57);
             Assert.IsTrue(сhampion.Number == expectedNumber
                        && сhampion.Name == expectedName
                        && сhampion.Score == expectedScore);
