@@ -20,7 +20,7 @@ namespace DataControl.Services
             }
         }
 
-        public TaxiDriver.Сhampion[] GetBest(int amount)
+        public TaxiDriver.Champion[] GetBest(int amount)
         {
             throw new System.NotImplementedException();
         }
