@@ -57,11 +57,10 @@ namespace DataControl.Services
             }
         }
 
-        private string[] GetRandomSplittedLine(string path)
+        private string[] GetRandomSplittedLine(string path, double probability = 0.00001)
         {
             bool isChosen = false;
             string line = string.Empty;
-            double probability = 0.00001;
             while (!isChosen)
             {
                 using (StreamReader streamReader = new StreamReader(path))
@@ -128,7 +127,10 @@ namespace DataControl.Services
             {
                 for (string line = string.Empty; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
                 {
-                    driver.LastScore = double.Parse(line.Split(';')[1]);
+                    if (line.Contains(driver.Name))
+                    {
+                        driver.LastScore = double.Parse(line.Split(';')[1]);
+                    }
                 }
             }
         }
