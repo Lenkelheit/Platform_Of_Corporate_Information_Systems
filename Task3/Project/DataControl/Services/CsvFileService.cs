@@ -42,6 +42,9 @@ namespace DataControl.Services
         /// </summary>
         public CsvFileService()
         {
+            driver = new TaxiDriver.Driver("", "", 0, 0);
+            message = "";
+            fileConfiguration = new FileConfiguration();
             rand = new System.Random();
         }
 
@@ -56,10 +59,25 @@ namespace DataControl.Services
 
         private string[] GetRandomSplittedLine(string path)
         {
-            string[] lines = File.ReadAllLines(path);
-            int index = rand.Next(0, lines.Length);
-
-            return lines[index].Split(';');
+            bool isChosen = false;
+            string line = "";
+            while (!isChosen)
+            {
+                using (StreamReader streamReader = new StreamReader(path))
+                {
+                    int probability = 0;
+                    for (; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
+                    {
+                        probability = rand.Next(0, 2);
+                        if (probability == 1)
+                        {
+                            isChosen = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            return line.Split(';');
         }
 
         private TaxiDriver.Client CreateClient()
@@ -77,10 +95,10 @@ namespace DataControl.Services
 
             System.Tuple<string, string> startAndEndStreets = GetStartAndEndStreets(startStreetId, endStreetId);
 
-            return new TaxiDriver.Route(startAndEndStreets.Item1,
-                startAndEndStreets.Item2,
-                System.TimeSpan.FromSeconds(int.Parse(routeParameters[3])),
-                double.Parse(routeParameters[routeParameters.Length - 1]));
+            return new TaxiDriver.Route(startStreet: startAndEndStreets.Item1,
+                endStreet: startAndEndStreets.Item2,
+                time: System.TimeSpan.FromSeconds(int.Parse(routeParameters[3])),
+                price: double.Parse(routeParameters[routeParameters.Length - 1]));
         }
 
         private System.Tuple<string, string> GetStartAndEndStreets(int startStreetId, int endStreetId)
@@ -89,8 +107,7 @@ namespace DataControl.Services
             using (StreamReader streamReader = new StreamReader(fileConfiguration.StreetFile))
             {
                 int maxIndex = startStreetId > endStreetId ? startStreetId : endStreetId;
-                int i = 0;
-                while (i < maxIndex)
+                for (int i = 0; i < maxIndex; ++i) 
                 {
                     line = streamReader.ReadLine();
                     if (i == startStreetId - 1)
@@ -101,7 +118,6 @@ namespace DataControl.Services
                     {
                         endStreet = line.Split(';')[1];
                     }
-                    ++i;
                 }
             }
             return new System.Tuple<string, string>(startStreet, endStreet);
@@ -175,10 +191,7 @@ namespace DataControl.Services
         {
             CheckFileConfiguration();
 
-            TaxiDriver.Client client = CreateClient();
-            TaxiDriver.Route route = CreateRoute();
-
-            return new TaxiDriver.Order(rand.Next(), client, route);
+            return new TaxiDriver.Order(rand.Next(), CreateClient(), CreateRoute());
         }
 
         /// <summary>
@@ -188,17 +201,17 @@ namespace DataControl.Services
         /// <returns>
         /// Current service for data access.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when the configuration is null.
+        /// <exception cref="System.ArgumentException">
+        /// Thrown when the configuration is inappropriate.
         /// </exception>
         public Interfaces.IDataAccessService SetConfiguration(Interfaces.IConfiguration configuration)
         {
-            if (configuration != null)
+            if (configuration is FileConfiguration) 
             {
-                fileConfiguration = configuration as FileConfiguration;
+                fileConfiguration = (FileConfiguration)configuration;
                 return this;
             }
-            throw new System.ArgumentNullException("The configuration is null.");
+            throw new System.ArgumentException("The configuration is inappropriate.");
         }
 
         /// <summary>
@@ -238,10 +251,8 @@ namespace DataControl.Services
 
             using (StreamReader streamReader = new StreamReader(fileConfiguration.DriverFile))
             {
-                string line;
-                while (!streamReader.EndOfStream)
+                for (string line = ""; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
                 {
-                    line = streamReader.ReadLine();
                     if (line.StartsWith(name))
                     {
                         message = "User with such name already exists.";
@@ -273,27 +284,26 @@ namespace DataControl.Services
         {
             CheckFileConfiguration();
 
-            string line;
-            StreamReader streamReader;
-            for (streamReader = new StreamReader(fileConfiguration.DriverFile); !streamReader.EndOfStream;) 
+            using (StreamReader streamReader = new StreamReader(fileConfiguration.DriverFile))
             {
-                line = streamReader.ReadLine();
-                if (line.StartsWith(name))
+                for (string line = ""; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
                 {
-                    if (line.EndsWith(password))
+                    if (line.StartsWith(name))
                     {
-                        driver = new TaxiDriver.Driver(name, password, 0, 0);
-                        SetDriverTotalAndBestScore();
-                        return true;
-                    }
-                    else
-                    {
-                        message = "The password is incorrect.";
-                        return false;
+                        if (line.EndsWith(password))
+                        {
+                            driver = new TaxiDriver.Driver(name, password, 0, 0);
+                            SetDriverTotalAndBestScore();
+                            return true;
+                        }
+                        else
+                        {
+                            message = "The password is incorrect.";
+                            return false;
+                        }
                     }
                 }
             }
-            streamReader.Dispose();
             message = "The name is incorrect.";
             return false;
         }
