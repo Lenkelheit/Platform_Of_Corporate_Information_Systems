@@ -1,4 +1,5 @@
 using System.IO;
+using System.Collections.Generic;
 
 namespace DataControl.Services
 {
@@ -11,6 +12,7 @@ namespace DataControl.Services
         private TaxiDriver.Driver driver;
         private string message;
         private FileConfiguration fileConfiguration;
+        private System.Random rand;
 
         // PROPERTIES
         /// <summary>
@@ -34,32 +36,41 @@ namespace DataControl.Services
             }
         }
 
+        // CONSTRUCTORS
+        /// <summary>
+        /// Basic constructors without parameters.
+        /// </summary>
+        public CsvFileService()
+        {
+            rand = new System.Random();
+        }
+
         // METHODS
+        private void CheckFileConfiguration()
+        {
+            if (fileConfiguration == null)
+            {
+                throw new System.ArgumentNullException("The configuration isn`t setted up.");
+            }
+        }
+
+        private string[] GetRandomSplittedLine(string path)
+        {
+            string[] lines = File.ReadAllLines(path);
+            int index = rand.Next(0, lines.Length);
+
+            return lines[index].Split(';');
+        }
+
         private TaxiDriver.Client CreateClient()
         {
-            string[] clientLines;
-            using (StreamReader streamReader = new StreamReader(fileConfiguration.ClientFile))
-            {
-                clientLines = streamReader.ReadToEnd().Trim().Split('\n');
-            }
-            System.Random rand = new System.Random();
-            int clientIndex = rand.Next(0, clientLines.Length);
-
-            string[] clientParameters = clientLines[clientIndex].Split(';');
+            string[] clientParameters = GetRandomSplittedLine(fileConfiguration.ClientFile);
             return new TaxiDriver.Client(clientParameters[1], clientParameters[clientParameters.Length - 1]);
         }
 
         private TaxiDriver.Route CreateRoute()
         {
-            string[] routeLines;
-            using (StreamReader streamReader = new StreamReader(fileConfiguration.RouteFile))
-            {
-                routeLines = streamReader.ReadToEnd().Trim().Split('\n');
-            }
-            System.Random rand = new System.Random();
-            int routeIndex = rand.Next(0, routeLines.Length);
-
-            string[] routeParameters = routeLines[routeIndex].Split(';');
+            string[] routeParameters = GetRandomSplittedLine(fileConfiguration.RouteFile);
 
             int startStreetId = int.Parse(routeParameters[1]);
             int endStreetId = int.Parse(routeParameters[2]);
@@ -68,13 +79,13 @@ namespace DataControl.Services
 
             return new TaxiDriver.Route(startAndEndStreets.Item1,
                 startAndEndStreets.Item2,
-                new System.TimeSpan(0, 0, int.Parse(routeParameters[3])),
+                System.TimeSpan.FromSeconds(int.Parse(routeParameters[3])),
                 double.Parse(routeParameters[routeParameters.Length - 1]));
         }
 
         private System.Tuple<string, string> GetStartAndEndStreets(int startStreetId, int endStreetId)
         {
-            string line = "", startStreet = "", endStreet = "";
+            string line, startStreet = null, endStreet = null;
             using (StreamReader streamReader = new StreamReader(fileConfiguration.StreetFile))
             {
                 int maxIndex = startStreetId > endStreetId ? startStreetId : endStreetId;
@@ -98,16 +109,7 @@ namespace DataControl.Services
 
         private void SetDriverTotalAndBestScore()
         {
-            if (!File.Exists(fileConfiguration.ScoreFile)) 
-            {
-                throw new FileNotFoundException($"File with path {fileConfiguration.ScoreFile} wasn`t found.");
-            }
-
-            string[] scoreLines;
-            using (StreamReader streamReader = new StreamReader(fileConfiguration.ScoreFile))
-            {
-                scoreLines = streamReader.ReadToEnd().Trim().Split('\n');
-            }
+            string[] scoreLines = File.ReadAllLines(fileConfiguration.ScoreFile);
 
             for (int i = 0; i < scoreLines.Length; ++i) 
             {
@@ -133,33 +135,28 @@ namespace DataControl.Services
         /// </exception>
         public TaxiDriver.Champion[] GetBest(int amount)
         {
-            if (fileConfiguration != null)
-            {
-                if (!File.Exists(fileConfiguration.ScoreFile))
-                {
-                    throw new FileNotFoundException($"File with path {fileConfiguration.ScoreFile} wasn`t found.");
-                }
+            CheckFileConfiguration();
 
-                System.Collections.Generic.List<TaxiDriver.Champion> champions =
-                    new System.Collections.Generic.List<TaxiDriver.Champion>();
-                using (StreamReader streamReader = new StreamReader(fileConfiguration.ScoreFile))
-                {
-                    string[] championLine;
-                    int i = 0;
-                    while (i < amount && !streamReader.EndOfStream)
-                    {
-                        championLine = streamReader.ReadLine().Split(';');
-                        champions.Add(new TaxiDriver.Champion(i + 1, championLine[0],
-                            double.Parse(championLine[championLine.Length - 1])));
-                        ++i;
-                    }
-                }
-                return champions.ToArray();
-            }
-            else
+            string[] scoreLines = File.ReadAllLines(fileConfiguration.ScoreFile);
+
+            List<KeyValuePair<string, double>> allChampionsList =
+                new List<KeyValuePair<string, double>>(scoreLines.Length);
+            string[] scoreParameters;
+            for (int i = 0; i < scoreLines.Length; ++i) 
             {
-                throw new System.ArgumentNullException("The configuration isn`t setted up.");
+                scoreParameters = scoreLines[i].Split(';');
+                allChampionsList.Add(new KeyValuePair<string, double>
+                    (scoreParameters[0], double.Parse(scoreParameters[scoreParameters.Length - 1])));
             }
+            allChampionsList.Sort((first, second) => second.Value.CompareTo(first.Value));
+
+            TaxiDriver.Champion[] champions = 
+                new TaxiDriver.Champion[amount < allChampionsList.Count ? amount : allChampionsList.Count];
+            for (int i = 0; i < amount && i < allChampionsList.Count; ++i) 
+            {
+                champions[i] = new TaxiDriver.Champion(i + 1, allChampionsList[i].Key, allChampionsList[i].Value);
+            }
+            return champions;
         }
 
         /// <summary>
@@ -176,25 +173,12 @@ namespace DataControl.Services
         /// </exception>
         public TaxiDriver.Order GetRandomOrder()
         {
-            if (fileConfiguration != null)
-            {
-                if (!File.Exists(fileConfiguration.ClientFile) && 
-                    !File.Exists(fileConfiguration.RouteFile) && 
-                    !File.Exists(fileConfiguration.StreetFile)) 
-                {
-                    throw new FileNotFoundException("Some files for creating order weren`t found.");
-                }
+            CheckFileConfiguration();
 
-                TaxiDriver.Client client = CreateClient();
-                TaxiDriver.Route route = CreateRoute();
+            TaxiDriver.Client client = CreateClient();
+            TaxiDriver.Route route = CreateRoute();
 
-                System.Random rand = new System.Random();
-                return new TaxiDriver.Order(rand.Next(), client, route);
-            }
-            else
-            {
-                throw new System.ArgumentNullException("The configuration isn`t setted up.");
-            }
+            return new TaxiDriver.Order(rand.Next(), client, route);
         }
 
         /// <summary>
@@ -204,17 +188,17 @@ namespace DataControl.Services
         /// <returns>
         /// Current service for data access.
         /// </returns>
-        /// <exception cref="System.ArgumentException">
-        /// Thrown when the configuration is inappropriate.
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when the configuration is null.
         /// </exception>
         public Interfaces.IDataAccessService SetConfiguration(Interfaces.IConfiguration configuration)
         {
-            fileConfiguration = configuration as FileConfiguration;
-            if (fileConfiguration != null)
+            if (configuration != null)
             {
+                fileConfiguration = configuration as FileConfiguration;
                 return this;
-            } 
-            throw new System.ArgumentException("The configuration is inappropriate.");
+            }
+            throw new System.ArgumentNullException("The configuration is null.");
         }
 
         /// <summary>
@@ -229,22 +213,9 @@ namespace DataControl.Services
         /// </exception>
         public void SaveResult(TaxiDriver.Driver driver)
         {
-            if (fileConfiguration != null)
-            {
-                if (!File.Exists(fileConfiguration.ScoreFile)) 
-                {
-                    throw new FileNotFoundException($"File with path {fileConfiguration.ScoreFile} wasn`t found.");
-                }
+            CheckFileConfiguration();
 
-                using (StreamWriter streamWriter = new StreamWriter(fileConfiguration.ScoreFile, true))   
-                {
-                    streamWriter.WriteLine($"{driver.Name};{driver.LastScore}");
-                }
-            }
-            else
-            {
-                throw new System.ArgumentNullException("The configuration isn`t setted up.");
-            }
+            File.AppendAllText(fileConfiguration.ScoreFile, $"{driver.Name};{driver.LastScore}\n");
         }
 
         /// <summary>
@@ -263,38 +234,25 @@ namespace DataControl.Services
         /// </exception>
         public bool SignUp(string name, string password)
         {
-            if (fileConfiguration != null)
-            {
-                if (!File.Exists(fileConfiguration.DriverFile))
-                {
-                    throw new FileNotFoundException($"File with path {fileConfiguration.DriverFile} wasn`t found.");
-                }
+            CheckFileConfiguration();
 
-                using (StreamReader streamReader = new StreamReader(fileConfiguration.DriverFile)) 
+            using (StreamReader streamReader = new StreamReader(fileConfiguration.DriverFile))
+            {
+                string line;
+                while (!streamReader.EndOfStream)
                 {
-                    string line = "";
-                    while (!streamReader.EndOfStream)
+                    line = streamReader.ReadLine();
+                    if (line.StartsWith(name))
                     {
-                        line = streamReader.ReadLine();
-                        if (line.StartsWith(name))
-                        {
-                            message = "User with such name already exists.";
-                            return false;
-                        }
+                        message = "User with such name already exists.";
+                        return false;
                     }
                 }
+            }
 
-                driver = new TaxiDriver.Driver(name, password, 0, 0);
-                using (StreamWriter streamWriter = new StreamWriter(fileConfiguration.DriverFile, true)) 
-                {
-                    streamWriter.WriteLine($"{name};{password}");
-                }
-                return true;
-            }
-            else
-            {
-                throw new System.ArgumentNullException("The configuration isn`t setted up.");
-            }
+            driver = new TaxiDriver.Driver(name, password, 0, 0);
+            File.AppendAllText(fileConfiguration.DriverFile, $"{name};{password}\n");
+            return true;
         }
 
         /// <summary>
@@ -313,34 +271,31 @@ namespace DataControl.Services
         /// </exception>
         public bool LogIn(string name, string password)
         {
-            if (fileConfiguration != null) 
-            {
-                if (!File.Exists(fileConfiguration.DriverFile))
-                {
-                    throw new FileNotFoundException($"File with path {fileConfiguration.DriverFile} wasn`t found.");
-                }
+            CheckFileConfiguration();
 
-                using (StreamReader streamReader = new StreamReader(fileConfiguration.DriverFile))
+            string line;
+            StreamReader streamReader;
+            for (streamReader = new StreamReader(fileConfiguration.DriverFile); !streamReader.EndOfStream;) 
+            {
+                line = streamReader.ReadLine();
+                if (line.StartsWith(name))
                 {
-                    string line = "";
-                    while (!streamReader.EndOfStream)
+                    if (line.EndsWith(password))
                     {
-                        line = streamReader.ReadLine();
-                        if (line.StartsWith(name) && line.EndsWith(password))
-                        {
-                            driver = new TaxiDriver.Driver(name, password, 0, 0);
-                            SetDriverTotalAndBestScore();
-                            return true;
-                        }
+                        driver = new TaxiDriver.Driver(name, password, 0, 0);
+                        SetDriverTotalAndBestScore();
+                        return true;
+                    }
+                    else
+                    {
+                        message = "The password is incorrect.";
+                        return false;
                     }
                 }
-                message = "The name or password is incorrect.";
-                return false;
             }
-            else
-            {
-                throw new System.ArgumentNullException("The configuration isn`t setted up.");
-            }
+            streamReader.Dispose();
+            message = "The name is incorrect.";
+            return false;
         }
     }
 }
