@@ -16,11 +16,11 @@ namespace Task3
                     .SetConfiguration(
                         new FileConfiguration()
                         {
-                            ClientFile = "/Resources/files/Client.csv",
-                            DriverFile = "/Resources/files/Driver.csv",
-                            RouteFile = "/Resources/files/Route.csv",
-                            ScoreFile = "/Resources/files/Score.csv",
-                            StreetFile = "/Resources/files/Street.csv",
+                            ClientFile = @"Resources\files\Client.csv",
+                            DriverFile = @"Resources\files\Driver.csv",
+                            RouteFile = @"Resources\files\Route.csv",
+                            ScoreFile = @"Resources\files\Score.csv",
+                            StreetFile = @"Resources\files\Street.csv",
                         }));
         }
     }
