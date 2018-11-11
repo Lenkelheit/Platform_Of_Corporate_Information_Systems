@@ -40,7 +40,7 @@ namespace DataControl.ViewModel
         LogInWindow loginWindow;
         ProgressWindow progressWindow;
         ScoreWindow scoreWindow;
-        MessageBoxWindow messageWindow; 
+        MessageBoxWindow messageWindow;
         #endregion
 
         #region Commands
@@ -73,10 +73,6 @@ namespace DataControl.ViewModel
             orders = new ObservableCollection<Order>();
             sessionTimer = new Timer();
             randomizer = new System.Random();
-            messageWindow = new MessageBoxWindow()
-            {
-                DataContext = this
-            };
             cabinetWindow = new CabinetWindow()
             {
                 DataContext = this
@@ -94,7 +90,7 @@ namespace DataControl.ViewModel
             logIn = new RelayCommand(LogInMethod, IsNotAuthorized);
             logOut = new RelayCommand(LogInMethod, IsAuthorized);
             signUp = new RelayCommand(SignUpMethod);
-            startGame = new RelayCommand(StartGameMethod, IsNotSessiontContinuing);
+            startGame = new RelayCommand(StartGameMethod, IsNotSessionContinuing);
             executeOrder = new RelayCommand(ExecuteOrderMethod, IsSessionContinuing);
             searchOrder = new RelayCommand(SearchOrderMethod, IsSessionContinuing);
             removeOrder = new RelayCommand(RemoveOrderMethod, IsSessionContinuing);
@@ -148,7 +144,7 @@ namespace DataControl.ViewModel
         {
             get
             {
-                return System.TimeSpan.FromMilliseconds(SESION_TIME);
+                return System.TimeSpan.FromSeconds(SESION_TIME);
             }
         }
         /// <summary>
@@ -160,6 +156,14 @@ namespace DataControl.ViewModel
             get
             {
                 return currentScore;
+            }
+            set
+            {
+                if (value != currentScore)
+                {
+                    CurrentScore = value;
+                    OnPropertyChange(new PropertyChangedEventArgs("CurrentScore"));
+                }
             }
         }
         /// <summary>
@@ -250,15 +254,11 @@ namespace DataControl.ViewModel
         {
             if (string.IsNullOrWhiteSpace(login))
             {
-                messageWindow.HeaderText = "Empty Login";
-                messageWindow.ContentText = "Login can't be empty!";
-                messageWindow.ShowDialog();
+                ExecuteMessageWindow("Empty Login", "Login can't be empty!");
             }
             if (string.IsNullOrWhiteSpace(password))
             {
-                messageWindow.HeaderText = "Empty Password";
-                messageWindow.ContentText = "Password can't be empty!";
-                messageWindow.ShowDialog();
+                ExecuteMessageWindow("Empty Password", "Password can't be empty!");
             }
             if (dataAccessService.LogIn(login, password))
             {
@@ -266,9 +266,7 @@ namespace DataControl.ViewModel
             }
             else
             {
-                messageWindow.HeaderText = "Account problem";
-                messageWindow.ContentText  = dataAccessService.Message;
-                messageWindow.ShowDialog();
+                ExecuteMessageWindow("Account problem", dataAccessService.Message);
             }
         }
         private void LogOutMethod(object obj)
@@ -283,16 +281,12 @@ namespace DataControl.ViewModel
         {
             if (string.IsNullOrWhiteSpace(login))
             {
-                messageWindow.HeaderText = "Empty Login";
-                messageWindow.ContentText = "Login can't be empty!";
-                messageWindow.ShowDialog();
+                ExecuteMessageWindow("Empty Login", "Login can't be empty!");
             }
 
             if (string.IsNullOrWhiteSpace(password))
             {
-                messageWindow.HeaderText = "Empty Password";
-                messageWindow.ContentText = "Password can't be empty!";
-                messageWindow.ShowDialog();
+                ExecuteMessageWindow("Empty Password", "Password can't be empty!");
             }
             if (dataAccessService.SignUp(login, password))
             {
@@ -300,9 +294,7 @@ namespace DataControl.ViewModel
             }
             else
             {
-                messageWindow.HeaderText = "Account problem";
-                messageWindow.ContentText = dataAccessService.Message;
-                messageWindow.ShowDialog();
+                ExecuteMessageWindow("Account problem", dataAccessService.Message);
             }
         }
         private void StartGameMethod(object obj)
@@ -312,25 +304,22 @@ namespace DataControl.ViewModel
                 sessionTimer = new Timer(SESION_TIME);
                 sessionTimer.Elapsed += GameEnded;
                 sessionTimer.Start();
-                isSessionContinuing = true; 
+                isSessionContinuing = true;
             }
         }
         private void ExecuteOrderMethod(object obj)
         {
-            progressWindow = new ProgressWindow(selectedOrder.Route.Time)
+            progressWindow = new ProgressWindow(selectedOrder.Route.Time);
+            progressWindow.ShowDialog();
+            if (progressWindow.DialogResult == true)
             {
-                DataContext = this
-            };
-                progressWindow.ShowDialog();
-                if (progressWindow.DialogResult == true)
-                {
-                    currentScore += selectedOrder.Route.Price;
-                }
-                else
-                {
-                    currentScore -= PENALTY_SCORE;
-                }
-                orders.Remove(selectedOrder); 
+                CurrentScore += selectedOrder.Route.Price;
+            }
+            else
+            {
+                CurrentScore -= PENALTY_SCORE;
+            }
+            orders.Remove(selectedOrder);
         }
         private void SearchOrderMethod(object obj)
         {
@@ -342,7 +331,14 @@ namespace DataControl.ViewModel
         }
         private void ShowCabinetOrRegistrateMethod(object obj)
         {
-            cabinetWindow.ShowDialog();
+            if (currentDriver != null)
+            {
+                cabinetWindow.ShowDialog(); 
+            }
+            else
+            {
+                loginWindow.ShowDialog();
+            }
         }
         private void ShowScoresMethod(object obj)
         {
@@ -372,7 +368,7 @@ namespace DataControl.ViewModel
             return isSessionContinuing;
         }
 
-        private bool IsNotSessiontContinuing(object o)
+        private bool IsNotSessionContinuing(object o)
         {
             return !isSessionContinuing;
         }
@@ -385,6 +381,13 @@ namespace DataControl.ViewModel
         private bool IsNotAuthorized(object o)
         {
             return currentDriver == null;
+        }
+
+        private void ExecuteMessageWindow(string headerText, string contentText)
+        {
+            messageWindow.HeaderText = headerText;
+            messageWindow.ContentText = contentText;
+            messageWindow.ShowDialog();
         }
     }
 }
