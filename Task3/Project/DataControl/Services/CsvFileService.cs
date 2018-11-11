@@ -42,9 +42,9 @@ namespace DataControl.Services
         /// </summary>
         public CsvFileService()
         {
-            driver = new TaxiDriver.Driver("", "", 0, 0);
-            message = "";
-            fileConfiguration = new FileConfiguration();
+            driver = null;
+            message = null;
+            fileConfiguration = null;
             rand = new System.Random();
         }
 
@@ -60,16 +60,15 @@ namespace DataControl.Services
         private string[] GetRandomSplittedLine(string path)
         {
             bool isChosen = false;
-            string line = "";
+            string line = string.Empty;
+            double probability = 0.00001;
             while (!isChosen)
             {
                 using (StreamReader streamReader = new StreamReader(path))
                 {
-                    int probability = 0;
                     for (; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
                     {
-                        probability = rand.Next(0, 2);
-                        if (probability == 1)
+                        if (rand.NextDouble() < probability) 
                         {
                             isChosen = true;
                             break;
@@ -103,7 +102,7 @@ namespace DataControl.Services
 
         private System.Tuple<string, string> GetStartAndEndStreets(int startStreetId, int endStreetId)
         {
-            string line, startStreet = null, endStreet = null;
+            string line = string.Empty, startStreet = null, endStreet = null;
             using (StreamReader streamReader = new StreamReader(fileConfiguration.StreetFile))
             {
                 int maxIndex = startStreetId > endStreetId ? startStreetId : endStreetId;
@@ -125,13 +124,11 @@ namespace DataControl.Services
 
         private void SetDriverTotalAndBestScore()
         {
-            string[] scoreLines = File.ReadAllLines(fileConfiguration.ScoreFile);
-
-            for (int i = 0; i < scoreLines.Length; ++i) 
+            using (StreamReader streamReader = new StreamReader(fileConfiguration.ScoreFile)) 
             {
-                if (scoreLines[i].Contains(driver.Name))
+                for (string line = string.Empty; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
                 {
-                    driver.LastScore = double.Parse(scoreLines[i].Split(';')[1]);
+                    driver.LastScore = double.Parse(line.Split(';')[1]);
                 }
             }
         }
@@ -251,7 +248,7 @@ namespace DataControl.Services
 
             using (StreamReader streamReader = new StreamReader(fileConfiguration.DriverFile))
             {
-                for (string line = ""; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
+                for (string line = string.Empty; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
                 {
                     if (line.StartsWith(name))
                     {
@@ -286,7 +283,7 @@ namespace DataControl.Services
 
             using (StreamReader streamReader = new StreamReader(fileConfiguration.DriverFile))
             {
-                for (string line = ""; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
+                for (string line = string.Empty; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
                 {
                     if (line.StartsWith(name))
                     {
