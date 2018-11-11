@@ -49,6 +49,12 @@ namespace DataControl.Services
         }
 
         // METHODS
+        private void SetNullToDriverAndMessage()
+        {
+            driver = null;
+            message = null;
+        }
+
         private void CheckFileConfiguration()
         {
             if (fileConfiguration == null)
@@ -65,9 +71,10 @@ namespace DataControl.Services
             {
                 using (StreamReader streamReader = new StreamReader(path))
                 {
-                    for (; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
+                    while (!streamReader.EndOfStream)
                     {
-                        if (rand.NextDouble() < probability) 
+                        line = streamReader.ReadLine();
+                        if (rand.NextDouble() < probability)
                         {
                             isChosen = true;
                             break;
@@ -125,8 +132,10 @@ namespace DataControl.Services
         {
             using (StreamReader streamReader = new StreamReader(fileConfiguration.ScoreFile)) 
             {
-                for (string line = string.Empty; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
+                string line = string.Empty;
+                while (!streamReader.EndOfStream) 
                 {
+                    line = streamReader.ReadLine();
                     if (line.Contains(driver.Name))
                     {
                         driver.LastScore = double.Parse(line.Split(';')[1]);
@@ -248,10 +257,14 @@ namespace DataControl.Services
         {
             CheckFileConfiguration();
 
+            SetNullToDriverAndMessage();
+
             using (StreamReader streamReader = new StreamReader(fileConfiguration.DriverFile))
             {
-                for (string line = string.Empty; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
+                string line = string.Empty;
+                while (!streamReader.EndOfStream) 
                 {
+                    line = streamReader.ReadLine();
                     if (line.StartsWith(name))
                     {
                         message = "User with such name already exists.";
@@ -283,10 +296,14 @@ namespace DataControl.Services
         {
             CheckFileConfiguration();
 
+            SetNullToDriverAndMessage();
+
             using (StreamReader streamReader = new StreamReader(fileConfiguration.DriverFile))
             {
-                for (string line = string.Empty; !streamReader.EndOfStream; line = streamReader.ReadLine()) 
+                string line = string.Empty;
+                while (!streamReader.EndOfStream) 
                 {
+                    line = streamReader.ReadLine();
                     if (line.StartsWith(name))
                     {
                         if (line.EndsWith(password))
