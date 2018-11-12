@@ -63,7 +63,7 @@ namespace DataControl.Services
             }
         }
 
-        private string[] GetRandomSplittedLine(string path, double probability = 0.00001)
+        private string[] GetRandomSplittedLine(string path, double probability = 0.001)
         {
             bool isChosen = false;
             string line = string.Empty;
