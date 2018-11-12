@@ -84,6 +84,11 @@ namespace DataControl.ViewModel
             this.orders = new ObservableCollection<Order>();
             this.champions = null;
 
+            #region Window Initialize
+            logInWindow = null;
+            cabinetWindow = null;
+            #endregion
+
             #region Commands Initialize
             logIn = new RelayCommand(LogInMethod, IsNotAuthorized);
             logOut = new RelayCommand(LogOutMethod, IsAuthorized);
@@ -390,14 +395,17 @@ namespace DataControl.ViewModel
             ProgressWindow progressWindow = new ProgressWindow(selectedOrder.Route.Time);
             progressWindow.ShowDialog();
 
-            if (progressWindow.DialogResult == true)
+            if (selectedOrder != null)
             {
-                CurrentScore += selectedOrder.Route.Price;
-                orders.Remove(selectedOrder);
-            }
-            else
-            {
-                CurrentScore -= PENALTY_SCORE;
+                if (progressWindow.DialogResult == true)
+                {
+                    CurrentScore += selectedOrder.Route.Price;
+                    orders.Remove(selectedOrder);
+                }
+                else
+                {
+                    CurrentScore -= PENALTY_SCORE;
+                }
             }
         }
         private void SearchOrderMethod(object obj)
