@@ -63,7 +63,7 @@ namespace DataControl.Services
             }
         }
 
-        private string[] GetRandomSplittedLine(string path, double probability = 0.00001)
+        private string[] GetRandomSplittedLine(string path, double probability = 0.001)
         {
             bool isChosen = false;
             string line = string.Empty;
@@ -199,7 +199,7 @@ namespace DataControl.Services
         {
             CheckFileConfiguration();
 
-            return new TaxiDriver.Order(rand.Next(), CreateClient(), CreateRoute());
+            return new TaxiDriver.Order(rand.Next(1000), CreateClient(), CreateRoute());
         }
 
         /// <summary>
