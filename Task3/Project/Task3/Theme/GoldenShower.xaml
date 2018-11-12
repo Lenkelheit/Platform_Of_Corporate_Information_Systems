@@ -56,8 +56,8 @@
 
 
     <!--LIST BOX ITEM FOR ORDER LIST-->
-    <DataTemplate x:Key="ListItemOrderTemplate">
-        <Grid>
+    <ControlTemplate x:Key="ListItemOrderTemplate" TargetType="ListBoxItem">
+        <Grid Background="{TemplateBinding Background}" Margin="0">
             <!--SCALING-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -71,27 +71,29 @@
             <!--DATA-->
             <Label Grid.Row="0" Grid.Column="0" Content="№" />
             <Label Grid.Row="1" Grid.Column="0" Content="Time" />
-            <Label Grid.Row="0" Grid.Column="1" Content="#" />
-            <Label Grid.Row="1" Grid.Column="1" Content="00:05" />
-            <Label Grid.Row="0" Grid.Column="2" Content="Name" />
-            <Label Grid.Row="1" Grid.Column="2" Content="100$" />
+            <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=Number}" />
+            <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=Route.Time}" Style="{DynamicResource TimeLabel}" />
+            <Label Grid.Row="0" Grid.Column="2" Content="{Binding Path=Client.Name}" />
+            <Label Grid.Row="1" Grid.Column="2" Content="{Binding Path=Route.Price}" ContentStringFormat="{}{0:#.00}$" Style="{DynamicResource MoneyLabel}"/>
         </Grid>
-    </DataTemplate>
+    </ControlTemplate>    
+    
     
     <!--LIST BOX ITEM FOR SCORES-->
-    <DataTemplate x:Key="ListItemScoreTemplate">
-        <Grid>
+    <ControlTemplate x:Key="ListItemScoreTemplate" TargetType="ListBoxItem">
+        <Grid Width="{TemplateBinding Width}" Background="{TemplateBinding Background}" Margin="0">
             <!--SCALING-->
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <!--DATA-->
-            <Label Grid.Column="0" Content="{Binding Path=Number}" />
-            <Label Grid.Column="0" Content="{Binding Path=Name}" />
-            <Label Grid.Column="1" Content="{Binding Path=Score}" />
+            <Label Grid.Column="0" Content="{Binding Path=Number}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Content="{Binding Path=Name}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15, 0, 0, 0" />
+            <Label Grid.Column="2" Content="{Binding Path=Score}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 15, 0" />
         </Grid>
-    </DataTemplate>
+    </ControlTemplate>
 
 
     <!--PROGRESS BAR-->
@@ -287,6 +289,7 @@
 
     <!--TEXT BOX-->
     <Style TargetType="TextBox">
+        <Setter Property="FontSize" Value="20"/>
         <Setter Property="Margin" Value="10"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="{StaticResource BlackBrush}"/>
@@ -345,6 +348,12 @@
     
     
     <!--LABEL-->
+    <Style TargetType="Label" x:Key="MoneyLabel">
+        <Setter Property="Foreground" Value="{StaticResource MoneyBrush}"/>
+    </Style>
+    <Style TargetType="Label" x:Key="TimeLabel">
+        <Setter Property="Foreground" Value="{StaticResource TimeBrush}"/>
+    </Style>
     <!--IMPORTANT LABEL-->
     <Style TargetType="Label" x:Key="ImportantLabel">
         <Setter Property="VerticalAlignment" Value="Stretch"/>
@@ -391,6 +400,41 @@
                 <DataTemplate>
                     <TextBlock Text="{Binding}" FontWeight="Normal" FontSize="16"/>
                 </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--LIST BOX BASE-->
+    <Style TargetType="ListBoxItem" x:Key="ListBoxItemBase">
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource HoverBtnBrush}"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{StaticResource PressedBtnBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--LIST BOX FOR ORDER-->
+    <Style TargetType="ListBox" x:Key="ListItemOrderStyle">
+        <Setter Property="Background" Value="{StaticResource DefaultDisabledBackgroundBrush}"/>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ListBoxItem" BasedOn="{StaticResource ListBoxItemBase}">
+                    <Setter Property="Template" Value="{StaticResource ListItemOrderTemplate}"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--LIST BOX FOR SCORES-->
+    <Style TargetType="ListBox" x:Key="ListItemScoreStyle">
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ListBoxItem" BasedOn="{StaticResource ListBoxItemBase}">
+                    <Setter Property="Template" Value="{StaticResource ListItemScoreTemplate}"/>
+                </Style>
             </Setter.Value>
         </Setter>
     </Style>
