@@ -72,50 +72,34 @@ namespace DataControl.ViewModel
         public ApplicationViewModel(IDataAccessService dataAccessService)
         {
             this.dataAccessService = dataAccessService;
-            orders = new ObservableCollection<Order>();
-
-            sessionTimer = new DispatcherTimer()
+            this.sessionTimer = new DispatcherTimer()
             {
                 Interval = System.TimeSpan.FromSeconds(1)
             };
-            gameTime = System.TimeSpan.FromSeconds(0);
-            sessionTimer.Tick += SessionTimer_Tick;
-            randomizer = new System.Random();
+            this.randomizer = new System.Random();
+
+            this.isDataUpdated = false;
+            this.gameRunning = false;
+            this.gameTime = System.TimeSpan.FromSeconds(0);
+            this.orders = new ObservableCollection<Order>();
+            this.champions = null;
 
             #region Commands Initialize
             logIn = new RelayCommand(LogInMethod, IsNotAuthorized);
             logOut = new RelayCommand(LogOutMethod, IsAuthorized);
             signUp = new RelayCommand(SignUpMethod, IsNotAuthorized);
+
             startGame = new RelayCommand(StartGameMethod, AuthorizedAndGameIsNotRunning);
             executeOrder = new RelayCommand(ExecuteOrderMethod, GameRunningAndOrderSelected);
             searchOrder = new RelayCommand(SearchOrderMethod, GameRunning);
             removeOrder = new RelayCommand(RemoveOrderMethod, GameRunningAndOrderSelected);
+
             showCabinetOrRegistrate = new RelayCommand(ShowCabinetOrRegistrateMethod, GameIsNotRunning);
             showScores = new RelayCommand(ShowScoresMethod);
             #endregion
 
-        }
-
-        private void SessionTimer_Tick(object sender, System.EventArgs e)
-        {
-            Time = System.TimeSpan.FromSeconds(1);
-
-            if (randomizer.NextDouble() < ORDER_CHANCE_TO_APPEAR)
-            {
-                try
-                {
-                    orders.Add(dataAccessService.GetRandomOrder());
-                }
-                catch (System.IO.IOException ex) 
-                    when (ex is System.IO.FileNotFoundException || ex is System.IO.DirectoryNotFoundException)
-                {
-                    // ignore
-                }
-            }
-        }
-
-
-
+            sessionTimer.Tick += SessionTimer_Tick;
+        }     
         // PROPERTIES
         /// <summary>
         /// Propetry that enable to interract with current driver
@@ -482,6 +466,25 @@ namespace DataControl.ViewModel
         }
         #endregion
         #region Additional Methods
+        private void SessionTimer_Tick(object sender, System.EventArgs e)
+        {
+            // slowly loosing tim
+            Time = System.TimeSpan.FromSeconds(1);
+
+            // sometimes add order
+            if (randomizer.NextDouble() < ORDER_CHANCE_TO_APPEAR)
+            {
+                try
+                {
+                    orders.Add(dataAccessService.GetRandomOrder());
+                }
+                catch (System.IO.IOException ex)
+                    when (ex is System.IO.FileNotFoundException || ex is System.IO.DirectoryNotFoundException)
+                {
+                    // ignore
+                }
+            }
+        }
         private bool CheckRegistrateFields()
         {
             if (string.IsNullOrWhiteSpace(login))
