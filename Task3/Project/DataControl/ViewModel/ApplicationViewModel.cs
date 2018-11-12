@@ -22,7 +22,7 @@ namespace DataControl.ViewModel
         const double PENALTY_SCORE = 50;
 
         // FIELDS
-        private IDataAccessService dataAccessService;
+        IDataAccessService dataAccessService;
 
         Driver currentDriver;
         Order selectedOrder;
@@ -32,7 +32,7 @@ namespace DataControl.ViewModel
         bool isSessionContinuing;
         string login;
         string password;
-        ObservableCollection<Champion> champions;
+        Champion[] champions;
         System.Random randomizer;
 
         #region Windows
@@ -62,6 +62,7 @@ namespace DataControl.ViewModel
         /// Event that invokes when some propery changed
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
         // CONSTRUCTORS
         /// <summary>
         /// Basic constructor with 1 parametr
@@ -90,7 +91,7 @@ namespace DataControl.ViewModel
             logIn = new RelayCommand(LogInMethod, IsNotAuthorized);
             logOut = new RelayCommand(LogInMethod, IsAuthorized);
             signUp = new RelayCommand(SignUpMethod);
-            startGame = new RelayCommand(StartGameMethod, IsNotSessionContinuing);
+            startGame = new RelayCommand(StartGameMethod, IsAuthorized);
             executeOrder = new RelayCommand(ExecuteOrderMethod, IsSessionContinuing);
             searchOrder = new RelayCommand(SearchOrderMethod, IsSessionContinuing);
             removeOrder = new RelayCommand(RemoveOrderMethod, IsSessionContinuing);
@@ -113,6 +114,11 @@ namespace DataControl.ViewModel
             {
                 return currentDriver;
             }
+            set
+            {
+                currentDriver = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(CurrentDriver)));
+            }
         }
         /// <summary>
         /// Propetry that enable to interract with selected order
@@ -123,6 +129,11 @@ namespace DataControl.ViewModel
             get
             {
                 return selectedOrder;
+            }
+            set
+            {
+                selectedOrder = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(SelectedOrder)));
             }
         }
         /// <summary>
@@ -161,8 +172,8 @@ namespace DataControl.ViewModel
             {
                 if (value != currentScore)
                 {
-                    CurrentScore = value;
-                    OnPropertyChange(new PropertyChangedEventArgs("CurrentScore"));
+                    currentScore = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs("CurrentScore"));
                 }
             }
         }
@@ -170,11 +181,16 @@ namespace DataControl.ViewModel
         /// Propetry that enable to interract with championes
         /// </summary>
         /// <returns>Championes</returns>
-        public ObservableCollection<Champion> Champions
+        public Champion[] Champions
         {
             get
             {
                 return champions;
+            }
+            set
+            {
+                champions = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(Champions)));
             }
         }
         /// <summary>
@@ -255,14 +271,16 @@ namespace DataControl.ViewModel
             if (string.IsNullOrWhiteSpace(login))
             {
                 ExecuteMessageWindow("Empty Login", "Login can't be empty!");
+                return;
             }
             if (string.IsNullOrWhiteSpace(password))
             {
                 ExecuteMessageWindow("Empty Password", "Password can't be empty!");
+                return;
             }
             if (dataAccessService.LogIn(login, password))
             {
-                currentDriver = dataAccessService.Driver;
+                CurrentDriver = dataAccessService.Driver;                
             }
             else
             {
@@ -271,7 +289,7 @@ namespace DataControl.ViewModel
         }
         private void LogOutMethod(object obj)
         {
-            currentDriver = null;
+            CurrentDriver = null;
             password = null;
             login = null;
             orders.Clear();
@@ -282,26 +300,33 @@ namespace DataControl.ViewModel
             if (string.IsNullOrWhiteSpace(login))
             {
                 ExecuteMessageWindow("Empty Login", "Login can't be empty!");
+                return;
             }
 
             if (string.IsNullOrWhiteSpace(password))
             {
                 ExecuteMessageWindow("Empty Password", "Password can't be empty!");
+                return;
             }
             if (dataAccessService.SignUp(login, password))
             {
-                currentDriver = dataAccessService.Driver;
+                CurrentDriver = dataAccessService.Driver;
             }
             else
             {
                 ExecuteMessageWindow("Account problem", dataAccessService.Message);
             }
+            loginWindow.Close();
         }
         private void StartGameMethod(object obj)
         {
-            if (!isSessionContinuing && currentDriver != null)
+            if (!isSessionContinuing && CurrentDriver != null)
             {
-                sessionTimer = new Timer(SESION_TIME);
+                sessionTimer = new Timer(SESION_TIME*1000);
+                for (int i = 0; i < 5; i++)
+                {
+                    orders.Add(dataAccessService.GetRandomOrder());
+                }
                 sessionTimer.Elapsed += GameEnded;
                 sessionTimer.Start();
                 isSessionContinuing = true;
@@ -331,9 +356,9 @@ namespace DataControl.ViewModel
         }
         private void ShowCabinetOrRegistrateMethod(object obj)
         {
-            if (currentDriver != null)
+            if (CurrentDriver != null)
             {
-                cabinetWindow.ShowDialog(); 
+                cabinetWindow.ShowDialog();
             }
             else
             {
@@ -342,23 +367,16 @@ namespace DataControl.ViewModel
         }
         private void ShowScoresMethod(object obj)
         {
+            Champions = dataAccessService.GetBest(10);
             scoreWindow.ShowDialog();
         }
         #endregion
 
-        /// <summary>
-        /// Method that invokes Property Change event
-        /// </summary>
-        /// <param name="e">Property Changed Event Args</param>
-        protected void OnPropertyChange(PropertyChangedEventArgs e)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(e.PropertyName));
-        }
-
+        #region Restriction
         private void GameEnded(object sender, ElapsedEventArgs e)
         {
             isSessionContinuing = false;
-            dataAccessService.SaveResult(currentDriver);
+            dataAccessService.SaveResult(CurrentDriver);
             selectedOrder = null;
             orders = null;
         }
@@ -375,16 +393,26 @@ namespace DataControl.ViewModel
 
         private bool IsAuthorized(object o)
         {
-            return currentDriver != null;
+            return CurrentDriver != null;
         }
 
         private bool IsNotAuthorized(object o)
         {
-            return currentDriver == null;
+            return CurrentDriver == null;
         }
+        #endregion
 
+        /// <summary>
+        /// Method that invokes Property Change event
+        /// </summary>
+        /// <param name="e">Property Changed Event Args</param>
+        protected void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(e.PropertyName));
+        }
         private void ExecuteMessageWindow(string headerText, string contentText)
         {
+            messageWindow = new MessageBoxWindow();
             messageWindow.HeaderText = headerText;
             messageWindow.ContentText = contentText;
             messageWindow.ShowDialog();
