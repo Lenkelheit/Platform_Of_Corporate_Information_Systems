@@ -199,7 +199,7 @@ namespace DataControl.Services
         {
             CheckFileConfiguration();
 
-            return new TaxiDriver.Order(rand.Next(), CreateClient(), CreateRoute());
+            return new TaxiDriver.Order(rand.Next(1000), CreateClient(), CreateRoute());
         }
 
         /// <summary>
