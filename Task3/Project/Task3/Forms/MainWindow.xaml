@@ -51,6 +51,7 @@
             <Image Grid.Column="2" Source="/Resources/images/money.png" />
             <Label Grid.Column="3"
                    Content="{Binding CurrentScore}"
+                   ContentStringFormat="{}{0:00.00}$"
                    Style="{StaticResource ImportantLabel}"
                    VerticalContentAlignment="Center"
                    HorizontalContentAlignment="Center"
@@ -61,7 +62,7 @@
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/images/person.png"/>
-                        <Label Content="{Binding ElementName=CurrentDriver, Path=Name}" FontSize="12"/>
+                        <Label Content="{Binding Path=CurrentDriver.Name}" FontSize="12"/>
                     </StackPanel>
                 </Button.Content>
             </Button>
@@ -69,8 +70,9 @@
 
         <!--LIST BOX-->
         <ListBox Grid.Row="1" Grid.Column="0" 
-                 ItemTemplate="{StaticResource ListItemOrderTemplate}"
-                 Background="{StaticResource DefaultDisabledBackgroundBrush}"/>
+                 Style="{StaticResource ListItemOrderStyle}"
+                 ItemsSource="{Binding Orders}"
+                 SelectedItem="{Binding SelectedOrder}"/>
 
         <Grid Grid.Row="1" Grid.Column="1">
             <!--SCALING-->
@@ -87,7 +89,7 @@
                 <Label Content="Selected order №" 
                        Margin="5, 0, 0, 0"
                        Style="{StaticResource ImportantLabel}"/>
-                <Label Content="{Binding ElementName=SelectedOrder, Path=Number}" Style="{StaticResource ImportantLabel}"/>
+                <Label Content="{Binding Path=SelectedOrder.Number}" Style="{StaticResource ImportantLabel}"/>
             </StackPanel>
             <!--CLIENT GROUP BOX-->
             <GroupBox Grid.Row="1" Header="Client" Style="{StaticResource GroupBoxBase}">
@@ -103,8 +105,8 @@
 
                     <Label Grid.Row="0" Grid.Column="0" Content="Name" Style="{StaticResource LeftLabel}"/>
                     <Label Grid.Row="1" Grid.Column="0" Content="Phone" Style="{StaticResource LeftLabel}"/>
-                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding ElementName=SelectedOrder,Path=Client.Name}" Style="{StaticResource RightLabel}"/>
-                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding ElementName=SelectedOrder,Path=Client.Phone}" Style="{StaticResource RightLabel}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=SelectedOrder.Client.Name}" Style="{StaticResource RightLabel}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=SelectedOrder.Client.Phone}" Style="{StaticResource RightLabel}"/>
                 </Grid>
             </GroupBox>
             <!--ROUTE GROUP BOX-->
@@ -121,8 +123,8 @@
 
                     <Label Grid.Row="0" Grid.Column="0" Content="Departure point" Style="{StaticResource LeftLabel}"/>
                     <Label Grid.Row="1" Grid.Column="0" Content="Destination" Style="{StaticResource LeftLabel}"/>
-                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding ElementName=SelectedOrder,Path=Route.StartStreet}" Style="{StaticResource RightLabel}"/>
-                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding ElementName=SelectedOrder,Path=Route.EndStreet}" Style="{StaticResource RightLabel}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=SelectedOrder.Route.StartStreet}" Style="{StaticResource RightLabel}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=SelectedOrder.Route.EndStreet}" Style="{StaticResource RightLabel}"/>
                 </Grid>
             </GroupBox>
             <!--ORDER GROUP BOX-->
@@ -140,14 +142,13 @@
                     <Label Grid.Row="0" Grid.Column="0" Content="Time" Style="{StaticResource LeftLabel}"/>
                     <Label Grid.Row="1" Grid.Column="0" Content="Payment" Style="{StaticResource LeftLabel}"/>
                     <Label Grid.Row="0" Grid.Column="1"
-                           Content="{Binding ElementName=SelectedOrder,Path=Route.Time}"
-                           ContentStringFormat="{}{0:00:00}"
+                           Content="{Binding Path=SelectedOrder.Route.Time}"
                            Style="{StaticResource RightLabel}"
                            FontWeight="Bold"
                            Foreground="{StaticResource TimeBrush}"/>
                     <Label Grid.Row="1" Grid.Column="1" 
-                           Content="{Binding ElementName=SelectedOrder,Path=Route.Price}" 
-                           ContentStringFormat="{}{0:#.00}$"
+                           Content="{Binding Path=SelectedOrder.Route.Price}" 
+                           ContentStringFormat="{}{0:00.00}$"
                            Style="{StaticResource RightLabel}"
                            FontWeight="Bold"
                            Foreground="{StaticResource MoneyBrush}"/>
