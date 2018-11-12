@@ -3,7 +3,7 @@ namespace TaxiDriver
     /// <summary>
     /// Represents struct that models Champion
     /// </summary>
-    public struct Сhampion
+    public struct Champion
     {
         // FIELDS
         private int number;
@@ -47,7 +47,7 @@ namespace TaxiDriver
         /// <param name="number">Number champion's</param>
         /// <param name="name">Name champion's</param>
         /// <param name="score">Score champion's</param>
-        public Сhampion(int number, string name, double score)
+        public Champion(int number, string name, double score)
         {
             this.number = number;
             this.name = name;

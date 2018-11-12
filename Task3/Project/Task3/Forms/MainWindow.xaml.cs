@@ -11,16 +11,17 @@ namespace Task3
         public MainWindow()
         {
             InitializeComponent();
-            /*this.DataContext = new ApplicationViewModel(
+            this.DataContext = new ApplicationViewModel(
                 new CsvFileService()
-                    .SetConfiguration(new FileConfiguration()
-                    {
-                        ClientFile = "/Resources/files/Client.csv",
-                        DriverFile = "/Resources/files/Driver.csv",
-                        RouteFile = "/Resources/files/Route.csv",
-                        ScoreFile = "/Resources/files/Score.csv",
-                        StreetFile = "/Resources/files/Street.csv",
-                    }));*/
+                    .SetConfiguration(
+                        new FileConfiguration()
+                        {
+                            ClientFile = @"Resources\files\Client.csv",
+                            DriverFile = @"Resources\files\Driver.csv",
+                            RouteFile = @"Resources\files\Route.csv",
+                            ScoreFile = @"Resources\files\Score.csv",
+                            StreetFile = @"Resources\files\Street.csv",
+                        }));
         }
     }
 }

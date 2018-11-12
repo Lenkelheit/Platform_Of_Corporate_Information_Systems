@@ -18,13 +18,16 @@
         <DockPanel Grid.Row="0" LastChildFill="False">
             <Button DockPanel.Dock="Left" 
                     Style="{StaticResource BtnStandart}" Width="65"
-                    BorderThickness="0">
+                    BorderThickness="0"
+                    Command="{Binding ShowScores}">
                 <Button.Content>
                     <Image Source="/Resources/images/list.png" />
                 </Button.Content>
             </Button>
             <Button DockPanel.Dock="Right"
-                    Style="{StaticResource BtnStandart}" Width="65" BorderThickness="0">
+                    Style="{StaticResource BtnStandart}" Width="65" 
+                    BorderThickness="0"
+                    Command="{Binding LogOut}">
                 <Button.Content>
                     <Image Source="/Resources/images/logout.png"/>
                 </Button.Content>
@@ -46,11 +49,11 @@
             </Grid.RowDefinitions>
             <!--INFORMATION-->
             <Label Grid.Row="0" Grid.Column="0" Content="Name" Style="{StaticResource LeftLabel}"/>
-            <Label Grid.Row="1" Grid.Column="0" Content="Total Score"  Style="{StaticResource LeftLabel}"/>
-            <Label Grid.Row="2" Grid.Column="0" Content="Best Score"  Style="{StaticResource LeftLabel}"/>
-            <Label Grid.Row="0" Grid.Column="1" Content="*****" Style="{StaticResource RightLabel}"/>
-            <Label Grid.Row="1" Grid.Column="1" Content="1000$" Style="{StaticResource RightLabel}"/>
-            <Label Grid.Row="2" Grid.Column="1" Content="1000$" Style="{StaticResource RightLabel}"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Total Score" Style="{StaticResource LeftLabel}"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Best Score" Style="{StaticResource LeftLabel}"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=CurrentDriver.Name}" Style="{StaticResource RightLabel}"/>
+            <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=CurrentDriver.TotalScore}" ContentStringFormat="{}{0:00.00}$" Style="{StaticResource RightLabel}"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=CurrentDriver.BestScore}" ContentStringFormat="{}{0:00.00}$" Style="{StaticResource RightLabel}"/>
         </Grid>
     </Grid>
 </Window>

@@ -15,8 +15,8 @@ Our task is **Taxi order (for taxi driver)**.
 |-|:----------------------:|:--------------------------------------------------------------------------|:------------:|:----------:|
 | |                        | <p align="center">  Create three layered application             </p>     |              |            |
 | |                        | <p align="center">      1.**Data access**     </p>                        |              |            |
-| |<ul><li>- [ ] </li></ul>| Data is in .txt files                                                     |  Lenkelheit  | 06.11.2018 |
-| |<ul><li>- [ ] </li></ul>| The class of this layer allow to read/write/change/remove data            |  Lenkelheit  | 06.11.2018 |
+| |<ul><li>- [x] </li></ul>| Data is in .txt files                                                     |  Lenkelheit  | 06.11.2018 |
+| |<ul><li>- [x] </li></ul>| The class of this layer allow to read/write/change/remove data            |  Lenkelheit  | 06.11.2018 |
 | |                        | <p align="center">      2. **Business Logic**   </p>                      |              |            |
 | |<ul><li>- [ ] </li></ul>| All the logic of your program                                           |SvyatoslavFedynyak|08.11.2018|
 | |                        | <p align="center">      3. **User Interface**   </p>                      |              |            |
@@ -24,7 +24,7 @@ Our task is **Taxi order (for taxi driver)**.
 | |                        | <p align="center">      4. **Write Classes**   </p>                       |              |            |
 | |<ul><li>- [x] </li></ul>| Write all classes                                                         |    vasil98   | 07.11.2018 |
 | |                        | <p align="center">         5. Requirements </p>                           |              |            |
-| |<ul><li>- [ ] </li></ul>| Unit-test project                                                         |      —       |      —     |
+| |<ul><li>- [x] </li></ul>| Unit-test project                                                         |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Xml-documentation                                                         |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Handling exceptions                                                       |      —       |      —     |
 
