@@ -56,7 +56,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <!--BUTTONS-->
-            <Button Grid.Column="0" FontSize="25" Content="Enter" Style="{StaticResource MainButton}"
+            <Button Grid.Column="0" FontSize="25" Content="Log In" Style="{StaticResource MainButton}"
                     Command="{Binding LogIn}"/>
             <Button Grid.Column="1" FontSize="25" Content="Sign Up" Style="{StaticResource MainButton}"
                     Command="{Binding SignUp}"/>

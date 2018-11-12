@@ -34,7 +34,8 @@
         </Grid>
 
         <ListBox Grid.Row="2" 
-                 ItemTemplate="{StaticResource ListItemScoreTemplate}"/>
+                 Style="{StaticResource ListItemScoreStyle}"
+                 ItemsSource="{Binding Champions}"/>
 
         <Button Grid.Row="3" Content="Close" 
                 Click="Exit"

@@ -51,9 +51,9 @@
             <Label Grid.Row="0" Grid.Column="0" Content="Name" Style="{StaticResource LeftLabel}"/>
             <Label Grid.Row="1" Grid.Column="0" Content="Total Score" Style="{StaticResource LeftLabel}"/>
             <Label Grid.Row="2" Grid.Column="0" Content="Best Score" Style="{StaticResource LeftLabel}"/>
-            <Label Grid.Row="0" Grid.Column="1" Content="{Binding ElementName=CurrentDriver, Path=Name}" Style="{StaticResource RightLabel}"/>
-            <Label Grid.Row="1" Grid.Column="1" Content="{Binding ElementName=CurrentDriver, Path=TotalScore, StringFormat=\{0:C2\}}" Style="{StaticResource RightLabel}"/>
-            <Label Grid.Row="2" Grid.Column="1" Content="{Binding ElementName=CurrentDriver, Path=BestScore, StringFormat=\{0:C2\}}" Style="{StaticResource RightLabel}"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=CurrentDriver.Name}" Style="{StaticResource RightLabel}"/>
+            <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=CurrentDriver.TotalScore}" ContentStringFormat="{}{0:00.00}$" Style="{StaticResource RightLabel}"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=CurrentDriver.BestScore}" ContentStringFormat="{}{0:00.00}$" Style="{StaticResource RightLabel}"/>
         </Grid>
     </Grid>
 </Window>
