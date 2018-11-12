@@ -112,7 +112,7 @@ namespace DataControl.Services
             using (StreamReader streamReader = new StreamReader(fileConfiguration.StreetFile))
             {
                 int maxIndex = startStreetId > endStreetId ? startStreetId : endStreetId;
-                for (int i = 0; i < maxIndex; ++i) 
+                for (int i = 0; i < maxIndex; ++i)
                 {
                     line = streamReader.ReadLine();
                     if (i == startStreetId - 1)
@@ -130,10 +130,10 @@ namespace DataControl.Services
 
         private void SetDriverTotalAndBestScore()
         {
-            using (StreamReader streamReader = new StreamReader(fileConfiguration.ScoreFile)) 
+            using (StreamReader streamReader = new StreamReader(fileConfiguration.ScoreFile))
             {
                 string line = string.Empty;
-                while (!streamReader.EndOfStream) 
+                while (!streamReader.EndOfStream)
                 {
                     line = streamReader.ReadLine();
                     if (line.Contains(driver.Name))
@@ -166,7 +166,7 @@ namespace DataControl.Services
             List<KeyValuePair<string, double>> allChampionsList =
                 new List<KeyValuePair<string, double>>(scoreLines.Length);
             string[] scoreParameters;
-            for (int i = 0; i < scoreLines.Length; ++i) 
+            for (int i = 0; i < scoreLines.Length; ++i)
             {
                 scoreParameters = scoreLines[i].Split(';');
                 allChampionsList.Add(new KeyValuePair<string, double>
@@ -174,9 +174,9 @@ namespace DataControl.Services
             }
             allChampionsList.Sort((first, second) => second.Value.CompareTo(first.Value));
 
-            TaxiDriver.Champion[] champions = 
+            TaxiDriver.Champion[] champions =
                 new TaxiDriver.Champion[amount < allChampionsList.Count ? amount : allChampionsList.Count];
-            for (int i = 0; i < amount && i < allChampionsList.Count; ++i) 
+            for (int i = 0; i < amount && i < allChampionsList.Count; ++i)
             {
                 champions[i] = new TaxiDriver.Champion(i + 1, allChampionsList[i].Key, allChampionsList[i].Value);
             }
@@ -214,7 +214,7 @@ namespace DataControl.Services
         /// </exception>
         public Interfaces.IDataAccessService SetConfiguration(Interfaces.IConfiguration configuration)
         {
-            if (configuration is FileConfiguration) 
+            if (configuration is FileConfiguration)
             {
                 fileConfiguration = (FileConfiguration)configuration;
                 return this;
@@ -259,13 +259,16 @@ namespace DataControl.Services
 
             SetNullToDriverAndMessage();
 
+            name = name.Trim();
+            password = password.Trim();
+
             using (StreamReader streamReader = new StreamReader(fileConfiguration.DriverFile))
             {
                 string line = string.Empty;
-                while (!streamReader.EndOfStream) 
+                while (!streamReader.EndOfStream)
                 {
                     line = streamReader.ReadLine();
-                    if (line.StartsWith(name))
+                    if (line.Split(';')[0] == name)
                     {
                         message = "User with such name already exists.";
                         return false;
@@ -298,15 +301,18 @@ namespace DataControl.Services
 
             SetNullToDriverAndMessage();
 
+            name = name.Trim();
+            password = password.Trim();
+
             using (StreamReader streamReader = new StreamReader(fileConfiguration.DriverFile))
             {
-                string line = string.Empty;
-                while (!streamReader.EndOfStream) 
+                string[] line;
+                while (!streamReader.EndOfStream)
                 {
-                    line = streamReader.ReadLine();
-                    if (line.StartsWith(name))
+                    line = streamReader.ReadLine().Split(';');
+                    if (line[0] == name)
                     {
-                        if (line.EndsWith(password))
+                        if (line[1] == password)
                         {
                             driver = new TaxiDriver.Driver(name, password, 0, 0);
                             SetDriverTotalAndBestScore();
