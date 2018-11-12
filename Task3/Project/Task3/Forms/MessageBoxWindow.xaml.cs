@@ -24,11 +24,11 @@ namespace Task3.Forms
         {
             get
             {
-                return Text.Content.ToString();
+                return Text.Text.ToString();
             }
             set
             {
-                Text.Content = value;
+                Text.Text = value;
             }
         }
         private void MovingWindow(object sender, System.Windows.Input.MouseButtonEventArgs e)
