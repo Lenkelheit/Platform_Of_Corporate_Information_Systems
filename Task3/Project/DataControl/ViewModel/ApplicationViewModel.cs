@@ -1,12 +1,10 @@
-using System.Timers;
-
 using DataControl.Interfaces;
-using DataControl.Services;
 using DataControl.Commands;
 
 using TaxiDriver;
 using Task3.Forms;
 
+using System.Windows.Threading;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
@@ -18,29 +16,32 @@ namespace DataControl.ViewModel
     public class ApplicationViewModel : INotifyPropertyChanged
     {
         // CONSTANTS
+        const int START_ORDER_AMOUNT = 5;
         const int SESION_TIME = 30;
         const double PENALTY_SCORE = 50;
+        const double PENALTY_TIME = 2;
+        const double ORDER_CHANCE_TO_APPEAR = 0.05;// 5%
 
         // FIELDS
-        private IDataAccessService dataAccessService;
+        IDataAccessService dataAccessService;
+        DispatcherTimer sessionTimer;
+        System.Random randomizer;
 
+        bool isDataUpdated;
+        bool gameRunning;
+        System.TimeSpan gameTime;
+
+        string login;
+        string password;
+        double currentScore;
         Driver currentDriver;
         Order selectedOrder;
         ObservableCollection<Order> orders;
-        Timer sessionTimer;
-        double currentScore;
-        bool isSessionContinuing;
-        string login;
-        string password;
-        ObservableCollection<Champion> champions;
-        System.Random randomizer;
+        Champion[] champions;
 
         #region Windows
+        LogInWindow logInWindow;
         CabinetWindow cabinetWindow;
-        LogInWindow loginWindow;
-        ProgressWindow progressWindow;
-        ScoreWindow scoreWindow;
-        MessageBoxWindow messageWindow;
         #endregion
 
         #region Commands
@@ -62,6 +63,7 @@ namespace DataControl.ViewModel
         /// Event that invokes when some propery changed
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
         // CONSTRUCTORS
         /// <summary>
         /// Basic constructor with 1 parametr
@@ -70,38 +72,34 @@ namespace DataControl.ViewModel
         public ApplicationViewModel(IDataAccessService dataAccessService)
         {
             this.dataAccessService = dataAccessService;
-            orders = new ObservableCollection<Order>();
-            sessionTimer = new Timer();
-            randomizer = new System.Random();
-            cabinetWindow = new CabinetWindow()
+            this.sessionTimer = new DispatcherTimer()
             {
-                DataContext = this
+                Interval = System.TimeSpan.FromSeconds(1)
             };
-            loginWindow = new LogInWindow()
-            {
-                DataContext = this
-            };
-            scoreWindow = new ScoreWindow()
-            {
-                DataContext = this
-            };
+            this.randomizer = new System.Random();
+
+            this.isDataUpdated = false;
+            this.gameRunning = false;
+            this.gameTime = System.TimeSpan.FromSeconds(0);
+            this.orders = new ObservableCollection<Order>();
+            this.champions = null;
 
             #region Commands Initialize
             logIn = new RelayCommand(LogInMethod, IsNotAuthorized);
-            logOut = new RelayCommand(LogInMethod, IsAuthorized);
-            signUp = new RelayCommand(SignUpMethod);
-            startGame = new RelayCommand(StartGameMethod, IsNotSessionContinuing);
-            executeOrder = new RelayCommand(ExecuteOrderMethod, IsSessionContinuing);
-            searchOrder = new RelayCommand(SearchOrderMethod, IsSessionContinuing);
-            removeOrder = new RelayCommand(RemoveOrderMethod, IsSessionContinuing);
-            showCabinetOrRegistrate = new RelayCommand(ShowCabinetOrRegistrateMethod);
+            logOut = new RelayCommand(LogOutMethod, IsAuthorized);
+            signUp = new RelayCommand(SignUpMethod, IsNotAuthorized);
+
+            startGame = new RelayCommand(StartGameMethod, AuthorizedAndGameIsNotRunning);
+            executeOrder = new RelayCommand(ExecuteOrderMethod, GameRunningAndOrderSelected);
+            searchOrder = new RelayCommand(SearchOrderMethod, GameRunning);
+            removeOrder = new RelayCommand(RemoveOrderMethod, GameRunningAndOrderSelected);
+
+            showCabinetOrRegistrate = new RelayCommand(ShowCabinetOrRegistrateMethod, GameIsNotRunning);
             showScores = new RelayCommand(ShowScoresMethod);
             #endregion
 
-        }
-
-
-
+            sessionTimer.Tick += SessionTimer_Tick;
+        }     
         // PROPERTIES
         /// <summary>
         /// Propetry that enable to interract with current driver
@@ -113,6 +111,11 @@ namespace DataControl.ViewModel
             {
                 return currentDriver;
             }
+            set
+            {
+                currentDriver = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(CurrentDriver)));
+            }
         }
         /// <summary>
         /// Propetry that enable to interract with selected order
@@ -123,6 +126,11 @@ namespace DataControl.ViewModel
             get
             {
                 return selectedOrder;
+            }
+            set
+            {
+                selectedOrder = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(SelectedOrder)));
             }
         }
         /// <summary>
@@ -144,7 +152,32 @@ namespace DataControl.ViewModel
         {
             get
             {
-                return System.TimeSpan.FromSeconds(SESION_TIME);
+                return gameTime;
+            }
+            set
+            {
+                gameTime = gameTime.Subtract(value);
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(Time)));
+
+                if (TimeEnded())
+                {
+                    sessionTimer.Stop();
+                    // game ended logic
+                    currentDriver.LastScore = CurrentScore;                 
+                    ExecuteMessageWindow("The end of watch", $"Congratulation, your score is {CurrentScore}");
+                    gameRunning = false;
+                    isDataUpdated = true;
+                    try
+                    {
+                        dataAccessService.SaveResult(currentDriver);
+                    }
+                    catch (System.IO.IOException ex)
+                        when (ex is System.IO.FileNotFoundException || ex is System.IO.DirectoryNotFoundException)
+                    {
+                        ExecuteMessageWindow("Error", "Result has not been saved. Data file is missing.");
+                    }
+                    Clear();
+                }
             }
         }
         /// <summary>
@@ -161,8 +194,8 @@ namespace DataControl.ViewModel
             {
                 if (value != currentScore)
                 {
-                    CurrentScore = value;
-                    OnPropertyChange(new PropertyChangedEventArgs("CurrentScore"));
+                    currentScore = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs("CurrentScore"));
                 }
             }
         }
@@ -170,11 +203,20 @@ namespace DataControl.ViewModel
         /// Propetry that enable to interract with championes
         /// </summary>
         /// <returns>Championes</returns>
-        public ObservableCollection<Champion> Champions
+        public Champion[] Champions
         {
             get
             {
                 return champions;
+            }
+            set
+            {
+                if (isDataUpdated)
+                {
+                    champions = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs(nameof(Champions)));
+                    isDataUpdated = false;
+                }
             }
         }
         /// <summary>
@@ -250,144 +292,241 @@ namespace DataControl.ViewModel
 
         // METHODS
         #region Commands
-        private void LogInMethod(object obj)
+        private void ShowCabinetOrRegistrateMethod(object obj)
         {
-            if (string.IsNullOrWhiteSpace(login))
+            if (IsAuthorized(obj))
             {
-                ExecuteMessageWindow("Empty Login", "Login can't be empty!");
-            }
-            if (string.IsNullOrWhiteSpace(password))
-            {
-                ExecuteMessageWindow("Empty Password", "Password can't be empty!");
-            }
-            if (dataAccessService.LogIn(login, password))
-            {
-                currentDriver = dataAccessService.Driver;
+                cabinetWindow = new CabinetWindow() { DataContext = this };
+                cabinetWindow.ShowDialog();
             }
             else
             {
-                ExecuteMessageWindow("Account problem", dataAccessService.Message);
+                logInWindow = new LogInWindow() { DataContext = this };
+                logInWindow.ShowDialog();
+            }
+        }
+        private void LogInMethod(object obj)
+        {
+            // checking
+            if (CheckRegistrateFields())
+            {
+                // logic
+                bool logInRes;
+                try
+                {
+                    logInRes = dataAccessService.LogIn(login, password);
+                }
+                catch (System.IO.IOException ex)
+                    when (ex is System.IO.FileNotFoundException || ex is System.IO.DirectoryNotFoundException)
+                {
+                    ExecuteMessageWindow("Error", "Log in operation is unavailable. Data file is missing");
+                    return;
+                }
+
+                if (logInRes)
+                {
+                    CurrentDriver = dataAccessService.Driver;
+                    logInWindow.Close();
+                }
+                else
+                {
+                    ExecuteMessageWindow("Account problem", dataAccessService.Message);
+                }
+            }
+        }
+        private void SignUpMethod(object obj)
+        {
+            // checking
+            if (CheckRegistrateFields())
+            {
+                // logic
+                bool signUpRes;
+                try
+                {
+                    signUpRes = dataAccessService.SignUp(login, password);
+                }
+                catch (System.IO.IOException ex)
+                    when (ex is System.IO.FileNotFoundException || ex is System.IO.DirectoryNotFoundException)
+                {
+                    ExecuteMessageWindow("Error", "Sign up operation is unavailable. Data file is missing");
+                    return;
+                }
+
+                if (signUpRes)
+                {
+                    CurrentDriver = dataAccessService.Driver;
+                    logInWindow.Close();
+                }
+                else
+                {
+                    ExecuteMessageWindow("Account problem", dataAccessService.Message);
+                }
             }
         }
         private void LogOutMethod(object obj)
         {
-            currentDriver = null;
-            password = null;
-            login = null;
-            orders.Clear();
-            selectedOrder = null;
+            CurrentDriver = null;
+            Clear();
+            cabinetWindow.Close();
         }
-        private void SignUpMethod(object obj)
-        {
-            if (string.IsNullOrWhiteSpace(login))
-            {
-                ExecuteMessageWindow("Empty Login", "Login can't be empty!");
-            }
-
-            if (string.IsNullOrWhiteSpace(password))
-            {
-                ExecuteMessageWindow("Empty Password", "Password can't be empty!");
-            }
-            if (dataAccessService.SignUp(login, password))
-            {
-                currentDriver = dataAccessService.Driver;
-            }
-            else
-            {
-                ExecuteMessageWindow("Account problem", dataAccessService.Message);
-            }
-        }
+        
         private void StartGameMethod(object obj)
         {
-            if (!isSessionContinuing && currentDriver != null)
+            if (GameIsNotRunning(obj) && IsAuthorized(obj))
             {
-                sessionTimer = new Timer(SESION_TIME);
-                sessionTimer.Elapsed += GameEnded;
+                gameTime = System.TimeSpan.FromSeconds(SESION_TIME);
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(Time)));
+                for (int i = 0; i < START_ORDER_AMOUNT; ++i)
+                {
+                    orders.Add(dataAccessService.GetRandomOrder());
+                }
+
                 sessionTimer.Start();
-                isSessionContinuing = true;
+                gameRunning = true;               
             }
         }
         private void ExecuteOrderMethod(object obj)
         {
-            progressWindow = new ProgressWindow(selectedOrder.Route.Time);
+            ProgressWindow progressWindow = new ProgressWindow(selectedOrder.Route.Time);
             progressWindow.ShowDialog();
+
             if (progressWindow.DialogResult == true)
             {
                 CurrentScore += selectedOrder.Route.Price;
+                orders.Remove(selectedOrder);
             }
             else
             {
                 CurrentScore -= PENALTY_SCORE;
             }
-            orders.Remove(selectedOrder);
         }
         private void SearchOrderMethod(object obj)
         {
-            orders.Add(dataAccessService.GetRandomOrder());
+            try
+            {
+                orders.Add(dataAccessService.GetRandomOrder());
+            }
+            catch (System.IO.IOException ex)
+                    when (ex is System.IO.FileNotFoundException || ex is System.IO.DirectoryNotFoundException)
+            {
+                ExecuteMessageWindow("Error", "There is no spoon");
+            }
+            Time = System.TimeSpan.FromSeconds(PENALTY_TIME);  
         }
         private void RemoveOrderMethod(object obj)
         {
             orders.Remove(selectedOrder);
-        }
-        private void ShowCabinetOrRegistrateMethod(object obj)
-        {
-            if (currentDriver != null)
-            {
-                cabinetWindow.ShowDialog(); 
-            }
-            else
-            {
-                loginWindow.ShowDialog();
-            }
+            SelectedOrder = orders.Count > 0 ? System.Linq.Enumerable.Last(orders) : null;
         }
         private void ShowScoresMethod(object obj)
         {
-            scoreWindow.ShowDialog();
+            try
+            {
+                Champions = dataAccessService.GetBest(10);
+            }
+            catch (System.IO.IOException ex)
+                    when (ex is System.IO.FileNotFoundException || ex is System.IO.DirectoryNotFoundException)
+            {
+                ExecuteMessageWindow("Error", "Operation is unavailable. Data file is missing");
+                return;
+            }
+            new ScoreWindow() { DataContext = this }.ShowDialog();
         }
         #endregion
 
-        /// <summary>
-        /// Method that invokes Property Change event
-        /// </summary>
-        /// <param name="e">Property Changed Event Args</param>
-        protected void OnPropertyChange(PropertyChangedEventArgs e)
+        #region Restriction
+        private bool GameRunning(object o)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(e.PropertyName));
+            return gameRunning;
         }
-
-        private void GameEnded(object sender, ElapsedEventArgs e)
+        private bool GameRunningAndOrderSelected(object o)
         {
-            isSessionContinuing = false;
-            dataAccessService.SaveResult(currentDriver);
-            selectedOrder = null;
-            orders = null;
+            return gameRunning && selectedOrder != null;
         }
-
-        private bool IsSessionContinuing(object o)
+        private bool GameIsNotRunning(object o)
         {
-            return isSessionContinuing;
+            return !gameRunning;
         }
-
-        private bool IsNotSessionContinuing(object o)
+        private bool AuthorizedAndGameIsNotRunning(object o)
         {
-            return !isSessionContinuing;
+            return CurrentDriver != null && !gameRunning;
         }
-
         private bool IsAuthorized(object o)
         {
-            return currentDriver != null;
+            return CurrentDriver != null;
         }
 
         private bool IsNotAuthorized(object o)
         {
-            return currentDriver == null;
+            return CurrentDriver == null;
         }
+        private bool TimeEnded()
+        {
+            return gameTime.TotalSeconds <= 0;
+        }
+        #endregion
+        #region Additional Methods
+        private void SessionTimer_Tick(object sender, System.EventArgs e)
+        {
+            // slowly loosing tim
+            Time = System.TimeSpan.FromSeconds(1);
 
+            // sometimes add order
+            if (randomizer.NextDouble() < ORDER_CHANCE_TO_APPEAR)
+            {
+                try
+                {
+                    orders.Add(dataAccessService.GetRandomOrder());
+                }
+                catch (System.IO.IOException ex)
+                    when (ex is System.IO.FileNotFoundException || ex is System.IO.DirectoryNotFoundException)
+                {
+                    // ignore
+                }
+            }
+        }
+        private bool CheckRegistrateFields()
+        {
+            if (string.IsNullOrWhiteSpace(login))
+            {
+                ExecuteMessageWindow("Empty Login", "Login can not be empty!");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                ExecuteMessageWindow("Empty Password", "Password can not be empty!");
+                return false;
+            }
+            return true;
+        }
         private void ExecuteMessageWindow(string headerText, string contentText)
         {
-            messageWindow.HeaderText = headerText;
-            messageWindow.ContentText = contentText;
-            messageWindow.ShowDialog();
+            new MessageBoxWindow()
+            {
+                HeaderText = headerText,
+                ContentText = contentText
+            }.ShowDialog();
         }
+        private void Clear()
+        {
+            Password = null;
+            Login = null;
+            SelectedOrder = null;
+            CurrentScore = 0;
+            gameTime = System.TimeSpan.FromSeconds(0);
+            OnPropertyChanged(new PropertyChangedEventArgs(nameof(Time)));
+            orders.Clear();
+        }
+        #endregion
+        #region Event Raising
+        /// <summary>
+        /// Method that invokes Property Change event
+        /// </summary>
+        /// <param name="e">Property Changed Event Args</param>
+        protected void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(e.PropertyName));
+        }
+        #endregion
     }
 }
