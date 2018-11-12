@@ -27,7 +27,7 @@ namespace DataControl.ViewModel
         DispatcherTimer sessionTimer;
         System.Random randomizer;
 
-        bool isDataUpdated;
+        bool isDataRequireUpdate;
         bool gameRunning;
         System.TimeSpan gameTime;
 
@@ -78,7 +78,7 @@ namespace DataControl.ViewModel
             };
             this.randomizer = new System.Random();
 
-            this.isDataUpdated = false;
+            this.isDataRequireUpdate = true;
             this.gameRunning = false;
             this.gameTime = System.TimeSpan.FromSeconds(0);
             this.orders = new ObservableCollection<Order>();
@@ -171,7 +171,7 @@ namespace DataControl.ViewModel
                     currentDriver.LastScore = CurrentScore;                 
                     ExecuteMessageWindow("The end of watch", $"Congratulation, your score is {CurrentScore}");
                     gameRunning = false;
-                    isDataUpdated = true;
+                    isDataRequireUpdate = true;
                     try
                     {
                         dataAccessService.SaveResult(currentDriver);
@@ -216,11 +216,11 @@ namespace DataControl.ViewModel
             }
             set
             {
-                if (isDataUpdated)
+                if (isDataRequireUpdate)
                 {
                     champions = value;
                     OnPropertyChanged(new PropertyChangedEventArgs(nameof(Champions)));
-                    isDataUpdated = false;
+                    isDataRequireUpdate = false;
                 }
             }
         }
