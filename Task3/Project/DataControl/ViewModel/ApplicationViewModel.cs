@@ -169,7 +169,7 @@ namespace DataControl.ViewModel
                     sessionTimer.Stop();
                     // game ended logic
                     currentDriver.LastScore = CurrentScore;                 
-                    ExecuteMessageWindow("The end of watch", $"Congratulation, your score is {CurrentScore}");
+                    ExecuteMessageWindow("End of watch", $"Congratulation, your score is {CurrentScore}");
                     gameRunning = false;
                     isDataRequireUpdate = true;
                     try
