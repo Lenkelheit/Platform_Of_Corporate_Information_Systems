@@ -476,7 +476,7 @@ namespace DataControl.ViewModel
         #region Additional Methods
         private void SessionTimer_Tick(object sender, System.EventArgs e)
         {
-            // slowly loosing tim
+            // slowly loosing time
             Time = System.TimeSpan.FromSeconds(1);
 
             // sometimes add order
