@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataControl</name>
+    </assembly>
+    <members>
+        <member name="T:DataControl.Commands.RelayCommand">
+            <summary>
+            A WPF command which represent action as <see cref="T:System.Action"/>.
+            </summary>
+        </member>
+        <member name="E:DataControl.Commands.RelayCommand.CanExecuteChanged">
+            <summary>
+            Raise when <see cref="M:DataControl.Commands.RelayCommand.CanExecute(System.Object)"/> changed.
+            </summary>
+        </member>
+        <member name="M:DataControl.Commands.RelayCommand.#ctor(System.Action{System.Object},System.Func{System.Object,System.Boolean})">
+            <summary>
+            Initialize a new instance of <see cref="T:DataControl.Commands.RelayCommand"/>.
+            </summary>
+            <param name="execute">
+            An method that should be executed.
+            </param>
+            <param name="canExecute">
+            An method that checks if command can be executed.
+            </param>
+        </member>
+        <member name="M:DataControl.Commands.RelayCommand.CanExecute(System.Object)">
+            <summary>
+            Checks if command can be executed.
+            </summary>
+            <param name="parameter">
+            The parameter that define if command can be executed.
+            </param>
+            <returns>
+            True — if command can be executed, otherwise — false.
+            </returns>
+        </member>
+        <member name="M:DataControl.Commands.RelayCommand.Execute(System.Object)">
+            <summary>
+            Execute a command.
+            </summary>
+            <param name="parameter">
+            The parameter which command needs to be executed.
+            </param>
+        </member>
+        <member name="T:DataControl.Interfaces.IConfiguration">
+            <summary>
+            Represents some configuration.
+            </summary>
+        </member>
+        <member name="T:DataControl.Interfaces.IDataAccessService">
+            <summary>
+            Represents some service for data access.
+            </summary>
+        </member>
+        <member name="P:DataControl.Interfaces.IDataAccessService.Driver">
+            <summary>
+            Some information about current driver.
+            </summary>
+        </member>
+        <member name="P:DataControl.Interfaces.IDataAccessService.Message">
+            <summary>
+            Some special information about exceptional service state.
+            </summary>
+        </member>
+        <member name="M:DataControl.Interfaces.IDataAccessService.GetBest(System.Int32)">
+            <summary>
+            Gets the best champions(drivers).
+            </summary>
+            <param name="amount">Amount of champions for choosing from beginning of some data structure.</param>
+            <returns>
+            Array of champions.
+            </returns>
+        </member>
+        <member name="M:DataControl.Interfaces.IDataAccessService.GetRandomOrder">
+            <summary>
+            Gets random order from some data structure.
+            </summary>
+            <returns>
+            Order that can be chosen by current taxi driver.
+            </returns>
+        </member>
+        <member name="M:DataControl.Interfaces.IDataAccessService.SetConfiguration(DataControl.Interfaces.IConfiguration)">
+            <summary>
+            Sets some configuration.
+            </summary>
+            <param name="configuration">Some configuration for setting up.</param>
+            <returns>
+            Some service for data access.
+            </returns>
+        </member>
+        <member name="M:DataControl.Interfaces.IDataAccessService.SaveResult(TaxiDriver.Driver)">
+            <summary>
+            Saves current driver results.
+            </summary>
+            <param name="driver">Current driver.</param>
+        </member>
+        <member name="M:DataControl.Interfaces.IDataAccessService.SignUp(System.String,System.String)">
+            <summary>
+            Signs up driver by his name and password.
+            </summary>
+            <param name="name">Driver name.</param>
+            <param name="password">Driver password.</param>
+            <returns>
+            True if driver was signed up, if such driver exists - false.
+            </returns>
+        </member>
+        <member name="M:DataControl.Interfaces.IDataAccessService.LogIn(System.String,System.String)">
+            <summary>
+            Logs in driver by his name and password.
+            </summary>
+            <param name="name">Driver name.</param>
+            <param name="password">Driver password.</param>
+            <returns>
+            True if driver was logged in, if such driver doesn`t exist - false.
+            </returns>
+        </member>
+        <member name="T:DataControl.Services.CsvFileService">
+            <summary>
+            Represents service for work with csv files.
+            </summary>
+        </member>
+        <member name="P:DataControl.Services.CsvFileService.Driver">
+            <summary>
+            Current driver.
+            </summary>
+        </member>
+        <member name="P:DataControl.Services.CsvFileService.Message">
+            <summary>
+            Some special information about exceptional service state.
+            </summary>
+        </member>
+        <member name="M:DataControl.Services.CsvFileService.#ctor">
+            <summary>
+            Basic constructors without parameters.
+            </summary>
+        </member>
+        <member name="M:DataControl.Services.CsvFileService.GetBest(System.Int32)">
+            <summary>
+            Gets the best champions(drivers) from some file.
+            </summary>
+            <param name="amount">Amount of champions for choosing from beginning of some csv file.</param>
+            <returns>
+            Array of champions.
+            </returns>
+            <exception cref="T:System.IO.FileNotFoundException">
+            Thrown when file with scores wasn`t found.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when file configuration is null.
+            </exception>
+        </member>
+        <member name="M:DataControl.Services.CsvFileService.GetRandomOrder">
+            <summary>
+            Gets the random order from some files.
+            </summary>
+            <returns>
+            The random order.
+            </returns>
+            <exception cref="T:System.IO.FileNotFoundException">
+            Thrown when some files for creating order weren`t found.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when file configuration is null.
+            </exception>
+        </member>
+        <member name="M:DataControl.Services.CsvFileService.SetConfiguration(DataControl.Interfaces.IConfiguration)">
+            <summary>
+            Sets file configuration.
+            </summary>
+            <param name="configuration">Some configuration for setting up.</param>
+            <returns>
+            Current service for data access.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+            Thrown when the configuration is inappropriate.
+            </exception>
+        </member>
+        <member name="M:DataControl.Services.CsvFileService.SaveResult(TaxiDriver.Driver)">
+            <summary>
+            Saves driver result to some file.
+            </summary>
+            <param name="driver">Current driver.</param>
+            <exception cref="T:System.IO.FileNotFoundException">
+            Thrown when file with scores wasn`t found.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when file configuration is null.
+            </exception>
+        </member>
+        <member name="M:DataControl.Services.CsvFileService.SignUp(System.String,System.String)">
+            <summary>
+            Signs up driver by his name and password.
+            </summary>
+            <param name="name">Driver name.</param>
+            <param name="password">Driver password.</param>
+            <returns>
+            True if driver was signed up, else - false.
+            </returns>
+            <exception cref="T:System.IO.FileNotFoundException">
+            Thrown when file with drivers wasn`t found.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when file configuration is null.
+            </exception>
+        </member>
+        <member name="M:DataControl.Services.CsvFileService.LogIn(System.String,System.String)">
+            <summary>
+            Logs in driver by his name and password.
+            </summary>
+            <param name="name">Driver name.</param>
+            <param name="password">Driver password.</param>
+            <returns>
+            True if driver was logged in, else - false.
+            </returns>
+            <exception cref="T:System.IO.FileNotFoundException">
+            Thrown when file with drivers wasn`t found.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when file configuration is null.
+            </exception>
+        </member>
+        <member name="T:DataControl.Services.FileConfiguration">
+            <summary>
+            Represents file configuration.
+            </summary>
+        </member>
+        <member name="P:DataControl.Services.FileConfiguration.ClientFile">
+            <summary>
+            Path to file with information about clients.
+            </summary>
+        </member>
+        <member name="P:DataControl.Services.FileConfiguration.StreetFile">
+            <summary>
+            Path to file with information about streets.
+            </summary>
+        </member>
+        <member name="P:DataControl.Services.FileConfiguration.RouteFile">
+            <summary>
+            Path to file with information about routes.
+            </summary>
+        </member>
+        <member name="P:DataControl.Services.FileConfiguration.DriverFile">
+            <summary>
+            Path to file with information about drivers.
+            </summary>
+        </member>
+        <member name="P:DataControl.Services.FileConfiguration.ScoreFile">
+            <summary>
+            Path to file with information about scores.
+            </summary>
+        </member>
+        <member name="T:DataControl.ViewModel.ApplicationViewModel">
+            <summary>
+            A class that bond view and models.
+            </summary>
+        </member>
+        <member name="E:DataControl.ViewModel.ApplicationViewModel.PropertyChanged">
+            <summary>
+            Event that invokes when some propery changed
+            </summary>
+        </member>
+        <member name="M:DataControl.ViewModel.ApplicationViewModel.#ctor(DataControl.Interfaces.IDataAccessService)">
+            <summary>
+            Basic constructor with 1 parametr
+            </summary>
+            <param name="dataAccessService">Programs dataAccessService</param>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.CurrentDriver">
+            <summary>
+            Propetry that enable to interract with current driver
+            </summary>
+            <returns>Current driver</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.SelectedOrder">
+            <summary>
+            Propetry that enable to interract with selected order
+            </summary>
+            <returns>Selected order</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.Orders">
+            <summary>
+            Propetry that enable to interract with orders collection
+            </summary>
+            <returns>Orders</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.Time">
+            <summary>
+            Propetry that enable to interract with time
+            </summary>
+            <returns>Time</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.CurrentScore">
+            <summary>
+            Propetry that enable to interract with current score
+            </summary>
+            <returns>Current score</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.Champions">
+            <summary>
+            Propetry that enable to interract with championes
+            </summary>
+            <returns>Championes</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.Password">
+            <summary>
+            Property that enable to interruct with user password
+            </summary>
+            <returns>User password</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.Login">
+            <summary>
+            Property that enable to interruct with user login
+            </summary>
+            <returns>User login</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.LogIn">
+            <summary>
+            Property that enable to interruct with Log In command
+            </summary>
+            <returns>Log In command</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.LogOut">
+            <summary>
+            Property that enable to interruct with Log Out command
+            </summary>
+            <returns>Log Out command</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.SignUp">
+            <summary>
+            Property that enable to interruct with Sign Up command
+            </summary>
+            <returns>Sign Up command</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.StartGame">
+            <summary>
+            Property that enable to interruct with Start Game command
+            </summary>
+            <returns>Start Game command</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.ExecuteOrder">
+            <summary>
+            Property that enable to interruct with Execute Order command
+            </summary>
+            <returns>ExecuteOrder command</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.SearchOrder">
+            <summary>
+            Property that enable to interruct with Search Order command
+            </summary>
+            <returns>Search Order command</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.RemoveOrder">
+            <summary>
+            Property that enable to interruct with Remove Order command
+            </summary>
+            <returns>Remove Order command</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.ShowCabinetOrRegistrate">
+            <summary>
+            Property that enable to interruct with Show Cabinet Or Registrate command
+            </summary>
+            <returns>Show Cabinet Or Registrate command</returns>
+        </member>
+        <member name="P:DataControl.ViewModel.ApplicationViewModel.ShowScores">
+            <summary>
+            Property that enable to interruct with Show Scores command
+            </summary>
+            <returns>Show Scores command</returns>
+        </member>
+        <member name="M:DataControl.ViewModel.ApplicationViewModel.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Method that invokes Property Change event
+            </summary>
+            <param name="e">Property Changed Event Args</param>
+        </member>
+    </members>
+</doc>
