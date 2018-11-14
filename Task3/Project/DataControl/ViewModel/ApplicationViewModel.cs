@@ -27,7 +27,7 @@ namespace DataControl.ViewModel
         DispatcherTimer sessionTimer;
         System.Random randomizer;
 
-        bool isDataUpdated;
+        bool isDataRequireUpdate;
         bool gameRunning;
         System.TimeSpan gameTime;
 
@@ -78,11 +78,16 @@ namespace DataControl.ViewModel
             };
             this.randomizer = new System.Random();
 
-            this.isDataUpdated = false;
+            this.isDataRequireUpdate = true;
             this.gameRunning = false;
             this.gameTime = System.TimeSpan.FromSeconds(0);
             this.orders = new ObservableCollection<Order>();
             this.champions = null;
+
+            #region Window Initialize
+            logInWindow = null;
+            cabinetWindow = null;
+            #endregion
 
             #region Commands Initialize
             logIn = new RelayCommand(LogInMethod, IsNotAuthorized);
@@ -164,9 +169,9 @@ namespace DataControl.ViewModel
                     sessionTimer.Stop();
                     // game ended logic
                     currentDriver.LastScore = CurrentScore;                 
-                    ExecuteMessageWindow("The end of watch", $"Congratulation, your score is {CurrentScore}");
+                    ExecuteMessageWindow("End of watch", $"Congratulation, your score is {CurrentScore}");
                     gameRunning = false;
-                    isDataUpdated = true;
+                    isDataRequireUpdate = true;
                     try
                     {
                         dataAccessService.SaveResult(currentDriver);
@@ -211,11 +216,11 @@ namespace DataControl.ViewModel
             }
             set
             {
-                if (isDataUpdated)
+                if (isDataRequireUpdate)
                 {
                     champions = value;
                     OnPropertyChanged(new PropertyChangedEventArgs(nameof(Champions)));
-                    isDataUpdated = false;
+                    isDataRequireUpdate = false;
                 }
             }
         }
@@ -390,14 +395,17 @@ namespace DataControl.ViewModel
             ProgressWindow progressWindow = new ProgressWindow(selectedOrder.Route.Time);
             progressWindow.ShowDialog();
 
-            if (progressWindow.DialogResult == true)
+            if (selectedOrder != null)
             {
-                CurrentScore += selectedOrder.Route.Price;
-                orders.Remove(selectedOrder);
-            }
-            else
-            {
-                CurrentScore -= PENALTY_SCORE;
+                if (progressWindow.DialogResult == true)
+                {
+                    CurrentScore += selectedOrder.Route.Price;
+                    orders.Remove(selectedOrder);
+                }
+                else
+                {
+                    CurrentScore -= PENALTY_SCORE;
+                }
             }
         }
         private void SearchOrderMethod(object obj)
@@ -468,7 +476,7 @@ namespace DataControl.ViewModel
         #region Additional Methods
         private void SessionTimer_Tick(object sender, System.EventArgs e)
         {
-            // slowly loosing tim
+            // slowly loosing time
             Time = System.TimeSpan.FromSeconds(1);
 
             // sometimes add order
