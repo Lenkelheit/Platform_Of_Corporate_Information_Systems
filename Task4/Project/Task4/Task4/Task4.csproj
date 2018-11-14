@@ -76,10 +76,6 @@
     <Content Include="DB\Northwind.MDF">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="DB\Northwind_log.ldf">
-      <DependentUpon>Northwind.MDF</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
