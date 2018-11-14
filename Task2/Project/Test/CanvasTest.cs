@@ -129,7 +129,7 @@ namespace Test
 
             Assert.AreEqual(2, test.CountIf((s) => s is Vertex));
             Assert.AreEqual(4, test.CountIf((s) => s is Pentagon));
-            Assert.AreEqual(2, test.CountIf((s) => s is Pentagon && ((Pentagon)s).Opacity > 0.5));
+            Assert.AreEqual(3, test.CountIf((s) => s is Pentagon && ((Pentagon)s).Opacity > 0.5));
         }
         [TestMethod]
         public void CopyToTest()
