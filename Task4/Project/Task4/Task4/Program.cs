@@ -243,10 +243,8 @@ namespace Task4
 
             command.CommandText = String.Concat("SELECT C.ContactName ",
                                                 "FROM Customers AS C ",
-                                                "JOIN Orders AS O ON O.CustomerID = C.CustomerID ",
                                                 "WHERE C.Country = 'France' ",
-                                                "GROUP BY C.ContactName ",
-                                                "HAVING COUNT (O.CustomerID) > 1;");
+                                                "AND C.CustomerID IN (SELECT DISTINCT CustomerID FROM Orders);");
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -262,7 +260,7 @@ namespace Task4
             command.CommandText = String.Concat("SELECT C.ContactName ",
                                                 "FROM Customers AS C ",
                                                 "JOIN Orders AS O ON O.CustomerID = C.CustomerID ",
-                                                "JOIN \"Order Details\" AS OD ON O.OrderID = OD.OrderID ",
+                                                "JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
                                                 "JOIN Products AS P ON P.ProductID = OD.ProductID ",
                                                 "WHERE P.ProductName = 'Tofu';");
             using (SqlDataReader reader = command.ExecuteReader())
