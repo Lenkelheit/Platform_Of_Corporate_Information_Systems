@@ -1,8 +1,3 @@
-#define first
-#define second
-#define third
-#define fourth
-
 using System;
 using System.Data.SqlClient;
 
@@ -24,7 +19,6 @@ namespace Task4
 
             // TASK
             // 1
-#if first
             Console.WriteLine("First Part");
             Console.ReadLine();
 
@@ -48,7 +42,7 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Show the list of first and last names of the employees from London\n");
 
-            command.CommandText = "SELECT FirstName, LastName FROM Employees WHERE City='London';";
+            command.CommandText = "SELECT FirstName, LastName FROM Employees WHERE City = 'London';";
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -66,7 +60,7 @@ namespace Task4
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine("{0}\t{1}", reader["FirstName"], reader["LastName"]);
+                    Console.WriteLine("{0, -20} {1}", reader["FirstName"], reader["LastName"]);
                 }
             }
             Console.ReadLine();
@@ -75,14 +69,15 @@ namespace Task4
             Console.WriteLine("Show the list of first, last names and ages of the employees whose age is greater than 55."
                 + " The result should be sorted by last name \n");
 
-            command.CommandText = "SELECT FirstName, LastName, DATEDIFF(year, BirthDate, GETDATE()) AS Age FROM Employees  " +
-                "WHERE DATEDIFF(year, BirthDate, GETDATE()) > 55 " +
-                "ORDER BY LastName;";
+            command.CommandText = String.Concat("SELECT FirstName, LastName, DATEDIFF(year, BirthDate, GETDATE()) AS Age ",
+                                                "FROM Employees ",
+                                                "WHERE DATEDIFF(year, BirthDate, GETDATE()) > 55 ",
+                                                "ORDER BY LastName;");
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine("{0}\t{1}\t{2}", reader["FirstName"], reader["LastName"], reader["Age"]);
+                    Console.WriteLine("{0, -20} {1}\t{2}", reader["FirstName"], reader["LastName"], reader["Age"]);
                 }
             }
             Console.ReadLine();
@@ -90,7 +85,7 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Calculate the count of employees from London\n");
 
-            command.CommandText = "SELECT COUNT(*) AS EmployeesAmount FROM Employees WHERE City='London';";
+            command.CommandText = "SELECT COUNT(*) AS EmployeesAmount FROM Employees WHERE City = 'London';";
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -104,10 +99,11 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Calculate the greatest, the smallest and the average age among the employees from London\n");
 
-            command.CommandText = "SELECT MAX(DATEDIFF(year, BirthDate, GETDATE())) AS MaxBirth," +
-                " MIN(DATEDIFF(year, BirthDate, GETDATE())) AS MinBirth, " +
-                " AVG(DATEDIFF(year, BirthDate, GETDATE())) AS AvgBirth FROM Employees " +
-                " WHERE City='London';";
+            command.CommandText = string.Concat("SELECT MAX(DATEDIFF(year, BirthDate, GETDATE())) AS MaxBirth, ",
+                                                       "MIN(DATEDIFF(year, BirthDate, GETDATE())) AS MinBirth, " ,
+                                                       "AVG(DATEDIFF(year, BirthDate, GETDATE())) AS AvgBirth ",
+                                                "FROM Employees " ,
+                                                "WHERE City='London';");
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -120,15 +116,16 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Calculate the greatest, the smallest and the average age of the employees for each city\n");
 
-            command.CommandText = "SELECT City, MAX(DATEDIFF(year, BirthDate, GETDATE())) AS MaxBirth," +
-                " MIN(DATEDIFF(year, BirthDate, GETDATE())) AS MinBirth, " +
-                " AVG(DATEDIFF(year, BirthDate, GETDATE())) AS AvgBirth FROM Employees " +
-                " GROUP BY City;";
+            command.CommandText = string.Concat("SELECT City, MAX(DATEDIFF(year, BirthDate, GETDATE())) AS MaxBirth, " ,
+                                                             "MIN(DATEDIFF(year, BirthDate, GETDATE())) AS MinBirth, " ,
+                                                             "AVG(DATEDIFF(year, BirthDate, GETDATE())) AS AvgBirth " ,
+                                                "FROM Employees " ,
+                                                "GROUP BY City;");
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine("{0}\t{1}\t{2}\t{3}", reader["City"], reader["MaxBirth"], reader["MinBirth"], reader["AvgBirth"]);
+                    Console.WriteLine("{0,-20}{1}\t{2}\t{3}", reader["City"], reader["MaxBirth"], reader["MinBirth"], reader["AvgBirth"]);
                 }
             }
             Console.ReadLine();
@@ -136,14 +133,15 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Show the list of cities in which the average age of employees is greater than 60(the average age is also to be shown)\n");
 
-            command.CommandText = "SELECT City, AVG(DATEDIFF(year, BirthDate, GETDATE())) AS avgBirth FROM Employees " +
-               "GROUP BY City " +
-               "HAVING AVG(DATEDIFF(year, BirthDate, GETDATE())) > 60;";
+            command.CommandText = string.Concat("SELECT City, AVG(DATEDIFF(year, BirthDate, GETDATE())) AS AvgBirth ",
+                                                "FROM Employees " ,
+                                                "GROUP BY City " ,
+                                                "HAVING AVG(DATEDIFF(year, BirthDate, GETDATE())) > 60;");
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine("{0}\t{1}", reader["City"], reader["avgBirth"]);
+                    Console.WriteLine("{0}\t{1}", reader["City"], reader["AvgBirth"]);
                 }
             }
             Console.ReadLine();
@@ -151,8 +149,9 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Show the first and last name(s) of the eldest employee(s)\n");
 
-            command.CommandText = "SELECT TOP 1 FirstName, LastName, DATEDIFF(year, BirthDate, GETDATE()) FROM Employees " +
-                "ORDER BY BirthDate;";
+            command.CommandText = string.Concat("SELECT TOP 1 FirstName, LastName ",
+                                                "FROM Employees " ,
+                                                "ORDER BY BirthDate;");
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -165,20 +164,19 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Show first, last names and ages of 3 eldest employees\n");
 
-            command.CommandText = "SELECT TOP 3 FirstName, LastName, DATEDIFF(year, BirthDate, GETDATE()) AS Age FROM Employees " +
-                "ORDER BY BirthDate;";
+            command.CommandText = string.Concat("SELECT TOP 3 FirstName, LastName, DATEDIFF(year, BirthDate, GETDATE()) AS Age ",
+                                                "FROM Employees " ,
+                                                "ORDER BY BirthDate;");
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine("{0}\t{1}\t{2}", reader["FirstName"], reader["LastName"], reader["Age"]);
+                    Console.WriteLine("{0, -10} {1, -10} {2}", reader["FirstName"], reader["LastName"], reader["Age"]);
                 }
             }
             Console.ReadLine();
-#endif
 
             // 2
-#if second
             Console.Clear();
             Console.WriteLine("Second part\n\n");
             Console.ReadLine();
@@ -349,11 +347,8 @@ namespace Task4
                 }
             }
             Console.ReadLine();
-#endif
 
             //3
-#if third
-
             Console.Clear();
             Console.WriteLine("Third part\n\n");
             Console.ReadLine();
@@ -537,7 +532,7 @@ namespace Task4
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine("{0} {1} {2}", reader["ProductName"], reader["UnitPrice"], reader["HistoricalPrice"]);
+                    Console.WriteLine("{0, -40} {1, -20} {2}", reader["ProductName"], reader["UnitPrice"], reader["HistoricalPrice"]);
                 }
             }
             Console.ReadLine();
@@ -581,11 +576,7 @@ namespace Task4
             }
             Console.ReadLine();
 
-#endif
-
             // 4
-#if fourth
-
             Console.Clear();
             Console.WriteLine("Fourth part\n\n");
             Console.ReadLine();
@@ -629,7 +620,7 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Change the City field in one of your records using the UPDATE statement\n");
 
-            command.CommandText = string.Concat("UPDATE Employess ",
+            command.CommandText = string.Concat("UPDATE Employees ",
                 "SET City = 'Lexington' ",
                 "WHERE LastName = 'Mike' AND Notes LIKE 'Adam';");
 
@@ -640,7 +631,7 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Change the HireDate field in all your records to current date\n");
 
-            command.CommandText = string.Concat("UPDATE Employess ",
+            command.CommandText = string.Concat("UPDATE Employees ",
                                                 "SET HireDate = '2018-11-18' ",
                                                 "WHERE Notes LIKE 'Adam';");
 
@@ -655,7 +646,6 @@ namespace Task4
             Console.WriteLine("Deleted {0} rows", command.ExecuteNonQuery());
 
             Console.ReadLine();
-#endif
 
             // dispose
             command.Dispose();
