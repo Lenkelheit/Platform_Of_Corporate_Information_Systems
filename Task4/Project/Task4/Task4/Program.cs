@@ -26,8 +26,17 @@ namespace Task4
             Console.WriteLine("Show all info about the employee with ID 8\n");
 
             command.CommandText = "SELECT * FROM Employees WHERE EmployeeID = 8;";
-            throw new NotImplementedException();
-
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; ++i)
+                    {
+                        Console.WriteLine("{0,-20}{1}", reader.GetName(i), reader.GetValue(i));
+                    }
+                    Console.WriteLine();
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
@@ -106,21 +115,45 @@ namespace Task4
             Console.ReadLine();
 
             Console.Clear();
-            Console.WriteLine("Show the list of all cities where the employees are from 0\n");
+            Console.WriteLine("Show the list of all cities where the employees are from\n");
 
-            throw new NotImplementedException();
+            command.CommandText = "SELECT DISTINCT City FROM Employees;";
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine(reader["City"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("Show first, last names and dates of birth of the employees who celebrate their birthdays this month\n");
 
-            throw new NotImplementedException();
+            command.CommandText = "SELECT FirstName, LastName, BirthDate FROM Employees WHERE MONTH(BirthDate) = 12;";
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0,-10}{1,-10}{2}", reader["FirstName"], reader["LastName"], reader["BirthDate"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("Show first and last names of the employees who used to serve orders shipped to Madrid\n");
 
-            throw new NotImplementedException();
+            command.CommandText = string.Concat("SELECT DISTINCT FirstName, LastName ",
+                                                "FROM Employees ",
+                                                "JOIN Orders ON Employees.EmployeeID = Orders.EmployeeID ",
+                                                "WHERE ShipCity = 'Madrid';");
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0,-10}{1,-10}", reader["FirstName"], reader["LastName"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
@@ -146,27 +179,62 @@ namespace Task4
             Console.WriteLine("Show first and last names of the employees "
                 + "as well as the count of orders each of them have received during the year 1997\n");
 
-            throw new NotImplementedException();
+            command.CommandText = string.Concat("SELECT E.FirstName, E.LastName, COUNT(O.EmployeeID) AS OrdersAmount ",
+                                                "FROM Employees AS E ",
+                                                "JOIN Orders AS O ON O.EmployeeID = E.EmployeeID ",
+                                                "WHERE O.OrderDate BETWEEN '1997-01-01' AND '1997-12-31' ",
+                                                "GROUP BY E.FirstName, E.LastName;");
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0,-10}{1,-10}{2}", reader["FirstName"], reader["LastName"], reader["OrdersAmount"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("Show first and last names of the employees "
                 + "as well as the count of their orders shipped after required date during the year 1997(use left join)\n");
 
-            throw new NotImplementedException();
+            command.CommandText = string.Concat("SELECT E.FirstName, E.LastName, COUNT(O.EmployeeID) AS OrdersAmount ",
+                                                "FROM Employees AS E ",
+                                                "LEFT JOIN Orders AS O ON O.EmployeeID = E.EmployeeID ",
+                                                "WHERE O.ShippedDate > O.RequiredDate ",
+                                                "AND O.OrderDate BETWEEN '1997-01-01' AND '1997-12-31' ",
+                                                "GROUP BY E.FirstName, E.LastName;");
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0,-10}{1,-10}{2}", reader["FirstName"], reader["LastName"], reader["OrdersAmount"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("Show the count of orders made by each customer from France\n");
 
-            throw new NotImplementedException();
+            command.CommandText = string.Concat("SELECT C.ContactName, COUNT(O.CustomerID) AS OrdersAmount ",
+                                                "FROM Customers AS C ",
+                                                "JOIN Orders AS O ON O.CustomerID = C.CustomerID ",
+                                                "WHERE C.Country = 'France' ",
+                                                "GROUP BY C.ContactName;");
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0,-20}{1,-20}", reader["ContactName"], reader["OrdersAmount"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who have made more than one order(use grouping)\n");
 
             command.CommandText = String.Concat("SELECT C.ContactName ",
-                                                "FROM Customers AS C, Orders AS O ",
+                                                "FROM Customers AS C ",
+                                                "JOIN Orders AS O ON O.CustomerID = C.CustomerID ",
                                                 "WHERE C.Country = 'France' ",
                                                 "GROUP BY C.ContactName ",
                                                 "HAVING COUNT (O.CustomerID) > 1;");
@@ -177,19 +245,40 @@ namespace Task4
                     Console.WriteLine(reader["ContactName"]);
                 }
             }
-
             Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who have made more than one order\n");
 
-            throw new NotImplementedException();
+            command.CommandText = String.Concat("SELECT C.ContactName ",
+                                                "FROM Customers AS C ",
+                                                "WHERE C.Country = 'France' ",
+                                                "AND C.CustomerID IN (SELECT DISTINCT CustomerID FROM Orders);");
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine(reader["ContactName"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("Show the list of customers’ names who used to order the ‘Tofu’ product\n");
 
-            throw new NotImplementedException();
+            command.CommandText = String.Concat("SELECT C.ContactName ",
+                                                "FROM Customers AS C ",
+                                                "JOIN Orders AS O ON O.CustomerID = C.CustomerID ",
+                                                "JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
+                                                "JOIN Products AS P ON P.ProductID = OD.ProductID ",
+                                                "WHERE P.ProductName = 'Tofu';");
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine(reader["ContactName"]);
+                }
+            }
             Console.ReadLine();
 
             //3
