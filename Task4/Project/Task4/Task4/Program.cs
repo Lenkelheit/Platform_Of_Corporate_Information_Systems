@@ -442,7 +442,20 @@ namespace Task4
                 + "along with total ordering sums calculated for the orders made for the products of each category, "
                 + "during the year 1997\n");
 
-            throw new NotImplementedException();
+            command.CommandText = String.Concat("SELECT C.CategoryName, P.ProductName, COUNT (O.OrderID) AS OrdersAmount ",
+                                                "FROM Categories AS C ",
+                                                "LEFT JOIN Products AS P ON P.CategoryID = C.CategoryID ",
+                                                "LEFT JOIN [Order Details] AS OD ON OD.ProductID = P.ProductID ",
+                                                "LEFT JOIN Orders AS O ON O.OrderID = OD.OrderID ",
+                                                "WHERE O.OrderDate BETWEEN '1997-01-01' AND '1997-12-31' ",
+                                                "GROUP BY P.ProductName, C.CategoryName;");
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0,-20}{1,-35}{2}", reader["CategoryName"], reader["ProductName"], reader["OrdersAmount"]);
+                }
+            }
             Console.ReadLine();
            
             Console.Clear();
