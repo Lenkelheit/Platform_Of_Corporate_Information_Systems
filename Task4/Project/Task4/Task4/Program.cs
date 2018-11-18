@@ -453,7 +453,19 @@ namespace Task4
                 + "‘Product name – Unit price – NULL’."
                 + "Sort the list by the product name\n");
 
-            throw new NotImplementedException();
+            command.CommandText = string.Concat("SELECT P.ProductName, P.UnitPrice, OD.UnitPrice AS HistoricalPrice ",
+                                                "FROM Products AS P ",
+                                                "RIGHT JOIN [Order Details] AS OD ON P.ProductID = OD.ProductID ",
+                                                "WHERE P.UnitPrice <> OD.UnitPrice ",
+                                                "GROUP BY P.ProductName, P.UnitPrice, OD.UnitPrice ",
+                                                "ORDER BY P.ProductName;");
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0} {1} {2}", reader["ProductName"], reader["UnitPrice"], reader["HistoricalPrice"]);
+                }
+            }
             Console.ReadLine();
          
             Console.Clear();
