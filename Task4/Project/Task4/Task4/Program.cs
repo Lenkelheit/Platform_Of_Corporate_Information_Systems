@@ -442,7 +442,20 @@ namespace Task4
                 + "along with total ordering sums calculated for the orders made for the products of each category, "
                 + "during the year 1997\n");
 
-            throw new NotImplementedException();
+            command.CommandText = String.Concat("SELECT C.CategoryName, P.ProductName, COUNT (O.OrderID) AS OrdersAmount ",
+                                                "FROM Categories AS C ",
+                                                "LEFT JOIN Products AS P ON P.CategoryID = C.CategoryID ",
+                                                "LEFT JOIN [Order Details] AS OD ON OD.ProductID = P.ProductID ",
+                                                "LEFT JOIN Orders AS O ON O.OrderID = OD.OrderID ",
+                                                "WHERE O.OrderDate BETWEEN '1997-01-01' AND '1997-12-31' ",
+                                                "GROUP BY P.ProductName, C.CategoryName;");
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0,-20}{1,-35}{2}", reader["CategoryName"], reader["ProductName"], reader["OrdersAmount"]);
+                }
+            }
             Console.ReadLine();
            
             Console.Clear();
@@ -453,7 +466,19 @@ namespace Task4
                 + "‘Product name – Unit price – NULL’."
                 + "Sort the list by the product name\n");
 
-            throw new NotImplementedException();
+            command.CommandText = string.Concat("SELECT P.ProductName, P.UnitPrice, OD.UnitPrice AS HistoricalPrice ",
+                                                "FROM Products AS P ",
+                                                "RIGHT JOIN [Order Details] AS OD ON P.ProductID = OD.ProductID ",
+                                                "WHERE P.UnitPrice <> OD.UnitPrice ",
+                                                "GROUP BY P.ProductName, P.UnitPrice, OD.UnitPrice ",
+                                                "ORDER BY P.ProductName;");
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0} {1} {2}", reader["ProductName"], reader["UnitPrice"], reader["HistoricalPrice"]);
+                }
+            }
             Console.ReadLine();
          
             Console.Clear();
@@ -475,8 +500,24 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Show the list of cities where employees and customers are from and where orders have been made to."
                 + "Duplicates should be eliminated\n");
+            command.CommandText = string.Concat(
+                                                "(SELECT E.City AS OrderFromCity, O.ShipCity AS OrderToCity ",
+                                                "FROM Orders AS O ",
+                                                "LEFT JOIN Employees AS E ON E.EmployeeID = O.EmployeeID ",
+                                                "GROUP BY E.City, O.ShipCity) ",
+                                        "UNION ",
+                                                "(SELECT C.City AS OrderFromCity, O.ShipCity AS OrderToCity ",
+                                                "FROM Orders AS O ",
+                                                "LEFT JOIN Customers AS C ON C.CustomerID = O.CustomerID ",
+                                                "GROUP BY C.City, O.ShipCity);");
 
-            throw new NotImplementedException();
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0, -20} {1, -20}", reader["OrderFromCity"], reader["OrderToCity"]);
+                }
+            }
             Console.ReadLine();
           
 #endif
