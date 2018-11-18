@@ -20,7 +20,7 @@
 | |<ul><li>- [x] </li></ul>| The result should be in the form of DataReader and output to the console  |              |            |
 |                                                              3                                                                   |
 | |                        |                                                                           |     vasil98  | 21.11.2018 |
-| |<ul><li>- [ ] </li></ul>| Show all info about the employee with ID 8                                |              |            |
+| |<ul><li>- [x] </li></ul>| Show all info about the employee with ID 8                                |              |            |
 | |<ul><li>- [x] </li></ul>| Show the list of first and last names of the employees from London        |              |            |
 | |<ul><li>- [ ] </li></ul>| Show the list of first and last names of the employees whose first name begins with letter A|    |    |
 | |<ul><li>- [ ] </li></ul>| Show the list of first, last names and ages of the employees whose age is greater than 55. The result should be sorted by last name                                                                          |              |            |
@@ -31,16 +31,16 @@
 | |<ul><li>- [ ] </li></ul>| Show the first and last name(s) of the eldest employee(s)                 |              |            |
 | |<ul><li>- [ ] </li></ul>| Show first, last names and ages of 3 eldest employees                     |              |            |
 | |                        |                                                                           |  Lenkelheit  | 18.11.2018 |
-| |<ul><li>- [ ] </li></ul>| Show the list of all cities where the employees are from 0                |              |            |
-| |<ul><li>- [ ] </li></ul>| Show first, last names and dates of birth of the employees who celebrate their birthdays this month|| |
-| |<ul><li>- [ ] </li></ul>| Show first and last names of the employees who used to serve orders shipped to Madrid  |   |          |
+| |<ul><li>- [x] </li></ul>| Show the list of all cities where the employees are from 0                |              |            |
+| |<ul><li>- [x] </li></ul>| Show first, last names and dates of birth of the employees who celebrate their birthdays this month|| |
+| |<ul><li>- [x] </li></ul>| Show first and last names of the employees who used to serve orders shipped to Madrid  |   |          |
 | |<ul><li>- [x] </li></ul>| Show first and last names of the employees as well as the count of orders each of them have received during the year 1997 (use left join)                                                                          |              |            |
-| |<ul><li>- [ ] </li></ul>| Show first and last names of the employees as well as the count of orders each of them have received during the year 1997                                                                                          |              |            |
-| |<ul><li>- [ ] </li></ul>| Show first and last names of the employees as well as the count of their orders shipped after required date during the year 1997 (use left join)                                                                   |              |            |
-| |<ul><li>- [ ] </li></ul>| Show the count of orders made by each customer from France                |              |            |
+| |<ul><li>- [x] </li></ul>| Show first and last names of the employees as well as the count of orders each of them have received during the year 1997                                                                                          |              |            |
+| |<ul><li>- [x] </li></ul>| Show first and last names of the employees as well as the count of their orders shipped after required date during the year 1997 (use left join)                                                                   |              |            |
+| |<ul><li>- [x] </li></ul>| Show the count of orders made by each customer from France                |              |            |
 | |<ul><li>- [x] </li></ul>| Show the list of french customers’ names who have made more than one order (use grouping) |      |    |
-| |<ul><li>- [ ] </li></ul>| Show the list of french customers’ names who have made more than one order|              |            |
-| |<ul><li>- [ ] </li></ul>| Show the list of customers’ names who used to order the ‘Tofu’ product    |              |            |
+| |<ul><li>- [x] </li></ul>| Show the list of french customers’ names who have made more than one order|              |            |
+| |<ul><li>- [x] </li></ul>| Show the list of customers’ names who used to order the ‘Tofu’ product    |              |            |
 | |                        |                                                                        |SvyatoslavFedynyak|21.11.2018 |
 | |<ul><li>- [ ] </li></ul>| Show the list of customers’ names who used to order the ‘Tofu’ product, along with the total amount of the product they have ordered and with the total sum for ordered product calculated                        |              |            |
 | |<ul><li>- [ ] </li></ul>| Show the list of french customers’ names who used to order non-french products (use left join)|  |    |
