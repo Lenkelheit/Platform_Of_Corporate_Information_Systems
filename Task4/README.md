@@ -2,9 +2,9 @@
 
 ## Informations
 
-| Deadline |Mark|Done Time |Test Time |Our Deadline|Paydate|
-|:--------:|:--:|:--------:|:--------:|:----------:|:-----:|
-|22.11.2018| 10 |21.11.2018|22.11.2018| 22.11.2018 |       |
+| Deadline |Mark|Done Time |Test Time |Our Deadline| Paydate  |
+|:--------:|:--:|:--------:|:--------:|:----------:|:--------:|
+|22.11.2018| 10 |21.11.2018|22.11.2018| 22.11.2018 |19.11.2018|
 
 
 ## Tasks
@@ -51,8 +51,8 @@
 | |<ul><li>- [x] </li></ul>| Show the list of product categories along with total ordering sums calculated for the orders made for the products of each category, during the year 1997                                                        |              |            |
 | |<ul><li>- [x] </li></ul>| Show the list of product names along with unit prices and the history of unit prices taken from the orders (show ‘Product name – Unit price – Historical price’). The duplicate records should be eliminated. If no orders were made for a certain product, then the result for this product should look like ‘Product name – Unit price – NULL’. Sort the list by the product name||  |
 | |<ul><li>- [x] </li></ul>| Show the list of employees’ names along with names of their chiefs (use left join with the same table)|||
-| |<ul><li>- [x] </li></ul>| Show the list of cities where employees and customers are from and where orders have been made to. Duplicates should be eliminated                                                                     |SvyatoslavFedynyak|21.11.2018 |
-| |                        |                                                                           |              |            |
+| |<ul><li>- [x] </li></ul>| Show the list of cities where employees and customers are from and where orders have been made to. Duplicates should be eliminated                                                                        |              |            |
+| |                        |                                                                          |SvyatoslavFedynyak|21.11.2018 |
 | |<ul><li>- [x] </li></ul>| Insert 5 new records into Employees table. Fill in the following  fields: LastName, FirstName, BirthDate, HireDate, Address, City, Country, Notes. The Notes field should contain your own name                  |              |            |
 | |<ul><li>- [x] </li></ul>| Fetch the records you have inserted by the SELECT statement               |              |            |
 | |<ul><li>- [x] </li></ul>| Change the City field in one of your records using the UPDATE statement   |              |            |
