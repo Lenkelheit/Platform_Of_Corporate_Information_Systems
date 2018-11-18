@@ -227,7 +227,6 @@ namespace DataControl.ViewModel
         /// <summary>
         /// Property that enable to interruct with user password
         /// </summary>
-        /// <returns>User password</returns>
         public string Password
         {
             set
@@ -238,7 +237,6 @@ namespace DataControl.ViewModel
         /// <summary>
         /// Property that enable to interruct with user login
         /// </summary>
-        /// <returns>User login</returns>
         public string Login
         {
             set
@@ -533,7 +531,7 @@ namespace DataControl.ViewModel
         /// <param name="e">Property Changed Event Args</param>
         protected void OnPropertyChanged(PropertyChangedEventArgs e)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(e.PropertyName));
+            PropertyChanged?.Invoke(this, e);
         }
         #endregion
     }
