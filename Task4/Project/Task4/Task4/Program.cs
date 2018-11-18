@@ -488,7 +488,6 @@ namespace Task4
             Console.WriteLine("Fourth part\n\n");
             Console.ReadLine();
 
-
             Console.Clear();
             Console.WriteLine("Insert 5 new records into Employees table."
                 + "Fill in the following  fields: LastName, FirstName, BirthDate, HireDate, Address, City, Country, Notes."
@@ -507,13 +506,10 @@ namespace Task4
 
             Console.ReadLine();
 
-
-
             Console.Clear();
             Console.WriteLine("Fetch the records you have inserted by the SELECT statement\n");
 
-            command.CommandText = string.Concat("SELECT * FROM Employees ",
-                "WHERE Notes = 'Adam';");
+            command.CommandText = "SELECT * FROM Employees WHERE Notes LIKE 'Adam';";
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -528,43 +524,35 @@ namespace Task4
             }
             Console.ReadLine();
 
-
-
             Console.Clear();
             Console.WriteLine("Change the City field in one of your records using the UPDATE statement\n");
 
             command.CommandText = string.Concat("UPDATE Employess ",
                 "SET City = 'Lexington' ",
-                "WHERE LasTName = 'Mike' AND Notes = 'Adam';");
+                "WHERE LastName = 'Mike' AND Notes LIKE 'Adam';");
 
             Console.WriteLine($"Update {command.ExecuteNonQuery()} row");
 
             Console.ReadLine();
-
-
 
             Console.Clear();
             Console.WriteLine("Change the HireDate field in all your records to current date\n");
 
             command.CommandText = string.Concat("UPDATE Employess ",
-                "SET HireDate = '2018-11-18' ",
-                "WHERE Notes = 'Adam';");
+                                                "SET HireDate = '2018-11-18' ",
+                                                "WHERE Notes LIKE 'Adam';");
 
             Console.WriteLine($"Update {command.ExecuteNonQuery()} row");
 
             Console.ReadLine();
 
-
-
             Console.Clear();
             Console.WriteLine("Delete one of your records\n");
 
-            command.CommandText = "DELETE FROM Employees WHERE LastName='John' AND FirstName='Doe' AND Notes = 'Adam';";
+            command.CommandText = "DELETE FROM Employees WHERE LastName = 'John' AND FirstName = 'Doe' AND Notes LIKE 'Adam';";
             Console.WriteLine("Deleted {0} rows", command.ExecuteNonQuery());
 
             Console.ReadLine();
-
-
 #endif
 
             // dispose
