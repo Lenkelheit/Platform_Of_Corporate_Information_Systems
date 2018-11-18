@@ -1,4 +1,9 @@
-﻿using System;
+﻿#define first
+#define second
+#define third
+#define fourth
+
+using System;
 using System.Data.SqlClient;
 
 namespace Task4
@@ -19,6 +24,7 @@ namespace Task4
 
             // TASK
             // 1
+#if first
             Console.WriteLine("First Part");
             Console.ReadLine();
 
@@ -108,8 +114,10 @@ namespace Task4
 
             throw new NotImplementedException();
             Console.ReadLine();
+#endif
 
             // 2
+#if second
             Console.Clear();
             Console.WriteLine("Second part\n\n");
             Console.ReadLine();
@@ -280,8 +288,11 @@ namespace Task4
                 }
             }
             Console.ReadLine();
+#endif
 
             //3
+#if third
+          
             Console.Clear();
             Console.WriteLine("Third part\n\n");
             Console.ReadLine();
@@ -291,29 +302,58 @@ namespace Task4
             Console.WriteLine("Show the list of customers’ names who used to order the ‘Tofu’ product,"
                 + "along with the total amount of the product they have ordered and with the total sum for ordered product calculated\n");
 
-            throw new NotImplementedException();
+            command.CommandText = string.Concat("SELECT C.ContactName, SUM(OD.Quantity) AS Count, SUM(OD.UnitPrice * OD.Quantity) AS PriceSum ",
+                                                "FROM Customers AS C ",
+                                                "LEFT JOIN Orders AS O ON C.CustomerID = O.CustomerID ",
+                                                "LEFT JOIN [Order Details] AS OD ON OD.OrderId = O.OrderId ",
+                                                "LEFT JOIN [Products] AS P ON P.ProductID = OD.ProductID ",
+                                                "WHERE P.ProductName = 'Tofu' ",
+                                                "GROUP BY C.ContactName;");
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0, -20} {1,-3} {2}", reader["ContactName"], reader["Count"], reader["PriceSum"]);
+                }
+            }
+
             Console.ReadLine();
-
-
+            
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who used to order non - french products(use left join)\n");
 
-            throw new NotImplementedException();
-            Console.ReadLine();
+            command.CommandText = string.Concat("SELECT DISTINCT C.ContactName ",
+                                                "FROM Customers as C ",
+                                                "LEFT JOIN Orders AS O ON C.CustomerID = O.CustomerID ",
+                                                "LEFT JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
+                                                "LEFT JOIN [Products] AS P ON OD.ProductID = P.ProductID ",
+                                                "LEFT JOIN [Suppliers] AS S ON P.SupplierID = S.SupplierID ",
+                                                "WHERE S.Country <> 'France' AND C.Country = 'France'");
 
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine(reader["ContactName"]);
+                }
+            }
+            Console.ReadLine();
+       
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who used to order non - french products\n");
 
-            throw new NotImplementedException();
-            Console.ReadLine();
-
-            Console.Clear();
-            Console.WriteLine("Show the list of french customers’ names who used to order french products\n");
-
             command.CommandText = string.Concat("SELECT C.ContactName ",
-                                                "FROM Customers AS C ",
-                                                "LEFT JOIN Orders AS O ON C.CustomerID = O.CustomerID ",
-                                                "WHERE O.ShipCountry='France';");
+                                                "FROM Customers as C ",
+                                                "WHERE C.Country ='France' ",
+                                                "AND C.CustomerID IN (",
+                                                     "SELECT DISTINCT CustomerID ",
+                                                     "FROM Orders AS O ",
+                                                     "LEFT JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
+                                                     "LEFT JOIN [Products] AS P ON OD.ProductID = P.ProductID ",
+                                                     "LEFT JOIN [Suppliers] AS S ON P.SupplierID = S.SupplierID ",
+                                                     "WHERE S.Country <> 'France');");
+
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -323,11 +363,31 @@ namespace Task4
             }
 
             Console.ReadLine();
+         
+            Console.Clear();
+            Console.WriteLine("Show the list of french customers’ names who used to order french products\n");
 
+            command.CommandText = string.Concat("SELECT DISTINCT C.ContactName ",
+                                                "FROM Customers AS C ",
+                                                "LEFT JOIN Orders AS O ON C.CustomerID = O.CustomerID ",
+                                                "LEFT JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
+                                                "LEFT JOIN [Products] AS P ON OD.ProductID = P.ProductID ",
+                                                "LEFT JOIN [Suppliers] AS S ON P.SupplierID = S.SupplierID ",
+                                                "WHERE S.Country = 'France' AND C.Country ='France';");
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine(reader["ContactName"]);
+                }
+            }
+
+            Console.ReadLine();
+           
             Console.Clear();
             Console.WriteLine("Show the total ordering sum calculated for each country of customer\n");
 
-            command.CommandText = String.Concat("SELECT C.Country, SUM(OD.UnitPrice) AS TotalPrice ",
+            command.CommandText = String.Concat("SELECT C.Country, SUM(OD.UnitPrice * OD.Quantity) AS TotalPrice ",
                                                 "FROM Customers AS C ",
                                                 "LEFT JOIN Orders AS O ON O.CustomerID = C.CustomerID ",
                                                 "LEFT JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
@@ -339,9 +399,9 @@ namespace Task4
                     Console.WriteLine("{0,-20}{1}", reader["Country"], reader["TotalPrice"]);
                 }
             }
-
             Console.ReadLine();
-
+        
+          
             Console.Clear();
             Console.WriteLine("Show the total ordering sums calculated "
                 + "for each customer’s country for domestic and non - domestic products separately"
@@ -376,8 +436,7 @@ namespace Task4
                 }
             }
             Console.ReadLine();
-
-
+           
             Console.Clear();
             Console.WriteLine("Show the list of product categories "
                 + "along with total ordering sums calculated for the orders made for the products of each category, "
@@ -385,7 +444,7 @@ namespace Task4
 
             throw new NotImplementedException();
             Console.ReadLine();
-
+           
             Console.Clear();
             Console.WriteLine("Show the list of product names along with unit prices "
                 + "and the history of unit prices taken from the orders (show ‘Product name – Unit price – Historical price’)."
@@ -396,31 +455,45 @@ namespace Task4
 
             throw new NotImplementedException();
             Console.ReadLine();
-
-
+         
             Console.Clear();
             Console.WriteLine("Show the list of employees’ names along with names of their chiefs(use left join with the same table)\n");
 
-            throw new NotImplementedException();
-            Console.ReadLine();
+            command.CommandText = string.Concat("SELECT E1.LastName AS Name, E2.LastName AS Chief ",
+                                                "FROM Employees AS E1 ",
+                                                "LEFT JOIN Employees AS E2 ON E1.ReportsTo = E2.EmployeeID;");
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine($"{reader["Name"]} {reader["Chief"]}");
+                }
+            }
 
+            Console.ReadLine();
+       
             Console.Clear();
             Console.WriteLine("Show the list of cities where employees and customers are from and where orders have been made to."
                 + "Duplicates should be eliminated\n");
 
             throw new NotImplementedException();
             Console.ReadLine();
+          
+#endif
 
             // 4
+#if fourth
+
             Console.Clear();
             Console.WriteLine("Fourth part\n\n");
             Console.ReadLine();
+
 
             Console.Clear();
             Console.WriteLine("Insert 5 new records into Employees table."
                 + "Fill in the following  fields: LastName, FirstName, BirthDate, HireDate, Address, City, Country, Notes."
                 + "The Notes field should contain your own name\n");
-            
+
             command.CommandText = String.Concat(
                 "INSERT INTO Employees(LastName, FirstName, BirthDate, HireDate, Address, City, Country, Notes) ",
                 "VALUES ",
@@ -429,39 +502,71 @@ namespace Task4
                 "('Mike', 'Ross', '1990-01-01', '2000-01-01', 'Baker Street 221B', 'London', 'United Kingdom', 'Adam'), ",
                 "('Cris', 'Freel', '1990-01-01', '2000-01-01', 'Baker Street 221B', 'London', 'United Kingdom', 'Adam'), ",
                 "('Beverly', 'Lunsford', '1990-01-01', '2000-01-01', 'Baker Street 221B', 'London', 'United Kingdom', 'Adam');");
-            
+
             Console.WriteLine($"Inserted {command.ExecuteNonQuery()} rows");
 
             Console.ReadLine();
 
 
+
             Console.Clear();
             Console.WriteLine("Fetch the records you have inserted by the SELECT statement\n");
 
-            throw new NotImplementedException();
+            command.CommandText = string.Concat("SELECT * FROM Employees ",
+                "WHERE Notes = 'Adam';");
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        Console.WriteLine("{0,-20}{1}", reader.GetName(i), reader.GetValue(i));
+                    }
+                    Console.WriteLine();
+                }
+            }
             Console.ReadLine();
+
 
 
             Console.Clear();
             Console.WriteLine("Change the City field in one of your records using the UPDATE statement\n");
 
-            throw new NotImplementedException();
+            command.CommandText = string.Concat("UPDATE Employess ",
+                "SET City = 'Lexington' ",
+                "WHERE LasTName = 'Mike' AND Notes = 'Adam';");
+
+            Console.WriteLine($"Update {command.ExecuteNonQuery()} row");
+
             Console.ReadLine();
+
+
 
             Console.Clear();
             Console.WriteLine("Change the HireDate field in all your records to current date\n");
 
-            throw new NotImplementedException();
+            command.CommandText = string.Concat("UPDATE Employess ",
+                "SET HireDate = '2018-11-18' ",
+                "WHERE Notes = 'Adam';");
+
+            Console.WriteLine($"Update {command.ExecuteNonQuery()} row");
+
             Console.ReadLine();
+
+
 
             Console.Clear();
             Console.WriteLine("Delete one of your records\n");
 
-            command.CommandText = "DELETE FROM Employees WHERE LastName='John' AND FirstName='Doe';";
+            command.CommandText = "DELETE FROM Employees WHERE LastName='John' AND FirstName='Doe' AND Notes = 'Adam';";
             Console.WriteLine("Deleted {0} rows", command.ExecuteNonQuery());
 
-            Console.ReadLine();     
-                
+            Console.ReadLine();
+
+
+#endif
+
             // dispose
             command.Dispose();
             connection.Close();
