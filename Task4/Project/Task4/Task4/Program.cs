@@ -1,4 +1,9 @@
-﻿using System;
+﻿#define first
+#define second
+#define third
+#define fourth
+
+using System;
 using System.Data.SqlClient;
 
 namespace Task4
@@ -19,6 +24,7 @@ namespace Task4
 
             // TASK
             // 1
+#if first
             Console.WriteLine("First Part");
             Console.ReadLine();
 
@@ -108,8 +114,10 @@ namespace Task4
 
             throw new NotImplementedException();
             Console.ReadLine();
+#endif
 
             // 2
+#if second
             Console.Clear();
             Console.WriteLine("Second part\n\n");
             Console.ReadLine();
@@ -280,25 +288,28 @@ namespace Task4
                 }
             }
             Console.ReadLine();
+#endif
 
             //3
-            #region Part 3
+#if third
+          
             Console.Clear();
             Console.WriteLine("Third part\n\n");
             Console.ReadLine();
 
 
-            #region Show the list of customers’ names who used to order the ‘Tofu’ product + along with the total amount of the product they have ordered and with the total sum for ordered product calculated
+         
             Console.Clear();
             Console.WriteLine("Show the list of customers’ names who used to order the ‘Tofu’ product,"
                 + "along with the total amount of the product they have ordered and with the total sum for ordered product calculated\n");
 
-            command.CommandText = string.Concat("SELECT C.ContactName, COUNT(*) AS Count, SUM(OD.UnitPrice*OD.Quantity) AS PriceSum",
-                                                "FROM Customers as C ",
+            command.CommandText = string.Concat("SELECT C.ContactName, SUM(OD.Quantity) AS Count, SUM(OD.UnitPrice * OD.Quantity) AS PriceSum ",
+                                                "FROM Customers AS C ",
                                                 "LEFT JOIN Orders AS O ON C.CustomerID = O.CustomerID ",
-                                                "JOIN [Oreder Details] AS OD ON AS.OrderId = O.OrderId ",
-                                                "WHERE O.ProductName = 'Tofu' ",
-                                                "GROUP BY C.ContatcName;");
+                                                "LEFT JOIN [Order Details] AS OD ON OD.OrderId = O.OrderId ",
+                                                "LEFT JOIN [Products] AS P ON P.ProductID = OD.ProductID ",
+                                                "WHERE P.ProductName = 'Tofu' ",
+                                                "GROUP BY C.ContactName;");
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -309,16 +320,16 @@ namespace Task4
             }
 
             Console.ReadLine();
-            #endregion
+            
 
-            #region Show the list of french customers’ names who used to order non - french products(use left join)
+        
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who used to order non - french products(use left join)\n");
 
-            command.CommandText = string.Concat("SELECT C.ContactName ",
+            command.CommandText = string.Concat("SELECT DISTINCT C.ContactName ",
                                                 "FROM Customers as C ",
                                                 "LEFT JOIN Orders AS O ON C.CustomerID = O.CustomerID ",
-                                                "WHERE O.ShipCountry <> 'France' AND C.Country ='France'");
+                                                "WHERE O.ShipCountry <> 'France' AND C.Country = 'France'");
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -328,16 +339,16 @@ namespace Task4
                 }
             }
             Console.ReadLine();
-            #endregion
+       
 
-            #region Show the list of french customers’ names who used to order non - french products
+         
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who used to order non - french products\n");
 
             command.CommandText = string.Concat("SELECT C.ContactName ",
                                                "FROM Customers as C ",
-                                               "LEFT JOIN Orders AS O ON C.CustomerID = O.CustomerID ",
-                                               "WHERE O.ShipCountry <> 'France' AND C.Country ='France'");
+                                               "WHERE C.Country ='France' ",
+                                               "AND C.CustomerID IN (SELECT DISTINCT CustomerID FROM Orders WHERE ShipCountry <> 'France' );");
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -348,13 +359,13 @@ namespace Task4
             }
 
             Console.ReadLine();
-            #endregion
+         
 
-            #region Show the list of french customers’ names who used to order french products
+ 
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who used to order french products\n");
 
-            command.CommandText = string.Concat("SELECT C.ContactName ",
+            command.CommandText = string.Concat("SELECT DISTINCT C.ContactName ",
                                                 "FROM Customers AS C ",
                                                 "LEFT JOIN Orders AS O ON C.CustomerID = O.CustomerID ",
                                                 "WHERE O.ShipCountry='France' AND C.Country ='France';");
@@ -367,13 +378,13 @@ namespace Task4
             }
 
             Console.ReadLine();
-            #endregion
+           
 
-            #region Show the total ordering sum calculated for each country of customer
+         
             Console.Clear();
             Console.WriteLine("Show the total ordering sum calculated for each country of customer\n");
 
-            command.CommandText = String.Concat("SELECT C.Country, SUM(OD.UnitPrice) AS TotalPrice ",
+            command.CommandText = String.Concat("SELECT C.Country, SUM(OD.UnitPrice*OD.Quantity) AS TotalPrice ",
                                                 "FROM Customers AS C ",
                                                 "LEFT JOIN Orders AS O ON O.CustomerID = C.CustomerID ",
                                                 "LEFT JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
@@ -387,45 +398,46 @@ namespace Task4
             }
 
             Console.ReadLine();
-            #endregion
+          
 
-            #region Show the total ordering sums calculated + for each customer’s country for domestic and non - domestic products separately + e.g.: “France – French products ordered – Non - french products ordered” and so on for each country)
+            //not implemented
+          
             Console.Clear();
             Console.WriteLine("Show the total ordering sums calculated "
                 + "for each customer’s country for domestic and non - domestic products separately"
                 + "(e.g.: “France – French products ordered – Non - french products ordered” and so on for each country)\n");
 
-            command.CommandText = string.Concat("SELECT C.ContactName AS Name, SUM(OD.UnitPrice*OD.Quantity) AS Domestic, SUM(OD.UnitPrice*OD.Quantity) AS NonDomestic ",
-                "LEFT JOIN Orders AS O ON O.CustomerID = C.CustomerID ",
-                "WHERE O.ShipCountry = C.Country ",
-                "LEFT JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
-                "LEFT JOIN O ON O.CustomerID = C.CustomerID ",
-                "WHERE O.ShipCountry <> C.Country ",
-                "LEFT JOIN OD ON O.OrderID = OD.OrderID ",
-                "GROUP BY Name;");
+            //command.CommandText = string.Concat("SELECT C.ContactName AS Name, SUM(OD.UnitPrice*OD.Quantity) AS Domestic, SUM(OD.UnitPrice*OD.Quantity) AS NonDomestic ",
+            //    "LEFT JOIN Orders AS O ON O.CustomerID = C.CustomerID ",
+            //    "WHERE O.ShipCountry = C.Country ",
+            //    "LEFT JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
+            //    "LEFT JOIN O ON O.CustomerID = C.CustomerID ",
+            //    "WHERE O.ShipCountry <> C.Country ",
+            //    "LEFT JOIN OD ON O.OrderID = OD.OrderID ",
+            //    "GROUP BY Name;");
 
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    Console.WriteLine($"{reader["Name"]} {reader["Domestic"]} {reader["NonDomestic"]}");
-                }
-            }
+            //using (SqlDataReader reader = command.ExecuteReader())
+            //{
+            //    while (reader.Read())
+            //    {
+            //        Console.WriteLine($"{reader["Name"]} {reader["Domestic"]} {reader["NonDomestic"]}");
+            //    }
+            //}
             Console.ReadLine();
-            #endregion
+           
 
             //not inplemented
-            #region Show the list of product categories + along with total ordering sums calculated for the orders made for the products of each category, during the year 1997
+    
             Console.Clear();
             Console.WriteLine("Show the list of product categories "
                 + "along with total ordering sums calculated for the orders made for the products of each category, "
                 + "during the year 1997\n");
 
             Console.ReadLine();
-            #endregion
+           
 
             //not inplemented
-            #region Show the list of product names along with unit prices + ...
+          
             Console.Clear();
             Console.WriteLine("Show the list of product names along with unit prices "
                 + "and the history of unit prices taken from the orders (show ‘Product name – Unit price – Historical price’)."
@@ -434,16 +446,16 @@ namespace Task4
                 + "‘Product name – Unit price – NULL’."
                 + "Sort the list by the product name\n");
 
-            throw new NotImplementedException();
             Console.ReadLine();
-            #endregion
+         
 
-            #region Show the list of employees’ names along with names of their chiefs(use left join with the same table)
+       
             Console.Clear();
             Console.WriteLine("Show the list of employees’ names along with names of their chiefs(use left join with the same table)\n");
 
-            command.CommandText = string.Concat("SELECT E.LastName AS Name, E.ReportsTo AS Chief FROM Employess AS E ",
-                "LEFT JOIN E ON E.ReportsTo = E.EmployeeID;");
+            command.CommandText = string.Concat("SELECT E1.LastName AS Name, E2.LastName AS Chief ",
+                                                "FROM Employees AS E1 ",
+                                                "LEFT JOIN Employees AS E2 ON E1.ReportsTo = E2.EmployeeID;");
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -454,26 +466,26 @@ namespace Task4
             }
 
             Console.ReadLine();
-            #endregion
+          
 
             //not inplemented
-            #region Show the list of cities where employees and customers are from and where orders have been made to. Duplicates should be eliminated
+       
             Console.Clear();
             Console.WriteLine("Show the list of cities where employees and customers are from and where orders have been made to."
                 + "Duplicates should be eliminated\n");
 
-            throw new NotImplementedException();
             Console.ReadLine();
-            #endregion
-            #endregion
+          
+#endif
 
             // 4
-            #region Part 4
+#if fourth
+
             Console.Clear();
             Console.WriteLine("Fourth part\n\n");
             Console.ReadLine();
 
-            #region Insert 5 new records into Employees table
+
             Console.Clear();
             Console.WriteLine("Insert 5 new records into Employees table."
                 + "Fill in the following  fields: LastName, FirstName, BirthDate, HireDate, Address, City, Country, Notes."
@@ -491,59 +503,66 @@ namespace Task4
             Console.WriteLine($"Inserted {command.ExecuteNonQuery()} rows");
 
             Console.ReadLine();
-            #endregion
 
-            #region Fetch the records you have inserted by the SELECT statement
+
+
             Console.Clear();
             Console.WriteLine("Fetch the records you have inserted by the SELECT statement\n");
 
-            command.CommandText = string.Concat("SELECT LastName, FirstName, BirthDate, HireDate, Address, City, Country, Notes FROM Employess;");
+            command.CommandText = string.Concat("SELECT * FROM Employees ",
+                "WHERE Notes = 'Adam';");
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine($"{reader["LastName"]} {reader["FirstName"]} {reader["BirthDate"]} {reader["HireDate"]} {reader["Address"]} {reader["City"]} {reader["Country"]} {reader["Notes"]}");
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        Console.WriteLine("{0,-20}{1}", reader.GetName(i), reader.GetValue(i));
+                    }
+                    Console.WriteLine();
                 }
             }
             Console.ReadLine();
-            #endregion
 
-            #region Change the City field in one of your records using the UPDATE statement
+
+
             Console.Clear();
             Console.WriteLine("Change the City field in one of your records using the UPDATE statement\n");
 
             command.CommandText = string.Concat("UPDATE Employess ",
                 "SET City = 'Lexington' ",
-                "WHERE LasTName = 'Mike';");
+                "WHERE LasTName = 'Mike' AND Notes = 'Adam';");
 
             Console.WriteLine($"Update {command.ExecuteNonQuery()} row");
 
             Console.ReadLine();
-            #endregion
 
-            #region Change the HireDate field in all your records to current date
+
+
             Console.Clear();
             Console.WriteLine("Change the HireDate field in all your records to current date\n");
 
             command.CommandText = string.Concat("UPDATE Employess ",
-                "SET HireDate = '2018-11-18';");
+                "SET HireDate = '2018-11-18' ",
+                "WHERE Notes = 'Adam';");
 
             Console.WriteLine($"Update {command.ExecuteNonQuery()} row");
 
             Console.ReadLine();
-            #endregion
 
-            #region Delete one of your records
+
+
             Console.Clear();
             Console.WriteLine("Delete one of your records\n");
 
-            command.CommandText = "DELETE FROM Employees WHERE LastName='John' AND FirstName='Doe';";
+            command.CommandText = "DELETE FROM Employees WHERE LastName='John' AND FirstName='Doe' AND Notes = 'Adam';";
             Console.WriteLine("Deleted {0} rows", command.ExecuteNonQuery());
 
             Console.ReadLine();
-            #endregion 
-            #endregion
+
+
+#endif
 
             // dispose
             command.Dispose();
