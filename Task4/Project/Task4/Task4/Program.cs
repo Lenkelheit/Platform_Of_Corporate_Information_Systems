@@ -298,7 +298,6 @@ namespace Task4
             Console.ReadLine();
 
 
-         
             Console.Clear();
             Console.WriteLine("Show the list of customers’ names who used to order the ‘Tofu’ product,"
                 + "along with the total amount of the product they have ordered and with the total sum for ordered product calculated\n");
@@ -315,14 +314,12 @@ namespace Task4
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine($"{reader["ContactName"]} {reader["Count"]} {reader["PriceSum"]}");
+                    Console.WriteLine("{0, -20} {1,-3} {2}", reader["ContactName"], reader["Count"], reader["PriceSum"]);
                 }
             }
 
             Console.ReadLine();
             
-
-        
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who used to order non - french products(use left join)\n");
 
@@ -343,8 +340,6 @@ namespace Task4
             }
             Console.ReadLine();
        
-
-         
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who used to order non - french products\n");
 
@@ -369,8 +364,6 @@ namespace Task4
 
             Console.ReadLine();
          
-
- 
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who used to order french products\n");
 
@@ -391,12 +384,10 @@ namespace Task4
 
             Console.ReadLine();
            
-
-         
             Console.Clear();
             Console.WriteLine("Show the total ordering sum calculated for each country of customer\n");
 
-            command.CommandText = String.Concat("SELECT C.Country, SUM(OD.UnitPrice*OD.Quantity) AS TotalPrice ",
+            command.CommandText = String.Concat("SELECT C.Country, SUM(OD.UnitPrice * OD.Quantity) AS TotalPrice ",
                                                 "FROM Customers AS C ",
                                                 "LEFT JOIN Orders AS O ON O.CustomerID = C.CustomerID ",
                                                 "LEFT JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
@@ -409,47 +400,24 @@ namespace Task4
                 }
             }
             Console.ReadLine();
-          
-
-            
+        
           
             Console.Clear();
             Console.WriteLine("Show the total ordering sums calculated "
                 + "for each customer’s country for domestic and non - domestic products separately"
                 + "(e.g.: “France – French products ordered – Non - french products ordered” and so on for each country)\n");
 
-            //command.CommandText = string.Concat("SELECT C.ContactName AS Name, SUM(OD.UnitPrice*OD.Quantity) AS Domestic, SUM(OD.UnitPrice*OD.Quantity) AS NonDomestic ",
-            //    "LEFT JOIN Orders AS O ON O.CustomerID = C.CustomerID ",
-            //    "WHERE O.ShipCountry = C.Country ",
-            //    "LEFT JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
-            //    "LEFT JOIN O ON O.CustomerID = C.CustomerID ",
-            //    "WHERE O.ShipCountry <> C.Country ",
-            //    "LEFT JOIN OD ON O.OrderID = OD.OrderID ",
-            //    "GROUP BY Name;");
-
-            //using (SqlDataReader reader = command.ExecuteReader())
-            //{
-            //    while (reader.Read())
-            //    {
-            //        Console.WriteLine($"{reader["Name"]} {reader["Domestic"]} {reader["NonDomestic"]}");
-            //    }
-            //}
             throw new NotImplementedException();
             Console.ReadLine();
            
-
-      
-    
             Console.Clear();
             Console.WriteLine("Show the list of product categories "
                 + "along with total ordering sums calculated for the orders made for the products of each category, "
                 + "during the year 1997\n");
 
+            throw new NotImplementedException();
             Console.ReadLine();
            
-
-      
-          
             Console.Clear();
             Console.WriteLine("Show the list of product names along with unit prices "
                 + "and the history of unit prices taken from the orders (show ‘Product name – Unit price – Historical price’)."
@@ -458,10 +426,9 @@ namespace Task4
                 + "‘Product name – Unit price – NULL’."
                 + "Sort the list by the product name\n");
 
+            throw new NotImplementedException();
             Console.ReadLine();
          
-
-       
             Console.Clear();
             Console.WriteLine("Show the list of employees’ names along with names of their chiefs(use left join with the same table)\n");
 
@@ -477,14 +444,12 @@ namespace Task4
             }
 
             Console.ReadLine();
-          
-
-        
        
             Console.Clear();
             Console.WriteLine("Show the list of cities where employees and customers are from and where orders have been made to."
                 + "Duplicates should be eliminated\n");
 
+            throw new NotImplementedException();
             Console.ReadLine();
           
 #endif
