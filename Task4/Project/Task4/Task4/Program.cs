@@ -1,6 +1,6 @@
-﻿#define first
-#define second
-#define third
+﻿//#define first
+//#define second
+//#define third
 #define fourth
 
 using System;
