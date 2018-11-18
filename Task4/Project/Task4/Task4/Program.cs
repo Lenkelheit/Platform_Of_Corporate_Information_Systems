@@ -26,8 +26,17 @@ namespace Task4
             Console.WriteLine("Show all info about the employee with ID 8\n");
 
             command.CommandText = "SELECT * FROM Employees WHERE EmployeeID = 8;";
-            throw new NotImplementedException();
-
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; ++i)
+                    {
+                        Console.WriteLine("{0,-20}{1}", reader.GetName(i), reader.GetValue(i));
+                    }
+                    Console.WriteLine();
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
