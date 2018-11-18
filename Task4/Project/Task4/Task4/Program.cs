@@ -329,7 +329,10 @@ namespace Task4
             command.CommandText = string.Concat("SELECT DISTINCT C.ContactName ",
                                                 "FROM Customers as C ",
                                                 "LEFT JOIN Orders AS O ON C.CustomerID = O.CustomerID ",
-                                                "WHERE O.ShipCountry <> 'France' AND C.Country = 'France'");
+                                                "LEFT JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
+                                                "LEFT JOIN [Products] AS P ON OD.ProductID = P.ProductID ",
+                                                "LEFT JOIN [Suppliers] AS S ON P.SupplierID = S.SupplierID ",
+                                                "WHERE S.Country <> 'France' AND C.Country = 'France'");
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -346,9 +349,15 @@ namespace Task4
             Console.WriteLine("Show the list of french customers’ names who used to order non - french products\n");
 
             command.CommandText = string.Concat("SELECT C.ContactName ",
-                                               "FROM Customers as C ",
-                                               "WHERE C.Country ='France' ",
-                                               "AND C.CustomerID IN (SELECT DISTINCT CustomerID FROM Orders WHERE ShipCountry <> 'France' );");
+                                                "FROM Customers as C ",
+                                                "WHERE C.Country ='France' ",
+                                                "AND C.CustomerID IN (",
+                                                     "SELECT DISTINCT CustomerID ",
+                                                     "FROM Orders AS O ",
+                                                     "LEFT JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
+                                                     "LEFT JOIN [Products] AS P ON OD.ProductID = P.ProductID ",
+                                                     "LEFT JOIN [Suppliers] AS S ON P.SupplierID = S.SupplierID ",
+                                                     "WHERE S.Country <> 'France');");
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -368,7 +377,10 @@ namespace Task4
             command.CommandText = string.Concat("SELECT DISTINCT C.ContactName ",
                                                 "FROM Customers AS C ",
                                                 "LEFT JOIN Orders AS O ON C.CustomerID = O.CustomerID ",
-                                                "WHERE O.ShipCountry='France' AND C.Country ='France';");
+                                                "LEFT JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID ",
+                                                "LEFT JOIN [Products] AS P ON OD.ProductID = P.ProductID ",
+                                                "LEFT JOIN [Suppliers] AS S ON P.SupplierID = S.SupplierID ",
+                                                "WHERE S.Country = 'France' AND C.Country ='France';");
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -396,11 +408,10 @@ namespace Task4
                     Console.WriteLine("{0,-20}{1}", reader["Country"], reader["TotalPrice"]);
                 }
             }
-
             Console.ReadLine();
           
 
-            //not implemented
+            
           
             Console.Clear();
             Console.WriteLine("Show the total ordering sums calculated "
@@ -423,10 +434,11 @@ namespace Task4
             //        Console.WriteLine($"{reader["Name"]} {reader["Domestic"]} {reader["NonDomestic"]}");
             //    }
             //}
+            throw new NotImplementedException();
             Console.ReadLine();
            
 
-            //not inplemented
+      
     
             Console.Clear();
             Console.WriteLine("Show the list of product categories "
@@ -436,7 +448,7 @@ namespace Task4
             Console.ReadLine();
            
 
-            //not inplemented
+      
           
             Console.Clear();
             Console.WriteLine("Show the list of product names along with unit prices "
@@ -456,7 +468,6 @@ namespace Task4
             command.CommandText = string.Concat("SELECT E1.LastName AS Name, E2.LastName AS Chief ",
                                                 "FROM Employees AS E1 ",
                                                 "LEFT JOIN Employees AS E2 ON E1.ReportsTo = E2.EmployeeID;");
-
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
@@ -468,7 +479,7 @@ namespace Task4
             Console.ReadLine();
           
 
-            //not inplemented
+        
        
             Console.Clear();
             Console.WriteLine("Show the list of cities where employees and customers are from and where orders have been made to."
