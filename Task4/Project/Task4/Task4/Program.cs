@@ -475,8 +475,24 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Show the list of cities where employees and customers are from and where orders have been made to."
                 + "Duplicates should be eliminated\n");
+            command.CommandText = string.Concat(
+                                                "(SELECT E.City AS OrderFromCity, O.ShipCity AS OrderToCity ",
+                                                "FROM Orders AS O ",
+                                                "LEFT JOIN Employees AS E ON E.EmployeeID = O.EmployeeID ",
+                                                "GROUP BY E.City, O.ShipCity) ",
+                                        "UNION ",
+                                                "(SELECT C.City AS OrderFromCity, O.ShipCity AS OrderToCity ",
+                                                "FROM Orders AS O ",
+                                                "LEFT JOIN Customers AS C ON C.CustomerID = O.CustomerID ",
+                                                "GROUP BY C.City, O.ShipCity);");
 
-            throw new NotImplementedException();
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0, -20} {1, -20}", reader["OrderFromCity"], reader["OrderToCity"]);
+                }
+            }
             Console.ReadLine();
           
 #endif
