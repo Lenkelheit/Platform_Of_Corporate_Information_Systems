@@ -1,4 +1,4 @@
-﻿#define first
+#define first
 #define second
 #define third
 #define fourth
@@ -61,14 +61,30 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Show the list of first and last names of the employees whose first name begins with letter A\n");
 
-            throw new NotImplementedException();
+            command.CommandText = "SELECT FirstName, LastName FROM Employees WHERE FirstName LIKE 'A%';";
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0}\t{1}", reader["FirstName"], reader["LastName"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("Show the list of first, last names and ages of the employees whose age is greater than 55."
                 + " The result should be sorted by last name \n");
 
-            throw new NotImplementedException();
+            command.CommandText = "SELECT FirstName, LastName, DATEDIFF(year, BirthDate, GETDATE()) AS Age FROM Employees  " +
+                "WHERE DATEDIFF(year, BirthDate, GETDATE()) > 55 " +
+                "ORDER BY LastName;";
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0}\t{1}\t{2}", reader["FirstName"], reader["LastName"], reader["Age"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
@@ -88,31 +104,76 @@ namespace Task4
             Console.Clear();
             Console.WriteLine("Calculate the greatest, the smallest and the average age among the employees from London\n");
 
-            throw new NotImplementedException();
+            command.CommandText = "SELECT MAX(DATEDIFF(year, BirthDate, GETDATE())) AS MaxBirth," +
+                " MIN(DATEDIFF(year, BirthDate, GETDATE())) AS MinBirth, " +
+                " AVG(DATEDIFF(year, BirthDate, GETDATE())) AS AvgBirth FROM Employees " +
+                " WHERE City='London';";
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0}\t{1}\t{2}", reader["MaxBirth"], reader["MinBirth"], reader["AvgBirth"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("Calculate the greatest, the smallest and the average age of the employees for each city\n");
 
-            throw new NotImplementedException();
+            command.CommandText = "SELECT City, MAX(DATEDIFF(year, BirthDate, GETDATE())) AS MaxBirth," +
+                " MIN(DATEDIFF(year, BirthDate, GETDATE())) AS MinBirth, " +
+                " AVG(DATEDIFF(year, BirthDate, GETDATE())) AS AvgBirth FROM Employees " +
+                " GROUP BY City;";
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0}\t{1}\t{2}\t{3}", reader["City"], reader["MaxBirth"], reader["MinBirth"], reader["AvgBirth"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("Show the list of cities in which the average age of employees is greater than 60(the average age is also to be shown)\n");
 
-            throw new NotImplementedException();
+            command.CommandText = "SELECT City, AVG(DATEDIFF(year, BirthDate, GETDATE())) AS avgBirth FROM Employees " +
+               "GROUP BY City " +
+               "HAVING AVG(DATEDIFF(year, BirthDate, GETDATE())) > 60;";
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0}\t{1}", reader["City"], reader["avgBirth"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("Show the first and last name(s) of the eldest employee(s)\n");
 
-            throw new NotImplementedException();
+            command.CommandText = "SELECT TOP 1 FirstName, LastName, DATEDIFF(year, BirthDate, GETDATE()) FROM Employees " +
+                "ORDER BY BirthDate;";
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0}\t{1}", reader["FirstName"], reader["LastName"]);
+                }
+            }
             Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("Show first, last names and ages of 3 eldest employees\n");
 
-            throw new NotImplementedException();
+            command.CommandText = "SELECT TOP 3 FirstName, LastName, DATEDIFF(year, BirthDate, GETDATE()) AS Age FROM Employees " +
+                "ORDER BY BirthDate;";
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0}\t{1}\t{2}", reader["FirstName"], reader["LastName"], reader["Age"]);
+                }
+            }
             Console.ReadLine();
 #endif
 
@@ -292,7 +353,7 @@ namespace Task4
 
             //3
 #if third
-          
+
             Console.Clear();
             Console.WriteLine("Third part\n\n");
             Console.ReadLine();
@@ -319,7 +380,7 @@ namespace Task4
             }
 
             Console.ReadLine();
-            
+
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who used to order non - french products(use left join)\n");
 
@@ -339,7 +400,7 @@ namespace Task4
                 }
             }
             Console.ReadLine();
-       
+
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who used to order non - french products\n");
 
@@ -363,7 +424,7 @@ namespace Task4
             }
 
             Console.ReadLine();
-         
+
             Console.Clear();
             Console.WriteLine("Show the list of french customers’ names who used to order french products\n");
 
@@ -383,7 +444,7 @@ namespace Task4
             }
 
             Console.ReadLine();
-           
+
             Console.Clear();
             Console.WriteLine("Show the total ordering sum calculated for each country of customer\n");
 
@@ -400,8 +461,8 @@ namespace Task4
                 }
             }
             Console.ReadLine();
-        
-          
+
+
             Console.Clear();
             Console.WriteLine("Show the total ordering sums calculated "
                 + "for each customer’s country for domestic and non - domestic products separately"
@@ -436,7 +497,7 @@ namespace Task4
                 }
             }
             Console.ReadLine();
-           
+
             Console.Clear();
             Console.WriteLine("Show the list of product categories "
                 + "along with total ordering sums calculated for the orders made for the products of each category, "
@@ -457,7 +518,7 @@ namespace Task4
                 }
             }
             Console.ReadLine();
-           
+
             Console.Clear();
             Console.WriteLine("Show the list of product names along with unit prices "
                 + "and the history of unit prices taken from the orders (show ‘Product name – Unit price – Historical price’)."
@@ -480,7 +541,7 @@ namespace Task4
                 }
             }
             Console.ReadLine();
-         
+
             Console.Clear();
             Console.WriteLine("Show the list of employees’ names along with names of their chiefs(use left join with the same table)\n");
 
@@ -496,7 +557,7 @@ namespace Task4
             }
 
             Console.ReadLine();
-       
+
             Console.Clear();
             Console.WriteLine("Show the list of cities where employees and customers are from and where orders have been made to."
                 + "Duplicates should be eliminated\n");
@@ -519,7 +580,7 @@ namespace Task4
                 }
             }
             Console.ReadLine();
-          
+
 #endif
 
             // 4
