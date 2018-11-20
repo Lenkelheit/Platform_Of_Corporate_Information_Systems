@@ -1,0 +1,59 @@
+<Window x:Class="Task5.Forms.CabinetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Cabinet" Height="400" Width="400"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        Style="{StaticResource WindowBase}" Background="{StaticResource DefaultBtnBrush}">
+    <Grid>
+        <!--SCALING-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--TOP MENU-->
+        <DockPanel Grid.Row="0" LastChildFill="False">
+            <Button DockPanel.Dock="Left" 
+                    Style="{StaticResource BtnStandart}" Width="65"
+                    BorderThickness="0"
+                    Command="{Binding ShowScores}">
+                <Button.Content>
+                    <Image Source="/Resources/images/list.png" />
+                </Button.Content>
+            </Button>
+            <Button DockPanel.Dock="Right"
+                    Style="{StaticResource BtnStandart}" Width="65" 
+                    BorderThickness="0"
+                    Command="{Binding LogOut}">
+                <Button.Content>
+                    <Image Source="/Resources/images/logout.png"/>
+                </Button.Content>
+            </Button>
+        </DockPanel>
+        <!--AVATAR-->
+        <Image Grid.Row="1" Source="/Resources/images/avatar.png" MinWidth="200" MinHeight="200"/>
+        <!--SCORE INFO-->
+        <Grid Grid.Row="2">
+            <!--SCALING-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--INFORMATION-->
+            <Label Grid.Row="0" Grid.Column="0" Content="Name" Style="{StaticResource LeftLabel}"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Total Score" Style="{StaticResource LeftLabel}"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Best Score" Style="{StaticResource LeftLabel}"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=CurrentDriver.Name}" Style="{StaticResource RightLabel}"/>
+            <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=CurrentDriver.TotalScore}" ContentStringFormat="{}{0:00.00}$" Style="{StaticResource RightLabel}"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=CurrentDriver.BestScore}" ContentStringFormat="{}{0:00.00}$" Style="{StaticResource RightLabel}"/>
+        </Grid>
+    </Grid>
+</Window>
