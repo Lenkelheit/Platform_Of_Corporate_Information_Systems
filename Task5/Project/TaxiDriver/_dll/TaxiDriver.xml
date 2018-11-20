@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaxiDriver</name>
+    </assembly>
+    <members>
+        <member name="T:TaxiDriver.Driver">
+            <summary>
+            Represents class that models Driver
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Driver.ID">
+            <summary>
+            Property that defines the id
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Driver.Name">
+            <summary>
+            Property that defines the name
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Driver.Password">
+            <summary>
+            Property that defines the password
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Driver.BestScore">
+            <summary>
+            Property that defines the best score
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Driver.TotalScore">
+            <summary>
+            Property that defines the total score
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Driver.LastScore">
+            <summary>
+            Property that defines the last score
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Driver.#ctor(System.Int32,System.String,System.String,System.Double,System.Double)">
+            <summary>
+            Constructor with parameters
+            </summary>
+            <param name="id">driver's id</param>
+            <param name="name">driver's name</param>
+            <param name="password">driver's password</param>
+            <param name="bestScore">best score driver's</param>
+            <param name="totalScore">total score driver's</param>
+        </member>
+        <member name="M:TaxiDriver.Driver.#ctor(System.String,System.String,System.Double,System.Double)">
+            <summary>
+            Constructor with parameters
+            </summary>
+            <param name="name">driver's name</param>
+            <param name="password">driver's password</param>
+            <param name="bestScore">best score driver's</param>
+            <param name="totalScore">total score driver's</param>
+        </member>
+        <member name="M:TaxiDriver.Driver.#ctor(TaxiDriver.DriverInfo)">
+            <summary>
+            Initializ a nwe instanc of <see cref="T:TaxiDriver.Driver"/>
+            </summary>
+            <param name="driverInfo">An instance of <see cref="T:TaxiDriver.DriverInfo"/></param>
+        </member>
+        <member name="T:TaxiDriver.Order">
+            <summary>
+            Represents class that models Order
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Order.Number">
+            <summary>
+            Property that defines the number
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Order.Client">
+            <summary>
+            Property that defines the Client
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Order.Route">
+            <summary>
+            Property that defines the Route
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Order.#ctor(System.Int32,TaxiDriver.Client,TaxiDriver.Route)">
+            <summary>
+            Constructor with parameters
+            </summary>
+            <param name="number">Order number</param>
+            <param name="client">Client who accepted the refraction</param>
+            <param name="route">Destination</param>
+        </member>
+        <member name="T:TaxiDriver.Client">
+            <summary>
+            Represents class that models Client
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Client.ID">
+            <summary>
+            Property that defines the ID
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Client.Name">
+            <summary>
+            Property that defines the name
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Client.Phone">
+            <summary>
+            Property that defines the phone
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Client.#ctor(System.String,System.String)">
+            <summary>
+            Constructor with parameters
+            </summary>
+            <param name="name">The name of the client</param>
+            <param name="phone">Client phone number</param>
+        </member>
+        <member name="M:TaxiDriver.Client.#ctor">
+            <summary>
+            Initialize a new instance of <see cref="T:TaxiDriver.Client"/>
+            </summary>
+        </member>
+        <member name="T:TaxiDriver.Route">
+            <summary>
+            Represents struct that models Route
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Route.ID">
+            <summary>
+            Property that defines the ID
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Route.StartStreet">
+            <summary>
+            Property that defines the start street
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Route.EndStreet">
+            <summary>
+            Property that defines the end street
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Route.Time">
+            <summary>
+            Property that defines the time
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Route.Price">
+            <summary>
+            Property that defines the price
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Route.#ctor">
+            <summary>
+            Initialize a new instance of <see cref="T:TaxiDriver.Route"/>
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Route.#ctor(System.String,System.String,System.TimeSpan,System.Double)">
+            <summary>
+            Constructor with parameters
+            </summary>
+            <param name="startStreet">Start of the route</param>
+            <param name="endStreet">End of the route</param>
+            <param name="time">The duration of the trip</param>
+            <param name="price">Trip price</param>
+        </member>
+        <member name="T:TaxiDriver.Champion">
+            <summary>
+            Represents struct that models Champion
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Champion.Number">
+            <summary>
+            Property that defines the number
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Champion.Name">
+            <summary>
+            Property that defines the name
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Champion.Score">
+            <summary>
+            Property that defines the score
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Champion.#ctor(System.Int32,System.String,System.Double)">
+            <summary>
+            Constructors with parameters
+            </summary>
+            <param name="number">Number champion's</param>
+            <param name="name">Name champion's</param>
+            <param name="score">Score champion's</param>
+        </member>
+    </members>
+</doc>

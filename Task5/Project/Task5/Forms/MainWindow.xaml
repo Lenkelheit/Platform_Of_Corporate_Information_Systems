@@ -1,0 +1,185 @@
+<Window x:Class="Task5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task5"
+        mc:Ignorable="d"
+        Title="Taxi Driver" 
+        Height="500" Width="850"
+        MinHeight="500" MinWidth="850"
+        WindowStartupLocation="CenterScreen" 
+        Style="{StaticResource WindowBase}">
+
+    <!--MARKUP-->
+    <Grid>
+        <!--SCALING-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <!--DATA-->
+        <Button Grid.Row="0" Grid.Column="0" Content="Start"
+                Command="{Binding StartGame}"/>
+
+        <!--MENU-->
+        <Grid Grid.Row="0" Grid.Column="1" 
+              Background="{StaticResource DefaultBtnBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--DATA-->
+            <Image Grid.Column="0" Source="/Resources/images/clock.png" />
+            <Label Grid.Column="1" 
+                   Content="{Binding Time}"
+                   Style="{StaticResource ImportantLabel}"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   Foreground="{StaticResource TimeBrush}"
+                   FontWeight="Bold"/>
+            <Image Grid.Column="2" Source="/Resources/images/money.png" />
+            <Label Grid.Column="3"
+                   Content="{Binding CurrentScore}"
+                   ContentStringFormat="{}{0:00.00}$"
+                   Style="{StaticResource ImportantLabel}"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   Foreground="{StaticResource MoneyBrush}"
+                   FontWeight="Bold"/>
+            <Button Grid.Column="4"
+                    Command="{Binding ShowCabinetOrRegistrate}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/images/person.png"/>
+                        <Label Content="{Binding Path=CurrentDriver.Name}" FontSize="12"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </Grid>
+
+        <!--LIST BOX-->
+        <ListBox Grid.Row="1" Grid.Column="0" 
+                 Style="{StaticResource ListItemOrderStyle}"
+                 ItemsSource="{Binding Orders}"
+                 SelectedItem="{Binding SelectedOrder}"/>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <!--SCALING-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--DATA-->
+            <StackPanel Grid.Row="0" Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <Label Content="Selected order №" 
+                       Margin="5, 0, 0, 0"
+                       Style="{StaticResource ImportantLabel}"/>
+                <Label Content="{Binding Path=SelectedOrder.Number}" Style="{StaticResource ImportantLabel}"/>
+            </StackPanel>
+            <!--CLIENT GROUP BOX-->
+            <GroupBox Grid.Row="1" Header="Client" Style="{StaticResource GroupBoxBase}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="Name" Style="{StaticResource LeftLabel}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Phone" Style="{StaticResource LeftLabel}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=SelectedOrder.Client.Name}" Style="{StaticResource RightLabel}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=SelectedOrder.Client.Phone}" Style="{StaticResource RightLabel}"/>
+                </Grid>
+            </GroupBox>
+            <!--ROUTE GROUP BOX-->
+            <GroupBox Grid.Row="2" Header="Route" Style="{StaticResource GroupBoxBase}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="Departure point" Style="{StaticResource LeftLabel}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Destination" Style="{StaticResource LeftLabel}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=SelectedOrder.Route.StartStreet.Name}" Style="{StaticResource RightLabel}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=SelectedOrder.Route.EndStreet.Name}" Style="{StaticResource RightLabel}"/>
+                </Grid>
+            </GroupBox>
+            <!--ORDER GROUP BOX-->
+            <GroupBox Grid.Row="3" Header="Order" Style="{StaticResource GroupBoxBase}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="Time" Style="{StaticResource LeftLabel}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Payment" Style="{StaticResource LeftLabel}"/>
+                    <Label Grid.Row="0" Grid.Column="1"
+                           Content="{Binding Path=SelectedOrder.Route.Time}"
+                           Style="{StaticResource RightLabel}"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource TimeBrush}"/>
+                    <Label Grid.Row="1" Grid.Column="1" 
+                           Content="{Binding Path=SelectedOrder.Route.Price}" 
+                           ContentStringFormat="{}{0:00.00}$"
+                           Style="{StaticResource RightLabel}"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource MoneyBrush}"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <!--SEARCH/REMOVE BUTTON-->
+        <Grid Grid.Row="2" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="0" Grid.Column="0"
+                    Style="{StaticResource MainButton}"
+                    Command="{Binding SearchOrder}">
+                <Button.Content>
+                    <Image Source="/Resources/images/search.png"/>
+                </Button.Content>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="1"
+                    Style="{StaticResource MainButton}"
+                    Command="{Binding RemoveOrder}">
+                <Button.Content>
+                    <Image Source="/Resources/images/delete.png"/>
+                </Button.Content>
+            </Button>
+        </Grid>
+
+        <Button Grid.Row="2" Grid.Column="1" Content="Execute" 
+                Style="{StaticResource MainButton}"
+                Command="{Binding ExecuteOrder}"/>
+    </Grid>
+</Window>
