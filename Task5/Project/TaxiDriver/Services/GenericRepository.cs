@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Data.Entity;
 using System.Linq.Expressions;
@@ -17,6 +17,8 @@ namespace TaxiDriver.Services
             this.context = context;
             this.dbSet = context.Set<TEntity>();
         }
+        // PROPERTIES
+        public int Count => dbSet.Count();
         // METHODS
         public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>,
                                                 IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
