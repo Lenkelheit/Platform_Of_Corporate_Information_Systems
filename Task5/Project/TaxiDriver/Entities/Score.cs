@@ -4,6 +4,6 @@
     {
         public int ID { get; set; }
         public double Scores { get; set; }
-        public int DriverID { get; set; }
+        public int DriverInfoID { get; set; }
     }
 }
