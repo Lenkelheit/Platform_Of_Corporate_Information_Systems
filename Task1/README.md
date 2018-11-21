@@ -33,7 +33,7 @@
 ## Icon
 
 <p align="center">
-  <img src="/Images/Task1/ico.png" width="200" height="200">
+  <img src="/Images/Task1/ico.png">
 </p>
 
 ## Folders diagram
