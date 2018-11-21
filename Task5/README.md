@@ -32,7 +32,7 @@ Rework **Task 3**
 ## Icon
 
 <p align="center">
-  <img src="/Images/Task5/ico.png">
+  <img src="/Images/Task5/ico.png" width="200" height="200">
 </p>
 
 ## Folders diagram
