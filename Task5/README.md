@@ -14,16 +14,16 @@ Rework **Task 3**
 |№|          State         |                            Text                                           |   Assignees  |  Deadline  |
 |-|:----------------------:|:--------------------------------------------------------------------------|:------------:|:----------:|
 | |                        | <p align="center">      1. Change Data access layer</p>                   |              |            |
-| |<ul><li>- [ ] </li></ul>| Use data base                                                             |              |            |
-| |<ul><li>- [ ] </li></ul>| The class of this layer allow to read/write/change/remove data            |              |            |
+| |<ul><li>- [ ] </li></ul>| Use data base                                                             | Lenkelheit   | 25.11.2018 |
+| |<ul><li>- [ ] </li></ul>| The class of this layer allow to read/write/change/remove data            |iamprovidence | 23.11.2018 |
 | |                        | <p align="center">      2      </p>                                       |              |            |
-| |<ul><li>- [ ] </li></ul>| Use Entity Framework Code First                                           |              |            |
-| |<ul><li>- [ ] </li></ul>| Create models to represent data of the task                               |              |            |
-| |<ul><li>- [ ] </li></ul>| Create context                                                            |              |            |
-| |<ul><li>- [ ] </li></ul>| Generate the corresponding database                                       |              |            |
-| |                        | <p align="center">      3.  Implement patterns  </p>                      |      —       |      —     |
+| |<ul><li>- [ ] </li></ul>| Use Entity Framework Code First                                         |SvyatoslavFedynyak|26.11.2018|
+| |<ul><li>- [ ] </li></ul>| Create models to represent data of the task                               |vasil98         |27.11.2018|
+| |<ul><li>- [ ] </li></ul>| Create context                                                          |SvyatoslavFedynyak|26.11.2018|
+| |<ul><li>- [ ] </li></ul>| Generate the corresponding database                                       |  Lenkelheit  | 25.11.2018 |
+| |                        | <p align="center">      3.  Implement patterns  </p>                      |              |            |
 | |<ul><li>- [ ] </li></ul>| Repository                                                                |      —       |      —     |
-| |<ul><li>- [ ] </li></ul>| UnitOfWork                                                                |              |            |
+| |<ul><li>- [ ] </li></ul>| UnitOfWork                                                                |      —       |      —     |
 | |                        | <p align="center"> 4. Requirements </p>                                   |              |            |
 | |<ul><li>- [ ] </li></ul>| Unit-test project                                                         |      —       |      —     |
 | |<ul><li>- [ ] </li></ul>| Xml-documentation                                                         |      —       |      —     |
