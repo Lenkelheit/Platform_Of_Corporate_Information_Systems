@@ -6,17 +6,17 @@
 
 
 
-    <Color x:Key="DefaultFillBackgroundColor">#ff96fa</Color>
+    <Color x:Key="DefaultFillBackgroundColor">#FF96FA</Color>
     <Color x:Key="DefaultBackgroundColor">#FFFFFF</Color>
     <Color x:Key="DefaultDisabledBackgroundColor">#EBDEE9</Color>
 
     <Color x:Key="DisabledBtnColor">#E2BAD0</Color>
-    <Color x:Key="DefaultBtnColor">#bd6394</Color>
-    <Color x:Key="HoverBtnColor">#b53ad4</Color>
-    <Color x:Key="PressedBtnColor">#8805a8</Color>
+    <Color x:Key="DefaultBtnColor">#BD6394</Color>
+    <Color x:Key="HoverBtnColor">#B53AD4</Color>
+    <Color x:Key="PressedBtnColor">#8805A8</Color>
 
-    <Color x:Key="MoneyColor">#e2fa00</Color>
-    <Color x:Key="TimeColor">#4711ae</Color>
+    <Color x:Key="MoneyColor">#E2fA00</Color>
+    <Color x:Key="TimeColor">#4711EA</Color>
 
     <Color x:Key="MrWhite">#FFFFFF</Color>
     <Color x:Key="MrBlack">#000000</Color>
