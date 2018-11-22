@@ -23,7 +23,7 @@ namespace TaxiDriver.Context
 
         // PROPERTIES
         /// <summary>
-        /// Property that enable to interruct with drivers data
+        /// Property that enable to interact with drivers data
         /// </summary>
         /// <returns>Drivers data</returns>
         public DbSet<DriverInfo> Drivers
@@ -38,7 +38,7 @@ namespace TaxiDriver.Context
             }
         }
         /// <summary>
-        /// Property that enable to interruct with clients data
+        /// Property that enable to interact with clients data
         /// </summary>
         /// <returns>Clients data</returns>
         public DbSet<Client> Clients
@@ -53,7 +53,7 @@ namespace TaxiDriver.Context
             }
         }
         /// <summary>
-        /// Property that enable to interruct with streets data
+        /// Property that enable to interact with streets data
         /// </summary>
         /// <returns>streets data</returns>
         public DbSet<Street> Streets
@@ -68,7 +68,7 @@ namespace TaxiDriver.Context
             }
         }
         /// <summary>
-        /// Property that enable to interruct with routes data
+        /// Property that enable to interact with routes data
         /// </summary>
         /// <returns>Routes data</returns>
         public DbSet<Route> Routes
@@ -83,7 +83,7 @@ namespace TaxiDriver.Context
             }
         }
         /// <summary>
-        /// Property that enable to interruct with scores data
+        /// Property that enable to interact with scores data
         /// </summary>
         /// <returns>Scores data</returns>
         public DbSet<Score> Scores

@@ -16,7 +16,7 @@ namespace TaxiDriver.Services
         GenericRepository<Street> streetRepository;
         Context.DriverContext db;
 
-        private bool disposedValue = false; // To detect redundant calls
+        private bool disposedValue; // To detect redundant calls
         // CONSTRUCTORS
         /// <summary>
         /// Basic costructor without parameters
@@ -29,6 +29,7 @@ namespace TaxiDriver.Services
             routeRepository = new GenericRepository<Route>(db);
             scoreRepository = new GenericRepository<Score>(db);
             streetRepository = new GenericRepository<Street>(db);
+            disposedValue = false;
         }
         // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
         /// <summary>
@@ -41,7 +42,7 @@ namespace TaxiDriver.Services
         }
         // PROPERTIES
         /// <summary>
-        /// Property that enable to interruct with client repository
+        /// Property that enable to interact with client repository
         /// </summary>
         /// <returns>Client Repository</returns>
         public IGenericRepository<Client> ClientRepository
@@ -52,7 +53,7 @@ namespace TaxiDriver.Services
             }
         }
         /// <summary>
-        /// Property that enable to interruct with driver info repository
+        /// Property that enable to interact with driver info repository
         /// </summary>
         /// <returns>Driver info Repository</returns>
         public IGenericRepository<DriverInfo> DriverInfoRepository
@@ -63,7 +64,7 @@ namespace TaxiDriver.Services
             }
         }
         /// <summary>
-        /// Property that enable to interruct with route repository
+        /// Property that enable to interact with route repository
         /// </summary>
         /// <returns>Route Repository</returns>
         public IGenericRepository<Route> RouteRepository
@@ -74,7 +75,7 @@ namespace TaxiDriver.Services
             }
         }
         /// <summary>
-        /// Property that enable to interruct with score repository
+        /// Property that enable to interact with score repository
         /// </summary>
         /// <returns>Score Repository</returns>
         public IGenericRepository<Score> ScoreRepository
@@ -85,7 +86,7 @@ namespace TaxiDriver.Services
             }
         }
         /// <summary>
-        /// Property that enable to interruct with street repository
+        /// Property that enable to interact with street repository
         /// </summary>
         /// <returns>Street Repository</returns>
         public IGenericRepository<Street> StreetRepository
@@ -113,11 +114,7 @@ namespace TaxiDriver.Services
         /// </summary>
         public void Save()
         {
-            clientRepository.context.SaveChanges();
-            driverInfoRepository.context.SaveChanges();
-            routeRepository.context.SaveChanges();
-            scoreRepository.context.SaveChanges();
-            streetRepository.context.SaveChanges();
+            db.SaveChanges();
         }
         /// <summary>
         /// Special disposer
@@ -130,11 +127,6 @@ namespace TaxiDriver.Services
                 if (disposing)
                 {
                     // TODO: dispose managed state (managed objects).
-                    clientRepository = null;
-                    driverInfoRepository = null;
-                    routeRepository = null;
-                    scoreRepository = null;
-                    streetRepository = null;
                 }
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
                 db.Dispose();

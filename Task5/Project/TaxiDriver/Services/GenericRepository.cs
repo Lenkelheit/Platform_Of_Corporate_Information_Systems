@@ -27,13 +27,13 @@ namespace TaxiDriver.Services
         }
         // PROPERTIES
         /// <summary>
-        /// Property that enale to interruct with count of entities in data base
+        /// Property that enale to interact with count of entities in data base
         /// </summary>
         /// <returns>Count of entities</returns>
         public int Count => dbSet.Count();
         // METHODS
         /// <summary>
-        /// Method that data from data base
+        /// Method that get data from data base
         /// </summary>
         /// <param name="filter">Filter for data</param>
         /// <param name="orderBy">The order of the received items</param>
