@@ -16,7 +16,7 @@ namespace TaxiDriver.Services
         GenericRepository<Street> streetRepository;
         Context.DriverContext db;
 
-        private bool disposedValue; // To detect redundant calls
+        private bool disposedValue;
         // CONSTRUCTORS
         /// <summary>
         /// Basic costructor without parameters
@@ -31,15 +31,14 @@ namespace TaxiDriver.Services
             streetRepository = new GenericRepository<Street>(db);
             disposedValue = false;
         }
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
         /// <summary>
         /// Default finaliser
         /// </summary>
         ~UnitOfWork()
         {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(false);
         }
+
         // PROPERTIES
         /// <summary>
         /// Property that enable to interact with client repository
@@ -98,7 +97,6 @@ namespace TaxiDriver.Services
         }
 
         // METHODS
-        // This code added to correctly implement the disposable pattern.
         /// <summary>
         /// Dispose resourses
         /// </summary>
@@ -126,13 +124,9 @@ namespace TaxiDriver.Services
             {
                 if (disposing)
                 {
-                    // TODO: dispose managed state (managed objects).
+                    db.Dispose();
+                    db = null;
                 }
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                db.Dispose();
-                db = null;
-                // TODO: set large fields to null.
-
                 disposedValue = true;
             }
         }
