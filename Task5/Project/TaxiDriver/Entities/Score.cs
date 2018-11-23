@@ -19,4 +19,3 @@ namespace TaxiDriver
         public int DriverInfoID { get; set; }
     }
 }
-
