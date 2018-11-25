@@ -12,7 +12,7 @@ namespace DataControl.Services
         /// <summary>
         /// It enables to work with different entities from database.
         /// </summary>
-        public TaxiDriver.Services.UnitOfWork UnitOfWork { get; private set; }
+        public TaxiDriver.Services.UnitOfWork UnitOfWork { get; set; }
 
         // CONSTRUCTOR
         /// <summary>
