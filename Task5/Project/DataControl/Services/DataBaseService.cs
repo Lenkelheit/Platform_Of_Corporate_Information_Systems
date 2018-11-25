@@ -13,6 +13,7 @@ namespace DataControl.Services
         private string message;
         private DBConfiguration dbConfiguration;
         private System.Random rand;
+        private bool disposedValue;
 
         // PROPERTIES
         /// <summary>
@@ -38,7 +39,7 @@ namespace DataControl.Services
 
         // CONSTRUCTORS
         /// <summary>
-        /// Basic constructors without parameters.
+        /// Basic constructor without parameters.
         /// </summary>
         public DataBaseService()
         {
@@ -46,6 +47,16 @@ namespace DataControl.Services
             message = null;
             dbConfiguration = null;
             rand = new System.Random();
+            disposedValue = false;
+        }
+
+        // DESTRUCTOR
+        /// <summary>
+        /// Basic destructor.
+        /// </summary>
+        ~DataBaseService()
+        {
+            Dispose(false);
         }
 
         // METHODS
@@ -73,6 +84,35 @@ namespace DataControl.Services
         {
             return dbConfiguration.UnitOfWork.RouteRepository
                 .GetByID(rand.Next(1, dbConfiguration.UnitOfWork.RouteRepository.Count + 1));
+        }
+
+        /// <summary>
+        /// Disposes unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+
+            System.GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Special disposer.
+        /// </summary>
+        /// <param name="disposing">Says what resources must be disposed.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    dbConfiguration.Dispose();
+                    dbConfiguration = null;
+                    SetNullToDriverAndMessage();
+                    rand = null;
+                }
+                disposedValue = true;
+            }
         }
 
         /// <summary>
