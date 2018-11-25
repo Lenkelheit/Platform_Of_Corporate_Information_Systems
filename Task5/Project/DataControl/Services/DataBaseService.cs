@@ -136,17 +136,24 @@ namespace DataControl.Services
             CheckDatabaseConfiguration();
 
             Score[] bestScores = dbConfiguration.UnitOfWork.ScoreRepository
-                .Get(orderBy: query => query.GroupBy(scoreElem => scoreElem.DriverInfoID)
-                .Select(group => group.OrderByDescending(scoreElemInGroup => scoreElemInGroup.Scores).First())
-                .OrderByDescending(uniqueDriverScore => uniqueDriverScore.Scores)).Take(amount).ToArray();
+                .Get(orderBy: query => query.OrderByDescending(scoreElem => scoreElem.Scores))
+                .Take(amount).ToArray();
 
             Champion[] champions = new Champion[bestScores.Length];
 
             DriverInfo driverInfo = null;
-            for (int i = 0; i < bestScores.Length; ++i) 
+            int driverID = 0;
+            System.Collections.Generic.Dictionary<int, string> driversIdAndNames =
+                new System.Collections.Generic.Dictionary<int, string>();
+            for (int i = 0; i < bestScores.Length; ++i)
             {
-                driverInfo = dbConfiguration.UnitOfWork.DriverInfoRepository.GetByID(bestScores[i].DriverInfoID);
-                champions[i] = new Champion(i + 1, driverInfo.Name, bestScores[i].Scores);
+                driverID = bestScores[i].DriverInfoID;
+                if (!driversIdAndNames.ContainsKey(driverID))
+                {
+                    driverInfo = dbConfiguration.UnitOfWork.DriverInfoRepository.GetByID(driverID);
+                    driversIdAndNames.Add(driverID, driverInfo.Name);
+                }
+                champions[i] = new Champion(i + 1, driversIdAndNames[driverID], bestScores[i].Scores);
             }
             return champions;
         }
