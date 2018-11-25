@@ -6,7 +6,7 @@ namespace DataControl.Services
     /// <summary>
     /// Represents service for work with databases.
     /// </summary>
-    public class DataBaseService : Interfaces.IDataAccessService
+    public class DataBaseService : Interfaces.IDataAccessService, System.IDisposable
     {
         // FIELDS
         private Driver driver;
