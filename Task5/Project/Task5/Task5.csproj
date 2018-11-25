@@ -94,10 +94,6 @@
     <Content Include="Resources\DB\TaxiDriverDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DB\TaxiDriverDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>TaxiDriverDB.mdf</DependentUpon>
-    </Content>
     <Page Include="Forms\CabinetWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
