@@ -31,6 +31,9 @@ namespace TaxiDriver.Services
             streetRepository = new GenericRepository<Street>(db);
             disposedValue = false;
         }
+        /// <summary>
+        /// Default finaliser
+        /// </summary>
         ~UnitOfWork()
         {
             Dispose(false);
