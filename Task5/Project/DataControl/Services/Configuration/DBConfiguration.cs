@@ -23,6 +23,9 @@ namespace DataControl.Services
             UnitOfWork = new TaxiDriver.Services.UnitOfWork();
             disposedValue = false;
         }
+        /// <summary>
+        /// Default finaliser
+        /// </summary>
         ~DBConfiguration()
         {
             Dispose(false);
