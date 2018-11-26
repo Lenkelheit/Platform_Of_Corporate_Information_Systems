@@ -14,7 +14,7 @@ namespace DataControl.Services
         /// </summary>
         public TaxiDriver.Services.UnitOfWork UnitOfWork { get; set; }
 
-        // CONSTRUCTOR
+        // CONSTRUCTOR DESTRUCTOR
         /// <summary>
         /// Basic constructor without parameters.
         /// </summary>
@@ -23,11 +23,6 @@ namespace DataControl.Services
             UnitOfWork = new TaxiDriver.Services.UnitOfWork();
             disposedValue = false;
         }
-
-        // DESTRUCTOR
-        /// <summary>
-        /// Basic destructor.
-        /// </summary>
         ~DBConfiguration()
         {
             Dispose(false);
