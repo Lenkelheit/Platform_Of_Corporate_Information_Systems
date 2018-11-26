@@ -37,7 +37,7 @@ namespace DataControl.Services
             }
         }
 
-        // CONSTRUCTORS
+        // CONSTRUCTORS DESTRUCTOR
         /// <summary>
         /// Basic constructor without parameters.
         /// </summary>
@@ -49,11 +49,6 @@ namespace DataControl.Services
             rand = new System.Random();
             disposedValue = false;
         }
-
-        // DESTRUCTOR
-        /// <summary>
-        /// Basic destructor.
-        /// </summary>
         ~DataBaseService()
         {
             Dispose(false);
