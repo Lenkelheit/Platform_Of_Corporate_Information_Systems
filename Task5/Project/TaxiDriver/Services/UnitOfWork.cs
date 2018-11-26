@@ -96,23 +96,21 @@ namespace TaxiDriver.Services
             }
         }
 
-        // METHODS
-        /// <summary>
-        /// Dispose resourses
-        /// </summary>
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            GC.SuppressFinalize(this);
-        }
+        // METHODS        
         /// <summary>
         /// Save changes in data base
         /// </summary>
         public void Save()
         {
             db.SaveChanges();
+        }
+        /// <summary>
+        /// Dispose resourses
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
         /// <summary>
         /// Special disposer
