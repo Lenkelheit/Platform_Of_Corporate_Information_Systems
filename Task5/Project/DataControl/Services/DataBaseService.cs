@@ -135,25 +135,25 @@ namespace DataControl.Services
         {
             CheckDatabaseConfiguration();
 
+            // get Amount best score
             Score[] bestScores = dbConfiguration.UnitOfWork.ScoreRepository
                 .Get(orderBy: query => query.OrderByDescending(scoreElem => scoreElem.Scores))
-                .Take(amount).ToArray();
+                .Take(amount).ToArray();  
 
+            // get all needed driver ID
+            int[] driverIDs = bestScores.Select(s => s.DriverInfoID).Distinct().ToArray();
+
+            // get all needed driver info
+            System.Collections.Generic.Dictionary<int, string> driverInfoes =
+                dbConfiguration.UnitOfWork.DriverInfoRepository
+                    .Get(filter: dInfo => driverIDs.Contains(dInfo.ID))
+                        .ToDictionary(d => d.ID, d => d.Name);
+    
+            // allocate memory, full fill result array
             Champion[] champions = new Champion[bestScores.Length];
-
-            DriverInfo driverInfo = null;
-            int driverID = 0;
-            System.Collections.Generic.Dictionary<int, string> driversIdAndNames =
-                new System.Collections.Generic.Dictionary<int, string>();
             for (int i = 0; i < bestScores.Length; ++i)
             {
-                driverID = bestScores[i].DriverInfoID;
-                if (!driversIdAndNames.ContainsKey(driverID))
-                {
-                    driverInfo = dbConfiguration.UnitOfWork.DriverInfoRepository.GetByID(driverID);
-                    driversIdAndNames.Add(driverID, driverInfo.Name);
-                }
-                champions[i] = new Champion(i + 1, driversIdAndNames[driverID], bestScores[i].Scores);
+                champions[i] = new Champion(i + 1, driverInfoes[bestScores[i].DriverInfoID], bestScores[i].Scores);
             }
             return champions;
         }
@@ -226,6 +226,7 @@ namespace DataControl.Services
             DriverInfo driverInformation =
                 dbConfiguration.UnitOfWork.DriverInfoRepository
                 .Get(filter: driverInfo => driverInfo.Name == currentDriver.Name).First();
+
             driverInformation.Scores.Add(new Score { Scores = currentDriver.LastScore });
 
             dbConfiguration.UnitOfWork.DriverInfoRepository.Update(driverInformation);
