@@ -119,6 +119,9 @@ namespace TaxiDriver
             this.id = driverInfo.ID;
             this.name = driverInfo.Name;
             this.password = driverInfo.Password;
+            this.bestScore = 0;
+            this.totalScore = 0;
+            this.lastScore = 0;
             foreach (Score scoreData in driverInfo.Scores)
             {
                 this.LastScore = scoreData.Scores;
