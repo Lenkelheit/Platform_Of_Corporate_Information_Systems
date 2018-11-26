@@ -49,6 +49,9 @@ namespace DataControl.Services
             rand = new System.Random();
             disposedValue = false;
         }
+        /// <summary>
+        /// Default finaliser
+        /// </summary>
         ~DataBaseService()
         {
             Dispose(false);
