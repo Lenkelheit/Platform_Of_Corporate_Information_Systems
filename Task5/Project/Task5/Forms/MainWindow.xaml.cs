@@ -8,6 +8,7 @@ namespace Task5
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
+        static readonly string CONNECTION_STRING_RESOURCE_NAME = "TaxiDriverDB";
         DataControl.Interfaces.IDataAccessService dataAccessService;
 
         public MainWindow()
@@ -26,7 +27,10 @@ namespace Task5
                     StreetFile = @"Resources\files\Street.csv",
                 });
             */
-            dataAccessService = new DataBaseService().SetConfiguration(new DBConfiguration());
+            dataAccessService = new DataBaseService().SetConfiguration(
+                 new DBConfiguration(connectionStringName: System.Configuration.ConfigurationManager
+                                                             .ConnectionStrings[CONNECTION_STRING_RESOURCE_NAME]
+                                                                .ConnectionString));
 
             this.DataContext = new ApplicationViewModel(dataAccessService);
         }
