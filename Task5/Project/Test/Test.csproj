@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ClientTest.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="DataBaseServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OrderTest.cs" />
     <Compile Include="DriverTest.cs" />
@@ -52,9 +53,16 @@
     <Reference Include="DataControl">
       <HintPath>..\DataControl\_dll\DataControl.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\TaxiDriver\_dll\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\TaxiDriver\_dll\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TaxiDriver\TaxiDriver.csproj">
@@ -63,11 +71,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="TestFiles\Client.csv" />
     <None Include="TestFiles\Driver.csv" />
     <None Include="TestFiles\Route.csv" />
     <None Include="TestFiles\Score.csv" />
     <None Include="TestFiles\Street.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestDB\TestTaxiDriverDB.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

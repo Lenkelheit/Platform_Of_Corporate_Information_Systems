@@ -16,10 +16,11 @@ namespace TaxiDriver.Context
 
         // CONSTRUCTORS
         /// <summary>
-        /// Basic constructor for context class
+        /// Basic constructor with parameter for context class.
         /// </summary>
-        public DriverContext()
-            : base("TaxiDriverDB")  {  }
+        /// <param name="connectionStringName">The name of connection string.</param>
+        public DriverContext(string connectionStringName)
+            : base(connectionStringName) { }
 
         // PROPERTIES
         /// <summary>
