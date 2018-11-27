@@ -62,6 +62,6 @@
 ## Icon
 
 <p align="center">
-  <img src="/Images/Task4/ico.png">
+  <img src="/Images/Task4/ico.png" width="200" height="200">
 </p>
 

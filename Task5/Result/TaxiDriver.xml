@@ -1,0 +1,530 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaxiDriver</name>
+    </assembly>
+    <members>
+        <member name="T:TaxiDriver.Driver">
+            <summary>
+            Represents class that models Driver
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Driver.ID">
+            <summary>
+            Property that defines the id
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Driver.Name">
+            <summary>
+            Property that defines the name
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Driver.Password">
+            <summary>
+            Property that defines the password
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Driver.BestScore">
+            <summary>
+            Property that defines the best score
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Driver.TotalScore">
+            <summary>
+            Property that defines the total score
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Driver.LastScore">
+            <summary>
+            Property that defines the last score
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Driver.#ctor(System.Int32,System.String,System.String,System.Double,System.Double)">
+            <summary>
+            Constructor with parameters
+            </summary>
+            <param name="id">driver's id</param>
+            <param name="name">driver's name</param>
+            <param name="password">driver's password</param>
+            <param name="bestScore">best score driver's</param>
+            <param name="totalScore">total score driver's</param>
+        </member>
+        <member name="M:TaxiDriver.Driver.#ctor(System.String,System.String,System.Double,System.Double)">
+            <summary>
+            Constructor with parameters
+            </summary>
+            <param name="name">driver's name</param>
+            <param name="password">driver's password</param>
+            <param name="bestScore">best score driver's</param>
+            <param name="totalScore">total score driver's</param>
+        </member>
+        <member name="M:TaxiDriver.Driver.#ctor(TaxiDriver.DriverInfo)">
+            <summary>
+            Initializ a nwe instanc of <see cref="T:TaxiDriver.Driver"/>
+            </summary>
+            <param name="driverInfo">An instance of <see cref="T:TaxiDriver.DriverInfo"/></param>
+        </member>
+        <member name="T:TaxiDriver.Order">
+            <summary>
+            Represents class that models Order
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Order.Number">
+            <summary>
+            Property that defines the number
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Order.Client">
+            <summary>
+            Property that defines the Client
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Order.Route">
+            <summary>
+            Property that defines the Route
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Order.#ctor(System.Int32,TaxiDriver.Client,TaxiDriver.Route)">
+            <summary>
+            Constructor with parameters
+            </summary>
+            <param name="number">Order number</param>
+            <param name="client">Client who accepted the refraction</param>
+            <param name="route">Destination</param>
+        </member>
+        <member name="T:TaxiDriver.Context.DriverContext">
+            <summary>
+            Class that repsresents Data Base context for app data
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Context.DriverContext.#ctor">
+            <summary>
+            Basic constructor for context class
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Context.DriverContext.Drivers">
+            <summary>
+            Property that enable to interact with drivers data
+            </summary>
+            <returns>Drivers data</returns>
+        </member>
+        <member name="P:TaxiDriver.Context.DriverContext.Clients">
+            <summary>
+            Property that enable to interact with clients data
+            </summary>
+            <returns>Clients data</returns>
+        </member>
+        <member name="P:TaxiDriver.Context.DriverContext.Streets">
+            <summary>
+            Property that enable to interact with streets data
+            </summary>
+            <returns>streets data</returns>
+        </member>
+        <member name="P:TaxiDriver.Context.DriverContext.Routes">
+            <summary>
+            Property that enable to interact with routes data
+            </summary>
+            <returns>Routes data</returns>
+        </member>
+        <member name="P:TaxiDriver.Context.DriverContext.Scores">
+            <summary>
+            Property that enable to interact with scores data
+            </summary>
+            <returns>Scores data</returns>
+        </member>
+        <member name="T:TaxiDriver.DriverInfo">
+            <summary>
+            Represents class that entities DriverInfo
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.DriverInfo.ID">
+            <summary>
+            Property that defines the identifier
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.DriverInfo.Name">
+            <summary>
+            Property that defines the name
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.DriverInfo.Password">
+            <summary>
+            Property that defines the password
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.DriverInfo.Scores">
+            <summary>
+            Property that defines the collection of scores
+            </summary>
+        </member>
+        <member name="T:TaxiDriver.Score">
+            <summary>
+            Represents class that entities Score
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Score.ID">
+            <summary>
+            Property that defines the identifier
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Score.Scores">
+            <summary>
+            Property that defines the scores
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Score.DriverInfoID">
+            <summary>
+            Property that defines the driver information identifier
+            </summary>
+        </member>
+        <member name="T:TaxiDriver.Street">
+            <summary>
+            Represents class that entities Street
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Street.ID">
+            <summary>
+            Property that defines the identifier
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Street.Name">
+            <summary>
+            Property that defines the name
+            </summary>
+        </member>
+        <member name="T:TaxiDriver.Interfaces.IGenericRepository`1">
+            <summary>
+            Reprents interface for classes which will proxy behind data acsess and buisness logic
+            </summary>
+            <typeparam name="TEntity">Data class work with</typeparam>
+        </member>
+        <member name="P:TaxiDriver.Interfaces.IGenericRepository`1.Count">
+            <summary>
+            Property that enale to interact with count of entities in data base
+            </summary>
+            <returns>Count of entities</returns>
+        </member>
+        <member name="M:TaxiDriver.Interfaces.IGenericRepository`1.Get(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.String)">
+            <summary>
+            Method that get data from data base
+            </summary>
+            <param name="filter">Filter for data</param>
+            <param name="orderBy">The order of the received items</param>
+            <param name="includeProperties">Included properties</param>
+            <returns>Queried entities collection</returns>
+        </member>
+        <member name="M:TaxiDriver.Interfaces.IGenericRepository`1.GetByID(System.Object)">
+            <summary>
+            Method that enable to get entity by id
+            </summary>
+            <param name="id">Entities id</param>
+            <returns>Finded entity</returns>
+        </member>
+        <member name="M:TaxiDriver.Interfaces.IGenericRepository`1.Insert(`0)">
+            <summary>
+            Inserts data in data base
+            </summary>
+            <param name="entity">Inserted entity</param>
+        </member>
+        <member name="M:TaxiDriver.Interfaces.IGenericRepository`1.Delete(System.Object)">
+            <summary>
+            Deletes object by id
+            </summary>
+            <param name="id">Objects id</param>
+        </member>
+        <member name="M:TaxiDriver.Interfaces.IGenericRepository`1.Delete(`0)">
+            <summary>
+            Deletes preset entity
+            </summary>
+            <param name="entityToDelete">Entity to delete</param>
+        </member>
+        <member name="M:TaxiDriver.Interfaces.IGenericRepository`1.Update(`0)">
+            <summary>
+            Updates data base
+            </summary>
+            <param name="entityToUpdate">Entity to update</param>
+        </member>
+        <member name="T:TaxiDriver.Interfaces.IUnitOfWork">
+            <summary>
+            Represents interface for classes which will work with entities repository and gives away context for it
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Interfaces.IUnitOfWork.ClientRepository">
+            <summary>
+            Property that enable to interact with client repository
+            </summary>
+            <returns>Client Repository</returns>
+        </member>
+        <member name="P:TaxiDriver.Interfaces.IUnitOfWork.DriverInfoRepository">
+            <summary>
+            Property that enable to interact with driver info repository
+            </summary>
+            <returns>Driver info Repository</returns>
+        </member>
+        <member name="P:TaxiDriver.Interfaces.IUnitOfWork.RouteRepository">
+            <summary>
+            Property that enable to interact with route repository
+            </summary>
+            <returns>Route Repository</returns>
+        </member>
+        <member name="P:TaxiDriver.Interfaces.IUnitOfWork.ScoreRepository">
+            <summary>
+            Property that enable to interact with score repository
+            </summary>
+            <returns>Score Repository</returns>
+        </member>
+        <member name="P:TaxiDriver.Interfaces.IUnitOfWork.StreetRepository">
+            <summary>
+            Property that enable to interact with street repository
+            </summary>
+            <returns>Street Repository</returns>
+        </member>
+        <member name="M:TaxiDriver.Interfaces.IUnitOfWork.Save">
+            <summary>
+            Save changes in data base
+            </summary>
+        </member>
+        <member name="T:TaxiDriver.Client">
+            <summary>
+            Represents class that models Client
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Client.ID">
+            <summary>
+            Property that defines the ID
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Client.Name">
+            <summary>
+            Property that defines the name
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Client.Phone">
+            <summary>
+            Property that defines the phone
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Client.#ctor(System.String,System.String)">
+            <summary>
+            Constructor with parameters
+            </summary>
+            <param name="name">The name of the client</param>
+            <param name="phone">Client phone number</param>
+        </member>
+        <member name="M:TaxiDriver.Client.#ctor">
+            <summary>
+            Initialize a new instance of <see cref="T:TaxiDriver.Client"/>
+            </summary>
+        </member>
+        <member name="T:TaxiDriver.Route">
+            <summary>
+            Represents struct that models Route
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Route.ID">
+            <summary>
+            Property that defines the ID
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Route.StartStreetID">
+            <summary>
+            Property that defines the ID of the start street
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Route.StartStreet">
+            <summary>
+            Property that defines the start street
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Route.EndStreetID">
+            <summary>
+            Property that defines the ID of the end street
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Route.EndStreet">
+            <summary>
+            Property that defines the end street
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Route.Time">
+            <summary>
+            Property that defines the time
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Route.Price">
+            <summary>
+            Property that defines the price
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Route.#ctor">
+            <summary>
+            Initialize a new instance of <see cref="T:TaxiDriver.Route"/>
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Route.#ctor(System.String,System.String,System.TimeSpan,System.Double)">
+            <summary>
+            Constructor with parameters.
+            </summary>
+            <param name="startStreet">Start of the route.</param>
+            <param name="endStreet">End of the route.</param>
+            <param name="time">The duration of the trip.</param>
+            <param name="price">Trip price.</param>
+        </member>
+        <member name="M:TaxiDriver.Route.#ctor(TaxiDriver.Street,TaxiDriver.Street,System.TimeSpan,System.Double)">
+            <summary>
+            Constructor with parameters.
+            </summary>
+            <param name="startStreet">Start street of the route.</param>
+            <param name="endStreet">End street of the route.</param>
+            <param name="time">The duration of the trip.</param>
+            <param name="price">Trip price.</param>
+        </member>
+        <member name="T:TaxiDriver.Champion">
+            <summary>
+            Represents struct that models Champion
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Champion.Number">
+            <summary>
+            Property that defines the number
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Champion.Name">
+            <summary>
+            Property that defines the name
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Champion.Score">
+            <summary>
+            Property that defines the score
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Champion.#ctor(System.Int32,System.String,System.Double)">
+            <summary>
+            Constructors with parameters
+            </summary>
+            <param name="number">Number champion's</param>
+            <param name="name">Name champion's</param>
+            <param name="score">Score champion's</param>
+        </member>
+        <member name="T:TaxiDriver.Services.GenericRepository`1">
+            <summary>
+            Represents class that proxy behind data acsess and buisness logic
+            </summary>
+            <typeparam name="TEntity">Data class work with</typeparam>
+        </member>
+        <member name="M:TaxiDriver.Services.GenericRepository`1.#ctor(TaxiDriver.Context.DriverContext)">
+            <summary>
+            Basic constructor with 1 parameter
+            </summary>
+            <param name="context">Data context</param>
+        </member>
+        <member name="P:TaxiDriver.Services.GenericRepository`1.Count">
+            <summary>
+            Property that enale to interact with count of entities in data base
+            </summary>
+            <returns>Count of entities</returns>
+        </member>
+        <member name="M:TaxiDriver.Services.GenericRepository`1.Get(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.String)">
+            <summary>
+            Method that get data from data base
+            </summary>
+            <param name="filter">Filter for data</param>
+            <param name="orderBy">The order of the received items</param>
+            <param name="includeProperties">Included properties</param>
+            <returns>Queried entities collection</returns>
+        </member>
+        <member name="M:TaxiDriver.Services.GenericRepository`1.GetByID(System.Object)">
+            <summary>
+            Method that enable to get entity by id
+            </summary>
+            <param name="id">Entities id</param>
+            <returns>Finded entity</returns>
+        </member>
+        <member name="M:TaxiDriver.Services.GenericRepository`1.Insert(`0)">
+            <summary>
+            Inserts data in data base
+            </summary>
+            <param name="entity">Inserted entity</param>
+        </member>
+        <member name="M:TaxiDriver.Services.GenericRepository`1.Delete(System.Object)">
+            <summary>
+            Deletes object by id
+            </summary>
+            <param name="id">Objects id</param>
+        </member>
+        <member name="M:TaxiDriver.Services.GenericRepository`1.Delete(`0)">
+            <summary>
+            Deletes preset entity
+            </summary>
+            <param name="entityToDelete">Entity to delete</param>
+        </member>
+        <member name="M:TaxiDriver.Services.GenericRepository`1.Update(`0)">
+            <summary>
+            Updates data base
+            </summary>
+            <param name="entityToUpdate">Entity to update</param>
+        </member>
+        <member name="T:TaxiDriver.Services.UnitOfWork">
+            <summary>
+            Repsresents class that enable to work with entities repository and gives away context for it
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Services.UnitOfWork.#ctor">
+            <summary>
+            Basic costructor without parameters
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Services.UnitOfWork.Finalize">
+            <summary>
+            Default finaliser
+            </summary>
+        </member>
+        <member name="P:TaxiDriver.Services.UnitOfWork.ClientRepository">
+            <summary>
+            Property that enable to interact with client repository
+            </summary>
+            <returns>Client Repository</returns>
+        </member>
+        <member name="P:TaxiDriver.Services.UnitOfWork.DriverInfoRepository">
+            <summary>
+            Property that enable to interact with driver info repository
+            </summary>
+            <returns>Driver info Repository</returns>
+        </member>
+        <member name="P:TaxiDriver.Services.UnitOfWork.RouteRepository">
+            <summary>
+            Property that enable to interact with route repository
+            </summary>
+            <returns>Route Repository</returns>
+        </member>
+        <member name="P:TaxiDriver.Services.UnitOfWork.ScoreRepository">
+            <summary>
+            Property that enable to interact with score repository
+            </summary>
+            <returns>Score Repository</returns>
+        </member>
+        <member name="P:TaxiDriver.Services.UnitOfWork.StreetRepository">
+            <summary>
+            Property that enable to interact with street repository
+            </summary>
+            <returns>Street Repository</returns>
+        </member>
+        <member name="M:TaxiDriver.Services.UnitOfWork.Save">
+            <summary>
+            Save changes in data base
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Services.UnitOfWork.Dispose">
+            <summary>
+            Dispose resourses
+            </summary>
+        </member>
+        <member name="M:TaxiDriver.Services.UnitOfWork.Dispose(System.Boolean)">
+            <summary>
+            Special disposer
+            </summary>
+            <param name="disposing">Dispose managed resourses</param>
+        </member>
+    </members>
+</doc>
