@@ -16,11 +16,12 @@ namespace DataControl.Services
 
         // CONSTRUCTOR DESTRUCTOR
         /// <summary>
-        /// Basic constructor without parameters.
+        /// Basic constructor with parameter.
         /// </summary>
-        public DBConfiguration()
+        /// <param name="connectionStringName">The name of connection string.</param>
+        public DBConfiguration(string connectionStringName)
         {
-            UnitOfWork = new TaxiDriver.Services.UnitOfWork();
+            UnitOfWork = new TaxiDriver.Services.UnitOfWork(connectionStringName);
             disposedValue = false;
         }
         /// <summary>
