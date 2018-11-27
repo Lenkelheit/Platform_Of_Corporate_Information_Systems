@@ -17,13 +17,14 @@ namespace TaxiDriver.Services
         Context.DriverContext db;
 
         private bool disposedValue;
-        // CONSTRUCTORS
+        // CONSTRUCTOR DESTRUCTOR
         /// <summary>
-        /// Basic costructor without parameters
+        /// Basic constructor with parameter.
         /// </summary>
-        public UnitOfWork()
+        /// <param name="connectionStringName">The name of connection string.</param>
+        public UnitOfWork(string connectionStringName)
         {
-            db = new Context.DriverContext();
+            db = new Context.DriverContext(connectionStringName);
             clientRepository = new GenericRepository<Client>(db);
             driverInfoRepository = new GenericRepository<DriverInfo>(db);
             routeRepository = new GenericRepository<Route>(db);
